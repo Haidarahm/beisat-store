@@ -1,0 +1,34 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "show_page_title": false,
+        "full_width": false
+      }
+    },
+    "custom_liquid_A4JPAz": {
+      "type": "custom-liquid",
+      "name": "Custom Liquid",
+      "settings": {
+        "full_width": false,
+        "show_space": true,
+        "code": "{% comment %} Whatsapp checkout code START {% endcomment %}\n\n{% capture cart_text %}\nHi! I want to order these items:\n\nمرحبا, أريد طلب المنتجات التالية:\n\n{% for item in cart.items %}\n- {{ item.product.title }} (x{{ item.quantity }}) - {{ item.variant_id }}\n{% endfor %}\n{% endcapture %}\n\n{% comment %} Whatsapp checkout code FINISH {% endcomment %}\n\n<strong><p>{{ 'cart.summary.continue' | t }}</p></strong>\n\n<div style=\"display:flex; align-items:center; justify-content:center; gap:12px; font-family:inherit;\">\n\n  <a href=\"https://wa.me/96822093347/?text={{ cart_text | url_encode }}\" onclick=\"gtag('event','whatsapp_click');\" target=\"_blank\"\n     style=\"display:flex; align-items:center; justify-content:center; gap:8px;\n            padding:12px 18px; border-radius:6px; font-weight:600;\n            text-decoration:none; color:#fff; background:#25D366; min-width:140px;\">\n\n    <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"18\" height=\"18\" fill=\"currentColor\" viewBox=\"0 0 24 24\">\n      <path d=\"M20.52 3.48A11.8 11.8 0 0 0 12.01 0C5.38 0 .01 5.37.01 12c0 2.11.55 4.16 1.6 5.97L0 24l6.19-1.62A11.94 11.94 0 0 0 12.01 24c6.63 0 12-5.37 12-12 0-3.2-1.25-6.21-3.49-8.52zM12 21.82c-1.88 0-3.71-.5-5.31-1.44l-.38-.22-3.67.96.98-3.58-.25-.37A9.79 9.79 0 0 1 2.2 12c0-5.41 4.39-9.8 9.8-9.8 2.62 0 5.08 1.02 6.93 2.87A9.75 9.75 0 0 1 21.8 12c0 5.41-4.39 9.82-9.8 9.82zm5.39-7.35c-.3-.15-1.78-.88-2.06-.98-.27-.1-.47-.15-.67.15-.2.3-.77.98-.94 1.18-.17.2-.35.22-.65.07-.3-.15-1.28-.47-2.43-1.5-.9-.8-1.5-1.79-1.68-2.09-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.48-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.05 1.03-1.05 2.5s1.08 2.9 1.23 3.1c.15.2 2.13 3.25 5.17 4.56.72.31 1.28.5 1.72.64.72.23 1.38.2 1.9.12.58-.09 1.78-.73 2.03-1.43.25-.7.25-1.3.18-1.43-.08-.13-.27-.2-.57-.35z\"/>\n    </svg>\n\n    {{ 'cart.summary.whatsapp' | t }}\n  </a>\n\n  <span style=\"font-weight:600; color:#888;\">{{ 'cart.summary.or' | t }}</span>\n\n  {% if customer %}\n    {% if customer.addresses_count == 0 %}\n      <a style=\"display:flex; align-items:center; justify-content:center; gap:8px;\n                padding:12px 18px; border-radius:6px; font-weight:600;\n                text-decoration:none; color:#fff; background:#1E2AA6; min-width:140px;\"\n         href=\"{{ routes.root_url | append: '/account/addresses?add=1' | replace: '//', '/' }}\"\n         onclick=\";gtag('event','checkout_click');localStorage.setItem('checkout_url','/checkout')\"\n         ><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"18\" height=\"18\" fill=\"currentColor\" viewBox=\"0 0 24 24\">\n      <path d=\"M12 2a10 10 0 100 20 10 10 0 000-20zm7.93 9h-3.18a15.7 15.7 0 00-1.38-5.03A8.02 8.02 0 0119.93 11zM12 4c.9 1.3 1.6 3.1 1.85 5H10.15c.25-1.9.95-3.7 1.85-5zM4.07 13h3.18c.15 1.8.65 3.6 1.38 5.03A8.02 8.02 0 014.07 13zm3.18-2H4.07a8.02 8.02 0 014.56-5.03A15.7 15.7 0 007.25 11zM12 20c-.9-1.3-1.6-3.1-1.85-5h3.7c-.25 1.9-.95 3.7-1.85 5zm2.62-1.97A15.7 15.7 0 0016.75 13h3.18a8.02 8.02 0 01-5.31 5.03z\"/>\n    </svg>\n        {{ 'cart.summary.website' | t }}\n      </a>\n    {% else %}\n      <a onclick=\"gtag('event','checkout_click');\" style=\"display:flex; align-items:center; justify-content:center; gap:8px;\n                padding:12px 18px; border-radius:6px; font-weight:600;\n                text-decoration:none; color:#fff; background:#1E2AA6; min-width:140px;\"\n         href=\"{{ routes.root_url | append: '/checkout' | replace: '//', '/' }}\"\n         ><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"18\" height=\"18\" fill=\"currentColor\" viewBox=\"0 0 24 24\">\n      <path d=\"M12 2a10 10 0 100 20 10 10 0 000-20zm7.93 9h-3.18a15.7 15.7 0 00-1.38-5.03A8.02 8.02 0 0119.93 11zM12 4c.9 1.3 1.6 3.1 1.85 5H10.15c.25-1.9.95-3.7 1.85-5zM4.07 13h3.18c.15 1.8.65 3.6 1.38 5.03A8.02 8.02 0 014.07 13zm3.18-2H4.07a8.02 8.02 0 014.56-5.03A15.7 15.7 0 007.25 11zM12 20c-.9-1.3-1.6-3.1-1.85-5h3.7c-.25 1.9-.95 3.7-1.85 5zm2.62-1.97A15.7 15.7 0 0016.75 13h3.18a8.02 8.02 0 01-5.31 5.03z\"/>\n    </svg>\n        {{ 'cart.summary.website' | t }}\n      </a>\n    {% endif %}\n  {% else %}\n    <a onclick=\"gtag('event','checkout_click');\" style=\"display:flex; align-items:center; justify-content:center; gap:8px;\n              padding:12px 18px; border-radius:6px; font-weight:600;\n              text-decoration:none; color:#fff; background:#1E2AA6; min-width:140px;\"\n       href=\"{{ routes.root_url | append: '/checkout' | replace: '//', '/' }}\"\n       ><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"18\" height=\"18\" fill=\"currentColor\" viewBox=\"0 0 24 24\">\n      <path d=\"M12 2a10 10 0 100 20 10 10 0 000-20zm7.93 9h-3.18a15.7 15.7 0 00-1.38-5.03A8.02 8.02 0 0119.93 11zM12 4c.9 1.3 1.6 3.1 1.85 5H10.15c.25-1.9.95-3.7 1.85-5zM4.07 13h3.18c.15 1.8.65 3.6 1.38 5.03A8.02 8.02 0 014.07 13zm3.18-2H4.07a8.02 8.02 0 014.56-5.03A15.7 15.7 0 007.25 11zM12 20c-.9-1.3-1.6-3.1-1.85-5h3.7c-.25 1.9-.95 3.7-1.85 5zm2.62-1.97A15.7 15.7 0 0016.75 13h3.18a8.02 8.02 0 01-5.31 5.03z\"/>\n    </svg>\n      {{ 'cart.summary.website' | t }}\n    </a>\n  {% endif %}\n\n</div>"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "custom_liquid_A4JPAz"
+  ]
+}

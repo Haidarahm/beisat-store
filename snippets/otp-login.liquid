@@ -1,0 +1,508 @@
+{% comment %} ---START--- Edited by: Biswajit | Date: 8/9/2024 | Reason: add OTP login {% endcomment %}
+<link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/intl-tel-input/build/css/intlTelInput.css">
+<style>
+  .iti{width:100%;margin-bottom:10px;}
+  .iti__country-container{
+    top:5px;
+    bottom:5px;
+  }
+  .iti__search-input {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: thin solid #eee;
+  }
+  .iti--allow-dropdown .iti__country-container:not(:has(+ input[disabled])):not(:has(+ input[readonly])) .iti__selected-country-primary:hover,
+  .iti--allow-dropdown .iti__country-container:not(:has(+ input[disabled])):not(:has(+ input[readonly])) .iti__selected-country:has(+ .iti__dropdown-content:hover) .iti__selected-country-primary{background-color:transparent}
+  .iti__selected-country{border-right: thin solid #d6d6d6;}
+  [dir="rtl"] .iti__selected-country{border-right:none;border-left: thin solid #d6d6d6;}
+  .iti__selected-country-primary{padding:0 14px}
+  .iti__tel-input{padding-left:75px !important;border-radius: 5px !important}
+  [dir="rtl"] .iti__tel-input{padding-right:75px !important;direction: ltr;text-align: right;}
+  .input-row>span{display:block;margin-top:10px; text-align:center}
+  .input-row>span>a{text-decoration-color: rgb(147 147 147); color:rgb(147 147 147)}
+  .input-row .btn{
+    margin-top: 10px;
+    border-radius: 5px;
+    padding:21px;
+    width:100%;
+    background-color: rgb(3, 94, 18);
+    border: none;
+    text-transform: none;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+    font-size:14px;
+  }
+  .input-row .btn>svg{display:none;}
+  .input-row .btn>svg,.input-row .btn>img{
+    width:20px;
+    height:20px;
+  }
+  .input-row .btn:hover{
+    background-color: #000;
+  }
+  .otp-form-container.loading .input-row .btn>img{display:none}
+  .otp-form-container.loading .input-row .btn>svg{display:inline-block}
+  
+  .otp_form,.name_form,#otp-resend{display:none}
+  #otp-countdown{pointer-events:none}
+  .input-error span{
+    display: none;
+    width: auto;
+    background-color: red;
+    color: white;
+    padding: 5px 20px 5px 10px;
+    border-radius: 5px;
+  }
+  .input-error span.active{display:inline-block}
+  .input-error span::before{
+    content: "✕";
+    font-size: 13px;
+    vertical-align: text-bottom;
+    margin-right: 10px;
+    border: thin solid #fff;
+    border-radius: 100%;
+    padding: 1px 5px;
+  }
+  [dir="rtl"] .input-error span::before{
+    margin-right: 0;
+    margin-left: 10px;
+  }
+  .otp-input>input{
+    text-align: center;
+    width: 25px !important;
+    border-width: 0 0 thin 0 !important;
+    border-radius: 0;
+    outline: none !important;
+    padding: 10px 0px;
+    box-shadow:none !important;
+    border-color: #888;
+  }
+  .otp-input{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 25px;
+    direction: ltr;
+  }
+  .name_form input{border-radius: 5px !important; margin-bottom:10px; text-align:center}
+  .login-overlay{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background-color: rgba(255,255,255,0.2);
+    z-index:10;
+  }
+  .otp-form-container.loading .login-overlay{display:block}
+  .otp-consent-wrapper{
+    font-size: 14px;
+    color: #aaa;
+    text-align: center;
+    margin-top:120px;
+  }
+  .otp-consent-wrapper .consent-text{margin-bottom:0;}
+  .otp-consent-wrapper .consent-links-wrapper{
+    display:flex;
+    flex-wrap:nowrap;
+    justify-content: center;
+    gap:5px;
+  }
+  .otp-consent-wrapper .consent-link{
+    text-decoration:underline;
+    color:inherit;
+  }
+  .otp-form-container{position:relative}
+  
+  
+</style>
+<div class="otp-form-container">
+  <div class="login-overlay"></div>
+  <img src="{{ 'Login-top-img.png' | asset_url }}" width="100%" height="auto" style="max-width:80%; width:300px; margin:0 auto; display:block; margin-bottom:40px;    padding-top: 40px;">
+  <div class="page-header{% if shop.checkout.guest_login %} align-start{% endif %}" style="padding:0">
+    <h2 class="title login-title">{{ 'OTP_login.login_form.title' | t | replace: '[sender]','WhatsApp'}}</h2>
+    <h2 class="title otp-title" style="display:none">{{ 'OTP_login.login_form.OTP_title' | t }}</h2>
+    <h2 class="title name-title" style="display:none">{{ 'OTP_login.login_form.name_form_title' | t }}</h2>
+  </div>
+  
+  <form onsubmit="return checkInputs();" class="login_form">
+    <div class="input-row">
+      <input type="text" value="" inputmode="numeric" name="cust_phone" class="large" size="30" placeholder="{{ 'OTP_login.login_form.whatsapp_placeholder' | t }}" />
+      <button class="btn" type="submit">
+        <img src="{{ 'right.png' | asset_url }}" width="auto" height="100%">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="#fff" xmlns="http://www.w3.org/2000/svg"><style>.spinner_ajPY{transform-origin:center;animation:spinner_AtaB .75s infinite linear}@keyframes spinner_AtaB{100%{transform:rotate(360deg)}}</style><path d="M12,1A11,11,0,1,0,23,12,11,11,0,0,0,12,1Zm0,19a8,8,0,1,1,8-8A8,8,0,0,1,12,20Z" opacity=".25"/><path d="M10.14,1.16a11,11,0,0,0-9,8.92A1.59,1.59,0,0,0,2.46,12,1.52,1.52,0,0,0,4.11,10.7a8,8,0,0,1,6.66-6.61A1.42,1.42,0,0,0,12,2.69h0A1.57,1.57,0,0,0,10.14,1.16Z" class="spinner_ajPY"/></svg>
+      </button>
+      <span><a href="#" onclick="return toggleSender()" class="underline">{{ 'OTP_login.login_form.alternative_login' | t | replace: '[sender]','SMS'}}</a></span>
+    </div>
+  </form>
+
+  <form onsubmit="return checkOtp();" class="otp_form">
+    <p class="text-center m-0" id="otp-subtitle"></p>
+    <p class="text-center m-0" id="otp-number" style="display: flex; flex-wrap: nowrap; align-items: center; justify-content: center;">
+      <span style="direction: ltr;"></span>
+      <a href=# style="color: black; font-size: 25px; margin-{% if localization.language.iso_code == 'ar' %}right{% else %}left{% endif %}: 15px;" onclick="return editNumber()">✎</a>
+    </p>
+    <div class="input-row text-center">
+      <div class="otp-input">
+        <input type="text" name="cust_otp" inputmode="numeric" autocomplete="off" />
+        <input type="text" name="cust_otp" inputmode="numeric" autocomplete="off" />
+        <input type="text" name="cust_otp" inputmode="numeric" autocomplete="off" />
+        <input type="text" name="cust_otp" inputmode="numeric" autocomplete="off" />
+      </div>
+      <button class="btn" type="submit">
+        <img src="{{ 'right.png' | asset_url }}" width="auto" height="100%">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="#fff" xmlns="http://www.w3.org/2000/svg"><style>.spinner_ajPY{transform-origin:center;animation:spinner_AtaB .75s infinite linear}@keyframes spinner_AtaB{100%{transform:rotate(360deg)}}</style><path d="M12,1A11,11,0,1,0,23,12,11,11,0,0,0,12,1Zm0,19a8,8,0,1,1,8-8A8,8,0,0,1,12,20Z" opacity=".25"/><path d="M10.14,1.16a11,11,0,0,0-9,8.92A1.59,1.59,0,0,0,2.46,12,1.52,1.52,0,0,0,4.11,10.7a8,8,0,0,1,6.66-6.61A1.42,1.42,0,0,0,12,2.69h0A1.57,1.57,0,0,0,10.14,1.16Z" class="spinner_ajPY"/></svg>
+      </button>
+      <span style="margin-top: 10px; display: inline-block;">{{ 'OTP_login.login_form.no_OTP_title' | t }}</span>
+      <span style="margin-top:0">
+        <a href="#" class="underline" id="otp-countdown"></a>
+        <a href="#" class="underline" id="otp-resend" onclick="checkInputs()">{{ 'OTP_login.login_form.resend_button' | t }}</a>
+      </span>
+    </div>
+  </form>
+
+  <form onsubmit="return checkNameForm();" class="name_form">
+    <div class="input-row">
+      <input type="text" value="" name="cust_name" class="large" size="30" />
+      <button class="btn" type="submit">
+        <img src="{{ 'right.png' | asset_url }}" width="auto" height="100%">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="#fff" xmlns="http://www.w3.org/2000/svg"><style>.spinner_ajPY{transform-origin:center;animation:spinner_AtaB .75s infinite linear}@keyframes spinner_AtaB{100%{transform:rotate(360deg)}}</style><path d="M12,1A11,11,0,1,0,23,12,11,11,0,0,0,12,1Zm0,19a8,8,0,1,1,8-8A8,8,0,0,1,12,20Z" opacity=".25"/><path d="M10.14,1.16a11,11,0,0,0-9,8.92A1.59,1.59,0,0,0,2.46,12,1.52,1.52,0,0,0,4.11,10.7a8,8,0,0,1,6.66-6.61A1.42,1.42,0,0,0,12,2.69h0A1.57,1.57,0,0,0,10.14,1.16Z" class="spinner_ajPY"/></svg>
+      </button>
+    </div>
+  </form>
+
+  <div class="input-error text-center"><span></span></div>
+  
+</div>
+
+
+
+<div class="otp-consent-wrapper">
+  <p class="consent-text">{{ 'OTP_login.login_form.consent_text' | t }}</p>
+  <div class="consent-links-wrapper">
+      <a href="{{ 'OTP_login.login_form.privacy_link' | t }}" target="_blank" class="consent-link">{{ 'OTP_login.login_form.privacy' | t }}</a>
+      <span> & </span> 
+      <a href="{{ 'OTP_login.login_form.terms_link' | t }}" target="_blank" class="consent-link">{{ 'OTP_login.login_form.terms' | t }}</a>
+  </div>
+</div>
+
+
+<script src="https://fastly.jsdelivr.net/npm/intl-tel-input/build/js/intlTelInput.min.js"></script>
+<script>
+  const phn_input = document.querySelector('[name="cust_phone"]');
+  const itiLogin_SMS = {
+    autoPlaceholder: 'off',
+    countrySearch: false,
+    separateDialCode: false,
+    useFullscreenPopup: false,
+    initialCountry: "OM",
+    onlyCountries:["BH","SA","KW","OM","QA","AE"],
+    strictMode: true,
+    loadUtils: () => import("https://fastly.jsdelivr.net/npm/intl-tel-input/build/js/utils.js"),
+  };
+  const itiLogin_WP = {
+    autoPlaceholder: 'off',
+    countrySearch: true,
+    separateDialCode: false,
+    useFullscreenPopup: false,
+    initialCountry: "auto",
+    geoIpLookup: callback => {
+      fetch("/browsing_context_suggestions.json")
+        .then(res => res.json())
+        .then(data => callback(data.detected_values.country.handle))
+        .catch(() => callback("OM"));
+    },
+    strictMode: true,
+    loadUtils: () => import("https://fastly.jsdelivr.net/npm/intl-tel-input/build/js/utils.js"),
+  };
+  
+  window.intlTelInput(phn_input, itiLogin_WP);
+
+  function intlTelInputInstance(){
+    return intlTelInput.getInstance(phn_input)
+  }
+
+  var OTPSender = "WhatsApp";
+  function toggleSender(){
+    phn_input.value = "";
+    intlTelInputInstance().destroy();
+    if(OTPSender == "SMS"){
+      OTPSender = "WhatsApp";
+      window.intlTelInput(phn_input, itiLogin_WP);
+    }
+    else{
+      OTPSender = "SMS";
+      window.intlTelInput(phn_input, itiLogin_SMS);
+    }
+
+    document.querySelector('[name="cust_phone"]').placeholder = OTPSender=="SMS"?"{{ 'OTP_login.login_form.sms_placeholder' | t }}":"{{ 'OTP_login.login_form.whatsapp_placeholder' | t }}";
+    document.querySelector('.page-header .title').innerHTML = "{{ 'OTP_login.login_form.title' | t }}".replace('[sender]',OTPSender);
+    document.querySelector('.login_form a.underline').innerHTML = "{{ 'OTP_login.login_form.alternative_login' | t }}".replace('[sender]',OTPSender=="SMS"?"WhatsApp":"SMS");
+    return false;
+  }
+
+  function editNumber(){
+    document.querySelector('.login_form').style.display = 'block';
+    document.querySelector('.login-title').style.display = 'block';
+    document.querySelector('.otp_form').style.display = 'none';
+    document.querySelector('.otp-title').style.display = 'none';
+    return false;
+  }
+
+  function checkInputs(){
+    var valid = false;
+    
+    const errorMap = ["{{ 'OTP_login.mobile_number_validation.INVALID' | t }}", "{{ 'OTP_login.mobile_number_validation.INVALID_COUNTRY_CODE' | t }}", "{{ 'OTP_login.mobile_number_validation.TOO_SHORT' | t }}", "{{ 'OTP_login.mobile_number_validation.TOO_LONG' | t }}", "{{ 'OTP_login.mobile_number_validation.INVALID_LENGTH' | t }}"];
+    var phoneInput = document.querySelector('[name="cust_phone"]')
+    if (!phoneInput.value.trim()) {
+      document.querySelector('.input-error>span').innerHTML = "{{ 'OTP_login.mobile_number_validation.EMPTY' | t }}"
+      document.querySelector('.input-error>span').classList.add('active');
+    } else if (intlTelInputInstance().isValidNumberPrecise()) {
+      valid = true;
+      document.querySelector('.input-error>span').classList.remove('active');
+    } else {
+      const errorCode = intlTelInputInstance().getValidationError();
+      document.querySelector('.input-error>span').innerHTML = errorMap[errorCode];
+      document.querySelector('.input-error>span').classList.add('active');
+    }
+
+    setTimeout(function(){document.querySelector('.input-error>span').classList.remove('active')},5000)
+
+    if(valid) callOTP_API({
+      phone:document.querySelector('[name="cust_phone"]').value.replace(/\D/g, ''),
+      country:intlTelInputInstance().getSelectedCountryData().dialCode,
+      type:OTPSender.toLowerCase(),
+      lang:'{{ localization.language.iso_code }}',
+      call:'send'
+    },sendOTP);
+    
+    return false;
+  }
+
+  var otp_countdown = null;
+  function sendOTP(){
+    document.querySelector('.login_form').style.display = 'none';
+    document.querySelector('.login-title').style.display = 'none';
+    document.querySelector('.otp_form').style.display = 'block';
+    document.querySelector('.otp-title').style.display = 'block';
+    document.querySelector('#otp-subtitle').textContent = "{{ 'OTP_login.login_form.OTP_subtitle' | t }}".replace('[sender]',OTPSender);
+    document.querySelector('#otp-number>span').textContent = intlTelInputInstance().getNumber().replace("+"+intlTelInputInstance().getSelectedCountryData().dialCode, "+"+intlTelInputInstance().getSelectedCountryData().dialCode+" ");
+    var otpInput = otpInputs.querySelectorAll('[name="cust_otp"]')
+    otpInput.forEach(function(item){
+      item.value="";
+    })
+    
+    clearInterval(otp_countdown);
+    var fromtime = (new Date().getTime() / 1000)+30;
+    otp_countdown = setInterval(function () {
+      var now = new Date().getTime() / 1000;
+      var distance = parseInt(fromtime - now);
+      var seconds = 0;
+      if (distance <= 0) {
+        document.querySelector("#otp-countdown").innerHTML="";
+        document.querySelector("#otp-countdown").style.display='none';
+  
+        document.querySelector("#otp-resend").style.display='block';
+        return clearInterval(otp_countdown);
+      }
+      seconds = Math.floor(distance % 60);
+      document.querySelector("#otp-countdown").innerHTML="{{ 'OTP_login.login_form.resend_countdown' | t }} " + seconds;
+      document.querySelector("#otp-countdown").style.display='block';
+      document.querySelector("#otp-resend").style.display='none';
+    }, 1000);
+
+    if(document.querySelector('[name="checkout_url"]')){
+      localStorage.setItem("checkout_url",document.querySelector('[name="checkout_url"]').value);
+      document.querySelector('[name="checkout_url"]').remove();
+    }
+  }
+
+  var otpInputs = document.querySelector('.otp-input')
+  
+  otpInputs.addEventListener("input", function (e) {
+    const target = e.target;
+    const val = target.value;
+    target.value = target.value.substring(0,1);
+    
+    if(val.trim().length >= 4){
+      const otp = val.trim().split('',4);
+      otpInputs.querySelectorAll('[name="cust_otp"]').forEach(function(item,i){
+        item.value = otp[i];
+      })
+    }else{
+      target.value = target.value.substring(0,1);
+    }
+  
+    if (isNaN(val)) {
+      target.value = "";
+      return;
+    }
+  
+    if (val != "") {
+      const next = target.nextElementSibling;
+      if (next) {
+        next.focus();
+      }
+    }
+    
+    var otpInput = otpInputs.querySelectorAll('[name="cust_otp"]')
+    var enteredOTP = '';
+    otpInput.forEach(function(item){
+      enteredOTP = enteredOTP + item.value.trim().toString();
+    })
+    if(enteredOTP.length == 4){
+      target.blur();
+      checkOtp();
+    }
+  });
+  
+  otpInputs.addEventListener("keyup", function (e) {
+    const target = e.target;
+    const key = e.key.toLowerCase();
+    
+  
+    if (key == "backspace" || key == "delete") {
+      target.value = "";
+      const prev = target.previousElementSibling;
+      if (prev) {
+        prev.focus();
+      }
+      return;
+    }
+  });
+  
+  function checkOtp(){
+    var valid = false;
+    
+    var otpInput = otpInputs.querySelectorAll('[name="cust_otp"]')
+    var enteredOTP = '';
+    otpInput.forEach(function(item){
+      enteredOTP = enteredOTP + item.value.trim().toString();
+    })
+    var err = '';
+    if (enteredOTP.length == 0) {
+      err = "{{ 'OTP_login.otp_validation.empty' | t }}";
+    } else if (enteredOTP.length < 4 || enteredOTP.length > 4) {
+      err = "{{ 'OTP_login.otp_validation.length' | t }}";
+    } else if (isNaN(enteredOTP)) {
+      err = "{{ 'OTP_login.otp_validation.length' | t }}";
+    } else {
+      valid = true;
+      document.querySelector('.input-error>span').classList.remove('active')
+    }
+
+    if(!valid){
+      document.querySelector('.input-error>span').innerHTML = err;
+      document.querySelector('.input-error>span').classList.add('active');
+      setTimeout(function(){document.querySelector('.input-error>span').classList.remove('active')},5000)
+    }else callOTP_API({
+      lang:'{{ localization.language.iso_code }}',
+      phone:document.querySelector('[name="cust_phone"]').value.replace(/ /g,''),
+      country:intlTelInputInstance().getSelectedCountryData().dialCode,
+      otp:enteredOTP,
+      type:OTPSender.toLowerCase(),
+      call:'verify'
+    },showNameForm);
+    
+    return false;
+  }
+
+  function showNameForm(){
+    document.querySelector('.otp_form').style.display = 'none';
+    document.querySelector('.otp-title').style.display = 'none';
+    document.querySelector('.name_form').style.display = 'block';
+    document.querySelector('.name-title').style.display = 'block';
+
+    var red_input = document.createElement("input");
+    red_input.setAttribute('type', 'hidden');
+    red_input.setAttribute('name', 'return_url');
+    red_input.value = "{% if localization.language.iso_code == "ar" %}/ar{% endif %}/account/addresses?add=1";
+    document.querySelector('#customer_login').appendChild(red_input);
+  }
+
+  function checkNameForm(){
+    var valid = false;
+    var err = '';
+    
+    var otpInput = otpInputs.querySelectorAll('[name="cust_otp"]')
+    var enteredOTP = '';
+    otpInput.forEach(function(item){
+      enteredOTP = enteredOTP + item.value.trim().toString();
+    })
+    
+    var nameInput = document.querySelector('[name="cust_name"]')
+    if (!nameInput.value.trim()) {
+      err = "{{ 'OTP_login.name_validation.empty' | t }}"
+    } else if (nameInput.value.trim().length < 3) {
+      err = "{{ 'OTP_login.name_validation.min_length' | t }}"
+    } else if (nameInput.value.trim().length > 20) {
+      err = "{{ 'OTP_login.name_validation.max_length' | t }}"
+    } else if (/^[a-zA-Zء-ي ]+$/.test(nameInput.value.trim()) == false) {
+      err = "{{ 'OTP_login.name_validation.invalid_characters' | t }}"
+    } else {
+      valid = true;
+      document.querySelector('.input-error>span').classList.remove('active')
+    }
+
+    if(!valid){
+      document.querySelector('.input-error>span').innerHTML = err;
+      document.querySelector('.input-error>span').classList.add('active');
+      setTimeout(function(){document.querySelector('.input-error>span').classList.remove('active')},5000)
+    }else callOTP_API({
+      lang:'{{ localization.language.iso_code }}',
+      name:document.querySelector('[name="cust_name"]').value,
+      phone:document.querySelector('[name="cust_phone"]').value.replace(/ /g,''),
+      country:intlTelInputInstance().getSelectedCountryData().dialCode,
+      otp:enteredOTP,
+      type:OTPSender.toLowerCase(),
+      call:'create'
+    },null);
+
+    return false;
+  }
+
+  function callOTP_API(dataObject,callback){
+    var errors = {
+      max_attempts: '{{ 'OTP_login.otp_validation.max_attempts' | t }}',
+      expired: '{{ 'OTP_login.otp_validation.expired' | t }}',
+      invalid: '{{ 'OTP_login.otp_validation.wrong' | t }}',
+    };
+    var http = new XMLHttpRequest();
+    var url = 'https://beisat.click/API/ShopifyOTPLogin/otp_ql.php';
+
+    var params = new URLSearchParams(dataObject).toString();
+    http.open('POST', url, true);
+    
+    http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    
+    http.onreadystatechange = function() {
+      if(http.readyState == 4){
+        document.querySelector('.otp-form-container').classList.remove('loading');
+      }
+      if(http.readyState == 4 && http.status == 200) {
+        res = JSON.parse(http.responseText);
+        if(res.email && res.hash){
+          document.querySelector('[name="customer[email]"]').value = res.email;
+          document.querySelector('[name="customer[password]"]').value = res.hash;
+          document.querySelector('.otp-form-container').classList.add('loading');
+          document.querySelector('form#customer_login').submit();
+        }else if(res.success){
+          if(callback != null) callback();
+        }else{
+          document.querySelector('.input-error>span').innerHTML = errors[res.error]??res.error??http.responseText;
+          document.querySelector('.input-error>span').classList.add('active');
+          setTimeout(function(){document.querySelector('.input-error>span').classList.remove('active')},5000)
+        }
+      }
+    }
+    http.send(params);
+    document.querySelector('.otp-form-container').classList.add('loading');
+  }
+</script>
+{% comment %} ---END--- Edited by: Biswajit | Date: 8/9/2024 | Reason: add OTP login {% endcomment %}
+

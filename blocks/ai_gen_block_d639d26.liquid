@@ -1,0 +1,395 @@
+{% doc %}
+  @prompt
+    Create 2 buttons in the same lines, it will give hte user 2 options "1- whatsapp" OR "2- WEBSITE", nice work, can you add the word "OR" betwen teh 2 buttons ? , can you thow in a suitable calm  background ? jsut to break the solid white color ..., actually i want to set my own liquid code for the buttons logic, how cna we do this 
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-dual-buttons-{{ ai_gen_id }} {
+    display: block;
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+    background-color: {{ block.settings.background_color }};
+    padding: {{ block.settings.section_padding }}px;
+    border-radius: {{ block.settings.section_border_radius }}px;
+  }
+
+  .ai-dual-buttons__container-{{ ai_gen_id }} {
+    display: flex;
+    gap: {{ block.settings.button_gap }}px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .ai-dual-buttons__button-{{ ai_gen_id }} {
+    flex: 1;
+    padding: {{ block.settings.button_padding }}px;
+    border: none;
+    border-radius: {{ block.settings.border_radius }}px;
+    font-size: {{ block.settings.font_size }}px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .ai-dual-buttons__button--whatsapp-{{ ai_gen_id }} {
+    background-color: {{ block.settings.whatsapp_bg_color }};
+    color: {{ block.settings.whatsapp_text_color }};
+  }
+
+  .ai-dual-buttons__button--whatsapp-{{ ai_gen_id }}:hover {
+    background-color: {{ block.settings.whatsapp_hover_bg_color }};
+    color: {{ block.settings.whatsapp_hover_text_color }};
+  }
+
+  .ai-dual-buttons__button--website-{{ ai_gen_id }} {
+    background-color: {{ block.settings.website_bg_color }};
+    color: {{ block.settings.website_text_color }};
+  }
+
+  .ai-dual-buttons__button--website-{{ ai_gen_id }}:hover {
+    background-color: {{ block.settings.website_hover_bg_color }};
+    color: {{ block.settings.website_hover_text_color }};
+  }
+
+  .ai-dual-buttons__icon-{{ ai_gen_id }} {
+    width: {{ block.settings.icon_size }}px;
+    height: {{ block.settings.icon_size }}px;
+    flex-shrink: 0;
+  }
+
+  .ai-dual-buttons__divider-{{ ai_gen_id }} {
+    font-size: {{ block.settings.divider_font_size }}px;
+    font-weight: 700;
+    color: {{ block.settings.divider_color }};
+    flex-shrink: 0;
+    padding: 0 {{ block.settings.divider_spacing }}px;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-dual-buttons__container-{{ ai_gen_id }} {
+      {% if block.settings.stack_on_mobile %}
+        flex-direction: column;
+      {% endif %}
+    }
+
+    .ai-dual-buttons__button-{{ ai_gen_id }} {
+      {% if block.settings.stack_on_mobile %}
+        width: 100%;
+      {% endif %}
+    }
+
+    .ai-dual-buttons__divider-{{ ai_gen_id }} {
+      {% if block.settings.stack_on_mobile %}
+        padding: {{ block.settings.divider_spacing }}px 0;
+      {% endif %}
+    }
+  }
+{% endstyle %}
+
+<div class="ai-dual-buttons-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  {% if block.settings.custom_liquid != blank %}
+    {{ block.settings.custom_liquid }}
+  {% else %}
+    <div class="ai-dual-buttons__container-{{ ai_gen_id }}">
+      <a
+        href="{{ block.settings.whatsapp_link }}"
+        class="ai-dual-buttons__button-{{ ai_gen_id }} ai-dual-buttons__button--whatsapp-{{ ai_gen_id }}"
+        {% if block.settings.whatsapp_open_new_tab %}target="_blank" rel="noopener noreferrer"{% endif %}
+      >
+        {% if block.settings.show_icons %}
+          <svg class="ai-dual-buttons__icon-{{ ai_gen_id }}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+          </svg>
+        {% endif %}
+        {{ block.settings.whatsapp_text }}
+      </a>
+
+      <span class="ai-dual-buttons__divider-{{ ai_gen_id }}">{{ block.settings.divider_text }}</span>
+
+      <a
+        href="{{ block.settings.website_link }}"
+        class="ai-dual-buttons__button-{{ ai_gen_id }} ai-dual-buttons__button--website-{{ ai_gen_id }}"
+        {% if block.settings.website_open_new_tab %}target="_blank" rel="noopener noreferrer"{% endif %}
+      >
+        {% if block.settings.show_icons %}
+          <svg class="ai-dual-buttons__icon-{{ ai_gen_id }}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="2" y1="12" x2="22" y2="12"></line>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+          </svg>
+        {% endif %}
+        {{ block.settings.website_text }}
+      </a>
+    </div>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "Dual choice buttons",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Custom code"
+    },
+    {
+      "type": "liquid",
+      "id": "custom_liquid",
+      "label": "Custom Liquid code",
+      "info": "Add your own Liquid code here. When filled, this will replace the default button layout. Use the CSS classes below for styling."
+    },
+    {
+      "type": "paragraph",
+      "content": "Available CSS classes: ai-dual-buttons__container-{{ ai_gen_id }}, ai-dual-buttons__button-{{ ai_gen_id }}, ai-dual-buttons__button--whatsapp-{{ ai_gen_id }}, ai-dual-buttons__button--website-{{ ai_gen_id }}, ai-dual-buttons__divider-{{ ai_gen_id }}, ai-dual-buttons__icon-{{ ai_gen_id }}"
+    },
+    {
+      "type": "header",
+      "content": "Background"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#f8f9fa"
+    },
+    {
+      "type": "range",
+      "id": "section_padding",
+      "label": "Padding",
+      "min": 10,
+      "max": 60,
+      "step": 5,
+      "unit": "px",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "section_border_radius",
+      "label": "Border radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "header",
+      "content": "WhatsApp button"
+    },
+    {
+      "type": "text",
+      "id": "whatsapp_text",
+      "label": "Button text",
+      "default": "1 - WhatsApp"
+    },
+    {
+      "type": "url",
+      "id": "whatsapp_link",
+      "label": "Link"
+    },
+    {
+      "type": "checkbox",
+      "id": "whatsapp_open_new_tab",
+      "label": "Open in new tab",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "whatsapp_bg_color",
+      "label": "Background color",
+      "default": "#25D366"
+    },
+    {
+      "type": "color",
+      "id": "whatsapp_text_color",
+      "label": "Text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "whatsapp_hover_bg_color",
+      "label": "Hover background color",
+      "default": "#128C7E"
+    },
+    {
+      "type": "color",
+      "id": "whatsapp_hover_text_color",
+      "label": "Hover text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Website button"
+    },
+    {
+      "type": "text",
+      "id": "website_text",
+      "label": "Button text",
+      "default": "2 - Website"
+    },
+    {
+      "type": "url",
+      "id": "website_link",
+      "label": "Link"
+    },
+    {
+      "type": "checkbox",
+      "id": "website_open_new_tab",
+      "label": "Open in new tab",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "website_bg_color",
+      "label": "Background color",
+      "default": "#000f9f"
+    },
+    {
+      "type": "color",
+      "id": "website_text_color",
+      "label": "Text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "website_hover_bg_color",
+      "label": "Hover background color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "website_hover_text_color",
+      "label": "Hover text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Divider"
+    },
+    {
+      "type": "text",
+      "id": "divider_text",
+      "label": "Divider text",
+      "default": "OR"
+    },
+    {
+      "type": "color",
+      "id": "divider_color",
+      "label": "Divider color",
+      "default": "#6c757d"
+    },
+    {
+      "type": "range",
+      "id": "divider_font_size",
+      "label": "Divider font size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "divider_spacing",
+      "label": "Divider spacing",
+      "min": 5,
+      "max": 30,
+      "step": 5,
+      "unit": "px",
+      "default": 10
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Desktop width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "button_gap",
+      "label": "Gap between buttons",
+      "min": 5,
+      "max": 50,
+      "step": 5,
+      "unit": "px",
+      "default": 15
+    },
+    {
+      "type": "checkbox",
+      "id": "stack_on_mobile",
+      "label": "Stack buttons on mobile",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Style"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_icons",
+      "label": "Show icons",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "icon_size",
+      "label": "Icon size",
+      "min": 12,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "font_size",
+      "label": "Font size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "button_padding",
+      "label": "Button padding",
+      "min": 10,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "label": "Border radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    }
+  ],
+  "presets": [
+    {
+      "name": "Dual choice buttons"
+    }
+  ]
+}
+{% endschema %}

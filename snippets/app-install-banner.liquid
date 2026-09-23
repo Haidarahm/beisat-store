@@ -1,0 +1,121 @@
+{% assign brand_color = "#ffffff" %}
+{% assign ios_app_url = "https://apps.apple.com/om/app/beisat-online-fashion-shopping/id1489367309" %}
+{% assign android_app_url = "https://play.google.com/store/apps/details?id=com.beisat.android" %}
+
+
+{% unless request.path contains '/account/login' or request.path contains '/account/addresses' %}
+  <div id="app-install-banner" style="
+    position: static;
+    top: 0;
+    z-index: 999;
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 8px 12px;
+    background: {{ brand_color }};
+    color: #000000;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+  ">
+    <div style="display:flex; align-items:center; gap:10px; min-width:0;">
+      <div style="width:40px; height:40px; flex-shrink:0; border-radius:6px; overflow:hidden; display:flex; align-items:center; justify-content:center;">
+      <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="40" height="40" viewBox="0 0 44 44" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd">
+          <rect x="0" y="0" width="44" height="44" fill="#38b448"/>
+          <g><path fill="#38b448" stroke="#38b448" stroke-width="0.5" d="M 1.02,0 C 15.01,0 28.99,0 42.98,0 C 43.04,0.62 43.38,0.96 44,1.02 C 44,15.35 44,29.67 44,44 C 29.67,44 15.35,44 1.02,44 C 0.94,43.41 0.6,43.07 0,42.98 C 0,28.99 0,15.01 0,1.02 C 0.62,0.96 0.96,0.62 1.02,0 Z M 23.96,23.59 C 22.11,23.6 20.26,23.66 18.41,23.75 C 16.83,24.31 16.84,24.76 18.43,25.1 C 20.41,25.05 22.38,25.14 24.35,25.36 C 25.66,25.65 26.36,26.44 26.46,27.73 C 26.36,28.49 26.34,29.26 26.41,30.02 C 25.71,31.05 24.74,31.67 23.49,31.89 C 21.5,31.84 19.52,31.91 17.54,32.09 C 16.88,32.63 16.72,33.3 17.05,34.11 C 17.14,35.02 17.4,35.88 17.83,36.68 C 21.37,37.62 24.77,37.25 28.03,35.58 C 31.54,33.51 32.89,30.47 32.09,26.48 C 31.83,25.45 31.36,24.52 30.68,23.69 C 29.86,22.91 29.06,22.11 28.29,21.29 C 29.01,19.97 29.76,18.64 30.54,17.3 C 31.67,12.69 30.05,9.48 25.68,7.68 C 20.67,6.33 16.63,7.76 13.57,11.97 C 12.67,13.35 12.18,14.86 12.08,16.5 C 11.98,23.13 12,29.75 12.14,36.38 C 12.45,36.87 12.9,37.11 13.49,37.1 C 14.41,37.25 15.18,37.01 15.8,36.36 C 15.97,30.07 16.04,23.78 15.98,17.48 C 16.12,14.7 17.45,12.69 19.97,11.45 C 21.69,10.77 23.39,10.83 25.06,11.63 C 26.53,12.47 27.15,13.76 26.92,15.48 C 26.58,17.73 25.29,19.1 23.05,19.59 C 21.53,19.75 20.01,19.85 18.48,19.92 C 17.9,20.1 17.55,20.49 17.45,21.1 C 17.21,21.76 17.29,22.36 17.67,22.91 C 19.75,23.2 21.85,23.43 23.96,23.59 Z"/></g>
+          <g><path fill="#fbfdfb" stroke="#fbfdfb" stroke-width="0.5" d="M 17.05,34.11 C 17.49,33.66 18.01,33.4 18.63,33.33 C 20.91,33.44 23.16,33.26 25.39,32.8 C 28.17,31.53 29.04,29.45 28,26.54 C 27.15,24.9 25.8,23.91 23.96,23.59 C 21.85,23.43 19.75,23.2 17.67,22.91 C 17.29,22.36 17.21,21.76 17.45,21.1 C 17.55,20.49 17.9,20.1 18.48,19.92 C 20.01,19.85 21.53,19.75 23.05,19.59 C 25.29,19.1 26.58,17.73 26.92,15.48 C 27.15,13.76 26.53,12.47 25.06,11.63 C 23.39,10.83 21.69,10.77 19.97,11.45 C 17.45,12.69 16.12,14.7 15.98,17.48 C 16.04,23.78 15.97,30.07 15.8,36.36 C 15.18,37.01 14.41,37.25 13.49,37.1 C 12.9,37.11 12.45,36.87 12.14,36.38 C 12,29.75 11.98,23.13 12.08,16.5 C 12.18,14.86 12.67,13.35 13.57,11.97 C 16.63,7.76 20.67,6.33 25.68,7.68 C 30.05,9.48 31.67,12.69 30.54,17.3 C 29.76,18.64 29.01,19.97 28.29,21.29 C 29.06,22.11 29.86,22.91 30.68,23.69 C 31.36,24.52 31.83,25.45 32.09,26.48 C 32.89,30.47 31.54,33.51 28.03,35.58 C 24.77,37.25 21.37,37.62 17.83,36.68 C 17.4,35.88 17.14,35.02 17.05,34.11 Z"/></g>
+          <g><path fill="#1faa32" d="M 23.96,23.59 C 25.8,23.91 27.15,24.9 28,26.54 C 29.04,29.45 28.17,31.53 25.39,32.8 C 23.16,33.26 20.91,33.44 18.63,33.33 C 18.01,33.4 17.49,33.66 17.05,34.11 C 16.72,33.3 16.88,32.63 17.54,32.09 C 19.52,31.91 21.5,31.84 23.49,31.89 C 24.74,31.67 25.71,31.05 26.41,30.02 C 26.34,29.26 26.36,28.49 26.46,27.73 C 26.36,26.44 25.66,25.65 24.35,25.36 C 22.38,25.14 20.41,25.05 18.43,25.1 C 16.84,24.76 16.83,24.31 18.41,23.75 C 20.26,23.66 22.11,23.6 23.96,23.59 Z"/></g>
+          <g><path fill="#071b0d" d="M 0,0 C 0.34,0 0.68,0 1.02,0 C 0.96,0.62 0.62,0.96 0,1.02 C 0,0.68 0,0.34 0,0 Z"/></g>
+          <g><path fill="#153118" d="M 42.98,0 C 43.32,0 43.66,0 44,0 C 44,0.34 44,0.68 44,1.02 C 43.38,0.96 43.04,0.62 42.98,0 Z"/></g>
+          <g><path fill="#132214" d="M 0,42.98 C 0.6,43.07 0.94,43.41 1.02,44 C 0.68,44 0.34,44 0,44 C 0,43.66 0,43.32 0,42.98 Z"/></g>
+      </svg>
+      </div>
+      <div style="min-width:0; overflow:hidden;">
+        <div style="font-size:13px; font-weight:500; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
+          {{ 'custom_liquid.install_app_banner_title' | t }}
+        </div>
+        <div style="font-size:12px; color:#757575; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
+          {{ 'custom_liquid.install_app_banner_description' | t }}
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex; align-items:center; gap:10px; flex-shrink:0;">
+      <button id="app-banner-open-btn" style="
+        background:#0d0d0d;
+        color:#ffffff;
+        border:none;
+        border-radius:20px;
+        padding:7px 18px;
+        font-size:13px;
+        font-weight:700;
+        cursor:pointer;
+        white-space:nowrap;
+      ">{{ 'custom_liquid.install_app_banner_open' | t }}</button>
+      <button id="app-banner-close-btn" aria-label="Close" style="
+        background:transparent;
+        border:none;
+        color:#0d0d0d;
+        font-size:20px;
+        line-height:1;
+        cursor:pointer;
+        padding:0 2px;
+      ">&times;</button>
+    </div>
+  </div>
+{% endunless %}
+
+<script>
+(function() {
+  var banner = document.getElementById('app-install-banner');
+  var openBtn = document.getElementById('app-banner-open-btn');
+  var closeBtn = document.getElementById('app-banner-close-btn');
+  var storageKey = 'app_install_banner_dismissed';
+  var iosUrl = {{ ios_app_url | json }};
+  var androidUrl = {{ android_app_url | json }};
+
+  function isDismissed() {
+    try {
+      var until = localStorage.getItem(storageKey);
+      return until && Date.now() < parseInt(until, 10);
+    } catch (e) {
+      return false;
+    }
+  }
+
+  function isMobile() {
+    return /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  }
+
+function isInApp() {
+  return navigator.userAgent.indexOf('BEISAT_ANDROID') !== -1 ||
+         navigator.userAgent.indexOf('BEISAT_IOS') !== -1;
+}
+
+  if (banner && isMobile() && !isInApp() && !isDismissed()) {
+    banner.style.display = 'flex';
+  }
+
+  if (openBtn) {
+    openBtn.addEventListener('click', function() {
+      var isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+      window.location.href = isIOS ? iosUrl : androidUrl;
+
+      banner.style.display = 'none';
+      try {
+        var oneDay = Date.now() + 24 * 60 * 60 * 1000;
+        localStorage.setItem(storageKey, oneDay.toString());
+      } catch (e) {}
+    });
+  }
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', function() {
+      banner.style.display = 'none';
+      try {
+        var sevenDays = Date.now() + 7 * 24 * 60 * 60 * 1000;
+        localStorage.setItem(storageKey, sevenDays.toString());
+      } catch (e) {}
+    });
+  }
+})();
+</script>

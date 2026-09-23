@@ -1,0 +1,188 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "show_page_title": false,
+        "full_width": false
+      }
+    },
+    "rich_text_nzRTiM": {
+      "type": "rich-text",
+      "blocks": {
+        "button_ttyVGh": {
+          "type": "button",
+          "settings": {
+            "button_label": "women",
+            "button_link": "shopify://pages/women",
+            "button_style": "link"
+          }
+        },
+        "button_Japy9p": {
+          "type": "button",
+          "settings": {
+            "button_label": "men",
+            "button_link": "shopify://pages/men",
+            "button_style": "link"
+          }
+        },
+        "button_8tzUBT": {
+          "type": "button",
+          "settings": {
+            "button_label": "kids",
+            "button_link": "shopify://pages/kids",
+            "button_style": "link"
+          }
+        },
+        "button_cFtHzP": {
+          "type": "button",
+          "settings": {
+            "button_label": "house",
+            "button_link": "shopify://pages/house",
+            "button_style": "link"
+          }
+        }
+      },
+      "block_order": [
+        "button_ttyVGh",
+        "button_Japy9p",
+        "button_8tzUBT",
+        "button_cFtHzP"
+      ],
+      "custom_css": [
+        ".fully-spaced-row--small {margin: 20px;}",
+        ".small-feature-link {font-size: 1em; font-weight: 650; text-decoration: none; background-color: #f0efea; color: black; border-radius: 12px; padding: 4px;}",
+        ".small-feature-link:nth-of-type(1) {color: white; background-color: #3db55b;}",
+        ".button-row .button-row__btn {display: inline-block; margin-top: 0;}",
+        "@media (min-width: 786px) {.container {display: none; }}"
+      ],
+      "settings": {
+        "height": "small",
+        "text_alignment": "center",
+        "full_width": true,
+        "color_scheme": "default"
+      }
+    },
+    "collection_list_aTXeXG": {
+      "type": "collection-list",
+      "blocks": {
+        "collection_aJQM9M": {
+          "type": "collection",
+          "settings": {
+            "collection": "women_clothing_sweaters-cardigans_cardigans",
+            "image": "shopify://shop_images/01_454d7bc4-7e69-493e-954b-58c2f5f42546.jpg",
+            "subheading": "",
+            "button_label": ""
+          }
+        },
+        "collection_zPcVNk": {
+          "type": "collection",
+          "settings": {
+            "collection": "women_clothing_sweaters-cardigans_sweater-co-ords",
+            "image": "shopify://shop_images/02_85baaabc-04cc-4067-a012-4d39ab3709d9.jpg",
+            "subheading": "",
+            "button_label": ""
+          }
+        },
+        "collection_XbraC9": {
+          "type": "collection",
+          "settings": {
+            "collection": "women_clothing_sweaters-cardigans_sweater-vests",
+            "image": "shopify://shop_images/03_cfe3616b-858f-41ae-898e-581616566206.jpg",
+            "subheading": "",
+            "button_label": ""
+          }
+        },
+        "collection_T6bGmj": {
+          "type": "collection",
+          "settings": {
+            "collection": "women_clothing_sweaters-cardigans_sweater-dresses",
+            "image": "shopify://shop_images/04_3a451c3d-2b14-4167-a889-de737f21160d.jpg",
+            "subheading": "",
+            "button_label": ""
+          }
+        },
+        "collection_VP7E4q": {
+          "type": "collection",
+          "settings": {
+            "collection": "women_clothing_sweaters-cardigans_knit-tops",
+            "image": "shopify://shop_images/05_4a7fd6cf-5d71-41a6-8a03-2e91df349edd.jpg",
+            "subheading": "",
+            "button_label": ""
+          }
+        },
+        "collection_Um8KjF": {
+          "type": "collection",
+          "settings": {
+            "collection": "women_clothing_sweaters-cardigans_sweaters",
+            "image": "shopify://shop_images/06_e5001f9f-d8fb-49cf-9da5-22de732b9175.jpg",
+            "subheading": "",
+            "button_label": ""
+          }
+        },
+        "collection_f8QXrP": {
+          "type": "collection",
+          "settings": {
+            "collection": "women_clothing_sweaters-cardigans_sweater-pants",
+            "image": "shopify://shop_images/07_61631799-236c-4883-a09f-35b7cc8b5ec4.jpg",
+            "subheading": "",
+            "button_label": ""
+          }
+        },
+        "collection_AbXWmd": {
+          "type": "collection",
+          "settings": {
+            "collection": "women_clothing_sweaters-cardigans_sweater-skirts",
+            "image": "shopify://shop_images/08_050ce746-e05d-4c98-99f6-0915896d31c0.jpg",
+            "subheading": "",
+            "button_label": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection_aJQM9M",
+        "collection_zPcVNk",
+        "collection_XbraC9",
+        "collection_T6bGmj",
+        "collection_VP7E4q",
+        "collection_Um8KjF",
+        "collection_f8QXrP",
+        "collection_AbXWmd"
+      ],
+      "custom_css": [
+        ".product-block__detail {display: none;}"
+      ],
+      "settings": {
+        "title": "Sweaters & cardigans Section",
+        "enable_carousel": false,
+        "grid": 5,
+        "color_scheme": "default",
+        "full_width": false,
+        "coll_grid_image_shape": "tallest",
+        "coll_grid_image_position": "center center",
+        "coll_thumb_mob_per_row": "2",
+        "coll_grid_show_count": false,
+        "coll_text_position": "below",
+        "coll_text_position_under_mobile": false,
+        "coll_thumb_text_align_x": "center",
+        "coll_thumb_text_align_y": "center",
+        "coll_button_style": "primary"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "rich_text_nzRTiM",
+    "collection_list_aTXeXG"
+  ]
+}

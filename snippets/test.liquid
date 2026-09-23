@@ -1,0 +1,70 @@
+{% if cart.total_price >= 1800 %}
+
+    {% assign withdraw_applied = false %}
+
+    {% for discount in cart.discount_applications %}
+        {% if discount.title == 'ENTER18' %}
+            {% assign withdraw_applied = true %}
+            {% break %}
+        {% else %}
+            <script>
+            document.querySelector('#shopify-section-template--19471136555071__rich_text_WX7tdr h2').textContent = '{{ 'templates.withdraw.remove_coupon' | t }}';
+            </script>
+
+            <style>
+                #shopify-section-template--19471136555071__rich_text_WX7tdr {
+                display: block;}
+                /* apply coupon image */
+                #shopify-section-template--19471136555071__image_with_text_overlay_8NqJpX {
+                display: none !important;}
+            </style>
+            {% break %}
+        {% endif %}
+    {% endfor %}
+
+
+    {% if withdraw_applied %}
+        <style> /* Applied image */
+            #shopify-section-template--19471136555071__image_with_text_overlay_HBmRME {
+            display: block;}
+        </style>
+    {% else %}
+        <style> /* apply coupon image */
+            #shopify-section-template--19471136555071__image_with_text_overlay_8NqJpX {
+            display: block;}
+        </style>
+    {% endif %}
+
+{% elsif cart.total_price == 0 %}
+    <style>
+        #shopify-section-template--19471136555071__rich_text_AkdFT3 {
+        display: block;}
+    </style>
+{% else %}
+    <style>
+        #shopify-section-template--19471136555071__rich_text_WX7tdr {
+        display: block;}
+    </style>
+    <script>
+        document.querySelector('#shopify-section-template--19471136555071__rich_text_WX7tdr h2').innerHTML = '{{ 'templates.withdraw.before_amount' | t }} <span style="color: #36a052;">{{ 1800 | minus: cart.total_price | money }}</span> {{ 'templates.withdraw.after_amount' | t }}'
+    </script>
+{% endif %}
+
+<style>
+@media (min-width: 768px) {
+.section-image-with-text-overlay {
+    width: 50%;
+        margin: auto;
+    /* margin-top: 10px; */
+}
+.section-image-with-text .fully-spaced-row--medium .flexible-layout {
+    flex-direction: column;
+       margin-left: unset;
+}
+.section-image-with-text .fully-spaced-row--medium  .column--half {
+    margin-bottom: 0px;
+       width: 83%;
+}
+
+}
+</style>

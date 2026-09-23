@@ -1,0 +1,384 @@
+<div class="container fully-spaced-row--small" style="--page-container-width: {{ settings.max_page_width | at_most: 1200 }}px;">
+  <div class="spaced-row" {%- render 'animation-attrs', attrs: 'data-cc-animate' -%}>
+    <div class="lightly-spaced-row note">
+      <a class="underline" href="{{ routes.account_url }}">{{ 'customer.account.home' | t }}</a>
+    </div>
+
+    <h2 class="title align-center">{{ 'customer.order.title' | t: name: order.name }}</h2>
+  </div>
+
+  {% if order.cancelled %}
+  <div id="order_cancelled" class="errors">
+    {% assign date = order.cancelled_at | date: format: 'date' %}
+    <h5 id="order_cancelled_title">{{ 'customer.order.cancelled_on' | t: date: date }}</h5>
+    <span class="note">{{ 'customer.order.cancelled_reason' | t: reason: order.cancel_reason }}</span>
+  </div>
+  {% endif %}
+
+  {% assign date = order.created_at | date: format: 'date' %}
+  <h3 class="order_date spaced-row">{{ 'customer.order.date' | t: date: date }}</h3>
+
+
+  <div id="order_address" class="spaced-row" {%- render 'animation-attrs', attrs: 'data-cc-animate' -%}>
+    <div class="flexible-layout">
+      {% if order.shipping_address %}
+        <div id="order_shipping" class="column column--half">
+          <h5 class="order_section_title">{{ 'customer.order.shipping_address' | t }}</h5>
+          <p><span class="note">{{ 'customer.order.fulfillment_status' | t }}:</span> <span class="status_{{ order.fulfillment_status }}">{{ order.fulfillment_status_label }}</span></p>
+          <div class="address note">
+            <p>{{ order.shipping_address.name }}</p>
+            <p>{{ order.shipping_address.company }}</p>
+            <p>{{ order.shipping_address.street }}</p>
+            <p>{{ order.shipping_address.city }}, {{ order.shipping_address.province }}</p>
+            <p>{{ order.shipping_address.country }} {{ order.shipping_address.zip }}</p>
+            <p>{{ order.shipping_address.phone }}</p>
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="order-table-container" {%- render 'animation-attrs', attrs: 'data-cc-animate' -%}>
+    <table id="order_details" class="order-table">
+      <thead>
+        <tr>
+          <th>{{ 'customer.order.product' | t }}</th>
+          <th class="sku">{{ 'customer.order.sku' | t }}</th>
+          <th class="price">{{ 'customer.order.price' | t }}</th>
+          <th class="quantity align-center">{{ 'customer.order.quantity' | t }}</th>
+          <th class="total">{{ 'customer.order.total' | t }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for line_item in order.line_items %}
+        <tr id="{{ line_item.id }}" class="{% cycle 'odd', 'even' %}">
+          <td class="product">
+            {% comment %} ---START--- Edited by: Biswajit | Date: 10/12/2024 | Reason: add product image {% endcomment %}
+            <a class="text-current font-semibold" href="{{ line_item.url }}" style="display:flex; flex-wrap: nowrap; align-items: flex-start; gap: 10px;">
+              <img src="{{ line_item.image | image_url: width: 50 }}" style="max-width: 50px; max-height:100px;">
+              {{ line_item.title }}
+            </a>
+
+            {% comment %} ---END--- Edited by: Biswajit | Date: 10/12/2024 | Reason: add product image {% endcomment %}
+            
+            <div class="small-text">
+              {%- for p in line_item.properties -%}
+                {% unless p.last == blank %}
+                  <div class="line-item-property">{{ p.first }}:
+                    {% if p.last contains '/uploads/' %}
+                    <a href="{{ p.last }}">{{ p.last | split: '/' | last }}</a>
+                    {% else %}
+                    {{ p.last }}
+                    {% endif %}
+                  </div>
+                {% endunless %}
+              {%- endfor -%}
+            </div>
+
+            {% if line_item.selling_plan_allocation %}
+              <div class="subscription-description small-text">{{ line_item.selling_plan_allocation.selling_plan.name }}</div>
+            {% endif %}
+
+          {% comment %} ---START--- Edited by: Hasan | Date: 10/02/2025 | Reason: Add exchange form {% endcomment %}
+
+          <!-- calculate order age -->
+          {% assign given_date = order.created_at | date: "%s" %}
+          {% assign today_date = "now" | date: "%s" %}
+          {% assign difference = today_date | minus: given_date %}
+           
+          <!-- the order age is less than 60 days -->
+          {% if difference < 5184000  %} 
+            {% if order.financial_status == "paid" or order.financial_status == "partially_refunded" %}
+              {% if order.fulfillment_status == "fulfilled" and order.cancelled == false  %}
+                <div class="info-card" id="{{ line_item.id }}" onclick="choose_reason(this)" style="display:flex; align-items:center;justify-content: space-between;">  
+                  <div style ="display:flex; align-items:center">
+                    <input type="checkbox" id="checkbox_{{ line_item.id }}">
+                    <label class="underline">{{ 'customer.order.exchange_toggle' | t }}</label>
+                  </div>
+                  <div style ="display:flex; align-items:center;justify-content: flex-end;gap:5px">
+                    <select id="dropdown_qty_{{ line_item.id }}" class="select-dropdown" onclick="event.stopPropagation();">
+                      {% for i in (1..line_item.quantity) -%}
+                        <option value="{{ i }}">{{ i }}pc</option>
+                      {%- endfor %}
+                    </select>
+    
+                    <select class="select-dropdown" id="dropdown_reasons_{{ line_item.id }}" onclick="event.stopPropagation();" onchange="this.style.color='#333';">
+                    <option value="" selected disabled>{{ 'customer.order.exchange_dropdown.reason' | t }}</option>
+                    <option value="SIZE_TOO_LARGE">{{ 'customer.order.exchange_dropdown.large' | t }}</option>
+                    <option value="SIZE_TOO_SMALL">{{ 'customer.order.exchange_dropdown.small' | t }}</option>
+                    <option value="NOT_AS_DESCRIBED">{{ 'customer.order.exchange_dropdown.diffrent' | t }}</option>
+                    <option value="DEFECTIVE">{{ 'customer.order.exchange_dropdown.defective' | t }}</option>
+                    <option value="WRONG_ITEM">{{ 'customer.order.exchange_dropdown.wrong' | t }}</option>
+                    <option value="UNWANTED">{{ 'customer.order.exchange_dropdown.unwanted' | t }}</option>
+                    </select>
+                    </div>
+                  </div>
+                {% endif %}
+              {% endif %}
+            {% endif %}
+          {% comment %} ---END--- Edited by: Hasan | Date: 10/02/2025 | Reason:  Add exchange form {% endcomment %}
+            
+          </td>
+          <td class="sku note">{{ line_item.sku }}</td>
+          <td class="price">
+            {% if line_item.original_line_price > line_item.final_line_price %}
+              <div class="struck-out-price">{{ line_item.original_price | money }}</div>
+            {% endif %}
+            <div class="product-price">{{ line_item.final_price | money }}</div>
+
+            {% render 'unit-price', variant: line_item %}
+
+            {% if line_item.line_level_discount_allocations.size > 0 %}
+              <ul class="cart-discount-list">
+              {% for discount_allocation in line_item.line_level_discount_allocations %}
+                <li class="cart-discount">
+                  <div class="cart-discount__label">
+                      <span class="cart-discount__icon">{% render 'icon-label' %}</span>
+                      <span class="cart-discount__title">{{ discount_allocation.discount_application.title }}</span>
+                  </div>
+                  <div class="cart-discount__amount">{{ discount_allocation.amount | money }}</div>
+                </li>
+              {% endfor %}
+              </ul>
+            {% endif %}
+          </td>
+          <td class="quantity align-center">{{ line_item.quantity }}</td>
+          <td class="total">
+            {% if line_item.original_line_price != line_item.final_line_price %}
+              <div class="struck-out-price">{{ line_item.original_line_price | money }}</div>
+            {% endif %}
+
+            {{ line_item.final_line_price | money }}
+
+            {% if line_item.line_level_discount_allocations.size > 0 %}
+              <ul class="cart-discount-list mobile-only">
+              {% for discount_allocation in line_item.line_level_discount_allocations %}
+                <li class="cart-discount">
+                  <div class="cart-discount__label">
+                      <span class="cart-discount__icon">{% render 'icon-label' %}</span>
+                      <span class="cart-discount__title">{{ discount_allocation.discount_application.title }}</span>
+                  </div>
+                  <div class="cart-discount__amount">{{ discount_allocation.amount | money }}</div>
+                </li>
+              {% endfor %}
+              </ul>
+            {% endif %}
+          </td>
+        </tr>
+        {% endfor %}
+
+        {% comment %} ---START--- Edited by: Hasan | Date: 10/02/2025 | Reason: Add exchange form {% endcomment %}
+        <style>
+         .select-dropdown {
+           display: none;
+           color: rgb(51, 51, 51);
+            padding: 3px 10px;
+            border-color: #ccc;
+            border-radius: 5px;
+          }
+
+          input[type="checkbox"] {
+            appearance: none;
+            width: 12px;
+            height: 12px;
+            background-color: gray; /* Color of unchecked checkbox */
+            border: 1px solid black;
+            border-radius: 4px;
+          }
+
+          input[type="checkbox"]:checked {
+          background-color: green; /* Color when checked */
+          }
+
+          @media(max-width:767px){
+            .info-card{
+              display: flex;
+              align-items: flex-start !important;
+              justify-content: space-between;
+              flex-direction: column;
+              gap: 10px;
+            }
+          }
+          
+        </style>
+  
+        <script>
+        //show/hide exchange card
+        function choose_reason(sender) {
+            var checkbox = document.getElementById("checkbox_" + sender.id);
+            var reasonDropdown = document.getElementById("dropdown_reasons_" + sender.id);
+            var qtyDropdown = document.getElementById("dropdown_qty_" + sender.id);
+    
+            if (checkbox.checked) {
+                reasonDropdown.style.display = 'none';
+                qtyDropdown.style.display = 'none';
+                checkbox.checked = false;
+            } else {
+                reasonDropdown.style.display = 'block';
+                qtyDropdown.style.display = 'inline';
+                checkbox.checked = true;
+            }
+          
+          toggle_exchange_mode()
+          
+        }
+
+
+        function toggle_exchange_mode(){
+           //check if there is any checked checkboxes ....
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            const checkedOne = Array.from(checkboxes).some(x => x.checked);
+            const btn = document.getElementById("btn_request_exc");
+          const tfoot = document.querySelector("table#order_details tfoot");
+            if (checkedOne){
+              btn.style.display = 'block';//show exchange button
+              tfoot.style.display = "none";//hide order calc
+            } 
+            else{
+              btn.style.display = 'none'; //hide exchange button
+              tfoot.style.display = "table-footer-group";//show order calc
+            }
+        }
+
+      </script>
+      {% comment %} ---START--- Edited by: Hasan | Date: 10/02/2025 | Reason: Add exchange form {% endcomment %}
+      </tbody>
+      <tfoot>
+        <tr class="order_summary note">
+          <td class="label" colspan="4">{{ 'customer.order.subtotal' | t }}:</td>
+          <td class="total">{{ order.line_items_subtotal_price | money }}</td>
+        </tr>
+
+        {%- if order.cart_level_discount_applications != blank -%}
+          {%- for discount_application in order.cart_level_discount_applications -%}
+            <tr class="order_summary note cart-discount">
+              <td class="cart-discount__label" colspan="4">
+                  <span class="cart-discount__icon">{% render 'icon-label' %}</span>
+                  <span class="cart-discount__title">{{ discount_application.title }}</span>
+              </td>
+              <td class="cart-discount__amount">{{ discount_application.total_allocated_amount | money }}</td>
+            </tr>
+          {%- endfor -%}
+        {%- endif -%}
+
+        {% for shipping_method in order.shipping_methods %}
+        <tr class="order_summary note">
+          <td class="label" colspan="4">{{ 'customer.order.shipping' | t }} ({{ shipping_method.title }}):</td>
+          <td class="total">{{ shipping_method.price | money }}</td>
+        </tr>
+        {% endfor %}
+
+        {% for tax_line in order.tax_lines %}
+        <tr class="order_summary note">
+          <td class="label" colspan="4">{{ 'customer.order.tax' | t }} ({{ tax_line.title }} {{ tax_line.rate | times: 100 }}%):</td>
+          <td class="total">{{ tax_line.price | money }}</td>
+        </tr>
+        {% endfor %}
+
+        <tr class="order_summary order_total">
+          <td class="label" colspan="4">{{ 'customer.order.total' | t }}:</td>
+          <td class="total">
+            {%- if settings.cart_currency_code_enabled -%}
+              {{- order.total_price | money_with_currency -}}
+            {%- else -%}
+              {{- order.total_price | money -}}
+            {%- endif -%}
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+    {% comment %} ---START--- Edited by: Hasan | Date: 10/02/2025 | Reason:  Add exchange form {% endcomment %}
+      
+    <button type="submit" id="btn_request_exc" class="btn" style="display:none;width:100%;z-index: 1000;" onclick="check_all_reasons();">{{ 'customer.order.request_exchange' | t }}</button>
+    
+    <script>
+
+   
+      function check_all_reasons() {
+       
+          const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+      
+          let allValid = true; //used to check if all exchange cards have a reason
+          var reqObject = {}; 
+          reqObject.orderId = "gid://shopify/Order/" + {{ order.id }};
+          reqObject.returnLineItems = [];
+        
+          checkboxes.forEach(checkbox => {
+              if (checkbox.checked) {
+                  const itemId = checkbox.id.replace("checkbox_", ""); // Extract ID
+                  const reason = document.getElementById("dropdown_reasons_" + itemId);
+                  const qty = document.getElementById("dropdown_qty_" + itemId);
+                
+                  if (!reason || reason.value === "") {
+                      allValid = false; // If no valid reason is chosen, set to false
+                      reason.style.color = "red";
+                      reason.scrollIntoView();
+                  }else{
+                    reqObject.returnLineItems.push ( {"fulfillmentLineItemId": + itemId,"quantity":Number(qty.value),"returnReason":reason.value} );
+                  }
+              }
+          });
+        
+          if (allValid) {
+            send_request(reqObject);
+            // show loading animation
+            Swal.fire({
+              title: 'Sending your request...',
+              html: 'Please wait...',
+              allowEscapeKey: false,
+              allowOutsideClick: false,
+              didOpen: () => {
+                Swal.showLoading()
+              }
+            });
+          }
+      }
+
+      function send_request(reqObject){
+        
+            fetch("https://beisat.click/API/ShopifyExchangeRequest/Exchange.php?key=SDFRFgw34r5sdfSDFsa3rf", {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({ input: reqObject })// Wrap reqObject inside an "input" key
+            })
+            .then(response => response.json())
+            .then(data => {
+                 console.log("Success:", data);
+                 swal.close();//close previuos loading dialog
+                  // Hide exchange objects so the user won't submit twice
+                  document.querySelectorAll('.info-card').forEach(el => el.hidden = true);
+                  document.getElementById("btn_request_exc").style.display = 'none';
+                 if (data.status == "success") { // Assuming the response contains a 'success' field
+                      Swal.fire({
+                          title: "Success",
+                          text: data.message,
+                          icon: "success"
+                      });
+                  } else {
+                      Swal.fire({
+                      title: "Error",
+                      text: data.message,
+                      icon: "error"
+                    });
+                  }
+              })
+                                
+            .catch(error => {
+                  console.error("Error:", error);
+                  swal.close();//close previuos loading dialog
+                  Swal.fire({
+                    title: "Error",
+                    text: error,
+                    icon: "error"
+                  });
+            })
+
+
+      }
+        
+    </script>
+  
+    {% comment %} ---END--- Edited by: Hasan | Date: 10/02/2025 | Reason:  Add exchange form {% endcomment %}
+  </div>
+
+</div>

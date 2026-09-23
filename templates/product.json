@@ -1,0 +1,266 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "custom_liquid_hKFgqi": {
+          "type": "custom-liquid",
+          "settings": {
+            "custom_liquid": "{% if request.locale.iso_code == 'ar' %}\nالطراز: {{ product.id }}\n{% else %}\nModel: {{ product.id }}\n{% endif %}\n\n<style>\n  .lightly-spaced-row.not-in-quickbuy:nth-of-type(1) {\ncolor: lightgray;\n</style>",
+            "show_in_quickbuy": false
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+            "show_tax_and_shipping": false,
+            "enable_product_reviews_by_price": true
+          }
+        },
+        "richtext_Xet9JJ": {
+          "type": "richtext",
+          "settings": {
+            "richtext": "<p><em>Price includes VAT</em></p>",
+            "icon": "check_mark",
+            "icon_size": "small",
+            "enable_box": false,
+            "box_color": "#e0f4d5",
+            "show_in_quickbuy": false
+          }
+        },
+        "related_products_XhExED": {
+          "type": "related-products",
+          "settings": {
+            "title": "Color",
+            "product_list": "{{ product.metafields.custom.other_colors.value }}",
+            "show_small_thumb": true
+          }
+        },
+        "variant-picker": {
+          "type": "variant-picker",
+          "settings": {
+            "show_single": true,
+            "selector_style": "listed",
+            "dynamic_availability": "prune",
+            "enable_size_chart": false,
+            "size_chart_label": "Size guide",
+            "size_chart_variant": "Size",
+            "size_chart_page": "shoes-size-guide",
+            "size_chart_include_collections": [
+              "women_shoes_sneakers_casual-shoes",
+              "men_shoes",
+              "men_shoes_dress-shoes",
+              "women_shoes",
+              "kids_shoes",
+              "men_shoes_sneakers_sports-shoes",
+              "women_shoes_sneakers_sports-shoes",
+              "women_shoes_boots",
+              "men_shoes_sandals",
+              "women_shoes_sandals",
+              "women_shoes_slippers",
+              "men_shoes_sneakers",
+              "women_shoes_sneakers",
+              "women_shoes_boots_fashion-boots",
+              "women_shoes_boots_snow-boots",
+              "women_shoes_flats",
+              "women_shoes_heels",
+              "women_shoes_pumps",
+              "women_shoes_sandals_flat-sandals",
+              "women_shoes_sandals_sports-sandals",
+              "women_shoes_sandals_platforms-wedge-sandals",
+              "women_shoes_sandals_heeled-sandals",
+              "women_shoes_slippers_flip-flops",
+              "women_shoes_slippers_home-slippers",
+              "women_shoes_slippers_slides",
+              "men_shoes_flip-flops-slides",
+              "women_shoes_wedges-flatform",
+              "women_shoes_sneakers_wedge-sneakers"
+            ]
+          }
+        },
+        "estimate_delivery_4LnKgV": {
+          "type": "estimate_delivery",
+          "settings": {
+            "city_en": "Muscat,Batinah,Dakhilia,Sharqia,Difar,Buraimi,Dahirah,Wusta,Musandam,Misairah",
+            "city_ar": "مسقط,الباطنة,الداخلية,الشرقية,ظفار,البريمي,الظاهرة,الوسطى,مسندم,مصیره",
+            "days": "0,3,3,3,5,3,4,4,10,9"
+          }
+        },
+        "buy-buttons": {
+          "type": "buy-buttons",
+          "settings": {
+            "show_quantity_selector": false,
+            "enable_payment_button": false,
+            "show_backorder_text": false,
+            "show_pickup_availability": false,
+            "show_gift_card_recipient": false
+          }
+        },
+        "selleasy_lb_upsell_widget_cpal_xgczHB": {
+          "type": "shopify://apps/selleasy/blocks/lb-upsell-widget-cpal/790c1a03-a71f-4bc1-9869-00dad526d3c2",
+          "settings": {}
+        },
+        "custom_liquid_UQUiat": {
+          "type": "custom-liquid",
+          "settings": {
+            "custom_liquid": "{% assign point = product.price | money_without_currency | times: 5 | floor %}\n\n{% if point > 0  %}\n  <div class=\"points\">{{\"custom_liquid.product_page_earn_up_to\" | t:earn_up_to}}\n<b>\n{{\"custom_liquid.product_page_point\" | t:point:point }}\n</b>\n{{\"custom_liquid.product_page_beisat_points\" | t:beisat_points}}</div>\n{% endif %}\n\n\n\n<style>\n.points{\ncolor: #767676;\nfont-size: 14px;\nmargin-top: -20px;\n}\n</style>",
+            "show_in_quickbuy": false
+          }
+        },
+        "inventory_level_3CmmbT": {
+          "type": "inventory-level",
+          "settings": {
+            "show_inventory_notice": "low",
+            "show_inventory_count": "low",
+            "inventory_threshold": 2,
+            "enable_box": false,
+            "enable_pulse": true,
+            "show_in_quickbuy": true
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {
+            "show_in_tab": true,
+            "open_tab": false,
+            "icon": "ruler",
+            "show_in_quickbuy": false
+          }
+        },
+        "accordion_Bg7ppQ": {
+          "type": "accordion",
+          "settings": {
+            "title": "Free Delivery",
+            "icon": "truck",
+            "content": "<p>Free delivery for orders above 12 OMR</p>",
+            "page": "",
+            "custom_liquid": "",
+            "open": false,
+            "show_in_quickbuy": false
+          }
+        },
+        "accordion_B7MG8x": {
+          "type": "accordion",
+          "settings": {
+            "title": "Cash on Delviery",
+            "icon": "box",
+            "content": "<p>COD Available for all states:</p><p>except (Musandam & Musairah)</p>",
+            "page": "",
+            "custom_liquid": "",
+            "open": false,
+            "show_in_quickbuy": false
+          }
+        },
+        "accordion_e7Ytw3": {
+          "type": "accordion",
+          "settings": {
+            "title": "Easy Exchange",
+            "icon": "return",
+            "content": "<p>Exchange your item within 14 days from the delivery date.</p>",
+            "page": "",
+            "custom_liquid": "",
+            "open": false,
+            "show_in_quickbuy": false
+          }
+        }
+      },
+      "block_order": [
+        "custom_liquid_hKFgqi",
+        "title",
+        "price",
+        "richtext_Xet9JJ",
+        "related_products_XhExED",
+        "variant-picker",
+        "estimate_delivery_4LnKgV",
+        "buy-buttons",
+        "selleasy_lb_upsell_widget_cpal_xgczHB",
+        "custom_liquid_UQUiat",
+        "inventory_level_3CmmbT",
+        "description",
+        "accordion_Bg7ppQ",
+        "accordion_B7MG8x",
+        "accordion_e7Ytw3"
+      ],
+      "custom_css": [
+        ".sticky-atc {bottom: 71px;}",
+        ".sticky-atc__buttons {display: flex; gap: 10px;}",
+        ".st-wishlist-button {border-color: #232323; border-style: solid; border-radius: 10%; background: #232323;}",
+        ".st-wishlist-button svg {color: #fff;}",
+        ".estimate-delivery {background: #6be37a; width: fit-content; padding: 11px; border-radius: 5px; color: #000000;}"
+      ],
+      "settings": {
+        "show_breadcrumbs": true,
+        "select_first_variant": true,
+        "show_location_underneath": false,
+        "inventory_transfers_enable": false,
+        "enable_sticky_columns": false,
+        "enable_sticky_atc": true,
+        "sticky_atc_out_of_stock": true,
+        "sticky_atc_mobile_img": true,
+        "sticky_atc_position": "end",
+        "sticky_atc_mobile": true,
+        "sticky_atc_behavior": "add_to_cart",
+        "sticky_atc_button_style": "primary",
+        "gallery_size": "medium",
+        "gallery_layout": "carousel-beside",
+        "enable_zoom": true,
+        "show_alt_text": false,
+        "alt_text_icon": "",
+        "enable_video_autoplay": false,
+        "enable_video_looping": false,
+        "enable_media_grouping": false,
+        "media_grouping_option": "Color,Colour,Couleur,Farbe"
+      }
+    },
+    "more_breadcrumbs_W8VNrn": {
+      "type": "more-breadcrumbs",
+      "settings": {
+        "max_product_count": 5000
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "settings": {
+        "title": "You may also like",
+        "show_vendor": false,
+        "grid": 10
+      }
+    },
+    "recent_products_ptxxRf": {
+      "type": "recent-products",
+      "settings": {
+        "rvp_title": "Recently Viewed Products",
+        "rvp_product_count": 10
+      }
+    },
+    "custom_liquid_hER9GM": {
+      "type": "custom-liquid",
+      "name": "Custom Liquid",
+      "settings": {
+        "full_width": true,
+        "show_space": true,
+        "code": "<script>\ndocument.addEventListener('DOMContentLoaded', () => {\n  const stickyAtcElement = document.querySelector('sticky-atc');\n  const stickyForm = document.querySelector('.sticky-atc form[action=\"/cart/add\"]');\n\n  if (stickyAtcElement && stickyForm) {\n    stickyForm.addEventListener('submit', () => {\n      stickyAtcElement.style.setProperty('display', 'none', 'important');\n    });\n  }\n});\n</script>"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "more_breadcrumbs_W8VNrn",
+    "related-products",
+    "recent_products_ptxxRf",
+    "custom_liquid_hER9GM"
+  ]
+}

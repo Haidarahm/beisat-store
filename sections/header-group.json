@@ -1,0 +1,151 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "header",
+  "name": "Header Group",
+  "sections": {
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "blocks": {
+        "announcement-2": {
+          "type": "announcement",
+          "disabled": true,
+          "settings": {
+            "text": "⚠️ Orders resume after Eid holiday",
+            "show_countdown": true,
+            "hide_on_end": true,
+            "end_date": "2026-05-31",
+            "end_time": "08:00",
+            "number_font": "heading",
+            "countdown_separator": "box",
+            "use_custom_colors": false,
+            "bg_color": "#f4f6f8",
+            "bg_gradient": "",
+            "text_color": "#4c4c4b"
+          }
+        },
+        "announcement_9RyNmb": {
+          "type": "announcement",
+          "settings": {
+            "text": "<a href=\"/pages/withdraw-landing-page\" title=\"Withdraw Landing Page\">🎁 Win 50 OMR? Tap to see how!</a>",
+            "show_countdown": false,
+            "hide_on_end": false,
+            "end_date": "",
+            "end_time": "",
+            "number_font": "base",
+            "countdown_separator": "box",
+            "use_custom_colors": false,
+            "bg_color": "#4a4a4a",
+            "bg_gradient": "",
+            "text_color": "#ffffff"
+          }
+        },
+        "announcement-1": {
+          "type": "announcement",
+          "settings": {
+            "text": "<strong>15%</strong> Off on cart <strong>+15 </strong>OMR | Code: <strong>SAVE15</strong>",
+            "show_countdown": false,
+            "hide_on_end": false,
+            "end_date": "",
+            "end_time": "",
+            "number_font": "base",
+            "countdown_separator": "box",
+            "use_custom_colors": true,
+            "bg_color": "#4A4A4A",
+            "bg_gradient": "",
+            "text_color": "#FFFFFF"
+          }
+        }
+      },
+      "block_order": [
+        "announcement-2",
+        "announcement_9RyNmb",
+        "announcement-1"
+      ],
+      "custom_css": [],
+      "settings": {
+        "message_font_size": 14,
+        "announcement_bar_col": "#4a4a4a",
+        "announcement_bar_gradient": "",
+        "announcement_text_col": "#ffffff",
+        "show_social_icons": true,
+        "menu": "",
+        "enable_country_selector": false,
+        "enable_language_selector": true
+      }
+    },
+    "header": {
+      "type": "header",
+      "custom_css": [],
+      "settings": {
+        "logo": "shopify://shop_images/logo-normal-1.png",
+        "logo_img_width_int": 150,
+        "mobile_logo_img_width_int": 100,
+        "logo_h1": true,
+        "enable_sticky": false,
+        "enable_transparent": false,
+        "transparent_color": "#ffffff",
+        "menu_linklist": "main-menu",
+        "menu_layout": "inline-menu-left",
+        "nav_featured_link": "Sale",
+        "menu_linklist_mobile": "",
+        "mobile_expand_with_entire_link": true,
+        "enable_mobile_promo_carousel": true,
+        "enable_nav_mob_products": true,
+        "nav_mob_products_title": "Best Sellers",
+        "nav_mob_products_collection": "",
+        "enable_search": true,
+        "search_recommendations_title": "Popular Searches",
+        "search_recommendations_menu": "search-suggestions",
+        "icon_strategy": "icons_cart_search",
+        "cart_icon": "bag"
+      }
+    },
+    "store-messages": {
+      "type": "store-messages",
+      "blocks": {
+        "1601308125690": {
+          "type": "message",
+          "settings": {
+            "heading": "",
+            "subheading": "Free Delivery On Orders Over 12 OMR",
+            "link_url": ""
+          }
+        },
+        "1601308127822": {
+          "type": "message",
+          "settings": {
+            "heading": "",
+            "subheading": "24 Hours Delivery inside Muscat",
+            "link_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "1601308125690",
+        "1601308127822"
+      ],
+      "settings": {
+        "head_not_home_only": false,
+        "head_not_col_bg": "#f4f6f8",
+        "head_not_col_txt1": "#171717",
+        "head_not_col_txt2": "#4c4c4b",
+        "head_not_mob_show": true,
+        "head_not_mob_text": "Free Delivery Over 12 OMR | Fast Delivery",
+        "head_not_mob_url": ""
+      }
+    }
+  },
+  "order": [
+    "announcement-bar",
+    "header",
+    "store-messages"
+  ]
+}

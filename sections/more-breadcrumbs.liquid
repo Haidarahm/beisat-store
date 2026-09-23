@@ -1,0 +1,96 @@
+{% comment %} Created by: Biswajit | Date: 29/9/2024 | Reason: display product collection links as list {% endcomment %}
+{% if template.name == 'product' %}
+  <style>
+    .more-breadcrumbs{
+      display:flex;
+      flex-direction: row;
+      gap:10px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .more-breadcrumbs-link{
+      display:inline-block;
+      background-color: white;
+      border: thin solid #e5e5e5;
+      border-radius: 10px;
+      font-weight: bold;
+      text-decoration: none;
+      padding: 8px 14px;
+      padding-right: 35px;
+      color: #000;
+      position:relative;
+    }
+    .more-breadcrumbs-link:hover{
+      background-color: #eee;
+    }
+    @media (max-width:768px){
+      .more-breadcrumbs{
+        margin:0;
+        padding:0;
+        flex-direction: column;
+        gap:0;
+      }
+      .more-breadcrumbs-link{
+        display: block;
+        border: none;
+        border-top: thin solid #e5e5e5;
+        border-radius: 0;
+        padding: 15px 20px !important;
+      }
+      .more-breadcrumbs-link:hover{
+        background-color: #fff;
+      }
+      .more-breadcrumbs-link:last-child{
+        border-bottom: thin solid #e5e5e5;
+      }
+    }
+    
+    .more-breadcrumbs-link::after{
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: 15px;
+      transform: translateY(-50%) rotate(45deg);
+      width: 8px;
+      height: 8px;
+      border-top: 2px solid #000;
+      border-right: 2px solid #000;
+    }
+  </style>
+  <div class="container{% if settings.use_fullwidth_layout %} container--no-max{% endif %} fully-spaced-row more-breadcrumbs">
+    {% for collection in product.collections %}
+      {% if collection.products_count < section.settings.max_product_count %}
+      <a class="more-breadcrumbs-link" href="{{ collection.url }}">{{ 'products.collection.more' | t }} {{ collection.title }}</a>
+      {% endif %}
+    {% endfor %}
+  </div>
+{% endif %}
+
+{% schema %}
+  {
+    "name": "More Breadcrumbs",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Show the product collection links as list"
+      },
+      {
+        "type": "paragraph",
+        "content": "NOTE: For product page only"
+      },
+      {
+        "type":"number",
+        "id": "max_product_count",
+        "label":"Show collection if its active product count is less than",
+        "default":5000
+      }
+    ],
+    "presets": [
+      {
+        "name": "More Breadcrumbs",
+        "settings": {
+        }
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,150 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "heading": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "title": "Loyalty Points",
+            "heading_max_width": 15,
+            "title_size": 52,
+            "title_size_mobile": 32,
+            "use_h1": false
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Maximize Your Savings and Enjoy More with Our Loyalty Program.</p>",
+            "enlarge_text": false
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "text"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/gift-wrapped-with-bow.jpg",
+        "height": "fixed",
+        "height_desktop": 400,
+        "height_mobile": 300,
+        "image_link": "",
+        "full_width": true,
+        "text_alignment": "center center",
+        "mobile_overlay_under": false,
+        "overlay_style": "shadow"
+      }
+    },
+    "1733138556c6b40ba3": {
+      "type": "apps",
+      "settings": {
+        "full_width": false,
+        "show_space": true
+      }
+    },
+    "faq-content-1": {
+      "type": "collapsible-tabs",
+      "blocks": {
+        "question-2": {
+          "type": "question",
+          "settings": {
+            "title": "Viewing Beisat points",
+            "answer": "<p>Please log into your Beisat account and click on \"My loyalty points\" in your personal account to view the balance.</p>"
+          }
+        },
+        "question-1": {
+          "type": "question",
+          "settings": {
+            "title": "Usage of Loyalty points",
+            "answer": "<p>Every 10 points = 0.1 OMR. You can use the points to deduct up to 100% of the total amount of products when you place your order (only the total price of products is supported, excluding shipping fees and taxes).</p>"
+          }
+        },
+        "question_4kzNHF": {
+          "type": "question",
+          "settings": {
+            "title": "Validity period of Beisat points",
+            "answer": "<p>Loyalty POINTS have expiration dates. Expiration dates is usually 30 days. If your points expired before being used, they will be deleted from your account.</p>"
+          }
+        },
+        "question_AVRPBq": {
+          "type": "question",
+          "settings": {
+            "title": "Returning Beisat points",
+            "answer": "<p>1. If an unpaid order is cancelled, the points applied to the original order will be immediately returned to your points account.2. If you request a return, the points for returned item will reverted to your account along with your refund.If it's a partial return, points will be returned based on a percentage of the product's price.3. If the cancellation order/refund occurs outside the validity period of the points, expired points will not be refunded, and the user can view the records in the point details.4. If the return occurs after you have confirmed receipt, points from the original order will be returned to your points account. Points received from placing an order will be deducted, they will start being deducted from points that are expiring. If your points account does not have enough balance, points will be deducted until it reaches 0.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "question-2",
+        "question-1",
+        "question_4kzNHF",
+        "question_AVRPBq"
+      ],
+      "settings": {
+        "title": "FAQ"
+      }
+    },
+    "contact": {
+      "type": "rich-text",
+      "blocks": {
+        "icon": {
+          "type": "icon",
+          "settings": {
+            "icon": "chat_bubble"
+          }
+        },
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "title": "Get in touch",
+            "use_h1": false
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Have questions about your order, or a general enquiry?</p>",
+            "enlarge_text": true
+          }
+        },
+        "button": {
+          "type": "button",
+          "settings": {
+            "button_label": "Contact us",
+            "button_link": "https://api.whatsapp.com/send/?phone=96822093347",
+            "button_style": "primary"
+          }
+        }
+      },
+      "block_order": [
+        "icon",
+        "heading",
+        "text",
+        "button"
+      ],
+      "settings": {
+        "height": "medium",
+        "text_alignment": "center",
+        "full_width": false,
+        "color_scheme": "default"
+      }
+    }
+  },
+  "order": [
+    "heading",
+    "1733138556c6b40ba3",
+    "faq-content-1",
+    "contact"
+  ]
+}

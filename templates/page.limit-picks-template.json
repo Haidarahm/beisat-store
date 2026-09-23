@@ -1,0 +1,511 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "show_page_title": false,
+        "full_width": false
+      }
+    },
+    "rich_text_pA4hpL": {
+      "type": "rich-text",
+      "blocks": {
+        "button_anyWVe": {
+          "type": "button",
+          "settings": {
+            "button_label": "women",
+            "button_link": "shopify://pages/women",
+            "button_style": "link"
+          }
+        },
+        "button_QiPEbL": {
+          "type": "button",
+          "settings": {
+            "button_label": "men",
+            "button_link": "shopify://pages/men",
+            "button_style": "link"
+          }
+        },
+        "button_6fz7Vq": {
+          "type": "button",
+          "settings": {
+            "button_label": "kids",
+            "button_link": "shopify://pages/kids",
+            "button_style": "link"
+          }
+        },
+        "button_kiHVDm": {
+          "type": "button",
+          "settings": {
+            "button_label": "house",
+            "button_link": "shopify://pages/house",
+            "button_style": "link"
+          }
+        },
+        "button_PUKiDK": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_label": "Limited",
+            "button_link": "shopify://pages/limit-picks",
+            "button_style": "link"
+          }
+        }
+      },
+      "block_order": [
+        "button_anyWVe",
+        "button_QiPEbL",
+        "button_6fz7Vq",
+        "button_kiHVDm",
+        "button_PUKiDK"
+      ],
+      "custom_css": [
+        ".fully-spaced-row--small {margin: 20px;}",
+        ".small-feature-link {font: 650 0.9em sans-serif; text-decoration: none; background: #f0efea; color: #000; border-radius: 8px; padding: 4px;}",
+        ".small-feature-link:nth-of-type(5) {background: #3db55b; color: #fff;}",
+        ".button-row {display: flex; justify-content: center; align-items: center; flex-wrap: nowrap;}",
+        "@media (min-width: 786px) {.container {display: none; }}"
+      ],
+      "settings": {
+        "height": "small",
+        "text_alignment": "center",
+        "full_width": true,
+        "color_scheme": "default"
+      }
+    },
+    "rich_text_WJNPfY": {
+      "type": "rich-text",
+      "blocks": {
+        "text_QQMbmt": {
+          "type": "text",
+          "settings": {
+            "text": "<h1><strong><br/>Exclusive Picks<br/>Limited Time</strong></h1>",
+            "enlarge_text": true
+          }
+        },
+        "text_CKMteM": {
+          "type": "text",
+          "settings": {
+            "text": "<p><br/>Discover limited pieces before time runs out!<br/><br/></p>",
+            "enlarge_text": false
+          }
+        }
+      },
+      "block_order": [
+        "text_QQMbmt",
+        "text_CKMteM"
+      ],
+      "name": "Rich text",
+      "settings": {
+        "height": "medium",
+        "text_alignment": "center",
+        "full_width": false,
+        "color_scheme": "default"
+      }
+    },
+    "collection_list_itU6gC": {
+      "type": "collection-list",
+      "blocks": {
+        "collection_aQ4VxE": {
+          "type": "collection",
+          "settings": {
+            "collection": "the-party-edit",
+            "image": "shopify://shop_images/Party-Looks-En-card.jpg",
+            "subheading": "",
+            "button_label": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection_aQ4VxE"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".product-block__detail {display: none;}",
+        ".collection-slider-row {margin-bottom: 0;}",
+        ".product-grid {grid-template-columns: 1fr !important;}",
+        ".image-cont {max-width: 400px;}"
+      ],
+      "name": "Collection list",
+      "settings": {
+        "title": "",
+        "enable_carousel": false,
+        "grid": 2,
+        "color_scheme": "default",
+        "full_width": false,
+        "coll_grid_image_shape": "shortest",
+        "coll_grid_image_position": "center center",
+        "coll_thumb_mob_per_row": "1",
+        "coll_grid_show_count": false,
+        "coll_text_position": "below",
+        "coll_text_position_under_mobile": false,
+        "coll_thumb_text_align_x": "center",
+        "coll_thumb_text_align_y": "center",
+        "coll_button_style": "primary"
+      }
+    },
+    "countdown_timer_4VCiFH": {
+      "type": "countdown-timer",
+      "blocks": {
+        "countdown_FGJLdg": {
+          "type": "countdown",
+          "settings": {
+            "end_date": "2026-08-25",
+            "end_time": "23:59",
+            "end_text": "<p>Sorry this offer had ended...</p>",
+            "hide_on_end": true,
+            "number_size": 20,
+            "number_font": "base",
+            "divider_type": "colon",
+            "show_timer_labels": true
+          }
+        }
+      },
+      "block_order": [
+        "countdown_FGJLdg"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".relative {background: #f9f9f9; padding: 0; border-radius: 10px; max-width: 320px; margin: 0 auto;}",
+        ".lightly-spaced-row {margin-top: 0;}",
+        ".feature-text-paired-wide {margin-top: 0;}"
+      ],
+      "name": "Countdown timer",
+      "settings": {
+        "show_image": false,
+        "image_link": "",
+        "show_image_space": false,
+        "image_position": "left",
+        "text_alignment": "center",
+        "color_scheme": "2"
+      }
+    },
+    "collection_list_HcwYbU": {
+      "type": "collection-list",
+      "blocks": {
+        "collection_MApiha": {
+          "type": "collection",
+          "settings": {
+            "collection": "the-summer-drop",
+            "image": "shopify://shop_images/Summer-collection-En-card.jpg",
+            "subheading": "",
+            "button_label": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection_MApiha"
+      ],
+      "custom_css": [
+        ".product-block__detail {display: none;}",
+        ".collection-slider-row {margin-bottom: 0;}",
+        ".product-grid {grid-template-columns: 1fr !important;}",
+        ".image-cont {max-width: 400px;}"
+      ],
+      "name": "Collection list",
+      "settings": {
+        "title": "",
+        "enable_carousel": false,
+        "grid": 2,
+        "color_scheme": "default",
+        "full_width": false,
+        "coll_grid_image_shape": "shortest",
+        "coll_grid_image_position": "center center",
+        "coll_thumb_mob_per_row": "1",
+        "coll_grid_show_count": false,
+        "coll_text_position": "below",
+        "coll_text_position_under_mobile": false,
+        "coll_thumb_text_align_x": "center",
+        "coll_thumb_text_align_y": "center",
+        "coll_button_style": "primary"
+      }
+    },
+    "countdown_timer_6kLR4w": {
+      "type": "countdown-timer",
+      "blocks": {
+        "countdown_WiL9iC": {
+          "type": "countdown",
+          "settings": {
+            "end_date": "2026-08-10",
+            "end_time": "23:59",
+            "end_text": "<p>Sorry this offer had ended...</p>",
+            "hide_on_end": true,
+            "number_size": 20,
+            "number_font": "base",
+            "divider_type": "colon",
+            "show_timer_labels": true
+          }
+        }
+      },
+      "block_order": [
+        "countdown_WiL9iC"
+      ],
+      "custom_css": [
+        ".relative {background: #f9f9f9; padding: 0; border-radius: 10px; max-width: 320px; margin: 0 auto;}",
+        ".lightly-spaced-row {margin-top: 0;}",
+        ".feature-text-paired-wide {margin-top: 0;}"
+      ],
+      "name": "Countdown timer",
+      "settings": {
+        "show_image": false,
+        "image_link": "",
+        "show_image_space": false,
+        "image_position": "left",
+        "text_alignment": "center",
+        "color_scheme": "2"
+      }
+    },
+    "collection_list_pfN4qR": {
+      "type": "collection-list",
+      "blocks": {
+        "collection_gVXi6y": {
+          "type": "collection",
+          "settings": {
+            "collection": "swim-splash",
+            "image": "shopify://shop_images/Swimming-collection-En-card.jpg",
+            "subheading": "",
+            "button_label": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection_gVXi6y"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".product-block__detail {display: none;}",
+        ".collection-slider-row {margin-bottom: 0;}",
+        ".product-grid {grid-template-columns: 1fr !important;}",
+        ".image-cont {max-width: 400px;}"
+      ],
+      "name": "Collection list",
+      "settings": {
+        "title": "",
+        "enable_carousel": false,
+        "grid": 2,
+        "color_scheme": "default",
+        "full_width": false,
+        "coll_grid_image_shape": "shortest",
+        "coll_grid_image_position": "center center",
+        "coll_thumb_mob_per_row": "1",
+        "coll_grid_show_count": false,
+        "coll_text_position": "below",
+        "coll_text_position_under_mobile": false,
+        "coll_thumb_text_align_x": "center",
+        "coll_thumb_text_align_y": "center",
+        "coll_button_style": "primary"
+      }
+    },
+    "countdown_timer_eXJk8K": {
+      "type": "countdown-timer",
+      "blocks": {
+        "countdown_QebNCz": {
+          "type": "countdown",
+          "settings": {
+            "end_date": "2026-08-17",
+            "end_time": "23:59",
+            "end_text": "<p>Sorry this offer had ended...</p>",
+            "hide_on_end": true,
+            "number_size": 20,
+            "number_font": "base",
+            "divider_type": "colon",
+            "show_timer_labels": true
+          }
+        }
+      },
+      "block_order": [
+        "countdown_QebNCz"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".relative {background: #f9f9f9; padding: 0; border-radius: 10px; max-width: 320px; margin: 0 auto;}",
+        ".lightly-spaced-row {margin-top: 0;}",
+        ".feature-text-paired-wide {margin-top: 0;}"
+      ],
+      "name": "Countdown timer",
+      "settings": {
+        "show_image": false,
+        "image_link": "",
+        "show_image_space": false,
+        "image_position": "left",
+        "text_alignment": "center",
+        "color_scheme": "2"
+      }
+    },
+    "collection_list_btrn8G": {
+      "type": "collection-list",
+      "blocks": {
+        "collection_4yp36U": {
+          "type": "collection",
+          "settings": {
+            "collection": "ready-to-travel",
+            "image": "shopify://shop_images/Travel-collection-En-card.jpg",
+            "subheading": "",
+            "button_label": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection_4yp36U"
+      ],
+      "custom_css": [
+        ".product-block__detail {display: none;}",
+        ".collection-slider-row {margin-bottom: 0;}",
+        ".product-grid {grid-template-columns: 1fr !important;}",
+        ".image-cont {max-width: 400px;}"
+      ],
+      "name": "Collection list",
+      "settings": {
+        "title": "",
+        "enable_carousel": false,
+        "grid": 2,
+        "color_scheme": "default",
+        "full_width": false,
+        "coll_grid_image_shape": "shortest",
+        "coll_grid_image_position": "center center",
+        "coll_thumb_mob_per_row": "1",
+        "coll_grid_show_count": false,
+        "coll_text_position": "below",
+        "coll_text_position_under_mobile": false,
+        "coll_thumb_text_align_x": "center",
+        "coll_thumb_text_align_y": "center",
+        "coll_button_style": "primary"
+      }
+    },
+    "countdown_timer_QmNpce": {
+      "type": "countdown-timer",
+      "blocks": {
+        "countdown_zqy9rV": {
+          "type": "countdown",
+          "settings": {
+            "end_date": "2026-08-06",
+            "end_time": "23:59",
+            "end_text": "<p>Sorry this offer had ended...</p>",
+            "hide_on_end": true,
+            "number_size": 20,
+            "number_font": "base",
+            "divider_type": "colon",
+            "show_timer_labels": true
+          }
+        }
+      },
+      "block_order": [
+        "countdown_zqy9rV"
+      ],
+      "custom_css": [
+        ".relative {background: #f9f9f9; padding: 0; border-radius: 10px; max-width: 320px; margin: 0 auto;}",
+        ".lightly-spaced-row {margin-top: 0;}",
+        ".feature-text-paired-wide {margin-top: 0;}"
+      ],
+      "name": "Countdown timer",
+      "settings": {
+        "show_image": false,
+        "image_link": "",
+        "show_image_space": false,
+        "image_position": "left",
+        "text_alignment": "center",
+        "color_scheme": "2"
+      }
+    },
+    "collection_list_6tBNdH": {
+      "type": "collection-list",
+      "blocks": {
+        "collection_qDjnqC": {
+          "type": "collection",
+          "settings": {
+            "collection": "under-4-00-omr",
+            "image": "shopify://shop_images/Under-4-OMR-EN-card.jpg",
+            "subheading": "",
+            "button_label": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection_qDjnqC"
+      ],
+      "custom_css": [
+        ".product-block__detail {display: none;}",
+        ".collection-slider-row {margin-bottom: 0;}",
+        ".product-grid {grid-template-columns: 1fr !important;}",
+        ".image-cont {max-width: 400px;}"
+      ],
+      "name": "Collection list",
+      "settings": {
+        "title": "",
+        "enable_carousel": false,
+        "grid": 2,
+        "color_scheme": "default",
+        "full_width": false,
+        "coll_grid_image_shape": "shortest",
+        "coll_grid_image_position": "center center",
+        "coll_thumb_mob_per_row": "1",
+        "coll_grid_show_count": false,
+        "coll_text_position": "below",
+        "coll_text_position_under_mobile": false,
+        "coll_thumb_text_align_x": "center",
+        "coll_thumb_text_align_y": "center",
+        "coll_button_style": "primary"
+      }
+    },
+    "countdown_timer_rT8Ebj": {
+      "type": "countdown-timer",
+      "blocks": {
+        "countdown_dHWeGb": {
+          "type": "countdown",
+          "settings": {
+            "end_date": "2026-08-08",
+            "end_time": "23:59",
+            "end_text": "<p>Sorry this offer had ended...</p>",
+            "hide_on_end": true,
+            "number_size": 20,
+            "number_font": "base",
+            "divider_type": "colon",
+            "show_timer_labels": true
+          }
+        }
+      },
+      "block_order": [
+        "countdown_dHWeGb"
+      ],
+      "custom_css": [
+        ".relative {background: #f9f9f9; padding: 0; border-radius: 10px; max-width: 320px; margin: 0 auto;}",
+        ".lightly-spaced-row {margin-top: 0;}",
+        ".feature-text-paired-wide {margin-top: 0;}"
+      ],
+      "name": "Countdown timer",
+      "settings": {
+        "show_image": false,
+        "image_link": "",
+        "show_image_space": false,
+        "image_position": "left",
+        "text_alignment": "center",
+        "color_scheme": "2"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "rich_text_pA4hpL",
+    "rich_text_WJNPfY",
+    "collection_list_itU6gC",
+    "countdown_timer_4VCiFH",
+    "collection_list_HcwYbU",
+    "countdown_timer_6kLR4w",
+    "collection_list_pfN4qR",
+    "countdown_timer_eXJk8K",
+    "collection_list_btrn8G",
+    "countdown_timer_QmNpce",
+    "collection_list_6tBNdH",
+    "countdown_timer_rT8Ebj"
+  ]
+}

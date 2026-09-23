@@ -1,0 +1,554 @@
+{% comment %} ---START--- Edited by: Biswajit | Date: 18/9/2024 | Reason: add gdp address form {% endcomment %}
+
+<style>
+  .template-customers-addresses .show-search-link{display:none !important}
+  .address-form-container{position:relative}
+  .input-row>span{display:block;margin-top:10px; text-align:center}
+  .input-row>span>a{text-decoration-color: rgb(147 147 147); color:rgb(147 147 147)}
+  .input-row .btn{
+    margin-top: 30px;
+    border-radius: 5px;
+    padding:21px;
+    width:100%;
+    background-color: rgb(3, 94, 18);
+    border: none;
+    text-transform: none;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+    font-size:14px;
+  }
+  .input-row .btn>svg{display:none;}
+  .input-row .btn>svg,.input-row .btn>img{
+    width:20px;
+    height:20px;
+  }
+  .input-row .btn:hover{
+    background-color: #000;
+  }
+  .address-form-container.loading .input-row .btn>img{display:none}
+  .address-form-container.loading .input-row .btn>svg{display:inline-block}
+  .input-error span{
+    display: none;
+    width: auto;
+    background-color: red;
+    color: white;
+    padding: 5px 20px 5px 10px;
+    border-radius: 10px;
+  }
+  .input-error span.active{display:inline-block}
+  .input-error span::before{
+    content: "✕";
+    font-size: 13px;
+    vertical-align: text-bottom;
+    margin-right: 10px;
+    border: thin solid #fff;
+    border-radius: 100%;
+    padding: 1px 5px;
+  }
+  [dir="rtl"] .input-error span::before{
+    margin-right: 0;
+    margin-left: 10px;
+  }
+  .loading-overlay{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background-color: rgba(255,255,255,0.2);
+    z-index:10;
+  }
+  .address-form-container.loading .loading-overlay{display:block}
+  .address_form{margin-top:30px}
+
+  .address_delector_type{
+    display:flex;
+    flex-wrap:nowrap;
+    border:2px solid #e6e6e6;
+    border-radius: 5px;
+    padding: 10px 15px;
+    margin-bottom:20px;
+    cursor:pointer;
+    justify-content: space-between;
+    align-items: center;
+    user-select:none;
+  }
+  .address_delector_type img{
+    width:80px;
+    height:80px;
+  }
+  .address_delector_type .text-data {
+    min-height: 80px;
+    width: calc(100% - 80px);
+    padding-right: 15px;
+  }
+  [dir="rtl"] .address_delector_type .text-data{
+    padding-right: 0;
+    padding-left: 15px;
+  }
+  .address_delector_type.active{border:2px solid #8ad182;}
+  
+  .address_delector_type .title{
+    text-align:left;
+    position:relative;
+    padding-left:25px;
+    font-weight:bold;
+    margin-bottom: 10px;
+    color:#000;
+  }
+  [dir="rtl"] .address_delector_type .title{
+    text-align:right;
+    padding-left:0;
+    padding-right:25px;
+  }
+  .address_delector_type .title::before{
+    content:"";
+    width:15px;
+    height:15px;
+    border:2px solid #e6e6e6;
+    border-radius:100%;
+    position:absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+  }
+  [dir="rtl"] .address_delector_type .title::before{
+    left: auto;
+    right: 0;
+  }
+  .address_delector_type.active .title::before{
+    font-size: 7.5px;
+    content: "⬤";
+    color: #8ad182;
+    border: 2px solid #8ad182;
+    text-align: center;
+    line-height:normal;
+  }
+  
+  .address_delector_type .info{
+    padding-left:25px;
+    font-weight:bold;
+    color:#888;
+    margin:0
+  }
+  [dir="rtl"] .address_delector_type .info{
+    padding-left:0;
+    padding-right:25px;
+  }
+  .address-search{
+    position: fixed;
+    overflow: visible;
+    z-index: 9990;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, .6);
+    display:none;
+  }
+  .address-search.show{
+    display:block;
+  }
+  .address-search .input-group{
+    display: flex;
+    border-radius: 10px !important;
+    margin-bottom: 10px;
+    background-image: url(//beisat.com/cdn/shop/t/15/assets/magnifying-glass.png?v=2015143…);
+    background-position: 12px 17px;
+    background-repeat: no-repeat;
+    background-size: 12px;
+    padding-left: 35px;
+    font-size: 14px;
+    max-width: 90%;
+    width: 600px !important;
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    flex-wrap: nowrap;
+    background-color: #fff;
+    overflow:hidden;
+  }
+  .address-search .input-group input,.address-search .input-group select{
+    border:none;
+    outline:none;
+    box-shadow:none;
+    color: rgb(var(--input-text-color));
+    font-size: var(--input-text-size);
+  }
+  [dir="rtl"] .address-search  .input-group{
+    padding-right: 35px;
+    padding-left: 15px;
+    background-position: right 9px top 15px;
+  }
+  .address-search .suggestion{
+    display: none;
+    position: absolute;
+    top: 145px;
+    left: 50%;
+    right: 0;
+    background-color: #fff;
+    border-radius: 10px !important;
+    border: thin solid #b5b5b5;
+    box-shadow: 0 5px 10px #5c5c5c99;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    max-height: 150px;
+    max-width: 90%;
+    width: 600px;
+    transform: translateX(-50%);
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  [dir="rtl"] .address-search .suggestion{
+    left: auto;
+    right: 50%;
+    transform: translateX(50%);
+  }
+  .address-search .suggestion::-webkit-scrollbar {
+    display: none;
+  }
+  .address-search .suggestion>p{
+    margin:0;
+    padding:5px 10px;
+    border-bottom:thin solid #e8e8e8;
+  }
+  .address-search .suggestion>p:last-child{
+    border:none;
+  }
+  .address-search .suggestion>p:hover{
+    background-color:rgba(0,0,0,.2)
+  }
+</style>
+<div class="account-form">
+    <div class="small-form">
+      <div class="address-form-container">
+        <div class="loading-overlay"></div>
+        <img src="{{ 'address-top-img.png' | asset_url }}" width="100%" height="auto" style="max-width:80%; width:300px; margin:0 auto; display:block; margin-bottom:40px;">
+        <div class="page-header" style="padding:0">
+          <h2 class="title" id="gps_form_title">{{ 'gps_address.title_new' | t }}</h2>
+        </div>
+
+        <form onsubmit="return saveNewAddress();" class="address_form">
+          <input type="hidden" id="address_json">
+          <input type="hidden" id="address_id">
+          <div class="address_delector_type" id="autoLocation">
+            <div class="text-data">
+              <p class="title">{{ 'gps_address.auto_detect_title' | t }}</p>
+              <p class="info"></p>
+            </div>
+            <img src="{{ 'geolocation.jpg' | asset_url }}" width="auto" height="auto">
+          </div>
+          <div class="address_delector_type" id="manualLocation">
+            <div class="text-data">
+              <p class="title">{{ 'gps_address.manual_search_title' | t }}</p>
+              <div class="address-search">
+                <div class="input-group">
+                  <select>
+                    <option value="">--{{ 'gps_address.country.country' | t }}--</option>
+                    <option value="United Arab Emirates">{{ 'gps_address.country.uae' | t }}</option>
+                    <option value="Saudi Arabia">{{ 'gps_address.country.sa' | t }}</option>
+                    <option selected value="Oman">{{ 'gps_address.country.oman' | t }}</option>
+                    <option value="Qatar">{{ 'gps_address.country.qatar' | t }}</option>
+                    <option value="Bahrain">{{ 'gps_address.country.bahrain' | t }}</option>
+                    <option value="Kuwait">{{ 'gps_address.country.kuwait' | t }}</option>
+                  </select>
+                  <input type="text" value="" placeholder="{{ 'gps_address.manual_search_placeholder' | t }}" class="large" size="30" />
+                </div>
+                <div class="suggestion"></div>
+              </div>
+              <p class="info"></p>
+            </div>
+            <img src="{{ 'globe.jpg' | asset_url }}" width="auto" height="auto">
+          </div>
+
+          <div class="input-row text-center">
+            <div class="input-error text-center"><span></span></div>
+            <button class="btn" type="submit">
+              <img src="{{ 'right.png' | asset_url }}" width="auto" height="100%">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="#fff" xmlns="http://www.w3.org/2000/svg"><style>.spinner_ajPY{transform-origin:center;animation:spinner_AtaB .75s infinite linear}@keyframes spinner_AtaB{100%{transform:rotate(360deg)}}</style><path d="M12,1A11,11,0,1,0,23,12,11,11,0,0,0,12,1Zm0,19a8,8,0,1,1,8-8A8,8,0,0,1,12,20Z" opacity=".25"/><path d="M10.14,1.16a11,11,0,0,0-9,8.92A1.59,1.59,0,0,0,2.46,12,1.52,1.52,0,0,0,4.11,10.7a8,8,0,0,1,6.66-6.61A1.42,1.42,0,0,0,12,2.69h0A1.57,1.57,0,0,0,10.14,1.16Z" class="spinner_ajPY"/></svg>
+            </button>
+            {% if customer.addresses_count > 0 %}
+            <span><a href="#" onclick="return toggleForms()" class="underline">{{ 'customer.addresses.cancel' | t }}</a></span>
+            {% endif %}
+          </div>
+        </form>
+      </div>
+    </div>
+</div>
+
+<script src="{{ 'fuse.js' | asset_url }}"></script>
+<script>
+var manualAddressList = [];
+var fuseSearchObj = null;
+  
+document.getElementById("manualLocation").addEventListener('click', function(e){
+  e.stopPropagation();
+  document.body.style.overflow = "hidden";
+  document.getElementById("autoLocation").classList.remove('active');
+  document.getElementById("autoLocation").querySelector('.info').textContent = "";
+  this.classList.add('active');
+  this.querySelector('.address-search').classList.add('show');
+  this.querySelector('input').focus()
+  document.querySelector('#address_json').value = "";
+});
+  
+document.getElementById("autoLocation").addEventListener('click', function(){
+  document.getElementById("manualLocation").classList.remove('active');
+  document.getElementById("manualLocation").querySelector('.info').textContent = "";
+  this.classList.add('active');
+  document.querySelector('#address_json').value = "";
+  getLocation();
+});
+
+function hideAddressSearch(){
+  document.body.style.overflow = "auto";
+  document.querySelector('.address-search').classList.remove('show');
+  document.querySelector('.address-search>div>input').value = "";
+  document.querySelector('.address-search .suggestion').innerHTML = "";
+  document.querySelector('.address-search .suggestion').style.display = 'none';
+}
+
+document.querySelector('.address-search>div>input').addEventListener('keyup', function(e){
+  if(e.key == 'Escape') hideAddressSearch();
+  var value = this.value.trim().toLowerCase();
+  document.querySelector('.address-search .suggestion').innerHTML = "";
+  if(value.length > 2){
+    fuseSearchObj.search(value).forEach(function(result){
+      var tmpResult = JSON.parse(JSON.stringify(result));
+      result.matches.forEach(function(match){
+        tmpData = tmpResult.item[match.key.split('.')[0]][match.key.split('.')[1]];
+        match.indices.forEach(function(pos,index){
+          pos0 = pos[0] + (index * 7)
+          pos1 = pos[1] + (index * 7) + 1
+          tmpData = tmpData.slice(0,pos0)+'<b>'+tmpData.slice(pos0,pos1)+'</b>'+tmpData.slice(pos1);
+        });
+        tmpResult.item[match.key.split('.')[0]][match.key.split('.')[1]] = tmpData;
+      });
+      var p = document.createElement("p");
+      
+      p.innerHTML = tmpResult.item["{{localization.language.iso_code}}"].area + ", " + (tmpResult.item["{{localization.language.iso_code}}"].state?tmpResult.item["{{localization.language.iso_code}}"].state+ ", ":"") + tmpResult.item["{{localization.language.iso_code}}"].country
+      
+      document.querySelector('.address-search .suggestion').appendChild(p);
+      p.addEventListener('click', function(e){
+        e.stopPropagation();
+        document.querySelector('#manualLocation .info').textContent = p.textContent;
+        document.querySelector('#address_json').value = JSON.stringify(result.item.en);
+        hideAddressSearch();
+      });
+    });
+
+    if(value.length > 5 && document.querySelector('.address-search .suggestion>p') == null){
+      fuseSearchObj._docs.forEach(function(result){
+        var tmpResult = result;
+        var p = document.createElement("p");
+        
+        p.innerHTML = tmpResult["{{localization.language.iso_code}}"]["area"] + ", " + (tmpResult["{{localization.language.iso_code}}"]["state"]?tmpResult["{{localization.language.iso_code}}"]["state"]+ ", ":"") + tmpResult["{{localization.language.iso_code}}"]['country']
+        console.log(p.innerHTML)
+        document.querySelector('.address-search .suggestion').appendChild(p);
+        p.addEventListener('click', function(e){
+          e.stopPropagation();
+          document.querySelector('#manualLocation .info').textContent = p.textContent;
+          document.querySelector('#address_json').value = JSON.stringify(result.en);
+          hideAddressSearch();
+        });
+      });
+    }
+  }
+  if(document.querySelector('.address-search .suggestion').children.length > 0){
+    document.querySelector('.address-search .suggestion').style.display = 'block';
+  }else document.querySelector('.address-search .suggestion').style.display = 'none';
+});
+document.querySelector('.address-search').addEventListener('click', function(e){
+  e.stopPropagation();
+  hideAddressSearch();
+});
+document.querySelector('.address-search>div>select').addEventListener('change', function(e){
+  callAddress_API({country:document.querySelector('.address-search>div>select').value}, 'GET')
+})
+document.querySelector('.address-search>div').addEventListener('click', function(e){e.stopPropagation();})
+document.querySelector('.address-search>div>input').addEventListener('focus', function(){
+  if(this.value.trim().length > 0)
+    document.querySelector('.address-search .suggestion').style.display = 'block';
+});
+  
+const addressError = document.querySelector("#autoLocation .info");
+
+function getLocation() {
+  if (navigator.geolocation) {
+    addressError.innerHTML = "{{ 'gps_address.auto_detect_progress' | t }}" + ' <svg width="15" height="15" fill="#888" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><style>.spinner_qM83{animation:spinner_8HQG 1.05s infinite}.spinner_oXPr{animation-delay:.1s}.spinner_ZTLf{animation-delay:.2s}@keyframes spinner_8HQG{0%,57.14%{animation-timing-function:cubic-bezier(0.33,.66,.66,1);transform:translate(0)}28.57%{animation-timing-function:cubic-bezier(0.33,0,.66,.33);transform:translateY(-6px)}100%{transform:translate(0)}}</style><circle class="spinner_qM83" cx="4" cy="12" r="3"/><circle class="spinner_qM83 spinner_oXPr" cx="12" cy="12" r="3"/><circle class="spinner_qM83 spinner_ZTLf" cx="20" cy="12" r="3"/></svg>';
+    navigator.geolocation.getCurrentPosition(showPosition, showError);
+    document.querySelector('.address-form-container').classList.add('loading');
+
+    if(typeof(JS) != 'undefined') {
+        JS.CallSub(`check_gps`,true);
+    } else if(window.webkit) {
+        window.webkit.messageHandlers.callback.postMessage("check_gps");
+    }
+  } else {
+    addressError.innerHTML = "{{ 'gps_address.auto_detect_not_supported' | t }}";
+  }
+}
+
+function showError(error) {
+  document.querySelector('.address-form-container').classList.remove('loading');
+  switch(error.code) {
+    case error.PERMISSION_DENIED:
+      addressError.innerHTML = "{{ 'gps_address.PERMISSION_DENIED' | t }}"
+      break;
+    case error.POSITION_UNAVAILABLE:
+      addressError.innerHTML = "{{ 'gps_address.POSITION_UNAVAILABLE' | t }}"
+      break;
+    case error.TIMEOUT:
+      addressError.innerHTML = "{{ 'gps_address.TIMEOUT' | t }}"
+      break;
+    case error.UNKNOWN_ERROR:
+      addressError.innerHTML = "{{ 'gps_address.UNKNOWN_ERROR' | t }}"
+      break;
+  }
+}
+
+function showPosition(position) {
+  document.querySelector('.address-form-container').classList.remove('loading');
+  addressError.innerHTML = "";
+  callAddress_API({latlng:position.coords.latitude+","+position.coords.longitude}, 'POST')
+}
+
+function callAddress_API(dataObject, type){
+  var http = new XMLHttpRequest();
+  var url = 'https://beisat.click/API/ShopifyOTPLogin/address/';
+  var params = new URLSearchParams(dataObject).toString();
+  if(type == 'GET'){
+    http.open(type, url+'?'+params, true);
+  }else{
+    http.open(type, url, true);
+    http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+  }
+  
+  http.onreadystatechange = function() {
+    if(http.readyState == 4){
+      document.querySelector('.address-form-container').classList.remove('loading');
+    }
+    if(http.readyState == 4 && http.status == 200) {
+      res = JSON.parse(http.responseText);
+      if(type == 'POST') {
+        if(res.success){
+          document.querySelector('#address_json').value = JSON.stringify(res.success['en']);
+          addressError.innerHTML = res.success['{{ localization.language.iso_code }}'].area + ", " + (res.success['{{ localization.language.iso_code }}'].state?res.success['{{ localization.language.iso_code }}'].state + ", ":"") + res.success['{{ localization.language.iso_code }}'].country;
+        }else{
+          addressError.innerHTML = "{{ 'gps_address.location_not_found' | t }}";
+        }
+      }else{
+        if(res.length == 0) callAddress_API({country:"Oman"}, 'GET');
+        
+        manualAddressList = res;
+        fuseSearchObj = new Fuse(manualAddressList, {includeMatches: true, minMatchCharLength: 2, threshold: 0.4, findAllMatches: true, keys: ["ar.area","ar.state","ar.country","en.area","en.state","en.country"]});
+      }
+    }
+  }
+  http.send(params);
+  document.querySelector('.address-form-container').classList.add('loading');
+}
+
+function saveNewAddress(){
+  var formID = document.querySelector('#address_id').value == ""? "new":document.querySelector('#address_id').value;
+  if(document.querySelector('#address_json').value.trim().length > 0){
+    document.querySelector("#address_form_"+formID+" [name='address[first_name]']").value = "{{ customer.last_name }}"
+    document.querySelector("#address_form_"+formID+" [name='address[last_name]']").value = "{{ customer.first_name }}"
+    document.querySelector("#address_form_"+formID+" [name='address[phone]']").value = "{{ customer.phone }}"
+    var loc = JSON.parse(document.querySelector('#address_json').value);
+    document.querySelector("#address_form_"+formID+" [name='address[address1]']").value = loc.area; 
+    document.querySelector("#address_form_"+formID+" [name='address[country]']").value = loc.country;
+
+    switch(loc.country){
+      case "United Arab Emirates":
+      case "Kuwait":
+        document.querySelector("#address_form_"+formID+" [name='address[city]']").value = 'N/A';
+        document.querySelector("#address_form_"+formID+" [name='address[province]']").remove();
+        var province_input = document.createElement("input");
+        province_input.setAttribute('type', 'hidden');
+        province_input.setAttribute('name', 'address[province]');
+        province_input.value = loc.area;
+        document.querySelector("#address_form_"+formID).appendChild(province_input);
+        break;
+      default:
+        document.querySelector("#address_form_"+formID+" [name='address[city]']").value = loc.state?loc.state:'';
+        document.querySelector("#address_form_"+formID+" [name='address[province]']").value = '';
+    }
+    
+    document.querySelector("#address_form_"+formID).submit();
+    document.querySelector('.address-form-container').classList.add('loading');
+  }else{
+    document.querySelector('.input-error>span').innerHTML = "{{ 'gps_address.no_address_selected' | t }}";
+    document.querySelector('.input-error>span').classList.add('active');
+    document.querySelector('.address_form .btn').style.display="none";
+    setTimeout(function(){
+      document.querySelector('.input-error>span').classList.remove('active');
+      document.querySelector('.address_form .btn').style.display="inherit";
+    },5000)
+  }
+  return false;
+}
+
+function toggleForms(editMode,formID){
+  document.querySelector('#address_json').value = "";
+  document.querySelector('#address_id').value = "";
+  document.getElementById("autoLocation").querySelector('.info').textContent = "";
+  document.getElementById("manualLocation").querySelector('.info').textContent = "";
+  document.getElementById("manualLocation").querySelector('input').value = "";
+  document.getElementById("autoLocation").classList.remove('active');
+  document.getElementById("manualLocation").classList.remove('active');
+  
+  var form_visible = document.querySelector('#address_page_content').style.display=="none";
+  document.querySelector('#address_page_content').style.display=form_visible?"block":"none";
+  document.querySelector('#CustomAddNewForm').style.display=form_visible?"none":"block";
+
+  if(editMode == true && formID){
+    document.getElementById('gps_form_title').textContent = "{{ 'gps_address.title_edit' | t }}";
+    document.getElementById("manualLocation").click();
+    hideAddressSearch();
+    document.querySelector('#address_id').value = formID;
+    var area = document.querySelector("#address_form_"+formID+" [name='address[address1]']").value;
+    var state = document.querySelector("#address_form_"+formID+" [name='address[city]']").value;
+    var country = document.querySelector("#address_form_"+formID+" [name='address[country]']").value;
+    document.getElementById("manualLocation").querySelector('.info').textContent = area;
+    var json = {area:area.split(', ',1)[0],state:state, country:country};
+    document.querySelector('#address_json').value = JSON.stringify(json);
+    document.getElementById("manualLocation").scrollIntoView({ behavior: "smooth", block: "center", inline: "center" });
+  }else{
+    document.getElementById('gps_form_title').textContent = "{{ 'gps_address.title_new' | t }}";
+    if(!form_visible) askForPermission();
+  }
+  return false;
+}
+function askForPermission(){
+  if (navigator.permissions){
+    navigator.permissions.query({ name: 'geolocation' }).then((permissionStatus) => {
+      if(permissionStatus.state == "granted"){
+        document.getElementById("autoLocation").click();
+      }else if(permissionStatus.state == "prompt"){
+        if (navigator.geolocation) navigator.geolocation.getCurrentPosition(()=>{}, ()=>{});
+        permissionStatus.onchange = () => {
+          askForPermission();
+        };
+      }
+    });
+  }else{
+    navigator.geolocation.getCurrentPosition(()=>{document.getElementById("autoLocation").click();}, ()=>{});
+  }
+}
+fetch('/browsing_context_suggestions.json')
+.then(res=>res.json())
+.then((r) => {
+  callAddress_API({country:r.detected_values.country_name}, 'GET');
+  // document.querySelector('.address-search>div>select').value = r.detected_values.country_name
+});
+  
+document.getElementById("CustomAddNew").onclick = toggleForms;
+if((new URLSearchParams(window.location.search)).get("add") == "1") toggleForms(false);
+</script>
+{% comment %} ---END--- Edited by: Biswajit | Date: 18/9/2024 | Reason: add gdp address form {% endcomment %}

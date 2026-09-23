@@ -1,0 +1,662 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "show_page_title": false,
+        "full_width": false
+      }
+    },
+    "rich_text_nzRTiM": {
+      "type": "rich-text",
+      "blocks": {
+        "button_ttyVGh": {
+          "type": "button",
+          "settings": {
+            "button_label": "women",
+            "button_link": "shopify://pages/women",
+            "button_style": "link"
+          }
+        },
+        "button_Japy9p": {
+          "type": "button",
+          "settings": {
+            "button_label": "men",
+            "button_link": "shopify://pages/men",
+            "button_style": "link"
+          }
+        },
+        "button_8tzUBT": {
+          "type": "button",
+          "settings": {
+            "button_label": "kids",
+            "button_link": "shopify://pages/kids",
+            "button_style": "link"
+          }
+        },
+        "button_cFtHzP": {
+          "type": "button",
+          "settings": {
+            "button_label": "house",
+            "button_link": "shopify://pages/house",
+            "button_style": "link"
+          }
+        }
+      },
+      "block_order": [
+        "button_ttyVGh",
+        "button_Japy9p",
+        "button_8tzUBT",
+        "button_cFtHzP"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".fully-spaced-row--small {margin: 20px;}",
+        ".small-feature-link {font-size: 1em; font-weight: 650; text-decoration: none; background-color: #f0efea; color: black; border-radius: 12px; padding: 4px;}",
+        ".small-feature-link:nth-of-type(4) {color: white; background-color: #3db55b;}",
+        ".button-row .button-row__btn {display: inline-block; margin-top: 0;}",
+        "@media (min-width: 786px) {.container {display: none; }}"
+      ],
+      "settings": {
+        "height": "small",
+        "text_alignment": "center",
+        "full_width": true,
+        "color_scheme": "default"
+      }
+    },
+    "rich_text_bFDP9g": {
+      "type": "rich-text",
+      "blocks": {
+        "button_egTRNb": {
+          "type": "button",
+          "settings": {
+            "button_label": "women",
+            "button_link": "shopify://pages/women",
+            "button_style": "link"
+          }
+        },
+        "button_c7rkVK": {
+          "type": "button",
+          "settings": {
+            "button_label": "men",
+            "button_link": "shopify://pages/men",
+            "button_style": "link"
+          }
+        },
+        "button_L4z8aq": {
+          "type": "button",
+          "settings": {
+            "button_label": "kids",
+            "button_link": "shopify://pages/kids",
+            "button_style": "link"
+          }
+        },
+        "button_8EqFdL": {
+          "type": "button",
+          "settings": {
+            "button_label": "house",
+            "button_link": "shopify://pages/house",
+            "button_style": "link"
+          }
+        },
+        "button_7aNUgQ": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_label": "Limited",
+            "button_link": "shopify://pages/limit-picks",
+            "button_style": "link"
+          }
+        }
+      },
+      "block_order": [
+        "button_egTRNb",
+        "button_c7rkVK",
+        "button_L4z8aq",
+        "button_8EqFdL",
+        "button_7aNUgQ"
+      ],
+      "custom_css": [
+        ".fully-spaced-row--small {margin: 20px;}",
+        ".small-feature-link {font: 650 0.9em sans-serif; text-decoration: none; background: #f0efea; color: #000; border-radius: 8px; padding: 4px;}",
+        ".small-feature-link:nth-of-type(4) {background: #3db55b; color: #fff;}",
+        ".button-row {display: flex; justify-content: center; align-items: center; flex-wrap: nowrap;}",
+        ".small-feature-link::last-child {background: #ffe5ee; color: #ff4b88; border: 1px solid #ffc1d5;}",
+        "@media (min-width: 786px) {.container {display: none; }}"
+      ],
+      "settings": {
+        "height": "small",
+        "text_alignment": "center",
+        "full_width": true,
+        "color_scheme": "default"
+      }
+    },
+    "slideshow_6cgEPc": {
+      "type": "slideshow",
+      "blocks": {
+        "image_rfpCrr": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Beisat-Giveaway.jpg",
+            "slide_link": "shopify://pages/withdraw-landing-page",
+            "subheading": "",
+            "title": "",
+            "heading_max_width": 15,
+            "title_size": 84,
+            "title_size_mobile": 46,
+            "use_h1": false,
+            "text": "",
+            "enlarge_text": false,
+            "button_label_1": "",
+            "button_url_1": "",
+            "button_label_2": "",
+            "button_url_2": "",
+            "text_alignment": "center center"
+          }
+        },
+        "image_79KQCE": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Home_015eb4de-f363-4f20-b394-98e8a60bfc9c.jpg",
+            "slide_link": "shopify://collections/salalah-essentials",
+            "subheading": "",
+            "title": "",
+            "heading_max_width": 15,
+            "title_size": 84,
+            "title_size_mobile": 46,
+            "use_h1": false,
+            "text": "",
+            "enlarge_text": false,
+            "button_label_1": "",
+            "button_url_1": "",
+            "button_label_2": "",
+            "button_url_2": "",
+            "text_alignment": "center center"
+          }
+        },
+        "image_tHAnJ9": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Home_f6f88da8-f6c0-420a-8441-fdc89493c028.jpg",
+            "slide_link": "shopify://collections/new-arrivals-for-house",
+            "subheading": "",
+            "title": "",
+            "heading_max_width": 15,
+            "title_size": 84,
+            "title_size_mobile": 46,
+            "use_h1": false,
+            "text": "",
+            "enlarge_text": false,
+            "button_label_1": "",
+            "button_url_1": "",
+            "button_label_2": "",
+            "button_url_2": "",
+            "text_alignment": "center center"
+          }
+        }
+      },
+      "block_order": [
+        "image_rfpCrr",
+        "image_79KQCE",
+        "image_tHAnJ9"
+      ],
+      "custom_css": [
+        ".text-overlay__button {background-color: black; color: white;}"
+      ],
+      "settings": {
+        "height": "fixed",
+        "height_desktop": 500,
+        "height_mobile": 340,
+        "full_width": true,
+        "mobile_overlay_under": false,
+        "overlay_style": "shadow",
+        "transition": "fade",
+        "navigation": "dots",
+        "autoplay": true,
+        "autoplay_speed": 5,
+        "accessibility_info": ""
+      }
+    },
+    "countdown_timer_YejJqD": {
+      "type": "countdown-timer",
+      "custom_css": [
+        ".relative {padding-top: 0; padding-bottom: 1px; background-color: #deefe9;}",
+        ".countdown-divider-colon {margin-top: 0;}",
+        ".countdown__grid {color: black; font-weight: bold;}",
+        ".feature-text-paired-wide {margin-top: 0;}"
+      ],
+      "settings": {
+        "show_image": false,
+        "image_link": "",
+        "show_image_space": false,
+        "image_position": "left",
+        "text_alignment": "center",
+        "color_scheme": "1"
+      }
+    },
+    "collection_list_AxynGg": {
+      "type": "collection-list",
+      "blocks": {
+        "collection_rHzqmK": {
+          "type": "collection",
+          "settings": {
+            "collection": "school-ready",
+            "image": "shopify://shop_images/Back-to-school_02299420-e6c8-44dc-8217-843e22c0fe9d.jpg",
+            "subheading": "",
+            "button_label": ""
+          }
+        },
+        "collection_pKc9dK": {
+          "type": "collection",
+          "settings": {
+            "collection": "new-arrivals-for-house",
+            "image": "shopify://shop_images/New-Arrival.jpg",
+            "subheading": "",
+            "button_label": ""
+          }
+        },
+        "collection_g9FPny": {
+          "type": "collection",
+          "settings": {
+            "collection": "salalah-essentials",
+            "image": "shopify://shop_images/Salalah-Edit.jpg",
+            "subheading": "",
+            "button_label": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection_rHzqmK",
+        "collection_pKc9dK",
+        "collection_g9FPny"
+      ],
+      "custom_css": [
+        "@media (max-width: 786px) {.product-grid--per-row-mob-2 {--product-columns-desktop: 3; }}",
+        ".product-block__detail {display: none;}",
+        ".slider-nav {display: none;}",
+        ".collection-slider-row {margin-top: 25px; margin-bottom: 25px;}"
+      ],
+      "settings": {
+        "title": "",
+        "enable_carousel": true,
+        "grid": 5,
+        "color_scheme": "default",
+        "full_width": false,
+        "coll_grid_image_shape": "tallest",
+        "coll_grid_image_position": "center center",
+        "coll_thumb_mob_per_row": "2",
+        "coll_grid_show_count": false,
+        "coll_text_position": "below",
+        "coll_text_position_under_mobile": false,
+        "coll_thumb_text_align_x": "center",
+        "coll_thumb_text_align_y": "center",
+        "coll_button_style": "primary"
+      }
+    },
+    "collection_list_EkFkz6": {
+      "type": "collection-list",
+      "blocks": {
+        "collection_WxgJgd": {
+          "type": "collection",
+          "settings": {
+            "collection": "home-living_home-decor",
+            "image": "shopify://shop_images/1_homeEN.jpg",
+            "subheading": "",
+            "button_label": ""
+          }
+        },
+        "collection_JgV8B3": {
+          "type": "collection",
+          "settings": {
+            "collection": "home-living_kitchen-dining",
+            "image": "shopify://shop_images/2_homeEN.jpg",
+            "subheading": "",
+            "button_label": ""
+          }
+        },
+        "collection_ceWpty": {
+          "type": "collection",
+          "settings": {
+            "collection": "home-living_home-essentials-stationery",
+            "image": "shopify://shop_images/home3.jpg",
+            "subheading": "",
+            "button_label": ""
+          }
+        },
+        "collection_W7QFLN": {
+          "type": "collection",
+          "settings": {
+            "collection": "home-living_bedding",
+            "image": "shopify://shop_images/5_homeEN.jpg",
+            "subheading": "",
+            "button_label": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection_WxgJgd",
+        "collection_JgV8B3",
+        "collection_ceWpty",
+        "collection_W7QFLN"
+      ],
+      "custom_css": [
+        "@media (max-width: 786px) {.product-grid--per-row-mob-2 {--product-columns-desktop: 3.5; }}",
+        ".product-block__detail {display: none;}",
+        ".collection-slider-row {margin-top: 25px;}"
+      ],
+      "settings": {
+        "title": "Shop By Category",
+        "enable_carousel": true,
+        "grid": 5,
+        "color_scheme": "default",
+        "full_width": false,
+        "coll_grid_image_shape": "tallest",
+        "coll_grid_image_position": "center center",
+        "coll_thumb_mob_per_row": "2",
+        "coll_grid_show_count": false,
+        "coll_text_position": "below",
+        "coll_text_position_under_mobile": false,
+        "coll_thumb_text_align_x": "center",
+        "coll_thumb_text_align_y": "center",
+        "coll_button_style": "primary"
+      }
+    },
+    "collection_list_NVJ9ac": {
+      "type": "collection-list",
+      "blocks": {
+        "collection_dw98BR": {
+          "type": "collection",
+          "settings": {
+            "collection": "home-living_electronics",
+            "image": "shopify://shop_images/home4_95b1227b-2624-4d99-8fb8-0aa280467368.jpg",
+            "subheading": "",
+            "button_label": ""
+          }
+        },
+        "collection_FiKmAU": {
+          "type": "collection",
+          "settings": {
+            "collection": "home-living_storage-organization",
+            "image": "shopify://shop_images/home5.jpg",
+            "subheading": "",
+            "button_label": ""
+          }
+        },
+        "collection_wFCNL4": {
+          "type": "collection",
+          "settings": {
+            "collection": "home-living_event-party-supplies",
+            "image": "shopify://shop_images/3_homeEN.jpg",
+            "subheading": "",
+            "button_label": ""
+          }
+        },
+        "collection_FNyBcP": {
+          "type": "collection",
+          "settings": {
+            "collection": "home-living_bathroom",
+            "image": "shopify://shop_images/home7.jpg",
+            "subheading": "",
+            "button_label": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection_dw98BR",
+        "collection_FiKmAU",
+        "collection_wFCNL4",
+        "collection_FNyBcP"
+      ],
+      "custom_css": [
+        "@media (max-width: 786px) {.product-grid--per-row-mob-2 {--product-columns-desktop: 3.5; }}",
+        ".product-block__detail {display: none;}",
+        ".collection-slider .hometitle {display: none;}"
+      ],
+      "settings": {
+        "title": "Top Picks",
+        "enable_carousel": true,
+        "grid": 5,
+        "color_scheme": "default",
+        "full_width": false,
+        "coll_grid_image_shape": "tallest",
+        "coll_grid_image_position": "center center",
+        "coll_thumb_mob_per_row": "2",
+        "coll_grid_show_count": false,
+        "coll_text_position": "below",
+        "coll_text_position_under_mobile": false,
+        "coll_thumb_text_align_x": "center",
+        "coll_thumb_text_align_y": "center",
+        "coll_button_style": "primary"
+      }
+    },
+    "collection_list_BtxVcQ": {
+      "type": "collection-list",
+      "blocks": {
+        "collection_Xj8dgz": {
+          "type": "collection",
+          "settings": {
+            "collection": "home-living_automotive",
+            "image": "shopify://shop_images/Automotive--icon-en.jpg",
+            "subheading": "",
+            "button_label": ""
+          }
+        },
+        "collection_MBNzGa": {
+          "type": "collection",
+          "settings": {
+            "collection": "home-living_lighting-lamp",
+            "image": "shopify://shop_images/4_homeEN.jpg",
+            "subheading": "",
+            "button_label": ""
+          }
+        },
+        "collection_cb6iBd": {
+          "type": "collection",
+          "settings": {
+            "collection": "home-living_pet-supplies",
+            "image": "shopify://shop_images/home9.jpg",
+            "subheading": "",
+            "button_label": ""
+          }
+        },
+        "collection_4iwLjF": {
+          "type": "collection",
+          "settings": {
+            "collection": "home-living_outdoor-garden",
+            "image": "shopify://shop_images/home11.jpg",
+            "subheading": "",
+            "button_label": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection_Xj8dgz",
+        "collection_MBNzGa",
+        "collection_cb6iBd",
+        "collection_4iwLjF"
+      ],
+      "custom_css": [
+        "@media (max-width: 786px) {.product-grid--per-row-mob-2 {--product-columns-desktop: 3.5; }}",
+        ".product-block__detail {display: none;}",
+        ".collection-slider .hometitle {display: none;}"
+      ],
+      "settings": {
+        "title": "Top Picks",
+        "enable_carousel": true,
+        "grid": 5,
+        "color_scheme": "default",
+        "full_width": false,
+        "coll_grid_image_shape": "tallest",
+        "coll_grid_image_position": "center center",
+        "coll_thumb_mob_per_row": "2",
+        "coll_grid_show_count": false,
+        "coll_text_position": "below",
+        "coll_text_position_under_mobile": false,
+        "coll_thumb_text_align_x": "center",
+        "coll_thumb_text_align_y": "center",
+        "coll_button_style": "primary"
+      }
+    },
+    "featured_collection_7rnW3B": {
+      "type": "featured-collection",
+      "disabled": true,
+      "custom_css": [
+        ".container {background-image: linear-gradient( to right, #3eba0e, #76ca00, #a5d900, #d2e800, #fff50d ); padding: 10px;}",
+        ".block-inner-inner {background-color: white; padding: 10px; border-radius: 10px;}",
+        ".has-paging__title {font-size: 22px; font-weight: 900; margin-top: 10px; margin-left: 20px;}",
+        ".slider-nav__btn {display: none;}",
+        ".small-feature-link {color: black; font-weight: bold; font-size: 12px;}"
+      ],
+      "settings": {
+        "title": "🤑 One Piece for free 🤑",
+        "collection": "super_deal_house",
+        "show_vendor": false,
+        "enable_carousel": true,
+        "grid": 4,
+        "rows": 1,
+        "color_scheme": "default",
+        "show_view_all": true,
+        "view_all_position": "top",
+        "view_all_alignment": "center",
+        "target_user": "new",
+        "full_width": false
+      }
+    },
+    "logo_list_HKQHPj": {
+      "type": "logo-list",
+      "blocks": {
+        "logo_BhFUt9": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/26_92c6b89e-9f42-4d5e-8d48-cb8041ac67fb.jpg",
+            "image_width": 160,
+            "link": "shopify://pages/women",
+            "title": ""
+          }
+        },
+        "logo_8PkdFX": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/27_97585e70-354e-448c-9aee-09b480c65505.jpg",
+            "image_width": 160,
+            "link": "shopify://pages/men",
+            "title": ""
+          }
+        },
+        "logo_9FRt9j": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/25_c6700bf1-04dc-4434-9672-4360486c1d91.jpg",
+            "image_width": 160,
+            "link": "shopify://pages/kids",
+            "title": ""
+          }
+        }
+      },
+      "block_order": [
+        "logo_BhFUt9",
+        "logo_8PkdFX",
+        "logo_9FRt9j"
+      ],
+      "custom_css": [
+        ".logo-list__logo {max-width: 25%; margin-left: 3%; margin-right: 3%;}",
+        "@media (min-width: 786px) {.logo-list__logo-image {width: 130px; }}"
+      ],
+      "settings": {
+        "title": "Explore Other Sections",
+        "image_opacity": 100,
+        "color_scheme": "default"
+      }
+    },
+    "rich_text_J6gQkr": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_97G3cR": {
+          "type": "heading",
+          "settings": {
+            "title": "Shein Home & Living in Oman",
+            "use_h1": true
+          }
+        },
+        "text_FgKewc": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Transform your space without the wait for international shipping. Our Muscat warehouse is stocked with Shein's full home and living range, ready for 48-hour delivery across Oman.</p><p>Cash on delivery  ·  Easy returns  ·  Outlet prices</p>",
+            "enlarge_text": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_97G3cR",
+        "text_FgKewc"
+      ],
+      "name": "Rich text",
+      "settings": {
+        "height": "medium",
+        "text_alignment": "center",
+        "full_width": false,
+        "color_scheme": "default"
+      }
+    },
+    "collapsible_tabs_pwd9P3": {
+      "type": "collapsible-tabs",
+      "blocks": {
+        "question_FpWnBe": {
+          "type": "question",
+          "settings": {
+            "title": "Why Beisat is the Best Place to Shop Shein Home & Living in Oman",
+            "answer": "<ul><li><strong>Everything in Stock Locally: </strong>All products are already at our Muscat warehouse. No customs, no long waits, no surprises.<br/><br/></li><li><strong>48-Hour Delivery: </strong>From our shelves to your home in two days, anywhere in Oman.<br/><br/></li><li><strong>Cash on Delivery: </strong>Pay only when your order arrives.<br/><br/></li><li><strong>Outlet Prices: </strong>Shein's home range at prices that make redecorating actually affordable.</li></ul>"
+          }
+        },
+        "question_JhMMbX": {
+          "type": "question",
+          "settings": {
+            "title": "The Smarter Way to Shop Shein Home Products in Oman",
+            "answer": "<p>Home decor trends move fast. By the time an international order reaches Oman, you have already seen the look everywhere. </p><p><a href=\"https://beisat.com/?srsltid=AfmBOopWLY5C69KtikUmUl9Pp-4BGaYWLhgfUUigOUUfj8LmGkJrJp1I\"><span style=\"text-decoration:underline\">Beisat</span></a> changes that. We are a dedicated Shein home and living outlet operating out of Muscat. We bulk-buy the inventory, store it in the Sultanate, and deliver it to you while the trend is still fresh. </p><p>Whether you are refreshing a bedroom, restocking the kitchen, or adding something new to the living room: it is in our warehouse right now. </p><p>No tracking across borders. No customs fees. No waiting three weeks for a throw pillow. Just fast, reliable delivery so you can actually enjoy your new space.</p>"
+          }
+        },
+        "question_zV77Ha": {
+          "type": "question",
+          "settings": {
+            "title": "Shein Home & Living Collection at Beisat Oman",
+            "answer": "<p>Beisat stocks the complete Shein home and living range: decorative items, storage solutions, kitchen accessories, bedding, bathroom essentials, lighting, organisers, cushions, wall art, and seasonal decor, all held in our Muscat warehouse and available for 48-hour delivery across Oman. </p><p>Because we operate as an outlet, many items are stocked in limited quantities. That means you get pieces that are genuinely harder to find, not the same mass-produced items available everywhere else. </p><p>The shopping experience is built for easy browsing: filter by room or category, save items to your wishlist, and check out quickly.</p><p>Cash on delivery, easy returns, and a clean mobile app experience come as standard. If Shein stocks it for the home, we almost certainly have it on our shelves in Muscat, and it can be at your door within 48 hours.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "question_FpWnBe",
+        "question_JhMMbX",
+        "question_zV77Ha"
+      ],
+      "name": "Collapsible tabs",
+      "settings": {
+        "title": "Read more"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "rich_text_nzRTiM",
+    "rich_text_bFDP9g",
+    "slideshow_6cgEPc",
+    "countdown_timer_YejJqD",
+    "collection_list_AxynGg",
+    "collection_list_EkFkz6",
+    "collection_list_NVJ9ac",
+    "collection_list_BtxVcQ",
+    "featured_collection_7rnW3B",
+    "logo_list_HKQHPj",
+    "rich_text_J6gQkr",
+    "collapsible_tabs_pwd9P3"
+  ]
+}

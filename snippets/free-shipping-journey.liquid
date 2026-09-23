@@ -1,0 +1,760 @@
+{%- liquid
+  assign all_amounts = settings.free_shipping_amounts | newline_to_br | strip_newlines | split: '<br />'
+  assign current_amount = false
+
+  for amount in all_amounts
+    assign split_amount = amount | split: ':'
+
+    if split_amount.size == 2 and split_amount[0] == localization.country.currency.iso_code
+      assign current_amount = split_amount
+      break
+    elsif split_amount.size == 3 and split_amount[0] == localization.country.iso_code and split_amount[1] == localization.country.currency.iso_code
+      assign current_amount = split_amount
+      break
+    endif
+  endfor
+
+  if current_amount
+    assign free_shipping_progress = 1.0 | times: cart.total_price | divided_by: current_amount.last | at_least: 0 | at_most: 1
+  endif
+
+  assign bar_col = '#3FAF55'
+  assign goal = current_amount.last | plus: 0
+  assign custom_milestones = settings.custom_milestones
+  assign steps_string = custom_milestones | append: ',' | append: goal
+  assign steps = steps_string | split: ','
+-%}
+
+{%- liquid
+  assign current_deficit = 0
+  assign next_reward_name = ''
+  assign done_count = 0
+
+  for s in steps
+    assign v = s | plus: 0
+
+    if cart.total_price >= v
+      assign done_count = forloop.index
+    elsif current_deficit == 0
+      assign current_deficit = v | minus: cart.total_price
+      assign next_reward_name = 'milestones.step_' | append: forloop.index | t
+    endif
+  endfor
+
+  assign formatted_money = current_deficit | money
+-%}
+
+{%- if current_amount -%}
+  <div
+    class="free-shipping-bar{% if cart.items == empty %} free-shipping-bar--no-cart{% endif %}{% if cart.total_price >= goal %} is-all-done{% endif %}"
+    style="--free-shipping-progress: {{ free_shipping_progress }}; --free-shipping-bar-color: {{ bar_col }}"
+    data-free-shipping-progress="{{ free_shipping_progress | replace: '1.0', '1' }}"
+    data-free-shipping-current-cart="{{ cart.total_price }}"
+    data-free-shipping-amount="{{ current_amount.last }}"
+    data-merge-attributes="free-shipping"
+  >
+    <div class="free-shipping-bar__message free-shipping-bar__message--yes">
+      {{ 'milestones.all_rewards_unlocked' | t }}
+    </div>
+
+    <div
+      class="free-shipping-bar__message free-shipping-bar__message--no"
+      data-merge="free-shipping-not-met-text"
+    >
+      {%- if current_deficit > 0 -%}
+        {{ 'cart.general.milestone_deficit_html' | t: amount: formatted_money, reward: next_reward_name }}
+      {%- endif -%}
+    </div>
+
+    <div class="free-shipping-bar__bar"></div>
+
+    <div class="fsb-milestones">
+      {%- capture icon_pack -%}
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M14 18V6a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h2"/>
+      <path d="M14 9h4l3 3v5a1 1 0 0 1-1 1h-1"/>
+      <circle cx="7" cy="18" r="2"/>
+      <circle cx="17" cy="18" r="2"/>
+    </svg>
+    |||
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/>
+      <path d="M13 5v2M13 11v2M13 17v2"/>
+    </svg>
+    |||
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <rect x="3" y="8" width="18" height="4" rx="1"/>
+      <path d="M12 8v13M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7"/>
+      <path d="M12 8H7.5a2.5 2.5 0 0 1 0-5C11 3 12 8 12 8ZM12 8h4.5a2.5 2.5 0 0 0 0-5C13 3 12 8 12 8Z"/>
+    </svg>
+  {%- endcapture -%}
+
+      {%- assign icons = icon_pack | split: '|||' -%}
+
+      {%- for s in steps -%}
+        {%- assign v = s | plus: 0 -%}
+
+        <div class="fsb-milestone" data-v="{{ v }}">
+          <span class="fsb-milestone__icon">
+            {{ icons[forloop.index0] }}
+          </span>
+
+          <span class="fsb-milestone__text">
+            <span class="fsb-milestone__label">
+              {{ 'milestones.step_' | append: forloop.index | t }}
+            </span>
+            <span class="fsb-milestone__amount">
+              <span class="fsb-milestone__check" aria-hidden="true">✓</span>
+              {{- v | money_without_trailing_zeros -}}
+            </span>
+          </span>
+        </div>
+      {%- endfor -%}
+    </div>
+
+    {%- liquid
+      assign deficit_template = 'cart.general.milestone_deficit_html' | t: amount: 'AMOUNT', reward: 'REWARD'
+
+      assign unlocked_count = 0
+
+      for s in steps
+        assign v = s | plus: 0
+
+        if cart.total_price >= v
+          assign unlocked_count = unlocked_count | plus: 1
+        endif
+      endfor
+    -%}
+
+    <div
+      class="fsb-messages"
+      data-done-count="{{ done_count }}"
+      data-deficit-template="{{ deficit_template | escape }}"
+    >
+      {%- unless unlocked_count == 0 -%}
+        <div
+          class="fsb-rewards-accordion"
+          data-merge="fsb-rewards"
+        >
+          <button
+            class="fsb-rewards-toggle"
+            type="button"
+            aria-expanded="false"
+          >
+            <span class="fsb-rewards-toggle__text">
+              🎉 {{ 'milestones.rewards.you_won' | t }}
+              <strong>
+                {%- if unlocked_count == 1 -%}
+                  {{ 'milestones.rewards.one' | t }}
+                {%- elsif unlocked_count == 2 -%}
+                  {{ 'milestones.rewards.two' | t }}
+                {%- else -%}
+                  {{ unlocked_count }}
+                  {{ 'milestones.rewards.other' | t }}
+                {%- endif -%}
+              </strong>
+            </span>
+
+            <span class="fsb-rewards-toggle__arrow">›</span>
+          </button>
+
+          <div class="fsb-rewards-content">
+            {%- for s in steps -%}
+              {%- assign v = s | plus: 0 -%}
+              {%- assign reward_index = forloop.index -%}
+              {%- case reward_index -%}
+                {%- when 1 -%}
+                  {%- assign reward_link = settings.reward_1_link -%}
+                {%- when 2 -%}
+                  {%- assign reward_link = blank -%}
+                {%- when 3 -%}
+                  {%- assign reward_link = settings.reward_3_link -%}
+              {%- endcase -%}
+
+              {%- if cart.total_price >= v -%}
+                {%- if reward_link == blank or reward_link == '#' -%}
+                  <div class="fsb-reward-item">
+                    <span class="fsb-reward-link__icon">
+                      {{ 'milestones.celebrate_' | append: reward_index | append: '_emoji' | t }}
+                    </span>
+
+                    <span class="fsb-reward-link__title">
+                      {{ 'milestones.celebrate_' | append: reward_index | append: '_title' | t }}
+                    </span>
+                  </div>
+                {%- else -%}
+                  <a class="fsb-reward-item is-claimable" href="{{ reward_link }}">
+                    <span class="fsb-reward-link__icon">
+                      {{ 'milestones.celebrate_' | append: reward_index | append: '_emoji' | t }}
+                    </span>
+
+                    <span class="fsb-reward-link__title">
+                      {{ 'milestones.celebrate_' | append: reward_index | append: '_title' | t }}
+                    </span>
+
+                    {%- unless reward_index == 2 -%}
+                      <span class="fsb-reward-claim">
+                        {{ 'milestones.rewards.claim' | t }}
+                        <span class="fsb-reward-claim__arrow">›</span>
+                      </span>
+                    {%- endunless -%}
+                  </a>
+                {%- endif -%}
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+        </div>
+      {%- endunless -%}
+    </div>
+  </div>
+{%- endif -%}
+
+{% style %}
+  /* Free Shipping Bar Colors */
+
+  .free-shipping-bar {
+    --fsb-idle: #dcdcdc;
+    --fsb-idle-text: #b3b3b3;
+    --fsb-muted: #776e64ff;
+    --fsb-on: #2b2118;
+    --fsb-next: #237d36;
+    --fsb-success: #48b75b;
+  }
+
+  /* Free Shipping Bar Layout */
+
+  .free-shipping-bar {
+    position: relative;
+    padding-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  /* Free Shipping Messages */
+
+  .free-shipping-bar__message {
+    font-size: 14px;
+    font-weight: 400;
+    color: #7a7a7a;
+    text-align: center;
+  }
+
+  .free-shipping-bar__message strong {
+    font-weight: 700;
+    color: var(--fsb-success);
+  }
+
+  /* Progress Bar */
+
+  .free-shipping-bar__bar {
+    height: 10px;
+    border-radius: 999px;
+    background-color: #e3e5e3;
+    overflow: hidden;
+  }
+
+  /* Milestones Layout */
+
+  .fsb-milestones {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 6px;
+    margin-top: 4px;
+  }
+
+  /* Milestone Items */
+
+  .fsb-milestone {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--fsb-idle-text);
+    transition: color 0.25s ease;
+  }
+
+  /* Milestone Icons */
+
+  .fsb-milestone__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+  }
+
+  .fsb-milestone__icon svg {
+    display: block;
+    width: 22px;
+    height: 22px;
+  }
+
+  /* Milestone Text */
+
+  .fsb-milestone__text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1.3;
+  }
+
+  .fsb-milestone__label,
+  .fsb-milestone__amount {
+    font-size: 10px;
+    font-weight: 400;
+    white-space: nowrap;
+  }
+
+  .fsb-milestone__amount {
+    font-variant-numeric: tabular-nums;
+  }
+
+  .fsb-milestone__check {
+    display: none;
+    margin-inline-end: 3px;
+  }
+
+  /* Unlocked Milestones */
+
+  .fsb-milestone.on {
+    color: var(--fsb-next);
+  }
+
+  .fsb-milestone.on .fsb-milestone__check {
+    display: inline;
+  }
+
+  /* Next Milestone */
+
+  .fsb-milestone.is-next {
+    color: #6b6b6b;
+  }
+
+  .fsb-milestone.is-next .fsb-milestone__label,
+  .fsb-milestone.is-next .fsb-milestone__amount {
+    font-weight: 700;
+  }
+
+  .fsb-milestone.is-next .fsb-milestone__icon {
+    animation: fsb-pulse 1.6s ease-out infinite;
+  }
+
+  /* Completed Progress State */
+
+  .free-shipping-bar.is-all-done .fsb-milestone.on {
+    color: var(--fsb-success);
+  }
+
+  /* Next Milestone Pulse Animation */
+
+  @keyframes fsb-pulse {
+    0% {
+      box-shadow: 0 0 0 0 rgba(199, 121, 25, 0.4);
+    }
+
+    70% {
+      box-shadow: 0 0 0 8px rgba(199, 121, 25, 0);
+    }
+
+    100% {
+      box-shadow: 0 0 0 0 rgba(199, 121, 25, 0);
+    }
+  }
+
+  /* Reduced Motion for Milestones */
+
+  @media (prefers-reduced-motion: reduce) {
+    .fsb-milestone.is-next .fsb-milestone__circle {
+      animation: none;
+    }
+  }
+
+  /* Rewards Accordion */
+
+  .fsb-rewards-accordion {
+    margin-top: 10px;
+    background: #fff;
+    border: 1px solid color-mix(in srgb, var(--fsb-on) 15%, #fff);
+    border-inline-start: 3px solid var(--fsb-success);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+    margin-top: 0;
+  }
+
+  /* New Reward Animation */
+
+  .fsb-rewards-accordion.is-new-reward {
+    animation: fsb-reward-pop 0.8s cubic-bezier(0.2, 0.7, 0.3, 1);
+  }
+
+  /* Reward Pop Animation */
+
+  @keyframes fsb-reward-pop {
+    0% {
+      transform: scale(1);
+      box-shadow: 0 0 0 0 rgba(199, 121, 25, 0.45);
+    }
+
+    40% {
+      transform: scale(1.02);
+      box-shadow: 0 0 0 10px rgba(199, 121, 25, 0);
+    }
+
+    100% {
+      transform: scale(1);
+      box-shadow: 0 0 0 0 rgba(199, 121, 25, 0);
+    }
+  }
+
+  /* Rewards Toggle Button */
+
+  .fsb-rewards-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px 12px;
+    background: #fcfcfcff;
+    border: none;
+    font-family: inherit;
+    font-size: 12.5px;
+    color: var(--fsb-on);
+    cursor: pointer;
+    text-align: start;
+    outline: none;
+    transition: background 0.25s ease;
+  }
+
+  .fsb-rewards-toggle:hover {
+    background: #f7f8f6ff;
+  }
+
+  /* Rewards Toggle Text */
+
+  .fsb-rewards-toggle__text {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #5c5c5c;
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  .fsb-rewards-toggle__text strong {
+    font-weight: 700;
+    color: var(--fsb-success);
+    display: inline-block;
+    opacity: 0;
+    animation: fsb-text-pop 0.45s ease-in-out 0.12s forwards;
+  }
+
+  /* Reward Count Pulse Animation */
+
+  @keyframes fsb-strong-pulse {
+    0% {
+      transform: scale(1);
+      text-shadow: 0 0 0 rgba(199, 121, 25, 0);
+    }
+
+    40% {
+      transform: scale(1.25);
+      text-shadow: 0 0 12px rgba(199, 121, 25, 0.55);
+    }
+
+    100% {
+      transform: scale(1);
+      text-shadow: 0 0 0 rgba(199, 121, 25, 0);
+    }
+  }
+
+  /* Rewards Toggle Arrow */
+
+  .fsb-rewards-toggle__arrow {
+    font-size: 16px;
+    line-height: 1;
+    color: var(--fsb-on);
+    transform: rotate(90deg);
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .fsb-rewards-toggle[aria-expanded='true'] .fsb-rewards-toggle__arrow {
+    transform: rotate(-90deg);
+  }
+
+  /* Rewards Content */
+
+  .fsb-rewards-content {
+    max-height: 0;
+    overflow: hidden;
+    background: #fff;
+    transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .fsb-rewards-toggle[aria-expanded='true'] + .fsb-rewards-content {
+    max-height: 320px;
+    border-top: 1px solid color-mix(in srgb, var(--fsb-on) 10%, #fff);
+  }
+
+  /* Reward Items */
+
+  .fsb-reward-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 12px;
+    text-decoration: none;
+    color: var(--fsb-on);
+    font-size: 12.5px;
+    font-weight: 600;
+    border-bottom: 1px solid color-mix(in srgb, var(--fsb-on) 6%, #fff);
+    transition: background 0.2s ease;
+  }
+
+  .fsb-reward-item:last-child {
+    border-bottom: none;
+  }
+
+  a.fsb-reward-item:hover {
+    background: color-mix(in srgb, var(--fsb-next) 6%, #fff);
+  }
+
+  /* Reward Items Animation */
+
+  .fsb-rewards-toggle[aria-expanded='true'] + .fsb-rewards-content .fsb-reward-item {
+    animation: fsb-text-pop 0.4s ease-out both;
+  }
+
+  .fsb-rewards-toggle[aria-expanded='true'] + .fsb-rewards-content .fsb-reward-item:nth-child(1) {
+    animation-delay: 0.06s;
+  }
+
+  .fsb-rewards-toggle[aria-expanded='true'] + .fsb-rewards-content .fsb-reward-item:nth-child(2) {
+    animation-delay: 0.14s;
+  }
+
+  .fsb-rewards-toggle[aria-expanded='true'] + .fsb-rewards-content .fsb-reward-item:nth-child(3) {
+    animation-delay: 0.22s;
+  }
+
+  .fsb-rewards-toggle[aria-expanded='true'] + .fsb-rewards-content .fsb-reward-item:nth-child(n + 4) {
+    animation-delay: 0.3s;
+  }
+
+  /* Reward Item Icon */
+
+  .fsb-reward-link__icon {
+    font-size: 16px;
+    width: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Reward Item Title */
+
+  .fsb-reward-link__title {
+    color: #5c5c5c;
+    font-size: 14px;
+    font-weight: 400;
+    flex: 1 1 auto;
+  }
+
+  /* Reward Claim Button */
+
+  .fsb-reward-claim {
+    margin-inline-start: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    border: 1.5px solid var(--fsb-success);
+    color: var(--fsb-success);
+    background: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1.5;
+    white-space: nowrap;
+    transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  }
+
+  .fsb-reward-claim__arrow {
+    font-size: 13px;
+    line-height: 1;
+  }
+
+  a.fsb-reward-item:hover .fsb-reward-claim {
+    background: var(--fsb-next);
+    color: #fff;
+    transform: translateX(2px);
+  }
+
+  /* Reduced Motion for Rewards */
+
+  @media (prefers-reduced-motion: reduce) {
+    .fsb-rewards-accordion,
+    .fsb-rewards-accordion.is-new-reward,
+    .fsb-rewards-toggle__text strong,
+    .fsb-rewards-toggle[aria-expanded='true'] + .fsb-rewards-content .fsb-reward-item {
+      animation: none;
+      opacity: 1;
+    }
+  }
+
+  /* Celebration Entry Animation */
+
+  .fsb-celebrate--enter {
+    animation: fsb-slide-up 0.45s cubic-bezier(0.2, 0.7, 0.3, 1) both;
+  }
+
+  /* Celebration Slide Up Animation */
+
+  @keyframes fsb-slide-up {
+    from {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  /* Text Pop Animation */
+
+  @keyframes fsb-text-pop {
+    0% {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Deficit Message Animation */
+
+  .free-shipping-bar__message--no strong {
+    display: inline-block;
+    opacity: 0;
+    animation: fsb-text-pop 0.45s ease-in-out forwards;
+  }
+
+  .free-shipping-bar__message--no strong:nth-of-type(2) {
+    animation-delay: 0.15s;
+  }
+{% endstyle %}
+
+<script>
+  (function () {
+    if (window.fsbBound) return;
+
+    window.fsbBound = true;
+
+    // Update milestone states based on the current cart total
+    function paintMilestones(total) {
+      var bars = document.querySelectorAll('.free-shipping-bar');
+
+      bars.forEach(function (bar) {
+        var milestones = bar.querySelectorAll('.fsb-milestone');
+        var nextOpen = true;
+        var allDone = true;
+
+        milestones.forEach(function (milestone) {
+          var value = parseInt(milestone.dataset.v, 10);
+          var isDone = total >= value;
+
+          milestone.classList.remove('on', 'is-next');
+
+          if (isDone) {
+            milestone.classList.add('on');
+          } else if (nextOpen) {
+            milestone.classList.add('is-next');
+            nextOpen = false;
+          }
+
+          if (!isDone) {
+            allDone = false;
+          }
+        });
+
+        bar.classList.toggle('is-all-done', allDone);
+      });
+    }
+
+    // Toggle the rewards accordion
+    document.addEventListener('click', function (e) {
+      var toggleBtn = e.target.closest('.fsb-rewards-toggle');
+      if (!toggleBtn) return;
+
+      var accordion = toggleBtn.closest('.fsb-rewards-accordion');
+      if (!accordion) return;
+
+      var isExpanded = toggleBtn.getAttribute('aria-expanded') === 'true';
+
+      toggleBtn.setAttribute('aria-expanded', !isExpanded);
+    });
+
+    // Handle cart updates and detect newly unlocked rewards
+    document.addEventListener('on:cart:after-merge', function () {
+      var bar = document.querySelector('[data-free-shipping-current-cart]');
+      if (!bar) return;
+
+      var total = parseInt(bar.dataset.freeShippingCurrentCart, 10) || 0;
+      paintMilestones(total);
+      // New added for accordion
+      var accordion = document.querySelector('.fsb-rewards-accordion');
+      if (!accordion) return;
+
+      var unlocked = accordion.closest('.free-shipping-bar').querySelectorAll('.fsb-milestone.on').length;
+
+      var previousUnlocked = parseInt(accordion.dataset.unlockedCount || '0', 10);
+
+      if (unlocked === 0) {
+        accordion.setAttribute('hidden', '');
+        accordion.dataset.unlockedCount = '0';
+        return;
+      }
+
+      accordion.removeAttribute('hidden');
+
+      if (unlocked > previousUnlocked) {
+        accordion.classList.remove('is-new-reward');
+
+        // Restart the animation
+        void accordion.offsetWidth;
+
+        accordion.classList.add('is-new-reward');
+
+        setTimeout(function () {
+          accordion.classList.remove('is-new-reward');
+        }, 1000);
+      }
+
+      accordion.dataset.unlockedCount = unlocked;
+    });
+
+    // Store the initial unlocked reward count when the page loads
+    var accordion = document.querySelector('.fsb-rewards-accordion');
+
+    if (accordion) {
+      accordion.dataset.unlockedCount = accordion
+        .closest('.free-shipping-bar')
+        .querySelectorAll('.fsb-milestone.on').length;
+    }
+
+    // Initialize milestone states when the page loads
+    var initBar = document.querySelector('[data-free-shipping-current-cart]');
+
+    if (initBar) {
+      paintMilestones(parseInt(initBar.dataset.freeShippingCurrentCart, 10) || 0);
+    }
+  })();
+</script>

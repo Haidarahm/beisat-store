@@ -1,0 +1,11 @@
+{%- if recommendations.performed and recommendations.products_count > 0 -%}
+  <div class="related-products">
+    <div class="product-grid">
+      {%- for product in recommendations.products -%}
+        <product-block class="product-block xsell-product-block" data-product-id="{{ product.id }}">
+          {%- render 'cart-cross-sell-card', product: product -%}
+        </product-block>
+      {%- endfor -%}
+    </div>
+  </div>
+{%- endif -%}

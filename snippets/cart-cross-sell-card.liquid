@@ -1,0 +1,97 @@
+{%- comment -%}
+  Cart drawer cross-sell card
+  Usage: {% render 'cart-cross-sell-card', product: product %}
+{%- endcomment -%}
+
+{%- liquid
+  assign variant = product.selected_or_first_available_variant
+
+  assign discount_percent = 0
+  if product.compare_at_price > product.price
+    assign discount_percent = product.compare_at_price | minus: product.price | times: 100.0 | divided_by: product.compare_at_price | round
+  endif
+
+  assign stock_total = 0
+  assign stock_tracked = false
+  for v in product.variants
+    if v.inventory_management != blank
+      assign stock_tracked = true
+      if v.inventory_quantity > 0
+        assign stock_total = stock_total | plus: v.inventory_quantity
+      endif
+    endif
+  endfor
+-%}
+
+<div class="xsell-card">
+  <div class="xsell-card__media">
+    <a href="{{ product.url }}" class="xsell-card__image-link" tabindex="-1">
+      {%- if product.featured_media -%}
+        {{
+          product.featured_media
+          | image_url: width: 400
+          | image_tag:
+            loading: 'lazy',
+            widths: '200, 300, 400',
+            sizes: '160px',
+            class: 'xsell-card__image',
+            alt: product.title
+        }}
+      {%- endif -%}
+    </a>
+
+    <button type="button" class="xsell-card__wishlist custom-wishlist-button" aria-label="Add to wishlist">
+      {% render 'icon-movetowishlist' %}
+    </button>
+    <div style="display:none">
+      <button
+        type="button"
+        class="st-wishlist-button wishlist-pd-block"
+        data-type="details"
+        data-handle="{{ product.handle }}"
+      ></button>
+    </div>
+
+    {%- if discount_percent > 0 -%}
+      <span class="xsell-card__badge">-{{ discount_percent }}%</span>
+    {%- endif -%}
+  </div>
+
+  <div class="xsell-card__body">
+    <a href="{{ product.url }}" class="xsell-card__title">{{ product.title | escape }}</a>
+
+    {%- if stock_tracked and stock_total > 0 -%}
+      <span class="xsell-card__stock">{{ stock_total }} in stock</span>
+    {%- endif -%}
+
+    <div class="xsell-card__footer">
+      <div class="xsell-card__prices">
+        {%- if product.compare_at_price > product.price -%}
+          <span class="xsell-card__compare">{{ product.compare_at_price | money }}</span>
+        {%- endif -%}
+        <span class="xsell-card__price">{{ product.price | money }}</span>
+      </div>
+
+      {%- if product.available -%}
+        {%- if product.has_only_default_variant -%}
+          <button
+            type="button"
+            class="xsell-card__add"
+            data-variant-id="{{ variant.id }}"
+            aria-label="Add {{ product.title | escape }} to cart"
+          >
+            {% render 'icon-plus' %}
+          </button>
+        {%- else -%}
+          <a
+            href="{{ product.url }}"
+            class="xsell-card__add"
+            aria-label="Choose options for {{ product.title | escape }}"
+          >
+            {% render 'icon-plus' %}
+          </a>
+        {%- endif -%}
+      {%- endif -%}
+    </div>
+  </div>
+</div>

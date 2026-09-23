@@ -1,0 +1,456 @@
+<link rel="preload" href="https://fastly.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<style>
+    /* Hide the sticky section on desktop screens */
+    @media only screen and (min-width: 768px) {
+        .sticky-section {
+            display: none!important;
+        }
+    }
+
+    /* Initially hide the popups */
+    .extended-menu,
+    .collection-popup {
+        display: none;
+        position: fixed;
+
+        left: 12px;
+        right: 12px;
+        bottom: 82px;
+        width: auto;
+
+        z-index: 8000;
+        padding: 20px 0 0;
+
+        background: rgba(255,255,255,.63);
+        backdrop-filter: blur(25px);
+        -webkit-backdrop-filter: blur(25px);
+        
+
+        border: 1px solid rgba(255,255,255,.4);
+        border-radius: 18px;
+
+        box-shadow: 0 8px 30px rgba(0,0,0,.12);
+
+        overflow: hidden;
+    }
+
+    /* Show the popup when targeted */
+    #popup:target,
+    #collectionPopup:target {
+        display: flex;
+        justify-content: center;
+    }
+
+    /* Style for the close button */
+    .close-popup {
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        font-size: 12px;
+        text-decoration: none;
+        color: #000;
+        cursor: pointer;
+    }
+    [lang="ar"] .close-popup{
+      left: 20px;
+      right:auto;
+    }
+
+    .ri-search-2-line{
+      margin-right: 20px;
+    }
+  
+    [lang="ar"] .ri-search-2-line{
+      margin-right:0;
+      margin-left: 20px;
+    }
+  
+
+    .extended-menu .ex-popup-container {
+        width: 100%;
+    }
+
+    /* Collection Popup ex-popup-container styles */
+    .collection-popup .ex-popup-container {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        padding: 0px 24px 20px 24px;
+    }
+
+    .collection-popup .ex-popup-container .item {
+        display: flex;
+        align-items: center;
+        padding-bottom: 10px;
+    }
+
+    .collection-popup .ex-popup-container .item img {
+        width: 50px;
+        height: 50px;
+        margin-right: 15px;
+        border-radius: 5px;
+    }
+
+  [lang="ar"] .collection-popup .ex-popup-container .item img{
+    margin-right: 0;
+    margin-left: 15px;
+  }
+
+    .collection-popup .ex-popup-container .item:last-child {
+        border-bottom: none;
+        /* Remove border for the last item */
+    }
+
+    .collection-popup .ex-popup-container a {
+        text-decoration: none;
+        color: #131313;
+        font-size: 16px;
+    }
+
+    .extended-menu .ex-popup-container .menu-popup-sub-titles {
+        font-size: 16px;
+        margin: 12px 0px;
+        color: black;
+    }
+
+    /* Divider for the menu popup */
+    .menu-divider {
+        height:1px;
+        margin:12px 24px;
+        background:#ececec;
+        border:none;
+    }
+
+    /* Profile and Settings Section styles */
+    .profile-section,
+    .settings-section {
+        margin-bottom: 20px;
+        padding: 0 24px;
+    }
+
+    .extended-menu .ex-popup-container a {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: #131313;
+        margin-bottom: 10px;
+    }
+
+    .extended-menu .ex-popup-container a i {
+        margin-right: 10px;
+        font-size: 24px;
+    }
+    [lang="ar"] .extended-menu .ex-popup-container a i{
+      margin-left: 10px;
+      margin-right: 0;
+    }
+
+    .extended-menu .ex-popup-container a .subtext {
+        display: block;
+        font-size: 12px;
+        color: #888888;
+    }
+
+    /* Sticky section and other styles remain unchanged */
+    .sticky-section {
+        position: fixed;
+        bottom: 12px;
+        left: 12px;
+        right: 12px;
+        width: auto;
+
+        height: 58px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+
+        background: rgba(255, 255, 255, 0.63);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+
+        border: 1px solid rgba(255,255,255,.4);
+        border-radius: 18px;
+
+        box-shadow:
+            0 8px 30px rgba(0,0,0,.12);
+
+        z-index: 8000;
+    }
+
+    .sticky-section a {
+        color: #000000;
+        text-decoration: none;
+        margin: 10px;
+        font-size: 10px;
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+    }
+
+    .sticky-section i {
+        font-size: 1.6rem !important;
+    }
+
+    .Sticky-section-column {
+        align-items: center;
+        border-right: 1px solid #eee;
+        display: flex;
+        flex: 1 0 auto;
+        justify-content: center;
+        position: relative;
+        width: 20%;
+        border:none;
+    }
+
+    .Sticky-section-column:last-child {
+        border-right: none !important;
+        padding: 0;
+    }
+
+    .sticky-section #cart-count-bubble {
+        top: 15px;
+        right: 20px;
+    }
+    [lang="ar"] .sticky-section #cart-count-bubble{
+      left: 20px;
+      right: auto;
+    }
+</style>
+
+{% assign link_lang ="" %}
+{% if localization.language.iso_code == "ar" %}
+{% assign link_lang = "/ar" %}
+{% endif %}
+
+{% unless request.path contains '/account/login' or request.path contains '/account/addresses' %}
+    <div class="sticky-section bottom-menu">
+        <div class="Sticky-section-column">
+            <a href="{{ link_lang }}/">
+                <i class="ri-home-3-line"></i>
+            </a>
+        </div>
+
+        <div class="Sticky-section-column sticky-section-menu-drawer" id="collectionButton">
+            <a href="#st-wishlist-details-button">
+                <i class="ri-heart-line"></i>
+            </a>
+        </div>
+
+        <div class="Sticky-section-column sticky-cart-button">
+            <a href="javascript:void(0);" onclick="openCartDrawer(); return false;" title="Shopping Cart">
+                <span class="cart-link__count" id="cart-count-bubble">{{ cart.item_count }}</span>
+                <i class="ri-shopping-bag-4-line"></i>
+            </a>
+        </div>
+
+        <div class="Sticky-section-column">
+            <a href="https://wa.me/96822093347">
+                <i class="ri-question-line"></i>
+            </a>
+        </div>
+
+        <div class="Sticky-section-column sticky-section-menu-drawer" id="menuButton">
+            <a href="#popup">
+                <i class="ri-more-fill"></i>
+            </a>
+        </div>
+    </div>
+{% endunless %}
+
+<div id="popup" class="extended-menu">
+    <span class="close-popup" id="closePopupButton"><i class="ri-close-line"></i></span>
+    <div class="ex-popup-container">
+
+        <div class="profile-section">
+            <div class="profile-section-title menu-popup-sub-titles">{{ 'bottom_menu.profile' | t }}</div>
+            <a href="{{ link_lang }}/account" onclick="localStorage.removeItem('checkout_url');">
+                <i class="ri-user-line"></i>
+                <div class="profile-section-button">{{ 'bottom_menu.profile_menu1_title' | t }}
+                    <span class="subtext">{{ 'bottom_menu.profile_menu1_subtitle' | t }}</span>
+                </div>
+            </a>
+
+            <a href="{{ link_lang }}/pages/loyalty-points">
+                <i class="ri-gift-line"></i>
+                <div class="profile-section-button">{{ 'bottom_menu.profile_menu3_title' | t }}
+                    <span class="subtext">{{ 'bottom_menu.profile_menu3_subtitle' | t }}</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="menu-divider"></div>
+
+
+      
+        <div class="settings-section">
+            <div class="settings-section-title menu-popup-sub-titles">{{ 'bottom_menu.settings_and_privacy' | t }}</div>
+            {% assign link ="" %}
+            {% if localization.language.iso_code == "en" %}
+            {% assign link = request.path | prepend: "/ar" %}
+            {% else %}
+            {% assign link = request.path | remove: "/ar" %}
+            {% endif %}
+
+            <a href="{{ link }}">
+                <i class="ri-global-line"></i>
+                <div class="profile-section-button">{{ 'bottom_menu.settings_menu0_title' | t }}
+                  <span class="subtext">{{ 'bottom_menu.settings_menu0_subtitle' | t }}</span>
+                </div>
+            </a>
+            <a href="#">
+                <i class="ri-flag-line"></i>
+                <div class="profile-section-button">{{ 'bottom_menu.settings_menu1_title' | t }}
+                  <div class='buckscc-currency-box'></div>
+                </div>
+            </a>
+            <a href="{{ link_lang }}/policies/shipping-policy">
+                <i class="ri-lock-line"></i>
+                <div class="profile-section-button">{{ 'bottom_menu.settings_menu2_title' | t }}
+                    <span class="subtext">{{ 'bottom_menu.settings_menu2_subtitle' | t }}</span>
+                </div>
+            </a>
+            <a href="{{ link_lang }}/policies/refund-policy">
+                <i class="ri-reply-line"></i>
+                <div class="profile-section-button">{{ 'bottom_menu.settings_menu3_title' | t }}
+                    <span class="subtext">{{ 'bottom_menu.settings_menu3_subtitle' | t }}</span>
+                </div>
+            </a>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    // Handle extended menu for "Menu"
+    const menuButton = document.getElementById('menuButton');
+    const closePopupButton = document.getElementById('closePopupButton');
+    const popup = document.getElementById('popup');
+
+    menuButton.addEventListener('click', function (e) {
+        e.preventDefault();
+        if (popup.style.display === 'block') {
+            popup.style.display = 'none';
+        } else {
+            popup.style.display = 'block';
+        }
+    });
+
+    closePopupButton.addEventListener('click', function (e) {
+        e.preventDefault();
+        popup.style.display = 'none';
+    });
+
+    document.addEventListener('click', function (e) {
+        if (popup.style.display === 'block' && !popup.contains(e.target) && !menuButton.contains(e.target)) {
+            popup.style.display = 'none';
+        }
+    });
+
+    // Handle collection menu for "Collections"
+    // const collectionButton = document.getElementById('collectionButton');
+    // const closeCollectionPopupButton = document.getElementById('closeCollectionPopupButton');
+    // const collectionPopup = document.getElementById('collectionPopup');
+
+    // collectionButton.addEventListener('click', function (e) {
+    //     e.preventDefault();
+    //     if (collectionPopup.style.display === 'block') {
+    //         collectionPopup.style.display = 'none';
+    //     } else {
+    //         collectionPopup.style.display = 'block';
+    //     }
+    // });
+
+    // closeCollectionPopupButton.addEventListener('click', function (e) {
+    //     e.preventDefault();
+    //     collectionPopup.style.display =
+    //         'none';
+    // });
+
+    // document.addEventListener('click', function (e) {
+    //     if (collectionPopup.style.display === 'block' && !collectionPopup.contains(e.target) && !collectionButton.contains(e.target)) {
+    //         collectionPopup.style.display = 'none';
+    //     }
+    // });
+
+    // Updating cart count
+    // const addToCartButtons = document.querySelectorAll('.shopify-payment-button,.add-to-cart,.quantity-up');
+
+    // addToCartButtons.forEach(button => {
+    //     button.addEventListener('click', () => {
+    //         setTimeout(updateCartCount, 500);
+    //     });
+    // });
+
+    // Updating cart count based on cart event 
+    ['on:cart:after-merge','on:cart:add','on:cart-drawer:after-close'].forEach(event => {
+      document.addEventListener(event, (e) => {
+          updateCartCount()
+      });
+  });
+
+    function updateCartCount() {
+        fetch('/cart.js')
+            .then(response => response.json())
+            .then(cart => {
+                const cartCountBubble = document.querySelector('#cart-count-bubble');
+                if (cartCountBubble) {
+                    cartCountBubble.textContent = cart.item_count;
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching cart data:', error);
+            });
+    }
+
+    function openCartDrawer() {
+        const event = new CustomEvent('dispatch:cart-drawer:open', {
+            detail: {
+                opener: null
+            }
+        });
+        document.dispatchEvent(event);
+    }
+
+  function openLoyaltyPage(){
+    document.querySelector("#toki-shopify-integration-embed-wallet-v2-root").shadowRoot.querySelector(".shadow-switcher").click()
+    return false;
+  }
+
+
+  // Show/hide bottom nav based on scroll direction
+(function () {
+    const nav = document.querySelector('.sticky-section.bottom-menu');
+    if (!nav) return;
+
+    nav.style.transition = 'transform 0.3s ease';
+
+    let lastScrollY = window.scrollY;
+
+    window.addEventListener('scroll', function () {
+        const currentScrollY = window.scrollY;
+
+        if (currentScrollY <= 50 || currentScrollY < lastScrollY) {
+            nav.style.transform = 'translateY(0)'; // show (scrolling up / near top)
+        } else {
+            nav.style.transform = 'translateY(150%)'; // hide (scrolling down)
+        }
+
+        lastScrollY = currentScrollY;
+    }, { passive: true });
+})();
+</script>
+
+
+{% schema %}
+  {
+    "name": "Bottom Menu",
+    "settings": [],
+    "presets": [
+      {
+        "name": "Bottom Menu",
+        "settings": {
+        }
+      }
+    ]
+  }
+{% endschema %}

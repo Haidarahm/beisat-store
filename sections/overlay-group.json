@@ -1,0 +1,157 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "aside",
+  "name": "Overlay Group",
+  "sections": {
+    "cart-drawer": {
+      "type": "cart-drawer",
+      "custom_css": [
+        ".text-box {font-size: 12px;}"
+      ],
+      "settings": {
+        "show_order_note": false,
+        "show_tax_and_shipping": false,
+        "enable_direct_cart": false,
+        "cart_terms_page": "",
+        "show_backorder_text": false,
+        "show_inventory_notice": "low",
+        "show_inventory_count": "low",
+        "inventory_threshold": 2,
+        "show_announcement": false,
+        "announcement_position": "above-items",
+        "announcement_text": "Free delivery +12 OMR",
+        "announcement_icon": "clock",
+        "announcement_icon_size": "small",
+        "announcement_enable_box": true,
+        "announcement_box_color": "#f4f5f3",
+        "empty_icon": "bag",
+        "empty_heading": "Your cart is empty",
+        "empty_text": "<p>Free delivery for orders above 12 OMR</p>",
+        "empty_button_text": "Start shopping",
+        "empty_button_link": "shopify://collections/all",
+        "empty_button_style": "primary",
+        "empty_enable_custom_colors": false,
+        "empty_color_background": "",
+        "empty_color_background_gradient": "",
+        "empty_color_text": "",
+        "enable_cross_sells": true,
+        "cross_sell_title": "You may like",
+        "cross_sell_products": [],
+        "enable_automatic_cross_sells": true,
+        "croll_sell_color_scheme": "1"
+      }
+    },
+    "pop-up": {
+      "type": "pop-up",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Eid Deal is Live ⚡",
+            "heading_size": "h4"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p><strong>20%</strong> OFF on all orders above <strong>20 </strong>OMR<br/><br/>Use: <strong>EID20<br/><br/></strong>Ends soon  don’t miss out⏳ </p>",
+            "text_size": ""
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "text"
+      ],
+      "disabled": true,
+      "settings": {
+        "trigger": "delay",
+        "delay": 3,
+        "show_to_guests_only": false,
+        "show_on_mobile": true,
+        "dismiss_days": 1,
+        "position": "justify-center items-center",
+        "text_align": "text-center",
+        "heading_color": "#070707",
+        "text_color": "#070707",
+        "bg_color": "#ffffff",
+        "bg_grad": "",
+        "tint_opacity": 0
+      }
+    },
+    "pop_up_akfTfR": {
+      "type": "pop-up",
+      "blocks": {
+        "heading_fntici": {
+          "type": "heading",
+          "settings": {
+            "heading": "New User Welcome Gift",
+            "heading_size": "h3"
+          }
+        },
+        "text_9HXGM3": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Get <span style=\"text-decoration:underline\"><strong>15% OFF</strong></span> on your first order 🤩<br/>Muscat delivery in 24 hours 🚚<br/>Grab Your First Discount Now!<br/></p>",
+            "text_size": "large-text"
+          }
+        },
+        "button_kdWTcP": {
+          "type": "button",
+          "settings": {
+            "button_1_label": "Apply Discount",
+            "button_1_link": "https://beisat.com/discount/New15",
+            "btn_1_bg_color": "#070707",
+            "btn_1_text_color": "#ffffff",
+            "button_2_label": "",
+            "button_2_link": "",
+            "btn_2_bg_color": "#070707",
+            "btn_2_text_color": "#ffffff"
+          }
+        },
+        "newsletter_signup_pURMqm": {
+          "type": "newsletter-signup",
+          "disabled": true,
+          "settings": {
+            "button_style": "primary"
+          }
+        }
+      },
+      "block_order": [
+        "heading_fntici",
+        "text_9HXGM3",
+        "button_kdWTcP",
+        "newsletter_signup_pURMqm"
+      ],
+      "disabled": true,
+      "name": "First order Pop-up",
+      "settings": {
+        "trigger": "delay",
+        "delay": 15,
+        "show_to_guests_only": true,
+        "show_on_mobile": true,
+        "dismiss_days": 0,
+        "position": "justify-center items-center",
+        "text_align": "text-center",
+        "heading_color": "#070707",
+        "text_color": "#070707",
+        "bg_color": "#ffffff",
+        "bg_grad": "",
+        "tint_opacity": 0
+      }
+    }
+  },
+  "order": [
+    "cart-drawer",
+    "pop-up",
+    "pop_up_akfTfR"
+  ]
+}

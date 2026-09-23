@@ -1,0 +1,61 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "rich_text_DeVRyq": {
+      "type": "rich-text",
+      "blocks": {
+        "text_ppzega": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Mobile login is currently unavailable due to a technical issue. Please press the button below to send your order via WhatsApp to customer service.</p>",
+            "enlarge_text": true
+          }
+        }
+      },
+      "block_order": [
+        "text_ppzega"
+      ],
+      "disabled": true,
+      "name": "Rich text",
+      "settings": {
+        "height": "medium",
+        "text_alignment": "center",
+        "full_width": false,
+        "color_scheme": "default"
+      }
+    },
+    "custom_liquid_JKQ9YX": {
+      "type": "custom-liquid",
+      "disabled": true,
+      "custom_css": [
+        ".wa-order-btn {display: inline-block; background-color: #075e54; color: white; padding: 10px 20px; border-radius: 5px;}"
+      ],
+      "name": "Custom Liquid",
+      "settings": {
+        "full_width": true,
+        "show_space": true,
+        "code": "{% capture cart_link -%}\n{{ shop.url }}/cart/{%- for item in cart.items -%}{{ item.variant_id }}:{{ item.quantity }}{%- unless forloop.last -%},{%- endunless -%}{%- endfor -%}\n{%- endcapture %}\n\n{% capture cart_text %}\nHi! I want to order these items:\n\nمرحبا, أريد طلب المنتجات التالية:\n\n\n{% for item in cart.items %}\n- {{ item.product.title }}  (x{{ item.quantity }}) - {{ item.variant_id }}\n{% endfor %}\n{% endcapture %}\n\n<div style=\"text-align:center\"><a class=\"wa-order-btn\"  href=\"https://wa.me/96822093347/?text={{ cart_text | url_encode }}\">\n  Order via WhatsApp طلب عبر واتساب\n</a></div>"
+      }
+    },
+    "main": {
+      "type": "main-login",
+      "settings": {
+        "enable_shop_login_button": false,
+        "otp_login": true
+      }
+    }
+  },
+  "order": [
+    "rich_text_DeVRyq",
+    "custom_liquid_JKQ9YX",
+    "main"
+  ]
+}

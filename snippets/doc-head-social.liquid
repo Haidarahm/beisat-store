@@ -1,0 +1,178 @@
+{%- liquid
+  assign og_title = page_title | default: shop.name
+  assign og_url = canonical_url | default: shop.url
+  assign og_type = 'website'
+  assign og_description = page_description | default: shop.description | default: shop.name
+
+  if request.page_type == 'product'
+    assign og_type = 'product'
+  elsif request.page_type == 'article'
+    assign og_type = 'article'
+  elsif request.page_type == 'collection'
+    assign og_type = 'product.group'
+  elsif request.page_type == 'password'
+    assign og_url = shop.url
+  endif
+-%}
+
+<meta property="og:site_name" content="{{ shop.name }}">
+<meta property="og:url" content="{{ og_url }}">
+<meta property="og:title" content="{{ og_title | escape }}">
+<meta property="og:type" content="{{ og_type }}">
+<meta property="og:description" content="{{ og_description | escape }}">
+
+{%- if page_image -%}
+  <meta property="og:image" content="http:{{ page_image | image_url: width: 1200, height: 1200 }}">
+  <meta property="og:image:secure_url" content="https:{{ page_image | image_url: width: 1200, height: 1200 }}">
+  <meta property="og:image:width" content="{{ page_image.width }}">
+  <meta property="og:image:height" content="{{ page_image.height }}">
+{%- endif -%}
+
+{%- if request.page_type == 'product' -%}
+  <meta property="og:price:amount" content="{{ product.selected_or_first_available_variant.price | money_without_currency | strip_html }}">
+  <meta property="og:price:currency" content="{{ cart.currency.iso_code }}">
+{%- endif -%}
+
+{%- unless settings.social_twitter_url == blank -%}
+  {%- liquid
+    assign split_twitter_url = settings.social_twitter_url | split: '/'
+    for part in split_twitter_url reversed
+      if part != blank
+        assign twitter_handle = part
+        break
+      endif
+    endfor
+  -%}
+  <meta name="twitter:site" content="@{{ twitter_handle }}">
+{%- endunless -%}
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ og_title | escape }}">
+<meta name="twitter:description" content="{{ og_description | escape }}">
+
+
+{% comment %} progress bar code - Biswajit
+<script async src="https://cdn.jsdelivr.net/npm/pace-js@latest/pace.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/themes/green/pace-theme-minimal.css">
+{% endcomment %}
+
+
+{% comment %} ---START--- Edited by: Biswajit | Date: 27/8/2024 | Reason: add virtual keyboard hide event {% endcomment %}
+<script>
+  var initialHeight = window.visualViewport.height;
+  window.visualViewport.addEventListener("resize", (e) => {
+    if(window.visualViewport.height < initialHeight){
+      document.querySelector('.sticky-section').className = 'sticky-section hidden';
+    }else{
+      document.querySelector('.sticky-section').className = 'sticky-section';
+    }
+  })
+</script>
+{% comment %} ---END--- Edited by: Biswajit | Date: 27/8/2024 | Reason: add virtual keyboard hide event {% endcomment %}
+
+{% comment %} ---START--- Edited by: Biswajit | Date: 28/8/2024 | Reason: add click animation to all clickable item {% endcomment %}
+<link rel="stylesheet" href="{{ 'animate.min.css' | asset_url }}"/>
+<script>
+  function listenToClicks(){
+    document.querySelectorAll('a,button').forEach(function(item){
+        item.addEventListener('click', function() {
+          item.classList.remove('animate__animated')
+          item.classList.remove('animate__fast')
+          item.classList.remove('animate__pulse')
+          item.classList.add('animate__animated')
+          item.classList.add('animate__fast')
+          item.classList.add('animate__pulse')
+          setTimeout(function(){
+            item.classList.remove('animate__animated')
+            item.classList.remove('animate__fast')
+            item.classList.remove('animate__pulse')
+          },800);
+        },false);
+    })
+  }
+  
+  document.addEventListener('DOMContentLoaded', function() {
+    listenToClicks();
+
+    ['.collection-listing .product-grid', '.related-products'].forEach(function(selector) {
+      if(document.querySelector(selector)){
+        new WebKitMutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+              listenToClicks();
+            });    
+        }).observe(document.querySelector(selector), { attributes: false, childList: true, characterData: false, subtree: false });
+      }
+    });
+  });
+</script>
+{% comment %} ---END--- Edited by: Biswajit | Date: 28/8/2024 | Reason: add click animation to all clickable item {% endcomment %}
+
+{% comment %} ---START--- Edited by: Biswajit | Date: 4/9/2024 | Reason: remember and redirect the user to previously clicked collection {% endcomment %}
+{% if template.name == 'index' %}
+<script>
+  var fav_coll_lang = "_{{ localization.language.iso_code }}";
+  if(localStorage.getItem('fav_collection_page'+fav_coll_lang) != null) window.location.href = localStorage.getItem('fav_collection_page'+fav_coll_lang);
+  document.addEventListener('DOMContentLoaded', function() {
+    var home_collection_links = document.querySelectorAll('.home_collection_links');
+    if (home_collection_links.length > 0){
+      home_collection_links.forEach((e)=>{
+        e.addEventListener('click', function() {
+          localStorage.setItem('fav_collection_page'+fav_coll_lang,e.href);
+        });
+      })
+    }
+  });
+</script>
+{% elsif template.name == 'page' %}
+<script>
+  console.log("{{ page.handle }}")
+  var fav_coll_lang = "_{{ localization.language.iso_code }}";
+  var fav_collection_par_arr = ['men','women','kids','house',"الرجال","نساء","الأطفال","منزل"];
+  if(fav_collection_par_arr.includes("{{ page.handle }}")) localStorage.setItem('fav_collection_page'+fav_coll_lang,"{{page.url}}")
+</script>
+{% endif %}
+{% comment %} ---END--- Edited by: Biswajit | Date: 4/9/2024 | Reason: remember and redirect the user to previously clicked collection {% endcomment %}
+
+{% comment %} ---START--- Edited by: Biswajit | Date: 10/10/2024 | Reason: disable footer and mobile app banner on app {% endcomment %}
+<script>
+  if(navigator.userAgent.includes("BEISAT_ANDROID_V2") || navigator.userAgent.includes("BEISAT_IOS_V2")){
+    const style = document.createElement("style")
+    style.textContent = ".smartbanner,.section-footer,.cross-page-promos { display:none !important; } #pagefooter{padding:50px;}"
+    document.head.appendChild(style)
+  }
+</script>
+{% comment %} ---END--- Edited by: Biswajit | Date: 10/10/2024 | Reason: disable mobile app banner on app {% endcomment %}
+
+
+{% comment %} ---START--- Edited by: Hasan | Date: 25/12/2024 | Reason: Redirect user to his flash deal section {% endcomment %}
+{% if page.handle == 'flash-redirect' %}
+  {% assign link_lang ="" %}
+  {% if localization.language.iso_code == "ar" %}
+  {% assign link_lang = "/ar" %}
+  {% endif %}
+  
+  <script>
+    console.log("redirect")
+    var fav_coll_lang = "_{{ localization.language.iso_code }}";
+
+    var flash_section = localStorage.getItem('fav_collection_page'+fav_coll_lang);
+    if(flash_section != null) {
+  
+      if (flash_section.includes("women") == true) {
+          window.location.href = "{{ link_lang }}/collections/women_flash";
+      } else if (flash_section.includes("men") == true) {
+          window.location.href = "{{ link_lang }}/collections/men_flash";
+      } else if (flash_section.includes("kids") == true) {
+          window.location.href = "{{ link_lang }}/collections/kids_flash";
+      } else if (flash_section.includes("house") == true) {
+          window.location.href = "{{ link_lang }}/collections/house_flash";
+      } 
+    }
+    else{
+     // window.location.href = "/";
+      console.log(flash_section)
+    }
+    
+  </script>
+{% endif %}
+{% comment %} ---END--- Edited by: Hasan | Date: 25/12/2024 | Reason: Redirect user to his flash deal section {% endcomment %}

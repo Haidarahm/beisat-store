@@ -1,0 +1,311 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "show_page_title": false,
+        "full_width": false
+      }
+    },
+    "rich_text_nzRTiM": {
+      "type": "rich-text",
+      "blocks": {
+        "button_ttyVGh": {
+          "type": "button",
+          "settings": {
+            "button_label": "women",
+            "button_link": "shopify://pages/women",
+            "button_style": "link"
+          }
+        },
+        "button_Japy9p": {
+          "type": "button",
+          "settings": {
+            "button_label": "men",
+            "button_link": "shopify://pages/men",
+            "button_style": "link"
+          }
+        },
+        "button_8tzUBT": {
+          "type": "button",
+          "settings": {
+            "button_label": "kids",
+            "button_link": "shopify://pages/kids",
+            "button_style": "link"
+          }
+        },
+        "button_cFtHzP": {
+          "type": "button",
+          "settings": {
+            "button_label": "house",
+            "button_link": "shopify://pages/house",
+            "button_style": "link"
+          }
+        }
+      },
+      "block_order": [
+        "button_ttyVGh",
+        "button_Japy9p",
+        "button_8tzUBT",
+        "button_cFtHzP"
+      ],
+      "custom_css": [
+        ".fully-spaced-row--small {margin: 20px;}",
+        ".small-feature-link {font-size: 1em; font-weight: 650; text-decoration: none; background-color: #f0efea; color: black; border-radius: 12px; padding: 4px;}",
+        ".small-feature-link:nth-of-type(1) {color: white; background-color: #3db55b;}",
+        ".button-row .button-row__btn {display: inline-block; margin-top: 0;}",
+        "@media (min-width: 786px) {.container {display: none; }}"
+      ],
+      "settings": {
+        "height": "small",
+        "text_alignment": "center",
+        "full_width": true,
+        "color_scheme": "default"
+      }
+    },
+    "collection_list_aTXeXG": {
+      "type": "collection-list",
+      "blocks": {
+        "collection_aJQM9M": {
+          "type": "collection",
+          "settings": {
+            "collection": "women_plus-size-clothing_plus-size-dresses",
+            "image": "shopify://shop_images/01_3ff744ef-b92d-4d96-bcc9-ede76f1e08cf.jpg",
+            "subheading": "",
+            "button_label": ""
+          }
+        },
+        "collection_T6bGmj": {
+          "type": "collection",
+          "settings": {
+            "collection": "women_plus-size-clothing_plus-size-tops",
+            "image": "shopify://shop_images/04_d86ca941-cd20-47e0-91d0-949f415408c5.jpg",
+            "subheading": "",
+            "button_label": ""
+          }
+        },
+        "collection_VP7E4q": {
+          "type": "collection",
+          "settings": {
+            "collection": "women_plus-size-clothing_plus-size-loungewear-sleepwear",
+            "image": "shopify://shop_images/05_228c8efd-449d-4e79-a178-046d335e8dd4.jpg",
+            "subheading": "",
+            "button_label": ""
+          }
+        },
+        "collection_XbraC9": {
+          "type": "collection",
+          "settings": {
+            "collection": "women_plus-size-clothing_plus-size-lingerie",
+            "image": "shopify://shop_images/03_734f2f8d-3d9d-47b1-a4e3-3db60d2518ca.jpg",
+            "subheading": "",
+            "button_label": ""
+          }
+        },
+        "collection_Um8KjF": {
+          "type": "collection",
+          "settings": {
+            "collection": "women_plus-size-clothing_plus-size-outerwears",
+            "image": "shopify://shop_images/06_32f642ab-f69e-430a-9896-e9ffb5c369fb.jpg",
+            "subheading": "",
+            "button_label": ""
+          }
+        },
+        "collection_AbXWmd": {
+          "type": "collection",
+          "settings": {
+            "collection": "women_plus-size-clothing_plus-size-knitwear",
+            "image": "shopify://shop_images/08_19d8149c-3377-4a8b-9ae9-be1cbcf8f2c4.jpg",
+            "subheading": "",
+            "button_label": ""
+          }
+        },
+        "collection_qQRLKB": {
+          "type": "collection",
+          "settings": {
+            "collection": "women_plus-size-clothing_plus-size-denim",
+            "image": "shopify://shop_images/09_d832097a-a4ed-4b25-a54f-dbc43d42e844.jpg",
+            "subheading": "",
+            "button_label": ""
+          }
+        },
+        "collection_f8QXrP": {
+          "type": "collection",
+          "settings": {
+            "collection": "women_plus-size-clothing_plus-size-bottoms",
+            "image": "shopify://shop_images/07_462ced7a-b2e2-4e76-8d8b-9709f294569c.jpg",
+            "subheading": "",
+            "button_label": ""
+          }
+        },
+        "collection_gWeJEj": {
+          "type": "collection",
+          "settings": {
+            "collection": "women_plus-size-clothing_plus-size-co-ords",
+            "image": "shopify://shop_images/10_646ed300-62a5-4a2e-84be-65db6d138b08.jpg",
+            "subheading": "",
+            "button_label": ""
+          }
+        },
+        "collection_dGCzix": {
+          "type": "collection",
+          "settings": {
+            "collection": "women_plus-size-clothing_plus-size-coats-jackets",
+            "image": "shopify://shop_images/12_101ae210-86c1-47ef-b774-21ea95a6fa39.jpg",
+            "subheading": "",
+            "button_label": ""
+          }
+        },
+        "collection_AtMCFF": {
+          "type": "collection",
+          "settings": {
+            "collection": "women_plus-size-clothing_plus-size-sweatshirts",
+            "image": "shopify://shop_images/13_90ef6d83-dd47-43b3-9cd2-f28a58dacfb8.jpg",
+            "subheading": "",
+            "button_label": ""
+          }
+        },
+        "collection_FNax6N": {
+          "type": "collection",
+          "settings": {
+            "collection": "women_plus-size-clothing_plus-size-jumpsuits",
+            "image": "shopify://shop_images/11_c199d3f6-1d59-4346-925a-5a820b252f55.jpg",
+            "subheading": "",
+            "button_label": ""
+          }
+        },
+        "collection_tqEiwT": {
+          "type": "collection",
+          "settings": {
+            "collection": "women_plus-size-clothing_plus-size-beachwear",
+            "image": "shopify://shop_images/14_12e34a60-82d8-43da-839a-cc60367b7be7.jpg",
+            "subheading": "",
+            "button_label": ""
+          }
+        },
+        "collection_7aGEWd": {
+          "type": "collection",
+          "settings": {
+            "collection": "women_plus-size-clothing_plus-size-sweaters-cardigans",
+            "image": "shopify://shop_images/16_509c1c55-0535-48ee-8523-05076608cd8c.jpg",
+            "subheading": "",
+            "button_label": ""
+          }
+        },
+        "collection_GUYbBC": {
+          "type": "collection",
+          "settings": {
+            "collection": "women_plus-size-clothing_plus-size-suits",
+            "image": "shopify://shop_images/17_2afd9327-8552-465b-a04f-467b8bd692d0.jpg",
+            "subheading": "",
+            "button_label": ""
+          }
+        },
+        "collection_nTK6k6": {
+          "type": "collection",
+          "settings": {
+            "collection": "women_plus-size-clothing_plus-size-activewear",
+            "image": "shopify://shop_images/15_88514520-e0f3-4c78-a7e2-9fe57737346d.jpg",
+            "subheading": "",
+            "button_label": ""
+          }
+        },
+        "collection_zPcVNk": {
+          "type": "collection",
+          "settings": {
+            "collection": "women_plus-size-clothing_plus-size-bodysuits",
+            "image": "shopify://shop_images/02_c81b524f-3f2a-462b-81e8-8b6db9a75faa.jpg",
+            "subheading": "",
+            "button_label": ""
+          }
+        },
+        "collection_XGAYGr": {
+          "type": "collection",
+          "disabled": true,
+          "settings": {
+            "collection": "women_plus-size-clothing_plus-size-activewear",
+            "image": "shopify://shop_images/WhatsApp_Image_2025-12-10_at_4.20.56_PM.jpg",
+            "subheading": "",
+            "button_label": ""
+          }
+        },
+        "collection_8rptNJ": {
+          "type": "collection",
+          "disabled": true,
+          "settings": {
+            "collection": "women_accessories",
+            "image": "shopify://shop_images/WhatsApp_Image_2025-12-10_at_4.20.57_PM_1.jpg",
+            "subheading": "",
+            "button_label": ""
+          }
+        },
+        "collection_GMBL7y": {
+          "type": "collection",
+          "disabled": true,
+          "settings": {
+            "collection": "women_clothing_activewear_active-sets",
+            "image": "shopify://shop_images/WhatsApp_Image_2025-12-10_at_4.20.57_PM.jpg",
+            "subheading": "",
+            "button_label": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection_aJQM9M",
+        "collection_T6bGmj",
+        "collection_VP7E4q",
+        "collection_XbraC9",
+        "collection_Um8KjF",
+        "collection_AbXWmd",
+        "collection_qQRLKB",
+        "collection_f8QXrP",
+        "collection_gWeJEj",
+        "collection_dGCzix",
+        "collection_AtMCFF",
+        "collection_FNax6N",
+        "collection_tqEiwT",
+        "collection_7aGEWd",
+        "collection_GUYbBC",
+        "collection_nTK6k6",
+        "collection_zPcVNk",
+        "collection_XGAYGr",
+        "collection_8rptNJ",
+        "collection_GMBL7y"
+      ],
+      "custom_css": [
+        ".product-block__detail {display: none;}"
+      ],
+      "settings": {
+        "title": "Plus Size Section",
+        "enable_carousel": false,
+        "grid": 5,
+        "color_scheme": "default",
+        "full_width": false,
+        "coll_grid_image_shape": "tallest",
+        "coll_grid_image_position": "center center",
+        "coll_thumb_mob_per_row": "2",
+        "coll_grid_show_count": false,
+        "coll_text_position": "below",
+        "coll_text_position_under_mobile": false,
+        "coll_thumb_text_align_x": "center",
+        "coll_thumb_text_align_y": "center",
+        "coll_button_style": "primary"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "rich_text_nzRTiM",
+    "collection_list_aTXeXG"
+  ]
+}

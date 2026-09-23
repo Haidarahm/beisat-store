@@ -1,0 +1,109 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "featured_collection_VmBzDr": {
+      "type": "featured-collection",
+      "name": "Featured collection",
+      "settings": {
+        "title": "Featured collection",
+        "collection": "women-dress",
+        "show_vendor": false,
+        "enable_carousel": true,
+        "grid": 4,
+        "rows": 1,
+        "color_scheme": "default",
+        "show_view_all": true,
+        "view_all_position": "top",
+        "view_all_alignment": "center",
+        "target_user": "all",
+        "full_width": true
+      }
+    },
+    "rich_text_TYBDma": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_mx7Gyq": {
+          "type": "heading",
+          "settings": {
+            "title": "Shein Oman Outlet",
+            "use_h1": true
+          }
+        },
+        "text_fiQVGD": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Why wait 3 weeks for international shipping? We’ve got the latest trends sitting in our warehouse right now. </p><p>48-hour delivery  - Cash on delivery  - Easy local returns.</p>",
+            "enlarge_text": false
+          }
+        },
+        "text_b8MVGE": {
+          "type": "text",
+          "settings": {
+            "text": "",
+            "enlarge_text": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_mx7Gyq",
+        "text_fiQVGD",
+        "text_b8MVGE"
+      ],
+      "name": "Rich text",
+      "settings": {
+        "height": "medium",
+        "text_alignment": "center",
+        "full_width": false,
+        "color_scheme": "default"
+      }
+    },
+    "collapsible_tabs_TEAeVf": {
+      "type": "collapsible-tabs",
+      "blocks": {
+        "question_HpiPyj": {
+          "type": "question",
+          "settings": {
+            "title": "Why Choose Beisat for Shein in Oman",
+            "answer": "<ul><li><strong>Local Warehouse:</strong> Every item is already here. No customs, no borders, no long waits.</li><li><strong>48-Hour Delivery:</strong> From our shelves to your door in 2 days.</li><li><strong>COD Available</strong>: Secure shopping. Pay only when you hold the bag.</li><li><strong>Lowest Price Guarantee:</strong> Outlet prices on the brands you love.</li></ul>"
+          }
+        },
+        "question_UUnppG": {
+          "type": "question",
+          "settings": {
+            "title": "The Smarter Way to Shop Shein in Oman",
+            "answer": "<p>Here’s the thing: everyone loves the style, but the 14-day shipping wait is a dealbreaker. </p><p>We decided to change that. Beisat is a dedicated <strong>Shein outlet based in Muscat</strong>. What this really means is that we buy the inventory in bulk, store it here in the Sultanate, and deliver it to you while the trend is still fresh.</p><p>No more tracking packages across five countries, or more \"Out for Delivery\" for ten days. </p><p>Whether you are looking for that specific viral dress, home decor, or kids' essentials, we have it in stock in our warehouse today. </p><p>You get the same products, the same quality, and the same prices, just significantly faster. It’s the fashion you want, delivered with the local speed you deserve.</p>"
+          }
+        },
+        "question_3biVxa": {
+          "type": "question",
+          "settings": {
+            "title": "Shein Shopping in Oman",
+            "answer": "<p>Beisat is your ultimate Shein shopping destination in Oman. We bring you a carefully curated selection of Shein products, from trendy fashion and accessories to home essentials, beauty items, and more, all in one place. </p><p>Unlike any other retailer, we operate as a Shein outlet, which means every item in our collection is stocked in limited quantity, often just one piece per design. </p><p><em><strong>This gives you access to exclusive, hard-to-find Shein pieces without the usual wait.</strong></em></p><p>As a customer-first platform, Beisat makes online shopping simple and rewarding. We offer flexible payment options, regular discounts across all Shein categories, personalized wishlists, and a smooth mobile app experience. We're committed to delivering a top-tier shopping journey for everyone in Oman — going far beyond standard e-commerce.</p><p><strong>And the best part? We store all our Shein outlet products right here in our warehouses in Oman. That means no international shipping delays! Just fast, reliable delivery to your doorstep in 48 hours or less, anywhere in Oman.</strong></p><h3>Discover Trendy Shein Products at Beisat Oman</h3><p>Explore a unique collection of Shein products across multiple categories on Beisat Oman.</p><p><a href=\"https://beisat.com/pages/women\"><span style=\"text-decoration:underline\"><strong>Fashion for Women</strong></span></a></p><p>Shop the latest Shein women's fashion, including dresses, tops, trousers, modest wear, activewear, loungewear, swimwear, and outerwear. Whether you're looking for casual everyday outfits or evening wear, our outlet has something special — often in limited stock, so once it's gone, it's gone.</p><p><a href=\"https://beisat.com/pages/men\"><span style=\"text-decoration:underline\"><strong>Fashion for Men</strong></span></a></p><p>Find Shein men's clothing, from casual shirts and shorts to smart-casual looks, hoodies, joggers, and gym wear. Upgrade your wardrobe with unique pieces you won't find elsewhere in Oman.</p><p><a href=\"https://beisat.com/pages/kids\"><span style=\"text-decoration:underline\"><strong>Kids & Baby</strong></span></a></p><p>Discover Shein's range for little ones! Cute outfits, pajamas, baby essentials, and accessories for boys and girls. Perfect for parents who love stylish, affordable children's wear.</p><p><a href=\"https://beisat.com/collections/women_beauty\"><span style=\"text-decoration:underline\"><strong>Beauty & Fragrance</strong></span></a></p><p>Browse Shein's beauty collection, including makeup, skincare tools, bath products, hair accessories, and fragrances. All stocked locally and ready to ship within 48 hours.</p><p><a href=\"https://beisat.com/pages/house\"><span style=\"text-decoration:underline\"><strong>Home & Living</strong></span></a></p><p>From decorative items and storage solutions to kitchen accessories, bedding, and bathroom essentials. Shein's home collection is available now at Beisat Oman.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "question_HpiPyj",
+        "question_UUnppG",
+        "question_3biVxa"
+      ],
+      "name": "Collapsible tabs",
+      "settings": {
+        "title": "Read more"
+      }
+    }
+  },
+  "order": [
+    "featured_collection_VmBzDr",
+    "rich_text_TYBDma",
+    "collapsible_tabs_TEAeVf"
+  ]
+}

@@ -1,0 +1,39 @@
+<section class="card" aria-labelledby="order-items-title">
+  <div class="card__header">
+    <h2 id="order-items-title" class="card__title">
+      Order items{% unless cart.empty? %} ({{ cart.item_count }}){% endunless %}
+    </h2>
+  </div>
+  <p class="card__subtitle">
+    {%- if cart.empty? -%}
+      Your cart is empty
+    {%- else -%}
+      Items in your cart
+    {%- endif -%}
+  </p>
+  <hr class="card__divider" />
+
+  <div class="order-items" id="order-items-list">
+    {%- if cart.empty? -%}
+      <p class="order-items__empty">Add products to your cart to see them here.</p>
+    {%- else -%}
+      {%- for item in cart.items -%}
+        <article class="order-item">
+          {%- if item.image -%}
+            <img
+              class="order-item__thumb"
+              src="{{ item.image | image_url: width: 144 }}"
+              alt="{{ item.image.alt | default: item.product.title | escape }}"
+              width="72"
+              height="72"
+              loading="lazy"
+            >
+          {%- else -%}
+            <span class="order-item__thumb order-item__thumb--placeholder" aria-hidden="true"></span>
+          {%- endif -%}
+          <p class="order-item__price">{{ item.final_line_price | money }}</p>
+        </article>
+      {%- endfor -%}
+    {%- endif -%}
+  </div>
+</section>

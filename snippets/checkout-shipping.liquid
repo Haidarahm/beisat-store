@@ -1,0 +1,81 @@
+{%- liquid
+  assign full_name = ''
+  if customer
+    assign full_name = customer.name
+  endif
+  assign phone_value = ''
+  if customer and customer.phone != blank
+    assign phone_value = customer.phone
+  endif
+-%}
+<section class="card" aria-labelledby="shipping-title">
+  <div class="card__header">
+    <h2 id="shipping-title" class="card__title">Shipping Address</h2>
+  </div>
+  <p class="card__subtitle">Add an address for this order</p>
+  <hr class="card__divider" />
+
+  <div class="address-row" id="shipping-address-row">
+    <svg class="icon icon--primary" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z" />
+    </svg>
+    <span id="shipping-address-text" class="skeleton-text" aria-busy="true" aria-live="polite">
+      <span class="skeleton-text__line"></span>
+    </span>
+  </div>
+
+  <button type="button" class="btn-outline" id="address-action-btn">Change Address</button>
+
+  <div class="field" id="full-name-field">
+    <label class="field__label" for="full-name">Full Name <span class="required">*</span></label>
+    <input
+      class="field__input"
+      id="full-name"
+      name="checkout_preview_full_name"
+      type="text"
+      value="{{ full_name | escape }}"
+      autocomplete="name"
+      aria-describedby="full-name-error"
+    >
+    <p class="field__error" id="full-name-error" hidden>Full name is required</p>
+  </div>
+
+  <div class="field" id="phone-number-field">
+    <label class="field__label" for="phone-number">Phone number <span class="required">*</span></label>
+    <div class="phone-input">
+      <button
+        type="button"
+        class="phone-input__prefix"
+        id="phone-prefix-btn"
+        aria-haspopup="dialog"
+        aria-controls="country-sheet"
+        aria-label="Select country code"
+      >
+        <img
+          class="phone-input__flag"
+          id="phone-prefix-flag"
+          src="https://flagcdn.com/w40/om.png"
+          alt=""
+          width="20"
+          height="15"
+          decoding="async"
+        >
+        <span id="phone-prefix-code">+968</span>
+        <svg class="phone-input__chevron" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+          <path d="M3 4.5L6 7.5L9 4.5" />
+        </svg>
+      </button>
+      <input
+        class="field__input phone-input__field"
+        id="phone-number"
+        name="checkout_preview_phone"
+        type="tel"
+        value="{{ phone_value | escape }}"
+        placeholder="9XXX XXXX"
+        autocomplete="tel-national"
+        aria-describedby="phone-number-error"
+      >
+    </div>
+    <p class="field__error" id="phone-number-error" hidden>Phone number is required</p>
+  </div>
+</section>

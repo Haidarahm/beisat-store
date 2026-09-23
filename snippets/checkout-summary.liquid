@@ -1,0 +1,71 @@
+<section class="card" aria-labelledby="order-summary-title">
+  <div class="card__header">
+    <h2 id="order-summary-title" class="card__title">Order summary</h2>
+  </div>
+
+  <hr class="card__divider" />
+
+  <div class="nested-card">
+    <h3 class="delivery-title">
+      <svg class="icon icon--primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M1 3h15v13H1z" />
+        <path d="M16 8h4l3 4v4h-7V8z" />
+        <circle cx="5.5" cy="18.5" r="2.5" />
+        <circle cx="18.5" cy="18.5" r="2.5" />
+      </svg>
+      Delivery information
+    </h3>
+    <div class="row">
+      <span class="row__label">Delivery Fee</span>
+      <span class="row__value">{{ section.settings.delivery_fee_label }}</span>
+    </div>
+    <div class="row">
+      <span class="row__label">Estimated Delivery</span>
+      <span class="row__value">{{ section.settings.estimated_delivery }}</span>
+    </div>
+  </div>
+
+  <div class="nested-card">
+    <div class="row">
+      <span class="row__label">
+        Subtotal
+        {%- unless cart.empty? %} · {{ cart.item_count }}
+          {%- if cart.item_count == 1 %} item{% else %} items{% endif -%}
+        {%- endunless -%}
+      </span>
+      <span class="row__value">{{ cart.total_price | money }}</span>
+    </div>
+    <div class="row">
+      <span class="row__label">
+        Included VAT
+        <svg class="icon icon--muted" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M12 2a10 10 0 100 20 10 10 0 000-20zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" />
+        </svg>
+      </span>
+      <span class="row__value">{{ 0 | money }}</span>
+    </div>
+
+    <hr class="divider" />
+
+    <div class="total-row">
+      <p class="total-row__label">Total</p>
+      <p class="total-row__value">{{ cart.total_price | money }}</p>
+    </div>
+  </div>
+
+  <div class="summary-actions">
+    {%- if customer -%}
+      <a href="https://beisat.space/checkout" class="btn-outline btn-outline--sm" id="checkout-continue-btn">
+    {%- else -%}
+      <a href="#account" class="btn-outline btn-outline--sm" id="checkout-continue-btn" data-require-login>
+    {%- endif -%}
+      <svg class="icon icon--primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M20 12v6a2 2 0 01-2 2H6a2 2 0 01-2-2v-6" />
+        <path d="M4 8l2.5-4h11L20 8" />
+        <path d="M4 8h16" />
+        <path d="M9 12a2 2 0 104 0" />
+      </svg>
+      PROCEED TO PAYMENT
+    </a>
+  </div>
+</section>

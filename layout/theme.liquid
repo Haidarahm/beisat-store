@@ -8,7 +8,14 @@
   endif
 -%}
 <!doctype html>
-<html class="no-js" lang="{{ request.locale.iso_code }}" dir="{{ lang_dir }}">
+<html
+  class="no-js"
+  lang="{{ request.locale.iso_code }}"
+  dir="{{ lang_dir }}"
+  data-customer-logged-in="{% if customer %}true{% else %}false{% endif %}"
+  data-cart-empty="{% if cart.empty? %}true{% else %}false{% endif %}"
+  data-cart-item-count="{{ cart.item_count }}"
+>
 <head>
   {%- render 'doc-head-core' -%}
   {%- render 'doc-head-social' -%}
@@ -104,7 +111,10 @@
         externalLinksNewTab: {{ settings.external_links_new_tab | json }},
         internalLinksSmoothScroll: {{ settings.internal_links_smooth_scroll | json }}
       }
-    }
+    };
+    window.routes = {
+      cart_update_url: '{{ routes.cart_update_url }}.js'
+    };
 
     theme.inlineNavigationCheck = function() {
       var pageHeader = document.querySelector('.pageheader'),
@@ -325,6 +335,8 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 </script>
 {% comment %} ---END--- Edited by: Hasan | Date: 5/3/2025 | Reason: Add custom Meta pixel tracker for WA button {% endcomment %}
+
+{%- render 'account-login-gate' -%}
 
 </body>
 </html>

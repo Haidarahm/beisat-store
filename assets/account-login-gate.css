@@ -1,0 +1,94 @@
+/* Account icon styling for Shopify's <shopify-account> sheet. */
+shopify-account {
+  --shopify-account-signed-in-avatar-size: 2.4rem;
+  --shopify-account-radius-dialog: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header__icon--account shopify-account,
+.menu-drawer__account shopify-account {
+  line-height: 0;
+}
+
+.header__icon--account shopify-account::part(signed-out-avatar),
+.menu-drawer__account shopify-account::part(signed-out-avatar) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+/* Visible fallback when Safari blocks auto-open (common on iPhone). */
+.account-login-fallback {
+  display: none;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 60;
+  width: 100%;
+  max-width: 390px;
+  margin: 0 auto;
+  padding: 16px 14px calc(16px + env(safe-area-inset-bottom, 0px));
+  background: #ffffff;
+  box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.12);
+  border-radius: 20px;
+}
+
+.account-login-fallback.is-visible {
+  display: block;
+}
+
+.account-login-fallback__title {
+  margin: 0 0 6px;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.account-login-fallback__text {
+  margin: 0 0 14px;
+  font-size: 0.9375rem;
+  color: #6b6b6b;
+}
+
+.account-login-fallback__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 48px;
+  padding: 12px 16px;
+  border: 0;
+  border-radius: 999px;
+  background: #4caf50;
+  color: #ffffff;
+  font: inherit;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.account-login-fallback__dismiss {
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+  padding: 8px;
+  border: 0;
+  background: transparent;
+  color: #6b6b6b;
+  font: inherit;
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+
+body.account-login-fallback-open .summary-actions {
+  visibility: hidden;
+  pointer-events: none;
+}

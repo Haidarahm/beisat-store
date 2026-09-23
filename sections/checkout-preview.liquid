@@ -1,0 +1,101 @@
+{{ 'checkout-preview.css' | asset_url | stylesheet_tag }}
+
+<div
+  class="checkout checkout-preview"
+  id="checkout-preview-root"
+  data-countries-url="{{ 'checkout-preview-countries.json' | asset_url }}"
+  data-map-url="{{ 'checkout-preview-map.json' | asset_url }}"
+  {% if customer and customer.email != blank %}data-customer-email="{{ customer.email | escape }}"{% endif %}
+>
+  {% render 'checkout-header' %}
+  {% render 'checkout-order-items' %}
+  {% render 'checkout-shipping' %}
+  {% render 'checkout-summary', section: section %}
+
+  <div class="location-sheet" id="location-sheet" aria-hidden="true">
+    <div class="location-sheet__backdrop" id="location-sheet-backdrop"></div>
+    <div
+      class="location-sheet__panel"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="location-sheet-title"
+    >
+      <h2 id="location-sheet-title" class="location-sheet__title">Select Location on Map</h2>
+      <div class="location-sheet__search">
+        <svg class="location-sheet__search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <circle cx="11" cy="11" r="7" />
+          <path d="M20 20l-3.5-3.5" />
+        </svg>
+        <input
+          id="location-search-input"
+          class="location-sheet__input"
+          type="search"
+          placeholder="Search for locations"
+          autocomplete="off"
+          aria-label="Search for locations"
+          aria-controls="location-search-results"
+        >
+      </div>
+      <ul class="location-sheet__results" id="location-search-results" role="listbox"></ul>
+    </div>
+  </div>
+
+  <div class="location-sheet" id="country-sheet" aria-hidden="true">
+    <div class="location-sheet__backdrop" id="country-sheet-backdrop"></div>
+    <div
+      class="location-sheet__panel"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="country-sheet-title"
+    >
+      <h2 id="country-sheet-title" class="location-sheet__title">Select country code</h2>
+      <div class="location-sheet__search">
+        <svg class="location-sheet__search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <circle cx="11" cy="11" r="7" />
+          <path d="M20 20l-3.5-3.5" />
+        </svg>
+        <input
+          id="country-search-input"
+          class="location-sheet__input"
+          type="search"
+          placeholder="Search country or code"
+          autocomplete="off"
+          aria-label="Search country or code"
+          aria-controls="country-search-results"
+        >
+      </div>
+      <ul class="location-sheet__results" id="country-search-results" role="listbox"></ul>
+    </div>
+  </div>
+</div>
+
+<script src="{{ 'checkout-preview-location.js' | asset_url }}" defer></script>
+<script src="{{ 'checkout-preview-phone.js' | asset_url }}" defer></script>
+<script src="{{ 'checkout-preview.js' | asset_url }}" defer></script>
+
+{% schema %}
+{
+  "name": "Checkout preview",
+  "tag": "section",
+  "class": "section-checkout-preview",
+  "settings": [
+    {
+      "type": "text",
+      "id": "delivery_fee_label",
+      "label": "Delivery fee display",
+      "default": "0.900 OMR"
+    },
+    {
+      "type": "text",
+      "id": "estimated_delivery",
+      "label": "Estimated delivery",
+      "default": "Tomorrow"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Checkout preview"
+    }
+  ]
+}
+{% endschema %}

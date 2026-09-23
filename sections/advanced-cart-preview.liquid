@@ -1,16 +1,65 @@
 {{ 'advanced-cart-preview.css' | asset_url | stylesheet_tag }}
 
+{%- liquid
+  assign customer_location = ''
+  if customer and customer.default_address
+    assign customer_location = customer.default_address.address1
+    if customer.default_address.city != blank and customer.default_address.city != 'N/A'
+      assign customer_location = customer_location | append: ', ' | append: customer.default_address.city
+    endif
+    if customer.default_address.country != blank
+      assign customer_location = customer_location | append: ', ' | append: customer.default_address.country
+    endif
+  endif
+  assign cart_checkout_return = routes.root_url | append: 'checkout' | replace: '//checkout', '/checkout'
+-%}
 <div
   class="checkout advanced-cart-preview"
   id="advanced-cart-preview-root"
   data-countries-url="{{ 'advanced-cart-countries.json' | asset_url }}"
   data-map-url="{{ 'advanced-cart-map.json' | asset_url }}"
   {% if customer and customer.email != blank %}data-customer-email="{{ customer.email | escape }}"{% endif %}
+  {% if customer_location != blank %}data-customer-location="{{ customer_location | escape }}"{% endif %}
 >
   {% render 'advanced-cart-header' %}
   {% render 'advanced-cart-order-items' %}
   {% render 'advanced-cart-shipping' %}
   {% render 'advanced-cart-summary', section: section %}
+
+  {% comment %} Save cart location onto the customer so checkout middle step is prefilled. {% endcomment %}
+  {% if customer %}
+    <div hidden id="cart-address-sync">
+      {% if customer.default_address %}
+        {% form 'customer_address', customer.default_address, return_to: cart_checkout_return %}
+          <input type="hidden" name="address[first_name]" id="cart-addr-first-name" value="">
+          <input type="hidden" name="address[last_name]" id="cart-addr-last-name" value="">
+          <input type="hidden" name="address[phone]" id="cart-addr-phone" value="">
+          <input type="hidden" name="address[address1]" id="cart-addr-address1" value="">
+          <input type="hidden" name="address[city]" id="cart-addr-city" value="">
+          <input type="hidden" name="address[province]" id="cart-addr-province" value="">
+          <input type="hidden" name="address[zip]" id="cart-addr-zip" value="">
+          <select name="address[country]" id="cart-addr-country">
+            {{ all_country_option_tags }}
+          </select>
+          <input type="hidden" name="address[default]" value="1">
+        {% endform %}
+      {% else %}
+        {% form 'customer_address', customer.new_address, return_to: cart_checkout_return %}
+          <input type="hidden" name="address[first_name]" id="cart-addr-first-name" value="">
+          <input type="hidden" name="address[last_name]" id="cart-addr-last-name" value="">
+          <input type="hidden" name="address[phone]" id="cart-addr-phone" value="">
+          <input type="hidden" name="address[address1]" id="cart-addr-address1" value="">
+          <input type="hidden" name="address[city]" id="cart-addr-city" value="">
+          <input type="hidden" name="address[province]" id="cart-addr-province" value="">
+          <input type="hidden" name="address[zip]" id="cart-addr-zip" value="">
+          <select name="address[country]" id="cart-addr-country">
+            {{ all_country_option_tags }}
+          </select>
+          <input type="hidden" name="address[default]" value="1">
+        {% endform %}
+      {% endif %}
+    </div>
+  {% endif %}
 
   <div class="location-sheet" id="location-sheet" aria-hidden="true">
     <div class="location-sheet__backdrop" id="location-sheet-backdrop"></div>

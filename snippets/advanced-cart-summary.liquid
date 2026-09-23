@@ -55,7 +55,7 @@
 
   <div class="summary-actions">
     {%- if customer -%}
-      <a href="https://beisat.space/checkout" class="btn-outline btn-outline--sm" id="checkout-continue-btn">
+      <a href="{{ routes.root_url | append: 'checkout' | replace: '//checkout', '/checkout' }}" class="btn-outline btn-outline--sm" id="checkout-continue-btn">
     {%- else -%}
       <a href="#account" class="btn-outline btn-outline--sm" id="checkout-continue-btn" data-require-login>
     {%- endif -%}

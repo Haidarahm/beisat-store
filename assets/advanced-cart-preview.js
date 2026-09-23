@@ -42,25 +42,22 @@
       })
       .filter(Boolean);
     if (!parts.length) {
-      return { address1: "", city: "", province: "", country: "" };
+      return { address1: "", city: "", province: "", country: "Oman", zip: "" };
     }
-    if (parts.length === 1) {
-      return { address1: parts[0], city: parts[0], province: "", country: "" };
+    var country = parts.length > 1 ? parts[parts.length - 1] : "Oman";
+    var address1 = parts[0];
+    var province = parts.length > 2 ? parts[1] : "";
+    var city = parts.length > 2 ? parts[parts.length - 2] : address1;
+    // Same rules as store gps-address for GCC.
+    if (
+      country === "United Arab Emirates" ||
+      country === "Kuwait" ||
+      country === "Bahrain" ||
+      country === "Qatar"
+    ) {
+      return { address1: address1, city: "N/A", province: address1, country: country, zip: "" };
     }
-    if (parts.length === 2) {
-      return {
-        address1: parts[0],
-        city: parts[0],
-        province: "",
-        country: parts[1],
-      };
-    }
-    return {
-      address1: parts[0],
-      city: parts[parts.length - 2],
-      province: parts.length > 3 ? parts[1] : parts[parts.length - 2],
-      country: parts[parts.length - 1],
-    };
+    return { address1: address1, city: city, province: province, country: country, zip: "" };
   }
 
   function getLocationText() {
@@ -334,11 +331,12 @@
       city: loc.city,
       province: loc.province,
       country: loc.country,
+      zip: loc.zip || "",
       phoneIso: draft.phoneIso || "",
     };
   }
 
-  function buildCheckoutUrl(fields) {
+  function buildPrefillParams(fields) {
     var params = new URLSearchParams();
     if (fields.email) params.set("checkout[email]", fields.email);
     if (fields.first_name) params.set("checkout[shipping_address][first_name]", fields.first_name);
@@ -347,17 +345,70 @@
     if (fields.city) params.set("checkout[shipping_address][city]", fields.city);
     if (fields.province) params.set("checkout[shipping_address][province]", fields.province);
     if (fields.country) params.set("checkout[shipping_address][country]", fields.country);
+    if (fields.zip) params.set("checkout[shipping_address][zip]", fields.zip);
     if (fields.phone) {
       params.set("checkout[shipping_address][phone]", fields.phone);
       params.set("checkout[phone]", fields.phone);
     }
+    return params;
+  }
+
+  function buildCheckoutUrl(fields, cart) {
+    var params = buildPrefillParams(fields);
     var qs = params.toString();
-    var base = "https://beisat.space/checkout";
+    // Cart permalink + checkout params is Shopify's documented prefill path.
+    if (cart && cart.items && cart.items.length) {
+      var path = cart.items
+        .map(function (item) {
+          return item.variant_id + ":" + item.quantity;
+        })
+        .join(",");
+      return "/cart/" + path + (qs ? "?" + qs : "");
+    }
+    var base = "/checkout";
     var btn = document.getElementById("checkout-continue-btn");
     if (btn && btn.getAttribute("href") && btn.getAttribute("href").indexOf("checkout") !== -1) {
       base = btn.getAttribute("href").split("?")[0];
     }
     return qs ? base + "?" + qs : base;
+  }
+
+  function addressSyncForm() {
+    var wrap = document.getElementById("cart-address-sync");
+    if (!wrap) return null;
+    return wrap.querySelector("form");
+  }
+
+  function fillCustomerAddressForm(fields, dest) {
+    var form = addressSyncForm();
+    if (!form) return false;
+    function set(id, value) {
+      var el = document.getElementById(id);
+      if (el) el.value = value || "";
+    }
+    set("cart-addr-first-name", fields.first_name);
+    set("cart-addr-last-name", fields.last_name);
+    set("cart-addr-phone", fields.phone);
+    set("cart-addr-address1", fields.address1 || fields.location);
+    set("cart-addr-city", fields.city || fields.address1 || "N/A");
+    set("cart-addr-province", fields.province || "");
+    set("cart-addr-zip", fields.zip || "");
+    var countryEl = document.getElementById("cart-addr-country");
+    if (countryEl) {
+      var want = fields.country || "Oman";
+      countryEl.value = want;
+      if (countryEl.value !== want) {
+        for (var i = 0; i < countryEl.options.length; i++) {
+          if (countryEl.options[i].text === want || countryEl.options[i].value === want) {
+            countryEl.selectedIndex = i;
+            break;
+          }
+        }
+      }
+    }
+    var returnTo = form.querySelector('[name="return_to"]');
+    if (returnTo && dest) returnTo.value = dest;
+    return true;
   }
 
   function goToCheckoutWithPrefill() {
@@ -382,7 +433,6 @@
       Country: fields.country,
     };
     var note = [fields.fullName, fields.phone, fields.location].filter(Boolean).join(" | ");
-    var dest = buildCheckoutUrl(fields);
 
     return fetch((window.routes && window.routes.cart_update_url) || "/cart/update.js", {
       method: "POST",
@@ -395,6 +445,24 @@
     })
       .catch(function () {})
       .then(function () {
+        return fetch(((window.theme && window.theme.routes && window.theme.routes.cart) || "/cart") + ".js", {
+          credentials: "same-origin",
+          headers: { Accept: "application/json" },
+        })
+          .then(function (res) {
+            return res.json();
+          })
+          .catch(function () {
+            return null;
+          });
+      })
+      .then(function (cart) {
+        var dest = buildCheckoutUrl(fields, cart);
+        // Write address to customer account → checkout middle step uses it / collapses to payment.
+        if (fillCustomerAddressForm(fields, dest)) {
+          addressSyncForm().submit();
+          return true;
+        }
         window.location.href = dest;
         return true;
       });

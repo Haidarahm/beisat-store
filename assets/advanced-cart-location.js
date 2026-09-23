@@ -315,8 +315,13 @@
 
     var api = global.AdvancedCartPreview;
     var draft = api && api.draftGet ? api.draftGet() : {};
+    var customerLoc = (el && el.getAttribute("data-customer-location")) || "";
     if (draft.location) {
       setAddress(draft.location, { persist: false });
+      return loadMap().catch(function () {});
+    }
+    if (customerLoc) {
+      setAddress(customerLoc, { persist: false });
       return loadMap().catch(function () {});
     }
 
@@ -327,7 +332,7 @@
         var label = matchLocation(coords.latitude, coords.longitude, features);
         clearAddressSkeleton(addressEl);
         if (label) {
-          addressEl.textContent = label;
+          setAddress(label);
         } else {
           showSetLocation();
         }

@@ -1,16 +1,16 @@
-{{ 'checkout-preview.css' | asset_url | stylesheet_tag }}
+{{ 'advanced-cart-preview.css' | asset_url | stylesheet_tag }}
 
 <div
-  class="checkout checkout-preview"
-  id="checkout-preview-root"
-  data-countries-url="{{ 'checkout-preview-countries.json' | asset_url }}"
-  data-map-url="{{ 'checkout-preview-map.json' | asset_url }}"
+  class="checkout advanced-cart-preview"
+  id="advanced-cart-preview-root"
+  data-countries-url="{{ 'advanced-cart-countries.json' | asset_url }}"
+  data-map-url="{{ 'advanced-cart-map.json' | asset_url }}"
   {% if customer and customer.email != blank %}data-customer-email="{{ customer.email | escape }}"{% endif %}
 >
-  {% render 'checkout-header' %}
-  {% render 'checkout-order-items' %}
-  {% render 'checkout-shipping' %}
-  {% render 'checkout-summary', section: section %}
+  {% render 'advanced-cart-header' %}
+  {% render 'advanced-cart-order-items' %}
+  {% render 'advanced-cart-shipping' %}
+  {% render 'advanced-cart-summary', section: section %}
 
   <div class="location-sheet" id="location-sheet" aria-hidden="true">
     <div class="location-sheet__backdrop" id="location-sheet-backdrop"></div>
@@ -69,15 +69,15 @@
   </div>
 </div>
 
-<script src="{{ 'checkout-preview-location.js' | asset_url }}" defer></script>
-<script src="{{ 'checkout-preview-phone.js' | asset_url }}" defer></script>
-<script src="{{ 'checkout-preview.js' | asset_url }}" defer></script>
+<script src="{{ 'advanced-cart-location.js' | asset_url }}" defer></script>
+<script src="{{ 'advanced-cart-phone.js' | asset_url }}" defer></script>
+<script src="{{ 'advanced-cart-preview.js' | asset_url }}" defer></script>
 
 {% schema %}
 {
-  "name": "Checkout preview",
+  "name": "Advanced cart",
   "tag": "section",
-  "class": "section-checkout-preview",
+  "class": "section-advanced-cart-preview",
   "settings": [
     {
       "type": "text",
@@ -94,7 +94,7 @@
   ],
   "presets": [
     {
-      "name": "Checkout preview"
+      "name": "Advanced cart"
     }
   ]
 }

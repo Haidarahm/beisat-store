@@ -8,7 +8,7 @@
   var countriesUrl = "";
 
   function root() {
-    return document.getElementById("checkout-preview-root");
+    return document.getElementById("advanced-cart-preview-root");
   }
 
   function loadCountries() {
@@ -140,7 +140,7 @@
   }
 
   function savePhoneDraft() {
-    var api = global.CheckoutPreview;
+    var api = global.AdvancedCartPreview;
     var phoneInput = document.getElementById("phone-number");
     if (!api || !api.draftPatch || !phoneInput) return;
     api.draftPatch({
@@ -280,8 +280,8 @@
         phoneValidate();
       }
       savePhoneDraft();
-      if (global.CheckoutPreview && typeof global.CheckoutPreview.syncProceedButton === "function") {
-        global.CheckoutPreview.syncProceedButton();
+      if (global.AdvancedCartPreview && typeof global.AdvancedCartPreview.syncProceedButton === "function") {
+        global.AdvancedCartPreview.syncProceedButton();
       }
     });
     input.addEventListener("change", savePhoneDraft);
@@ -294,8 +294,8 @@
         phoneTouched = true;
         phoneValidate();
         savePhoneDraft();
-        if (global.CheckoutPreview && typeof global.CheckoutPreview.syncProceedButton === "function") {
-          global.CheckoutPreview.syncProceedButton();
+        if (global.AdvancedCartPreview && typeof global.AdvancedCartPreview.syncProceedButton === "function") {
+          global.AdvancedCartPreview.syncProceedButton();
         }
       }, 0);
     });
@@ -304,7 +304,7 @@
   }
 
   function restorePhoneDraft() {
-    var api = global.CheckoutPreview;
+    var api = global.AdvancedCartPreview;
     var draft = api && api.draftGet ? api.draftGet() : {};
     var phoneInput = document.getElementById("phone-number");
     if (!phoneInput) return;
@@ -354,9 +354,9 @@
     });
   }
 
-  global.CheckoutPreview = global.CheckoutPreview || {};
-  global.CheckoutPreview.wirePhoneCountryPicker = wirePhoneCountryPicker;
-  global.CheckoutPreview.restorePhoneDraft = restorePhoneDraft;
-  global.CheckoutPreview.validatePhoneNumber = validatePhoneNumber;
-  global.CheckoutPreview.normalizeNationalNumber = normalizeNationalNumber;
+  global.AdvancedCartPreview = global.AdvancedCartPreview || {};
+  global.AdvancedCartPreview.wirePhoneCountryPicker = wirePhoneCountryPicker;
+  global.AdvancedCartPreview.restorePhoneDraft = restorePhoneDraft;
+  global.AdvancedCartPreview.validatePhoneNumber = validatePhoneNumber;
+  global.AdvancedCartPreview.normalizeNationalNumber = normalizeNationalNumber;
 })(typeof window !== "undefined" ? window : this);

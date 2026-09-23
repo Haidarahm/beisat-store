@@ -106,7 +106,7 @@
     }
 
     var phoneResult = { ok: false, message: "Phone number is required" };
-    var api = window.CheckoutPreview;
+    var api = window.AdvancedCartPreview;
     if (!phoneRaw) {
       phoneResult = { ok: false, message: "Phone number is required" };
     } else if (api && typeof api.validatePhoneNumber === "function") {
@@ -308,7 +308,7 @@
 
   function collectCheckoutFields() {
     var draft = draftGet();
-    var root = document.getElementById("checkout-preview-root");
+    var root = document.getElementById("advanced-cart-preview-root");
     var nameEl = document.getElementById("full-name");
     var phoneEl = document.getElementById("phone-number");
     var codeEl = document.getElementById("phone-prefix-code");
@@ -430,15 +430,15 @@
   }
 
   function boot() {
-    if (!document.getElementById("checkout-preview-root")) return;
-    var api = window.CheckoutPreview || {};
+    if (!document.getElementById("advanced-cart-preview-root")) return;
+    var api = window.AdvancedCartPreview || {};
     api.draftGet = draftGet;
     api.draftPatch = draftPatch;
     api.collectCheckoutFields = collectCheckoutFields;
     api.goToCheckoutWithPrefill = goToCheckoutWithPrefill;
     api.ensureProceedReady = ensureProceedReady;
     api.syncProceedButton = syncProceedButton;
-    window.CheckoutPreview = api;
+    window.AdvancedCartPreview = api;
 
     wireRequiredField("full-name", "full-name-field", "full-name-error");
     wireNameDraft();

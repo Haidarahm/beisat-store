@@ -1,12 +1,12 @@
 {
   "sections": {
-    "checkout-preview": {
-      "type": "checkout-preview",
+    "advanced-cart-preview": {
+      "type": "advanced-cart-preview",
       "settings": {
         "delivery_fee_label": "0.900 OMR",
         "estimated_delivery": "Tomorrow"
       }
     }
   },
-  "order": ["checkout-preview"]
+  "order": ["advanced-cart-preview"]
 }

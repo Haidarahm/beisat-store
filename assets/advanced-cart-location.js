@@ -8,7 +8,7 @@
   var mapUrl = "";
 
   function root() {
-    return document.getElementById("checkout-preview-root");
+    return document.getElementById("advanced-cart-preview-root");
   }
 
   function toRad(deg) {
@@ -219,7 +219,7 @@
     if (row) row.hidden = false;
     if (btn) btn.textContent = "Change Address";
     if (!opts || opts.persist !== false) {
-      var api = global.CheckoutPreview;
+      var api = global.AdvancedCartPreview;
       if (api && api.draftPatch) api.draftPatch({ location: label });
     }
     closeLocationSheet();
@@ -313,7 +313,7 @@
 
     wireLocationSearch();
 
-    var api = global.CheckoutPreview;
+    var api = global.AdvancedCartPreview;
     var draft = api && api.draftGet ? api.draftGet() : {};
     if (draft.location) {
       setAddress(draft.location, { persist: false });
@@ -342,6 +342,6 @@
       });
   }
 
-  global.CheckoutPreview = global.CheckoutPreview || {};
-  global.CheckoutPreview.resolveShippingAddress = resolveShippingAddress;
+  global.AdvancedCartPreview = global.AdvancedCartPreview || {};
+  global.AdvancedCartPreview.resolveShippingAddress = resolveShippingAddress;
 })(typeof window !== "undefined" ? window : this);

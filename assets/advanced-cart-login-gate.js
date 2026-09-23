@@ -183,7 +183,7 @@
         return;
       }
 
-      var api = window.CheckoutPreview;
+      var api = window.AdvancedCartPreview;
       if (api && typeof api.ensureProceedReady === 'function' && !api.ensureProceedReady()) {
         return;
       }

@@ -87,8 +87,3 @@ shopify-account {
   font-size: 0.875rem;
   cursor: pointer;
 }
-
-body.account-login-fallback-open .summary-actions {
-  visibility: hidden;
-  pointer-events: none;
-}

@@ -818,13 +818,14 @@
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 40;
+  z-index: 9000;
   width: 100%;
   max-width: var(--phone-width);
   margin: 0 auto;
   padding: 12px 14px calc(12px + env(safe-area-inset-bottom, 0px));
   background: transparent;
   box-shadow: none;
+  pointer-events: auto;
 }
 
 .divider {

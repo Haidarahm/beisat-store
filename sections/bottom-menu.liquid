@@ -222,7 +222,7 @@
 {% assign link_lang = "/ar" %}
 {% endif %}
 
-{% unless request.path contains '/account/login' or request.path contains '/account/addresses' %}
+{% unless request.path contains '/account/login' or request.path contains '/account/addresses'  or request.path contains '/cart'%}
     <div class="sticky-section bottom-menu">
         <div class="Sticky-section-column">
             <a href="{{ link_lang }}/">

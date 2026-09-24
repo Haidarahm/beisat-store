@@ -206,6 +206,8 @@
     if (btn) btn.textContent = "Set location";
     var row = document.getElementById("shipping-address-row");
     if (row) row.hidden = true;
+    var sub = document.getElementById("shipping-subtitle");
+    if (sub) sub.hidden = false;
   }
 
   function setAddress(label, opts) {
@@ -218,6 +220,8 @@
     }
     if (row) row.hidden = false;
     if (btn) btn.textContent = "Change Address";
+    var sub = document.getElementById("shipping-subtitle");
+    if (sub) sub.hidden = true;
     if (!opts || opts.persist !== false) {
       var api = global.AdvancedCartPreview;
       if (api && api.draftPatch) api.draftPatch({ location: label });

@@ -250,7 +250,7 @@
   gap: 14px;
   overflow-x: auto;
   overflow-y: hidden;
-  padding-bottom: 2px;
+  padding: 6px 6px 2px 0;
   -webkit-overflow-scrolling: touch;
   overscroll-behavior-x: contain;
   touch-action: pan-x;
@@ -268,6 +268,11 @@
   text-align: center;
 }
 
+.order-item__media {
+  position: relative;
+  display: inline-block;
+}
+
 .order-item__thumb {
   width: 72px;
   height: 72px;
@@ -276,6 +281,46 @@
   background: #ffffff;
   display: block;
   transition: transform 0.15s ease;
+}
+
+.advanced-cart-preview .order-item__badges {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.advanced-cart-preview .order-item__qty,
+.advanced-cart-preview .order-item__size {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0;
+  box-sizing: border-box;
+  white-space: nowrap;
+}
+
+.advanced-cart-preview .order-item__qty {
+  background: #1a1a1a;
+  color: #ffffff;
+}
+
+.advanced-cart-preview .order-item__size {
+  background: #eeeeee;
+  color: #6b6b6b;
+  max-width: 42px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .order-item:hover .order-item__thumb {

@@ -18,19 +18,37 @@
       <p class="order-items__empty">Add products to your cart to see them here.</p>
     {%- else -%}
       {%- for item in cart.items -%}
+        {%- liquid
+          assign size_value = ''
+          for opt in item.options_with_values
+            assign opt_name = opt.name | downcase
+            if opt_name contains 'size'
+              assign size_value = opt.value
+              break
+            endif
+          endfor
+        -%}
         <article class="order-item">
-          {%- if item.image -%}
-            <img
-              class="order-item__thumb"
-              src="{{ item.image | image_url: width: 144 }}"
-              alt="{{ item.image.alt | default: item.product.title | escape }}"
-              width="72"
-              height="72"
-              loading="lazy"
-            >
-          {%- else -%}
-            <span class="order-item__thumb order-item__thumb--placeholder" aria-hidden="true"></span>
-          {%- endif -%}
+          <div class="order-item__media">
+            {%- if item.image -%}
+              <img
+                class="order-item__thumb"
+                src="{{ item.image | image_url: width: 144 }}"
+                alt="{{ item.image.alt | default: item.product.title | escape }}"
+                width="72"
+                height="72"
+                loading="lazy"
+              >
+            {%- else -%}
+              <span class="order-item__thumb order-item__thumb--placeholder" aria-hidden="true"></span>
+            {%- endif -%}
+            <span class="order-item__badges">
+              {%- if size_value != blank -%}
+                <span class="order-item__size">{{ size_value | escape }}</span>
+              {%- endif -%}
+              <span class="order-item__qty">{{ item.quantity }}</span>
+            </span>
+          </div>
           <p class="order-item__price">{{ item.final_line_price | money }}</p>
         </article>
       {%- endfor -%}

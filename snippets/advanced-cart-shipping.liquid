@@ -12,7 +12,7 @@
   <div class="card__header">
     <h2 id="shipping-title" class="card__title">Shipping Address</h2>
   </div>
-  <p class="card__subtitle">Add an address for this order</p>
+  <p class="card__subtitle" id="shipping-subtitle"{% if customer and customer.default_address %} hidden{% endif %}>Add an address for this order</p>
   <hr class="card__divider" />
 
   <div class="address-row" id="shipping-address-row">

@@ -17,11 +17,11 @@
     </h3>
     <div class="row">
       <span class="row__label">Delivery Fee</span>
-      <span class="row__value">{{ section.settings.delivery_fee_label }}</span>
+      <span class="row__value" id="delivery-fee-value" data-fallback="{{ section.settings.delivery_fee_label | escape }}">{{ section.settings.delivery_fee_label }}</span>
     </div>
     <div class="row">
       <span class="row__label">Estimated Delivery</span>
-      <span class="row__value">{{ section.settings.estimated_delivery }}</span>
+      <span class="row__value" id="estimated-delivery-value" data-empty="—">—</span>
     </div>
   </div>
 

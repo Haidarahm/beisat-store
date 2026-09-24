@@ -548,6 +548,19 @@
   animation: skeleton-shimmer 1.4s ease infinite;
 }
 
+.row__value.skeleton-text {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: flex-end;
+  min-width: 5em;
+}
+
+.skeleton-text__line--estimate {
+  width: 5.5em;
+  margin-left: auto;
+}
+
 @keyframes skeleton-shimmer {
   0% {
     background-position: 100% 0;

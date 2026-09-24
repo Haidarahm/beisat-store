@@ -497,6 +497,160 @@
     input.addEventListener("change", save);
   }
 
+  // Shopify Cart Ajax shipping rates:
+  // https://shopify.dev/docs/api/ajax/reference/cart#generate-shipping-rates
+  // Fee = rate.price, Estimated delivery = rate.description (Delivery details).
+  var estimateRequestId = 0;
+
+  function setRowValueText(id, text) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    el.classList.remove("skeleton-text");
+    el.removeAttribute("aria-busy");
+    el.replaceChildren();
+    el.textContent = text;
+  }
+
+  function showRowValueSkeleton(id) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    el.classList.add("skeleton-text");
+    el.setAttribute("aria-busy", "true");
+    el.replaceChildren();
+    var line = document.createElement("span");
+    line.className = "skeleton-text__line skeleton-text__line--estimate";
+    el.appendChild(line);
+  }
+
+  function emptyEstimateLabel() {
+    var el = document.getElementById("estimated-delivery-value");
+    return (el && el.getAttribute("data-empty")) || "—";
+  }
+
+  function feeFallbackLabel() {
+    var el = document.getElementById("delivery-fee-value");
+    return (el && el.getAttribute("data-fallback")) || "";
+  }
+
+  function formatMoneyFromRate(price, currency) {
+    var amount = Number(price);
+    if (!isFinite(amount)) return String(price);
+    try {
+      return new Intl.NumberFormat(undefined, {
+        style: "currency",
+        currency: currency || "OMR",
+        minimumFractionDigits: 3,
+        maximumFractionDigits: 3,
+      }).format(amount);
+    } catch (e) {
+      return amount.toFixed(3) + (currency ? " " + currency : "");
+    }
+  }
+
+  function pickBestRate(rates, locationText) {
+    if (!rates || !rates.length) return null;
+    var label = String(locationText || "").toLowerCase();
+    var area = label.split(",")[0].trim();
+    var i;
+    if (area) {
+      for (i = 0; i < rates.length; i++) {
+        var name = String(rates[i].name || rates[i].presentment_name || "").toLowerCase();
+        if (name.indexOf(area) !== -1) return rates[i];
+      }
+    }
+    var cheapest = rates[0];
+    for (i = 1; i < rates.length; i++) {
+      if (Number(rates[i].price) < Number(cheapest.price)) cheapest = rates[i];
+    }
+    return cheapest;
+  }
+
+  function shippingAddressParams(loc) {
+    var params = new URLSearchParams();
+    params.set("shipping_address[country]", loc.country || "Oman");
+    params.set(
+      "shipping_address[province]",
+      loc.province || loc.city || loc.address1 || ""
+    );
+    params.set("shipping_address[zip]", loc.zip || "00000");
+    return params.toString();
+  }
+
+  function pollAsyncShippingRates(query, requestId, attempt) {
+    attempt = attempt || 0;
+    return fetch("/cart/async_shipping_rates.json?" + query, {
+      headers: { Accept: "application/json" },
+      credentials: "same-origin",
+    })
+      .then(function (res) {
+        return res.json();
+      })
+      .then(function (data) {
+        if (requestId !== estimateRequestId) return null;
+        if (data === null) {
+          if (attempt >= 12) return { shipping_rates: [] };
+          return new Promise(function (resolve) {
+            setTimeout(function () {
+              resolve(pollAsyncShippingRates(query, requestId, attempt + 1));
+            }, 350);
+          });
+        }
+        return data;
+      });
+  }
+
+  function refreshDeliveryEstimate() {
+    var estimateEl = document.getElementById("estimated-delivery-value");
+    if (!estimateEl) return Promise.resolve();
+
+    var locationText = getLocationText();
+    if (!locationText) {
+      setRowValueText("estimated-delivery-value", emptyEstimateLabel());
+      var feeFallback = feeFallbackLabel();
+      if (feeFallback) setRowValueText("delivery-fee-value", feeFallback);
+      return Promise.resolve();
+    }
+
+    var loc = parseLocation(locationText);
+    var query = shippingAddressParams(loc);
+    var requestId = ++estimateRequestId;
+    showRowValueSkeleton("estimated-delivery-value");
+    showRowValueSkeleton("delivery-fee-value");
+
+    return fetch("/cart/prepare_shipping_rates.json?" + query, {
+      method: "POST",
+      headers: { Accept: "application/json", "X-Requested-With": "XMLHttpRequest" },
+      credentials: "same-origin",
+    })
+      .then(function () {
+        return pollAsyncShippingRates(query, requestId);
+      })
+      .then(function (data) {
+        if (requestId !== estimateRequestId) return;
+        var rate = pickBestRate(data && data.shipping_rates, locationText);
+        if (!rate) {
+          setRowValueText("estimated-delivery-value", emptyEstimateLabel());
+          setRowValueText("delivery-fee-value", feeFallbackLabel() || "—");
+          return;
+        }
+        // Delivery details from Shopify admin → rate.description
+        var details = String(rate.description || "").trim();
+        setRowValueText(
+          "estimated-delivery-value",
+          details || emptyEstimateLabel()
+        );
+        setRowValueText(
+          "delivery-fee-value",
+          formatMoneyFromRate(rate.price, rate.currency)
+        );
+      })
+      .catch(function () {
+        if (requestId !== estimateRequestId) return;
+        setRowValueText("estimated-delivery-value", emptyEstimateLabel());
+        setRowValueText("delivery-fee-value", feeFallbackLabel() || "—");
+      });
+  }
+
   function boot() {
     if (!document.getElementById("advanced-cart-preview-root")) return;
     var api = window.AdvancedCartPreview || {};
@@ -506,11 +660,13 @@
     api.goToCheckoutWithPrefill = goToCheckoutWithPrefill;
     api.ensureProceedReady = ensureProceedReady;
     api.syncProceedButton = syncProceedButton;
+    api.refreshDeliveryEstimate = refreshDeliveryEstimate;
     window.AdvancedCartPreview = api;
 
     wireRequiredField("full-name", "full-name-field", "full-name-error");
     wireNameDraft();
     wireProceedGate();
+    setRowValueText("estimated-delivery-value", emptyEstimateLabel());
 
     var phoneReady = api.wirePhoneCountryPicker
       ? api.wirePhoneCountryPicker()
@@ -522,6 +678,7 @@
         : Promise.resolve();
       return Promise.resolve(locating).then(function () {
         syncProceedButton();
+        refreshDeliveryEstimate();
       });
     });
   }

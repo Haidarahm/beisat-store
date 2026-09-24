@@ -208,6 +208,8 @@
     if (row) row.hidden = true;
     var sub = document.getElementById("shipping-subtitle");
     if (sub) sub.hidden = false;
+    var api = global.AdvancedCartPreview;
+    if (api && api.refreshDeliveryEstimate) api.refreshDeliveryEstimate();
   }
 
   function setAddress(label, opts) {
@@ -227,6 +229,8 @@
       if (api && api.draftPatch) api.draftPatch({ location: label });
     }
     closeLocationSheet();
+    var preview = global.AdvancedCartPreview;
+    if (preview && preview.refreshDeliveryEstimate) preview.refreshDeliveryEstimate();
   }
 
   function openLocationSheet() {

@@ -297,18 +297,18 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 18px;
-  height: 18px;
-  padding: 0 5px;
-  border-radius: 999px;
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  border-radius: 50%;
   font-size: 10px;
   font-weight: 700;
   line-height: 1;
   letter-spacing: 0;
   box-sizing: border-box;
   white-space: nowrap;
-  background: #1a1a1a;
-  color: #ffffff;
+  background: #eeeeee;
+  color: #6b6b6b;
 }
 
 .order-item:hover .order-item__thumb {

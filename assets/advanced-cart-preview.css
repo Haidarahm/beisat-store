@@ -285,7 +285,7 @@
 
 .advanced-cart-preview .order-item__badges {
   position: absolute;
-  top: 4px;
+  bottom: 4px;
   right: 4px;
   z-index: 1;
   display: inline-flex;
@@ -293,8 +293,7 @@
   gap: 3px;
 }
 
-.advanced-cart-preview .order-item__qty,
-.advanced-cart-preview .order-item__size {
+.advanced-cart-preview .order-item__qty {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -308,19 +307,8 @@
   letter-spacing: 0;
   box-sizing: border-box;
   white-space: nowrap;
-}
-
-.advanced-cart-preview .order-item__qty {
   background: #1a1a1a;
   color: #ffffff;
-}
-
-.advanced-cart-preview .order-item__size {
-  background: #eeeeee;
-  color: #6b6b6b;
-  max-width: 42px;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .order-item:hover .order-item__thumb {

@@ -547,17 +547,52 @@
     }
   }
 
+  // Pick the Shopify rate whose name best matches the location label.
+  // Location labels are "Area, State, Country" (from the map). Prefer the
+  // longest matching token so "Muscat East" beats country-only "Oman", and
+  // non-Muscat states (e.g. Salalah/Dhofar) land on the general Oman rate —
+  // all from live rate names, no hardcoded carriers.
   function pickBestRate(rates, locationText) {
     if (!rates || !rates.length) return null;
-    var label = String(locationText || "").toLowerCase();
-    var area = label.split(",")[0].trim();
+    var loc = parseLocation(locationText);
+    var needles = [loc.province, loc.city, loc.address1, loc.country]
+      .map(function (s) {
+        return String(s || "")
+          .trim()
+          .toLowerCase();
+      })
+      .filter(function (s) {
+        return s.length >= 2 && s !== "n/a";
+      });
+    // Dedupe while keeping order (province first = most specific).
+    var seen = {};
+    needles = needles.filter(function (s) {
+      if (seen[s]) return false;
+      seen[s] = true;
+      return true;
+    });
+
+    var best = null;
+    var bestScore = 0;
     var i;
-    if (area) {
-      for (i = 0; i < rates.length; i++) {
-        var name = String(rates[i].name || rates[i].presentment_name || "").toLowerCase();
-        if (name.indexOf(area) !== -1) return rates[i];
+    for (i = 0; i < rates.length; i++) {
+      var rate = rates[i];
+      var name = String(rate.name || rate.presentment_name || "").toLowerCase();
+      if (!name) continue;
+      var score = 0;
+      var n;
+      for (n = 0; n < needles.length; n++) {
+        if (name.indexOf(needles[n]) !== -1 && needles[n].length > score) {
+          score = needles[n].length;
+        }
+      }
+      if (score > bestScore) {
+        bestScore = score;
+        best = rate;
       }
     }
+    if (best) return best;
+
     var cheapest = rates[0];
     for (i = 1; i < rates.length; i++) {
       if (Number(rates[i].price) < Number(cheapest.price)) cheapest = rates[i];

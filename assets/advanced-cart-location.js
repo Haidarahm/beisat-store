@@ -208,8 +208,13 @@
     if (block) block.classList.remove("has-address");
     var row = document.getElementById("shipping-address-row");
     if (row) row.hidden = true;
+    var empty = document.getElementById("shipping-address-empty");
+    if (empty) empty.hidden = false;
     var sub = document.getElementById("shipping-subtitle");
-    if (sub) sub.hidden = false;
+    if (sub) {
+      sub.hidden = false;
+      sub.textContent = "Add an address for this order";
+    }
     var api = global.AdvancedCartPreview;
     if (api && api.refreshDeliveryEstimate) api.refreshDeliveryEstimate();
   }
@@ -226,6 +231,8 @@
     if (row) row.hidden = false;
     if (btn) btn.textContent = "Change";
     if (block) block.classList.add("has-address");
+    var empty = document.getElementById("shipping-address-empty");
+    if (empty) empty.hidden = true;
     var sub = document.getElementById("shipping-subtitle");
     if (sub) sub.hidden = true;
     if (!opts || opts.persist !== false) {

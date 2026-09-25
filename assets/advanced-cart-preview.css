@@ -343,6 +343,18 @@
   margin: 0 0 12px;
 }
 
+.shipping-address__empty {
+  margin: 0;
+  font-size: var(--fs-sm);
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--color-text-muted);
+}
+
+.shipping-address__empty[hidden] {
+  display: none;
+}
+
 .shipping-address.has-address {
   flex-direction: row;
   align-items: center;

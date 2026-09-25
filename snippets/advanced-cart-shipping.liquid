@@ -12,20 +12,29 @@
   <div class="card__header">
     <h2 id="shipping-title" class="card__title">Shipping Address</h2>
   </div>
-  <p class="card__subtitle" id="shipping-subtitle"{% if customer and customer.default_address %} hidden{% endif %}>Add an address for this order</p>
+  <p class="card__subtitle" id="shipping-subtitle"{% if customer and customer.default_address %} hidden{% endif %}>
+    Add an address for this order
+  </p>
   <hr class="card__divider" />
 
   <div class="shipping-address{% if customer and customer.default_address %} has-address{% endif %}" id="shipping-address">
-    <div class="address-row" id="shipping-address-row">
+    <p class="shipping-address__empty" id="shipping-address-empty"{% if customer and customer.default_address %} hidden{% endif %}>
+      Choose a delivery location to continue.
+    </p>
+    <div class="address-row" id="shipping-address-row"{% unless customer and customer.default_address %} hidden{% endunless %}>
       <svg class="icon icon--primary" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
         <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z" />
       </svg>
-      <span id="shipping-address-text" class="skeleton-text" aria-busy="true" aria-live="polite">
-        <span class="skeleton-text__line"></span>
+      <span id="shipping-address-text" class="{% if customer and customer.default_address %}skeleton-text{% endif %}"{% if customer and customer.default_address %} aria-busy="true" aria-live="polite"{% endif %}>
+        {%- if customer and customer.default_address -%}
+          <span class="skeleton-text__line"></span>
+        {%- endif -%}
       </span>
     </div>
 
-    <button type="button" class="btn-outline" id="address-action-btn">Change Address</button>
+    <button type="button" class="btn-outline" id="address-action-btn">
+      {%- if customer and customer.default_address -%}Change{%- else -%}Set location{%- endif -%}
+    </button>
   </div>
 
   <div class="field" id="full-name-field">

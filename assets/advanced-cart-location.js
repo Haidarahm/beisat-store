@@ -203,7 +203,9 @@
 
   function showSetLocation() {
     var btn = document.getElementById("address-action-btn");
+    var block = document.getElementById("shipping-address");
     if (btn) btn.textContent = "Set location";
+    if (block) block.classList.remove("has-address");
     var row = document.getElementById("shipping-address-row");
     if (row) row.hidden = true;
     var sub = document.getElementById("shipping-subtitle");
@@ -216,12 +218,14 @@
     var row = document.getElementById("shipping-address-row");
     var addressEl = document.getElementById("shipping-address-text");
     var btn = document.getElementById("address-action-btn");
+    var block = document.getElementById("shipping-address");
     if (addressEl) {
       clearAddressSkeleton(addressEl);
       addressEl.textContent = label;
     }
     if (row) row.hidden = false;
-    if (btn) btn.textContent = "Change Address";
+    if (btn) btn.textContent = "Change";
+    if (block) block.classList.add("has-address");
     var sub = document.getElementById("shipping-subtitle");
     if (sub) sub.hidden = true;
     if (!opts || opts.persist !== false) {

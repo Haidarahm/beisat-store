@@ -582,18 +582,18 @@
     }
   }
 
-  // Total = cart subtotal + selected delivery fee (rate.price is major units).
-  function updateOrderTotal(feeMajor, currency) {
+  // Total = cart subtotal + fee, formatted like Liquid | money (/100 subunits).
+  function updateOrderTotal(feeMajor) {
     var el = document.getElementById("order-total-value");
     if (!el) return;
-    var cents = Number(el.getAttribute("data-subtotal-cents") || 0);
-    var cur =
-      currency || el.getAttribute("data-currency") || "OMR";
-    var digits = currencyFractionDigits(cur);
-    var subtotal = isFinite(cents) ? cents / Math.pow(10, digits) : 0;
+    var cents = Number(el.getAttribute("data-subtotal-cents") || 0) || 0;
     var fee = Number(feeMajor);
     if (!isFinite(fee) || fee < 0) fee = 0;
-    setRowValueText("order-total-value", formatMoneyFromRate(subtotal + fee, cur));
+    var amount = ((cents + Math.round(fee * 100)) / 100).toFixed(2).replace(".", ",");
+    var fmt =
+      (window.theme && theme.settings && theme.settings.moneyWithCurrencyFormat) ||
+      "{{amount_with_comma_separator}}0 OMR";
+    setRowValueText("order-total-value", fmt.replace(/\{\{\s*amount[^}]*\}\}/, amount));
   }
 
   // Pick the Shopify rate whose name best matches the location label.

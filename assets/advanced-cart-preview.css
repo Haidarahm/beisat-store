@@ -345,7 +345,7 @@
   border-radius: 0;
   background: transparent;
   background-color: transparent;
-  color: var(--color-text-muted);
+  color: var(--color-primary);
   font-size: var(--fs-sm);
   font-weight: 500;
   line-height: 1.35;
@@ -359,7 +359,7 @@
 .advanced-cart-preview .shipping-address.has-address button.btn-outline:hover {
   background: transparent;
   background-color: transparent;
-  color: var(--color-text);
+  color: var(--color-primary);
   box-shadow: none;
   transform: none;
 }

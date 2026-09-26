@@ -516,6 +516,7 @@
   margin: 0;
   padding: 0;
   overflow-y: auto;
+  overscroll-behavior: contain;
   flex: 1;
   min-height: 0;
 }
@@ -853,6 +854,11 @@
 /* Safari: body { overflow-x:hidden; overflow-y:scroll } traps position:fixed */
 body.template-cart {
   overflow: visible;
+}
+
+/* Sheets open: lock page scroll (html is the scrollport after the rule above) */
+html:has(.location-sheet.is-open) {
+  overflow: hidden;
 }
 
 .advanced-cart-preview .summary-actions {

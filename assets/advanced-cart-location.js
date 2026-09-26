@@ -65,12 +65,36 @@
     return true;
   }
 
-  function formatLocation(props) {
+  function isArabic() {
+    var lang = (document.documentElement.lang || "").toLowerCase();
+    return lang === "ar" || lang.indexOf("ar-") === 0;
+  }
+
+  function formatLocationFields(props, arabic) {
+    var area = arabic
+      ? props["Area-AR"] != null && String(props["Area-AR"]).trim() !== ""
+        ? props["Area-AR"]
+        : props.Area
+      : props.Area;
+    var state = arabic
+      ? props["State-AR"] != null && String(props["State-AR"]).trim() !== ""
+        ? props["State-AR"]
+        : props.State
+      : props.State;
+    var country = arabic
+      ? props["Country-AR"] != null && String(props["Country-AR"]).trim() !== ""
+        ? props["Country-AR"]
+        : props.Country
+      : props.Country;
     var parts = [];
-    if (props.Area) parts.push(props.Area.trim());
-    if (props.State && props.State !== ".") parts.push(props.State.trim());
-    if (props.Country) parts.push(props.Country.trim());
+    if (area) parts.push(String(area).trim());
+    if (state && String(state).trim() !== ".") parts.push(String(state).trim());
+    if (country) parts.push(String(country).trim());
     return parts.join(", ");
+  }
+
+  function formatLocation(props) {
+    return formatLocationFields(props, isArabic());
   }
 
   function specificity(props) {
@@ -139,10 +163,12 @@
     var options = [];
     for (var i = 0; i < features.length; i++) {
       var props = features[i].properties || {};
-      var label = formatLocation(props);
-      if (!label || seen[label]) continue;
-      seen[label] = true;
+      var labelEn = formatLocationFields(props, false);
+      var label = formatLocationFields(props, isArabic());
+      if (!labelEn || seen[labelEn]) continue;
+      seen[labelEn] = true;
       var country = (props.Country || "").trim();
+      var countryAr = (props["Country-AR"] || "").trim();
       var searchText = [
         props.Area,
         props["Area-AR"],
@@ -150,14 +176,26 @@
         props["State-AR"] !== "." ? props["State-AR"] : "",
         props.Country,
         props["Country-AR"],
+        labelEn,
         label,
       ]
         .filter(Boolean)
         .join(" ")
         .toLowerCase();
-      options.push({ label: label, searchText: searchText, country: country });
+      options.push({
+        label: label,
+        labelEn: labelEn,
+        searchText: searchText,
+        country: country,
+        countryAr: countryAr || country,
+      });
     }
     return options;
+  }
+
+  function applyStoredLocation(stored) {
+    if (!stored) return;
+    setAddress(stored, { persist: false });
   }
 
   var GCC_COUNTRY_ORDER = {
@@ -198,6 +236,16 @@
     return "";
   }
 
+  function countryLabel(englishName) {
+    if (!isArabic() || !englishName) return englishName;
+    for (var i = 0; i < locationOptions.length; i++) {
+      if (locationOptions[i].country === englishName) {
+        return locationOptions[i].countryAr || englishName;
+      }
+    }
+    return englishName;
+  }
+
   function fillCountryFilter() {
     var sel = document.getElementById("location-country-filter");
     if (!sel || sel.options.length) return;
@@ -221,7 +269,7 @@
     list.forEach(function (c) {
       var opt = document.createElement("option");
       opt.value = c;
-      opt.textContent = c;
+      opt.textContent = countryLabel(c);
       sel.appendChild(opt);
     });
     var preferred = visitorCountryDefault(seen);
@@ -324,13 +372,23 @@
   }
 
   function setAddress(label, opts) {
+    var display = label;
+    var persistLabel = label;
+    for (var i = 0; i < locationOptions.length; i++) {
+      var opt = locationOptions[i];
+      if (opt.label === label || opt.labelEn === label) {
+        display = opt.label;
+        persistLabel = opt.labelEn;
+        break;
+      }
+    }
     var row = document.getElementById("shipping-address-row");
     var addressEl = document.getElementById("shipping-address-text");
     var btn = document.getElementById("address-action-btn");
     var block = document.getElementById("shipping-address");
     if (addressEl) {
       clearAddressSkeleton(addressEl);
-      addressEl.textContent = label;
+      addressEl.textContent = display;
     }
     if (row) row.hidden = false;
     if (btn) {
@@ -344,7 +402,7 @@
     if (sub) sub.hidden = true;
     if (!opts || opts.persist !== false) {
       var api = global.AdvancedCartPreview;
-      if (api && api.draftPatch) api.draftPatch({ location: label });
+      if (api && api.draftPatch) api.draftPatch({ location: persistLabel });
     }
     closeLocationSheet();
     var preview = global.AdvancedCartPreview;
@@ -538,12 +596,20 @@
     var draft = api && api.draftGet ? api.draftGet() : {};
     var customerLoc = (el && el.getAttribute("data-customer-location")) || "";
     if (draft.location) {
-      setAddress(draft.location, { persist: false });
-      return loadMap().catch(function () {});
+      applyStoredLocation(draft.location);
+      return loadMap()
+        .then(function () {
+          applyStoredLocation(draft.location);
+        })
+        .catch(function () {});
     }
     if (customerLoc) {
-      setAddress(customerLoc, { persist: false });
-      return loadMap().catch(function () {});
+      applyStoredLocation(customerLoc);
+      return loadMap()
+        .then(function () {
+          applyStoredLocation(customerLoc);
+        })
+        .catch(function () {});
     }
 
     return Promise.all([getPosition(), loadMap()])

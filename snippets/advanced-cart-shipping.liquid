@@ -10,16 +10,16 @@
 -%}
 <section class="card" aria-labelledby="shipping-title">
   <div class="card__header">
-    <h2 id="shipping-title" class="card__title">Shipping Address</h2>
+    <h2 id="shipping-title" class="card__title">{{ 'cart.advanced.shipping_address' | t }}</h2>
   </div>
   <p class="card__subtitle" id="shipping-subtitle"{% if customer and customer.default_address %} hidden{% endif %}>
-    Add an address for this order
+    {{ 'cart.advanced.add_address' | t }}
   </p>
   <hr class="card__divider" />
 
   <div class="shipping-address{% if customer and customer.default_address %} has-address{% endif %}" id="shipping-address">
     <p class="shipping-address__empty" id="shipping-address-empty"{% if customer and customer.default_address %} hidden{% endif %}>
-      Choose a delivery location to continue.
+      {{ 'cart.advanced.choose_location' | t }}
     </p>
     <div class="address-row" id="shipping-address-row"{% unless customer and customer.default_address %} hidden{% endunless %}>
       <svg class="icon icon--primary" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -32,13 +32,23 @@
       </span>
     </div>
 
-    <button type="button" class="btn-outline" id="address-action-btn">
-      {%- if customer and customer.default_address -%}Change{%- else -%}Set location{%- endif -%}
+    <button
+      type="button"
+      class="btn-outline"
+      id="address-action-btn"
+      data-label-change="{{ 'cart.advanced.change' | t | escape }}"
+      data-label-set="{{ 'cart.advanced.set_location' | t | escape }}"
+    >
+      {%- if customer and customer.default_address -%}
+        {{ 'cart.advanced.change' | t }}
+      {%- else -%}
+        {{ 'cart.advanced.set_location' | t }}
+      {%- endif -%}
     </button>
   </div>
 
   <div class="field" id="full-name-field">
-    <label class="field__label" for="full-name">Full Name <span class="required">*</span></label>
+    <label class="field__label" for="full-name">{{ 'cart.advanced.full_name' | t }} <span class="required">*</span></label>
     <input
       class="field__input"
       id="full-name"
@@ -48,19 +58,19 @@
       autocomplete="name"
       aria-describedby="full-name-error"
     >
-    <p class="field__error" id="full-name-error" hidden>Full name is required</p>
+    <p class="field__error" id="full-name-error" hidden>{{ 'cart.advanced.full_name_required' | t }}</p>
   </div>
 
   <div class="field" id="phone-number-field">
-    <label class="field__label" for="phone-number">Phone number <span class="required">*</span></label>
-    <div class="phone-input">
+    <label class="field__label" for="phone-number">{{ 'cart.advanced.phone' | t }} <span class="required">*</span></label>
+    <div class="phone-input" dir="ltr">
       <button
         type="button"
         class="phone-input__prefix"
         id="phone-prefix-btn"
         aria-haspopup="dialog"
         aria-controls="country-sheet"
-        aria-label="Select country code"
+        aria-label="{{ 'cart.advanced.select_country_code' | t | escape }}"
       >
         <img
           class="phone-input__flag"
@@ -82,11 +92,11 @@
         name="checkout_preview_phone"
         type="tel"
         value="{{ phone_value | escape }}"
-        placeholder="9XXX XXXX"
+        placeholder="{{ 'cart.advanced.phone_placeholder' | t | escape }}"
         autocomplete="tel-national"
         aria-describedby="phone-number-error"
       >
     </div>
-    <p class="field__error" id="phone-number-error" hidden>Phone number is required</p>
+    <p class="field__error" id="phone-number-error" hidden>{{ 'cart.advanced.phone_required' | t }}</p>
   </div>
 </section>

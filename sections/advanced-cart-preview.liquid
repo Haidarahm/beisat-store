@@ -69,7 +69,7 @@
       aria-modal="true"
       aria-labelledby="location-sheet-title"
     >
-      <h2 id="location-sheet-title" class="location-sheet__title">Select Location on Map</h2>
+      <h2 id="location-sheet-title" class="location-sheet__title">{{ 'cart.advanced.select_location_map' | t }}</h2>
       <div class="location-sheet__search">
         <svg class="location-sheet__search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
           <circle cx="11" cy="11" r="7" />
@@ -79,9 +79,9 @@
           id="location-search-input"
           class="location-sheet__input"
           type="search"
-          placeholder="Search for locations"
+          placeholder="{{ 'cart.advanced.search_locations' | t | escape }}"
           autocomplete="off"
-          aria-label="Search for locations"
+          aria-label="{{ 'cart.advanced.search_locations' | t | escape }}"
           aria-controls="location-search-results"
         >
       </div>
@@ -97,7 +97,7 @@
       aria-modal="true"
       aria-labelledby="country-sheet-title"
     >
-      <h2 id="country-sheet-title" class="location-sheet__title">Select country code</h2>
+      <h2 id="country-sheet-title" class="location-sheet__title">{{ 'cart.advanced.select_country_code' | t }}</h2>
       <div class="location-sheet__search">
         <svg class="location-sheet__search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
           <circle cx="11" cy="11" r="7" />
@@ -107,9 +107,9 @@
           id="country-search-input"
           class="location-sheet__input"
           type="search"
-          placeholder="Search country or code"
+          placeholder="{{ 'cart.advanced.search_country' | t | escape }}"
           autocomplete="off"
-          aria-label="Search country or code"
+          aria-label="{{ 'cart.advanced.search_country' | t | escape }}"
           aria-controls="country-search-results"
         >
       </div>
@@ -118,6 +118,20 @@
   </div>
 </div>
 
+<script type="application/json" id="advanced-cart-i18n">
+  {
+    "change": {{ 'cart.advanced.change' | t | json }},
+    "set_location": {{ 'cart.advanced.set_location' | t | json }},
+    "add_address": {{ 'cart.advanced.add_address' | t | json }},
+    "full_name_required": {{ 'cart.advanced.full_name_required' | t | json }},
+    "phone_required": {{ 'cart.advanced.phone_required' | t | json }},
+    "phone_invalid": {{ 'cart.advanced.phone_invalid' | t | json }},
+    "login_title": {{ 'cart.advanced.login_title' | t | json }},
+    "login_text": {{ 'cart.advanced.login_text' | t | json }},
+    "login_continue": {{ 'cart.advanced.login_continue' | t | json }},
+    "login_dismiss": {{ 'cart.advanced.login_dismiss' | t | json }}
+  }
+</script>
 <script src="{{ 'advanced-cart-location.js' | asset_url }}" defer></script>
 <script src="{{ 'advanced-cart-phone.js' | asset_url }}" defer></script>
 <script src="{{ 'advanced-cart-preview.js' | asset_url }}" defer></script>

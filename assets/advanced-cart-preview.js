@@ -3,6 +3,11 @@
 
   var DRAFT_KEY = "checkout_preview_draft";
 
+  function t(key, fallback) {
+    if (window.AdvancedCartI18n) return window.AdvancedCartI18n(key, fallback);
+    return fallback;
+  }
+
   function draftGet() {
     try {
       return JSON.parse(localStorage.getItem(DRAFT_KEY) || "{}") || {};
@@ -98,26 +103,41 @@
         fieldId: "full-name-field",
         errorId: "full-name-error",
         inputId: "full-name",
-        message: "Full name is required",
+        message: t("full_name_required", "Full name is required"),
       });
     }
 
-    var phoneResult = { ok: false, message: "Phone number is required" };
+    var phoneResult = {
+      ok: false,
+      message: t("phone_required", "Phone number is required"),
+    };
     var api = window.AdvancedCartPreview;
     if (!phoneRaw) {
-      phoneResult = { ok: false, message: "Phone number is required" };
+      phoneResult = {
+        ok: false,
+        message: t("phone_required", "Phone number is required"),
+      };
     } else if (api && typeof api.validatePhoneNumber === "function") {
       try {
         phoneResult = api.validatePhoneNumber(phoneRaw) || phoneResult;
         if (!phoneResult || typeof phoneResult.ok === "undefined") {
-          phoneResult = { ok: false, message: "Enter a valid phone number" };
+          phoneResult = {
+            ok: false,
+            message: t("phone_required", "Phone number is required"),
+          };
         }
       } catch (e) {
-        phoneResult = { ok: false, message: "Enter a valid phone number" };
+        phoneResult = {
+          ok: false,
+          message: t("phone_required", "Phone number is required"),
+        };
       }
     } else {
       // Digits present but country rules not loaded yet — keep proceed disabled.
-      phoneResult = { ok: false, message: "Enter a valid phone number" };
+      phoneResult = {
+        ok: false,
+        message: t("phone_required", "Phone number is required"),
+      };
     }
 
     if (!phoneResult.ok) {
@@ -128,7 +148,7 @@
         fieldId: "phone-number-field",
         errorId: "phone-number-error",
         inputId: "phone-number",
-        message: phoneResult.message || "Enter a valid phone number",
+        message: phoneResult.message || t("phone_required", "Phone number is required"),
       });
     }
     return issues;
@@ -188,7 +208,7 @@
         fieldId: "full-name-field",
         errorId: "full-name-error",
         inputId: "full-name",
-        message: (byId.name && byId.name.message) || "Full name is required",
+        message: (byId.name && byId.name.message) || t("full_name_required", "Full name is required"),
       },
       !!(revealedErrors.name && byId.name)
     );
@@ -197,7 +217,7 @@
         fieldId: "phone-number-field",
         errorId: "phone-number-error",
         inputId: "phone-number",
-        message: (byId.phone && byId.phone.message) || "Enter a valid phone number",
+        message: (byId.phone && byId.phone.message) || t("phone_invalid", "Enter a valid phone number"),
       },
       !!(revealedErrors.phone && byId.phone)
     );

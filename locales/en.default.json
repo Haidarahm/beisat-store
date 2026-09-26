@@ -335,8 +335,43 @@
       "agreement_html": "I agree to the <a href=\"{{ terms_url }}\" target=\"_blank\">terms and refund policy</a>",
       "confirmation": "You must agree to the terms and conditions before continuing."
     },
-  
-
+    "advanced": {
+      "checkout_title": "Checkout",
+      "order_items": "Order items",
+      "empty_cart": "Your cart is empty",
+      "items_in_cart": "Items in your cart",
+      "empty_hint": "Add products to your cart to see them here.",
+      "shipping_address": "Shipping Address",
+      "add_address": "Add an address for this order",
+      "choose_location": "Choose a delivery location to continue.",
+      "change": "Change",
+      "set_location": "Set location",
+      "full_name": "Full Name",
+      "full_name_required": "Full name is required",
+      "phone": "Phone number",
+      "phone_required": "Phone number is required",
+      "phone_invalid": "Enter a valid phone number",
+      "select_country_code": "Select country code",
+      "phone_placeholder": "9XXX XXXX",
+      "order_summary": "Order summary",
+      "delivery_information": "Delivery information",
+      "delivery_fee": "Delivery Fee",
+      "estimated_delivery": "Estimated Delivery",
+      "items_count": {
+        "one": "{{ count }} item",
+        "other": "{{ count }} items"
+      },
+      "included_vat": "Included VAT",
+      "total": "Total",
+      "proceed": "Proceed to payment",
+      "select_location_map": "Select Location on Map",
+      "search_locations": "Search for locations",
+      "search_country": "Search country or code",
+      "login_title": "Sign in or create account",
+      "login_text": "Continue with Google, Shop, or email to check out.",
+      "login_continue": "Continue to sign in",
+      "login_dismiss": "Not now"
+    }
   },
 
 "milestones": {

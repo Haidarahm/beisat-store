@@ -6,6 +6,20 @@
   var mapFeatures = null;
   var locationOptions = [];
   var mapUrl = "";
+  var i18nCache = null;
+
+  function t(key, fallback) {
+    if (!i18nCache) {
+      var el = document.getElementById("advanced-cart-i18n");
+      try {
+        i18nCache = el ? JSON.parse(el.textContent) : {};
+      } catch (e) {
+        i18nCache = {};
+      }
+    }
+    return i18nCache[key] || fallback;
+  }
+  global.AdvancedCartI18n = t;
 
   function root() {
     return document.getElementById("advanced-cart-preview-root");
@@ -204,7 +218,10 @@
   function showSetLocation() {
     var btn = document.getElementById("address-action-btn");
     var block = document.getElementById("shipping-address");
-    if (btn) btn.textContent = "Set location";
+    if (btn) {
+      btn.textContent =
+        btn.getAttribute("data-label-set") || t("set_location", "Set location");
+    }
     if (block) block.classList.remove("has-address");
     var row = document.getElementById("shipping-address-row");
     if (row) row.hidden = true;
@@ -213,7 +230,7 @@
     var sub = document.getElementById("shipping-subtitle");
     if (sub) {
       sub.hidden = false;
-      sub.textContent = "Add an address for this order";
+      sub.textContent = t("add_address", "Add an address for this order");
     }
     var api = global.AdvancedCartPreview;
     if (api && api.refreshDeliveryEstimate) api.refreshDeliveryEstimate();
@@ -229,7 +246,10 @@
       addressEl.textContent = label;
     }
     if (row) row.hidden = false;
-    if (btn) btn.textContent = "Change";
+    if (btn) {
+      btn.textContent =
+        btn.getAttribute("data-label-change") || t("change", "Change");
+    }
     if (block) block.classList.add("has-address");
     var empty = document.getElementById("shipping-address-empty");
     if (empty) empty.hidden = true;

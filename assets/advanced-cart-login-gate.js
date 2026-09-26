@@ -133,10 +133,29 @@
       box.setAttribute('role', 'dialog');
       box.setAttribute('aria-modal', 'true');
       box.innerHTML =
-        '<p class="account-login-fallback__title">Sign in or create account</p>' +
-        '<p class="account-login-fallback__text">Continue with Google, Shop, or email to check out.</p>' +
-        '<button type="button" class="account-login-fallback__btn" id="account-login-fallback-open">Continue to sign in</button>' +
-        '<button type="button" class="account-login-fallback__dismiss" id="account-login-fallback-dismiss">Not now</button>';
+        '<p class="account-login-fallback__title">' +
+        ((window.AdvancedCartI18n &&
+          window.AdvancedCartI18n("login_title", "Sign in or create account")) ||
+          "Sign in or create account") +
+        "</p>" +
+        '<p class="account-login-fallback__text">' +
+        ((window.AdvancedCartI18n &&
+          window.AdvancedCartI18n(
+            "login_text",
+            "Continue with Google, Shop, or email to check out."
+          )) ||
+          "Continue with Google, Shop, or email to check out.") +
+        "</p>" +
+        '<button type="button" class="account-login-fallback__btn" id="account-login-fallback-open">' +
+        ((window.AdvancedCartI18n &&
+          window.AdvancedCartI18n("login_continue", "Continue to sign in")) ||
+          "Continue to sign in") +
+        "</button>" +
+        '<button type="button" class="account-login-fallback__dismiss" id="account-login-fallback-dismiss">' +
+        ((window.AdvancedCartI18n &&
+          window.AdvancedCartI18n("login_dismiss", "Not now")) ||
+          "Not now") +
+        "</button>";
       document.body.appendChild(box);
 
       document.getElementById('account-login-fallback-open').addEventListener('click', function () {

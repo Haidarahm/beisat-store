@@ -1,6 +1,6 @@
 <section class="card" aria-labelledby="order-summary-title">
   <div class="card__header">
-    <h2 id="order-summary-title" class="card__title">Order summary</h2>
+    <h2 id="order-summary-title" class="card__title">{{ 'cart.advanced.order_summary' | t }}</h2>
   </div>
 
   <hr class="card__divider" />
@@ -13,14 +13,14 @@
         <circle cx="5.5" cy="18.5" r="2.5" />
         <circle cx="18.5" cy="18.5" r="2.5" />
       </svg>
-      Delivery information
+      {{ 'cart.advanced.delivery_information' | t }}
     </h3>
     <div class="row">
-      <span class="row__label">Delivery Fee</span>
+      <span class="row__label">{{ 'cart.advanced.delivery_fee' | t }}</span>
       <span class="row__value" id="delivery-fee-value" data-fallback="{{ section.settings.delivery_fee_label | escape }}">{{ section.settings.delivery_fee_label }}</span>
     </div>
     <div class="row">
-      <span class="row__label">Estimated Delivery</span>
+      <span class="row__label">{{ 'cart.advanced.estimated_delivery' | t }}</span>
       <span class="row__value" id="estimated-delivery-value" data-empty="—">—</span>
     </div>
   </div>
@@ -28,16 +28,14 @@
   <div class="nested-card">
     <div class="row">
       <span class="row__label">
-        Subtotal
-        {%- unless cart.empty? %} · {{ cart.item_count }}
-          {%- if cart.item_count == 1 %} item{% else %} items{% endif -%}
-        {%- endunless -%}
+        {{ 'cart.summary.subtotal' | t }}
+        {%- unless cart.empty? %} · {{ 'cart.advanced.items_count' | t: count: cart.item_count }}{%- endunless -%}
       </span>
       <span class="row__value">{{ cart.total_price | money }}</span>
     </div>
     <div class="row">
       <span class="row__label">
-        Included VAT
+        {{ 'cart.advanced.included_vat' | t }}
         <svg class="icon icon--muted" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
           <path d="M12 2a10 10 0 100 20 10 10 0 000-20zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" />
         </svg>
@@ -48,7 +46,7 @@
     <hr class="divider" />
 
     <div class="total-row">
-      <p class="total-row__label">Total</p>
+      <p class="total-row__label">{{ 'cart.advanced.total' | t }}</p>
       <p
         class="total-row__value"
         id="order-total-value"
@@ -70,7 +68,7 @@
         <path d="M4 8h16" />
         <path d="M9 12a2 2 0 104 0" />
       </svg>
-      PROCEED TO PAYMENT
+      {{ 'cart.advanced.proceed' | t }}
     </a>
   </div>
 </section>

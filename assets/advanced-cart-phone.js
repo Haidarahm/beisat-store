@@ -60,37 +60,30 @@
   function validatePhoneNumber(raw, country) {
     country = country || selectedCountry();
     var digits = normalizeNationalNumber(raw, country);
-    var label = country.name;
     var min = country.min;
     var max = country.max;
     var startsWith = country.startsWith;
+    var requiredMsg =
+      (window.AdvancedCartI18n &&
+        window.AdvancedCartI18n("phone_required", "Phone number is required")) ||
+      "Phone number is required";
+    var invalidMsg =
+      (window.AdvancedCartI18n &&
+        window.AdvancedCartI18n("phone_invalid", "Enter a valid phone number")) ||
+      "Enter a valid phone number";
 
     if (!digits) {
-      return { ok: false, message: "Phone number is required", digits: digits };
+      return { ok: false, message: requiredMsg, digits: digits };
     }
     if (digits.length < min || digits.length > max) {
-      var lenHint = min === max ? min + " digits" : min + "–" + max + " digits";
-      return {
-        ok: false,
-        message: "Enter a valid " + label + " number (" + lenHint + ")",
-        digits: digits,
-      };
+      return { ok: false, message: invalidMsg, digits: digits };
     }
     if (startsWith && startsWith.length) {
       var okPrefix = startsWith.some(function (p) {
         return digits.indexOf(p) === 0;
       });
       if (!okPrefix) {
-        var prefixes = startsWith
-          .map(function (p) {
-            return p + "…";
-          })
-          .join(" or ");
-        return {
-          ok: false,
-          message: label + " numbers start with " + prefixes,
-          digits: digits,
-        };
+        return { ok: false, message: invalidMsg, digits: digits };
       }
     }
     return { ok: true, message: "", digits: digits };

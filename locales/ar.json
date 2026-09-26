@@ -4314,8 +4314,46 @@
       "agreement_html": "أوافق على <a href=\"{{ terms_url }}\" target=\"_blank\">الشروط وسياسة الاسترداد</a>",
       "confirmation": "يجب أن توافق على الشروط والأحكام قبل المتابعة."
     },
- 
-
+    "advanced": {
+      "checkout_title": "إتمام الطلب",
+      "order_items": "عناصر الطلب",
+      "empty_cart": "سلتك فارغة",
+      "items_in_cart": "العناصر في سلتك",
+      "empty_hint": "أضف منتجات إلى سلتك لتظهر هنا.",
+      "shipping_address": "عنوان الشحن",
+      "add_address": "أضف عنوانًا لهذا الطلب",
+      "choose_location": "اختر موقع التوصيل للمتابعة.",
+      "change": "تغيير",
+      "set_location": "تحديد الموقع",
+      "full_name": "الاسم الكامل",
+      "full_name_required": "الاسم الكامل مطلوب",
+      "phone": "رقم الهاتف",
+      "phone_required": "رقم الهاتف مطلوب",
+      "phone_invalid": "أدخل رقم هاتف صالحًا",
+      "select_country_code": "اختر رمز الدولة",
+      "phone_placeholder": "9XXX XXXX",
+      "order_summary": "ملخص الطلب",
+      "delivery_information": "معلومات التوصيل",
+      "delivery_fee": "رسوم التوصيل",
+      "estimated_delivery": "التوصيل المتوقع",
+      "items_count": {
+        "one": "عنصر واحد",
+        "two": "عنصران",
+        "few": "{{ count }} عناصر",
+        "many": "{{ count }} عنصرًا",
+        "other": "{{ count }} عنصر"
+      },
+      "included_vat": "شامل ضريبة القيمة المضافة",
+      "total": "الإجمالي",
+      "proceed": "المتابعة للدفع",
+      "select_location_map": "اختر الموقع على الخريطة",
+      "search_locations": "ابحث عن المواقع",
+      "search_country": "ابحث عن الدولة أو الرمز",
+      "login_title": "سجّل الدخول أو أنشئ حسابًا",
+      "login_text": "تابع عبر Google أو Shop أو البريد الإلكتروني لإتمام الطلب.",
+      "login_continue": "المتابعة لتسجيل الدخول",
+      "login_dismiss": "ليس الآن"
+    }
   },
 
 "milestones": {

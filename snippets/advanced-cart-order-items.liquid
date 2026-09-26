@@ -1,21 +1,21 @@
 <section class="card" aria-labelledby="order-items-title">
   <div class="card__header">
     <h2 id="order-items-title" class="card__title">
-      Order items{% unless cart.empty? %} ({{ cart.item_count }}){% endunless %}
+      {{ 'cart.advanced.order_items' | t }}{% unless cart.empty? %} ({{ cart.item_count }}){% endunless %}
     </h2>
   </div>
   <p class="card__subtitle">
     {%- if cart.empty? -%}
-      Your cart is empty
+      {{ 'cart.advanced.empty_cart' | t }}
     {%- else -%}
-      Items in your cart
+      {{ 'cart.advanced.items_in_cart' | t }}
     {%- endif -%}
   </p>
   <hr class="card__divider" />
 
   <div class="order-items" id="order-items-list">
     {%- if cart.empty? -%}
-      <p class="order-items__empty">Add products to your cart to see them here.</p>
+      <p class="order-items__empty">{{ 'cart.advanced.empty_hint' | t }}</p>
     {%- else -%}
       {%- for item in cart.items -%}
         <article class="order-item">

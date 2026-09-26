@@ -169,6 +169,35 @@
     Bahrain: 5,
   };
 
+  // ISO → map Country label (Shopify localization is IP-based).
+  var ISO_TO_MAP_COUNTRY = {
+    OM: "Oman",
+    AE: "United Arab Emirates",
+    SA: "Saudi Arabia",
+    KW: "Kuwait",
+    QA: "Qatar",
+    BH: "Bahrain",
+  };
+
+  function visitorCountryDefault(seen) {
+    var el = root();
+    var iso = ((el && el.getAttribute("data-visitor-country-iso")) || "").toUpperCase();
+    var mapped = ISO_TO_MAP_COUNTRY[iso];
+    if (mapped && seen[mapped]) return mapped;
+    var name = ((el && el.getAttribute("data-visitor-country")) || "").trim();
+    if (name && seen[name]) return name;
+    var lower = name.toLowerCase();
+    if (lower) {
+      for (var c in seen) {
+        if (Object.prototype.hasOwnProperty.call(seen, c) && c.toLowerCase() === lower) {
+          return c;
+        }
+      }
+    }
+    if (seen.Oman) return "Oman";
+    return "";
+  }
+
   function fillCountryFilter() {
     var sel = document.getElementById("location-country-filter");
     if (!sel || sel.options.length) return;
@@ -195,7 +224,8 @@
       opt.textContent = c;
       sel.appendChild(opt);
     });
-    if (seen.Oman) sel.value = "Oman";
+    var preferred = visitorCountryDefault(seen);
+    if (preferred) sel.value = preferred;
   }
 
   function selectedCountryFilter() {

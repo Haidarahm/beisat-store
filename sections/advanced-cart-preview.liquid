@@ -18,6 +18,8 @@
   id="advanced-cart-preview-root"
   data-countries-url="{{ 'advanced-cart-countries.json' | asset_url }}"
   data-map-url="{{ 'advanced-cart-map.json' | asset_url }}"
+  data-visitor-country="{{ localization.country.name | escape }}"
+  data-visitor-country-iso="{{ localization.country.iso_code | escape }}"
   {% if customer and customer.email != blank %}data-customer-email="{{ customer.email | escape }}"{% endif %}
   {% if customer_location != blank %}data-customer-location="{{ customer_location | escape }}"{% endif %}
 >

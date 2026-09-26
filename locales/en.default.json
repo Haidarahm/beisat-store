@@ -341,6 +341,7 @@
       "empty_cart": "Your cart is empty",
       "items_in_cart": "Items in your cart",
       "empty_hint": "Add products to your cart to see them here.",
+      "scroll_more_items": "Show more items",
       "shipping_address": "Shipping Address",
       "add_address": "Add an address for this order",
       "choose_location": "Choose a delivery location to continue.",

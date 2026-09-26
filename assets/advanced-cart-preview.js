@@ -740,6 +740,44 @@
       });
   }
 
+  function wireOrderItemsScrollHint() {
+    var el = document.getElementById("order-items-list");
+    if (!el) return;
+    var wrap = el.parentElement;
+    if (!wrap || !wrap.classList.contains("order-items-wrap")) return;
+    var btn = wrap.querySelector(".order-items__more");
+
+    function sync() {
+      var last = el.lastElementChild;
+      if (!last || last.classList.contains("order-items__empty")) {
+        wrap.classList.remove("is-scrollable");
+        if (btn) btn.hidden = true;
+        return;
+      }
+      var er = el.getBoundingClientRect();
+      var lr = last.getBoundingClientRect();
+      var rtl = getComputedStyle(el).direction === "rtl";
+      var more = rtl ? lr.left < er.left - 2 : lr.right > er.right + 2;
+      wrap.classList.toggle("is-scrollable", more);
+      if (btn) btn.hidden = !more;
+    }
+
+    if (btn) {
+      btn.addEventListener("click", function () {
+        var step = Math.max(86, Math.round(el.clientWidth * 0.7));
+        var rtl = getComputedStyle(el).direction === "rtl";
+        el.scrollBy({ left: rtl ? -step : step, behavior: "smooth" });
+      });
+    }
+
+    el.addEventListener("scroll", sync, { passive: true });
+    window.addEventListener("resize", sync);
+    if (typeof ResizeObserver !== "undefined") {
+      new ResizeObserver(sync).observe(el);
+    }
+    sync();
+  }
+
   function boot() {
     if (!document.getElementById("advanced-cart-preview-root")) return;
     var api = window.AdvancedCartPreview || {};
@@ -755,6 +793,7 @@
     wireRequiredField("full-name", "full-name-field", "full-name-error");
     wireNameDraft();
     wireProceedGate();
+    wireOrderItemsScrollHint();
     setRowValueText("estimated-delivery-value", emptyEstimateLabel());
 
     var phoneReady = api.wirePhoneCountryPicker

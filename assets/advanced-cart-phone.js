@@ -6,9 +6,24 @@
   var phoneValidate = function () {};
   var phoneTouched = false;
   var countriesUrl = "";
+  // GCC first in the dial-code picker (OM default store).
+  var GCC_ORDER = { OM: 0, AE: 1, SA: 2, KW: 3, QA: 4, BH: 5 };
 
   function root() {
     return document.getElementById("advanced-cart-preview-root");
+  }
+
+  function prioritizeGcc(list) {
+    return (list || []).slice().sort(function (a, b) {
+      var ai = Object.prototype.hasOwnProperty.call(GCC_ORDER, a.iso)
+        ? GCC_ORDER[a.iso]
+        : 100;
+      var bi = Object.prototype.hasOwnProperty.call(GCC_ORDER, b.iso)
+        ? GCC_ORDER[b.iso]
+        : 100;
+      if (ai !== bi) return ai - bi;
+      return 0;
+    });
   }
 
   function loadCountries() {
@@ -17,7 +32,7 @@
       if (!res.ok) throw new Error("Failed to load countries");
       return res.json();
     }).then(function (data) {
-      countries = data || [];
+      countries = prioritizeGcc(data);
       return countries;
     });
   }

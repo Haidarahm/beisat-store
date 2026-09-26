@@ -190,10 +190,16 @@
   display: none;
 }
 
+.advanced-cart-preview summary.card__header::marker {
+  content: "";
+}
+
 .advanced-cart-preview summary.card__header::after {
   content: "";
+  flex-shrink: 0;
   width: 8px;
   height: 8px;
+  margin-top: 2px;
   border: solid var(--color-text-muted);
   border-width: 0 2px 2px 0;
   transform: rotate(-135deg);

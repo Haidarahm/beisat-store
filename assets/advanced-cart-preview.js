@@ -172,9 +172,7 @@
     var target = issue.scrollEl || issue.focusEl;
     var collapsed = target && target.closest && target.closest("details:not([open])");
     if (collapsed) collapsed.open = true;
-    if (target && typeof target.scrollIntoView === "function") {
-      target.scrollIntoView({ behavior: "smooth", block: "center" });
-    }
+
     function focusTarget() {
       if (!issue.focusEl || typeof issue.focusEl.focus !== "function") return;
       try {
@@ -188,9 +186,19 @@
         } catch (e2) {}
       }
     }
-    focusTarget();
-    window.setTimeout(focusTarget, 280);
-    window.setTimeout(focusTarget, 450);
+
+    function go() {
+      if (target && typeof target.scrollIntoView === "function") {
+        target.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+      focusTarget();
+      window.setTimeout(focusTarget, 280);
+      window.setTimeout(focusTarget, 450);
+    }
+
+    // Wait for accordion open animation (~0.3s) before scrolling into view.
+    if (collapsed) window.setTimeout(go, 320);
+    else go();
   }
 
   // Keep error UI visible after a failed proceed click until that field is fixed.

@@ -7,6 +7,9 @@
   var locationOptions = [];
   var mapUrl = "";
   var i18nCache = null;
+  var gpsLabel = null;
+  var gpsState = "idle"; // idle | loading | ready | error
+  var gpsRequestId = 0;
 
   function t(key, fallback) {
     if (!i18nCache) {
@@ -264,6 +267,39 @@
     if (preview && preview.refreshDeliveryEstimate) preview.refreshDeliveryEstimate();
   }
 
+  function detectCurrentLocation() {
+    var requestId = ++gpsRequestId;
+    gpsState = "loading";
+    gpsLabel = null;
+    return Promise.all([getPosition(), loadMap()])
+      .then(function (results) {
+        if (requestId !== gpsRequestId) return null;
+        var coords = results[0];
+        var features = results[1];
+        var label = matchLocation(coords.latitude, coords.longitude, features);
+        if (label) {
+          gpsLabel = label;
+          gpsState = "ready";
+        } else {
+          gpsState = "error";
+        }
+        return label;
+      })
+      .catch(function () {
+        if (requestId !== gpsRequestId) return null;
+        gpsState = "error";
+        gpsLabel = null;
+        return null;
+      });
+  }
+
+  function refreshSheetResults() {
+    var input = document.getElementById("location-search-input");
+    var sheet = document.getElementById("location-sheet");
+    if (!sheet || !sheet.classList.contains("is-open") || !input) return;
+    renderResults(fuzzySearch(input.value), { query: input.value });
+  }
+
   function openLocationSheet() {
     var sheet = document.getElementById("location-sheet");
     var input = document.getElementById("location-search-input");
@@ -272,7 +308,11 @@
     sheet.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
     input.value = "";
-    renderResults(fuzzySearch(""));
+    // Always re-read GPS when the user opens the picker (not only first cart visit).
+    detectCurrentLocation().then(function () {
+      refreshSheetResults();
+    });
+    renderResults(fuzzySearch(""), { query: "" });
     requestAnimationFrame(function () {
       input.focus();
     });
@@ -292,10 +332,66 @@
   var PIN_SVG =
     '<svg class="location-sheet__option-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.2 7-12a7 7 0 10-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>';
 
-  function renderResults(matches) {
+  var GPS_SVG =
+    '<svg class="location-sheet__option-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/><circle cx="12" cy="12" r="8"/></svg>';
+
+  function bindOptionPick(li, label) {
+    li.addEventListener("click", function () {
+      if (!label) return;
+      setAddress(label);
+    });
+    li.addEventListener("keydown", function (e) {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        if (!label) return;
+        setAddress(label);
+      }
+    });
+  }
+
+  function renderGpsOption(list, query) {
+    if ((query || "").trim()) return;
+    var li = document.createElement("li");
+    li.className = "location-sheet__option location-sheet__option--gps";
+    li.setAttribute("role", "option");
+    li.tabIndex = 0;
+    li.innerHTML = GPS_SVG;
+    var text = document.createElement("span");
+    text.className = "location-sheet__option-text";
+    var title = document.createElement("span");
+    title.className = "location-sheet__option-title";
+    var meta = document.createElement("span");
+    meta.className = "location-sheet__option-meta";
+    text.appendChild(title);
+    text.appendChild(meta);
+    li.appendChild(text);
+
+    if (gpsState === "loading") {
+      title.textContent = t("detecting_location", "Detecting your location…");
+      meta.hidden = true;
+      li.setAttribute("aria-disabled", "true");
+      li.tabIndex = -1;
+    } else if (gpsState === "ready" && gpsLabel) {
+      title.textContent = t("use_current_location", "Use current location");
+      meta.textContent = gpsLabel;
+      meta.hidden = false;
+      li.setAttribute("aria-selected", "true");
+      bindOptionPick(li, gpsLabel);
+    } else {
+      title.textContent = t("location_unavailable", "Current location unavailable");
+      meta.hidden = true;
+      li.setAttribute("aria-disabled", "true");
+      li.tabIndex = -1;
+    }
+    list.appendChild(li);
+  }
+
+  function renderResults(matches, opts) {
     var list = document.getElementById("location-search-results");
     if (!list) return;
+    var query = opts && opts.query != null ? opts.query : "";
     list.replaceChildren();
+    renderGpsOption(list, query);
     matches.forEach(function (match) {
       var li = document.createElement("li");
       li.className = "location-sheet__option";
@@ -305,15 +401,7 @@
       var span = document.createElement("span");
       span.textContent = match.label;
       li.appendChild(span);
-      li.addEventListener("click", function () {
-        setAddress(match.label);
-      });
-      li.addEventListener("keydown", function (e) {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          setAddress(match.label);
-        }
-      });
+      bindOptionPick(li, match.label);
       list.appendChild(li);
     });
   }
@@ -326,7 +414,7 @@
     if (!btn || !input) return;
     btn.addEventListener("click", openLocationSheet);
     input.addEventListener("input", function () {
-      renderResults(fuzzySearch(input.value));
+      renderResults(fuzzySearch(input.value), { query: input.value });
     });
     function onOutsidePointer(e) {
       if (!sheet || !sheet.classList.contains("is-open")) return;

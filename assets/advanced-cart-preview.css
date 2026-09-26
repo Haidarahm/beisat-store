@@ -1194,6 +1194,34 @@ html:has(.location-sheet.is-open) {
   color: #9a9a9a;
 }
 
+.advanced-cart-preview .summary-actions a.btn-outline--sm {
+  position: relative;
+}
+
+.advanced-cart-preview .summary-actions a.btn-outline--sm.is-loading {
+  pointer-events: none;
+  color: transparent;
+}
+
+.advanced-cart-preview .summary-actions a.btn-outline--sm.is-loading .icon {
+  opacity: 0;
+}
+
+.advanced-cart-preview .summary-actions a.btn-outline--sm.is-loading::after {
+  content: "" !important;
+  display: block !important;
+  box-shadow: none !important;
+  position: absolute;
+  top: calc(50% - 9px);
+  left: calc(50% - 9px);
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--color-primary) !important;
+  border-right-color: transparent !important;
+  border-radius: 50%;
+  animation: loadingSpinner 0.7s linear infinite;
+}
+
 .advanced-cart-preview .phone-input__prefix {
   appearance: none;
   -webkit-appearance: none;

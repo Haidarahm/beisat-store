@@ -212,8 +212,15 @@
         return;
       }
 
+      btn.classList.add('is-loading');
+      btn.setAttribute('aria-busy', 'true');
       if (api && typeof api.goToCheckoutWithPrefill === 'function') {
-        api.goToCheckoutWithPrefill();
+        Promise.resolve(api.goToCheckoutWithPrefill()).then(function (ok) {
+          if (ok === false) {
+            btn.classList.remove('is-loading');
+            btn.removeAttribute('aria-busy');
+          }
+        });
         return;
       }
       window.location.href = btn.getAttribute('href') || 'https://beisat.space/checkout';
@@ -237,10 +244,18 @@
     // Login opens from the Proceed tap (real user gesture; required on iOS).
   }
 
+  function stopProceedSpinner() {
+    var btn = document.getElementById('checkout-continue-btn');
+    if (!btn) return;
+    btn.classList.remove('is-loading');
+    btn.removeAttribute('aria-busy');
+  }
+
   function boot() {
     wireCompact();
     wireContinue();
     tryAutoOpen();
+    window.addEventListener('pageshow', stopProceedSpinner);
   }
 
   if (document.readyState === 'loading') {

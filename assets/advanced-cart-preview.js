@@ -386,6 +386,9 @@
   function buildCheckoutUrl(fields, cart) {
     var params = buildPrefillParams(fields);
     var qs = params.toString();
+    if ((document.documentElement.lang || "").toLowerCase().indexOf("ar") === 0) {
+      return "/ar/checkout" + (qs ? "?" + qs : "");
+    }
     // Cart permalink + checkout params is Shopify's documented prefill path.
     if (cart && cart.items && cart.items.length) {
       var path = cart.items

@@ -861,19 +861,22 @@ html:has(.location-sheet.is-open) {
   overflow: hidden;
 }
 
-.advanced-cart-preview .summary-actions {
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 9000;
-  width: 100%;
-  max-width: var(--phone-width);
-  margin: 0 auto;
-  padding: 12px 14px calc(12px + env(safe-area-inset-bottom, 0px));
-  background: transparent;
-  box-shadow: none;
-  pointer-events: auto;
+/* Mobile/tablet: pin proceed to viewport. Desktop keeps sticky summary card. */
+@media (max-width: 1023px) {
+  .advanced-cart-preview .summary-actions {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9000;
+    width: 100%;
+    max-width: var(--phone-width);
+    margin: 0 auto;
+    padding: 12px 14px calc(12px + env(safe-area-inset-bottom, 0px));
+    background: transparent;
+    box-shadow: none;
+    pointer-events: auto;
+  }
 }
 
 .advanced-cart-preview .divider {

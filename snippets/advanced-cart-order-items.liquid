@@ -32,9 +32,11 @@
             {%- else -%}
               <span class="order-item__thumb order-item__thumb--placeholder" aria-hidden="true"></span>
             {%- endif -%}
-            <span class="order-item__badges">
-              <span class="order-item__qty">×{{ item.quantity }}</span>
-            </span>
+            {%- if item.quantity > 1 -%}
+              <span class="order-item__badges">
+                <span class="order-item__qty">×{{ item.quantity }}</span>
+              </span>
+            {%- endif -%}
           </div>
           <p class="order-item__price">{{ item.final_line_price | money }}</p>
         </article>

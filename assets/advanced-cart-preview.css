@@ -850,6 +850,11 @@
   text-align: end;
 }
 
+/* Safari: body { overflow-x:hidden; overflow-y:scroll } traps position:fixed */
+body.template-cart {
+  overflow: visible;
+}
+
 .advanced-cart-preview .summary-actions {
   position: fixed;
   left: 0;

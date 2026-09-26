@@ -1,57 +1,2279 @@
 [
-  { "iso": "OM", "name": "Oman", "dial": "968", "min": 8, "max": 8, "placeholder": "9XXX XXXX", "startsWith": ["7", "9"] },
-  { "iso": "AE", "name": "United Arab Emirates", "dial": "971", "min": 9, "max": 9, "placeholder": "5X XXX XXXX", "startsWith": ["5"] },
-  { "iso": "SA", "name": "Saudi Arabia", "dial": "966", "min": 9, "max": 9, "placeholder": "5X XXX XXXX", "startsWith": ["5"] },
-  { "iso": "KW", "name": "Kuwait", "dial": "965", "min": 8, "max": 8, "placeholder": "9XXX XXXX", "startsWith": ["5", "6", "9"] },
-  { "iso": "BH", "name": "Bahrain", "dial": "973", "min": 8, "max": 8, "placeholder": "3XXX XXXX", "startsWith": ["3", "6"] },
-  { "iso": "QA", "name": "Qatar", "dial": "974", "min": 8, "max": 8, "placeholder": "3XXX XXXX", "startsWith": ["3", "5", "6", "7"] },
-  { "iso": "YE", "name": "Yemen", "dial": "967", "min": 9, "max": 9, "placeholder": "7XX XXX XXX" },
-  { "iso": "IQ", "name": "Iraq", "dial": "964", "min": 10, "max": 10, "placeholder": "7XX XXX XXXX", "startsWith": ["7"] },
-  { "iso": "JO", "name": "Jordan", "dial": "962", "min": 9, "max": 9, "placeholder": "7X XXX XXXX", "startsWith": ["7"] },
-  { "iso": "LB", "name": "Lebanon", "dial": "961", "min": 7, "max": 8, "placeholder": "XX XXX XXX" },
-  { "iso": "EG", "name": "Egypt", "dial": "20", "min": 10, "max": 10, "placeholder": "1X XXXX XXXX", "startsWith": ["1"] },
-  { "iso": "IN", "name": "India", "dial": "91", "min": 10, "max": 10, "placeholder": "XXXXX XXXXX" },
-  { "iso": "PK", "name": "Pakistan", "dial": "92", "min": 10, "max": 10, "placeholder": "3XX XXXXXXX", "startsWith": ["3"] },
-  { "iso": "BD", "name": "Bangladesh", "dial": "880", "min": 10, "max": 10, "placeholder": "1XXX XXXXXX", "startsWith": ["1"] },
-  { "iso": "PH", "name": "Philippines", "dial": "63", "min": 10, "max": 10, "placeholder": "9XX XXX XXXX", "startsWith": ["9"] },
-  { "iso": "ID", "name": "Indonesia", "dial": "62", "min": 9, "max": 12, "placeholder": "8XX XXX XXXX", "startsWith": ["8"] },
-  { "iso": "MY", "name": "Malaysia", "dial": "60", "min": 9, "max": 10, "placeholder": "1X XXX XXXX", "startsWith": ["1"] },
-  { "iso": "SG", "name": "Singapore", "dial": "65", "min": 8, "max": 8, "placeholder": "8XXX XXXX", "startsWith": ["8", "9"] },
-  { "iso": "CN", "name": "China", "dial": "86", "min": 11, "max": 11, "placeholder": "1XX XXXX XXXX", "startsWith": ["1"] },
-  { "iso": "JP", "name": "Japan", "dial": "81", "min": 10, "max": 11, "placeholder": "90 XXXX XXXX" },
-  { "iso": "KR", "name": "South Korea", "dial": "82", "min": 9, "max": 11, "placeholder": "10 XXXX XXXX" },
-  { "iso": "TR", "name": "Turkey", "dial": "90", "min": 10, "max": 10, "placeholder": "5XX XXX XXXX", "startsWith": ["5"] },
-  { "iso": "GB", "name": "United Kingdom", "dial": "44", "min": 10, "max": 10, "placeholder": "7XXX XXXXXX", "startsWith": ["7"] },
-  { "iso": "IE", "name": "Ireland", "dial": "353", "min": 9, "max": 9, "placeholder": "8X XXX XXXX", "startsWith": ["8"] },
-  { "iso": "FR", "name": "France", "dial": "33", "min": 9, "max": 9, "placeholder": "6 XX XX XX XX", "startsWith": ["6", "7"] },
-  { "iso": "DE", "name": "Germany", "dial": "49", "min": 10, "max": 11, "placeholder": "15X XXXXXXX" },
-  { "iso": "IT", "name": "Italy", "dial": "39", "min": 9, "max": 10, "placeholder": "3XX XXX XXXX", "startsWith": ["3"] },
-  { "iso": "ES", "name": "Spain", "dial": "34", "min": 9, "max": 9, "placeholder": "6XX XXX XXX", "startsWith": ["6", "7"] },
-  { "iso": "NL", "name": "Netherlands", "dial": "31", "min": 9, "max": 9, "placeholder": "6 XXXXXXXX", "startsWith": ["6"] },
-  { "iso": "BE", "name": "Belgium", "dial": "32", "min": 9, "max": 9, "placeholder": "4XX XX XX XX", "startsWith": ["4"] },
-  { "iso": "CH", "name": "Switzerland", "dial": "41", "min": 9, "max": 9, "placeholder": "7X XXX XX XX", "startsWith": ["7"] },
-  { "iso": "AT", "name": "Austria", "dial": "43", "min": 10, "max": 13, "placeholder": "6XX XXXXXXX" },
-  { "iso": "SE", "name": "Sweden", "dial": "46", "min": 9, "max": 9, "placeholder": "7X XXX XX XX", "startsWith": ["7"] },
-  { "iso": "NO", "name": "Norway", "dial": "47", "min": 8, "max": 8, "placeholder": "4XX XX XXX", "startsWith": ["4", "9"] },
-  { "iso": "DK", "name": "Denmark", "dial": "45", "min": 8, "max": 8, "placeholder": "XX XX XX XX" },
-  { "iso": "FI", "name": "Finland", "dial": "358", "min": 9, "max": 10, "placeholder": "4X XXX XXXX" },
-  { "iso": "PL", "name": "Poland", "dial": "48", "min": 9, "max": 9, "placeholder": "5XX XXX XXX", "startsWith": ["5", "6", "7", "8"] },
-  { "iso": "PT", "name": "Portugal", "dial": "351", "min": 9, "max": 9, "placeholder": "9XX XXX XXX", "startsWith": ["9"] },
-  { "iso": "GR", "name": "Greece", "dial": "30", "min": 10, "max": 10, "placeholder": "69X XXX XXXX", "startsWith": ["6"] },
-  { "iso": "RU", "name": "Russia", "dial": "7", "min": 10, "max": 10, "placeholder": "9XX XXX XX XX", "startsWith": ["9"] },
-  { "iso": "UA", "name": "Ukraine", "dial": "380", "min": 9, "max": 9, "placeholder": "XX XXX XXXX" },
-  { "iso": "US", "name": "United States", "dial": "1", "min": 10, "max": 10, "placeholder": "(XXX) XXX-XXXX" },
-  { "iso": "CA", "name": "Canada", "dial": "1", "min": 10, "max": 10, "placeholder": "(XXX) XXX-XXXX" },
-  { "iso": "MX", "name": "Mexico", "dial": "52", "min": 10, "max": 10, "placeholder": "XX XXXX XXXX" },
-  { "iso": "BR", "name": "Brazil", "dial": "55", "min": 10, "max": 11, "placeholder": "XX 9XXXX XXXX" },
-  { "iso": "AR", "name": "Argentina", "dial": "54", "min": 10, "max": 10, "placeholder": "9XX XXX XXXX" },
-  { "iso": "CL", "name": "Chile", "dial": "56", "min": 9, "max": 9, "placeholder": "9 XXXX XXXX", "startsWith": ["9"] },
-  { "iso": "CO", "name": "Colombia", "dial": "57", "min": 10, "max": 10, "placeholder": "3XX XXX XXXX", "startsWith": ["3"] },
-  { "iso": "AU", "name": "Australia", "dial": "61", "min": 9, "max": 9, "placeholder": "4XX XXX XXX", "startsWith": ["4"] },
-  { "iso": "NZ", "name": "New Zealand", "dial": "64", "min": 8, "max": 10, "placeholder": "2X XXX XXXX", "startsWith": ["2"] },
-  { "iso": "ZA", "name": "South Africa", "dial": "27", "min": 9, "max": 9, "placeholder": "XX XXX XXXX" },
-  { "iso": "NG", "name": "Nigeria", "dial": "234", "min": 10, "max": 10, "placeholder": "8XX XXX XXXX", "startsWith": ["7", "8", "9"] },
-  { "iso": "KE", "name": "Kenya", "dial": "254", "min": 9, "max": 9, "placeholder": "7XX XXX XXX", "startsWith": ["7", "1"] },
-  { "iso": "MA", "name": "Morocco", "dial": "212", "min": 9, "max": 9, "placeholder": "6XX XXXXXX", "startsWith": ["6", "7"] },
-  { "iso": "TN", "name": "Tunisia", "dial": "216", "min": 8, "max": 8, "placeholder": "XX XXX XXX" }
+  {
+    "iso": "OM",
+    "name": "Oman",
+    "dial": "968",
+    "min": 8,
+    "max": 8,
+    "placeholder": "9XXX XXXX",
+    "startsWith": [
+      "7",
+      "9"
+    ]
+  },
+  {
+    "iso": "AF",
+    "name": "Afghanistan",
+    "dial": "93",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "AL",
+    "name": "Albania",
+    "dial": "355",
+    "min": 9,
+    "max": 9,
+    "placeholder": "6X XXX XXXX",
+    "startsWith": [
+      "6"
+    ]
+  },
+  {
+    "iso": "DZ",
+    "name": "Algeria",
+    "dial": "213",
+    "min": 9,
+    "max": 9,
+    "placeholder": "5XX XX XX XX",
+    "startsWith": [
+      "5",
+      "6",
+      "7"
+    ]
+  },
+  {
+    "iso": "AS",
+    "name": "American Samoa",
+    "dial": "1684",
+    "min": 10,
+    "max": 10,
+    "placeholder": "(XXX) XXX-XXXX"
+  },
+  {
+    "iso": "AD",
+    "name": "Andorra",
+    "dial": "376",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "AO",
+    "name": "Angola",
+    "dial": "244",
+    "min": 9,
+    "max": 9,
+    "placeholder": "9XX XXX XXX",
+    "startsWith": [
+      "9"
+    ]
+  },
+  {
+    "iso": "AI",
+    "name": "Anguilla",
+    "dial": "1264",
+    "min": 10,
+    "max": 10,
+    "placeholder": "(XXX) XXX-XXXX"
+  },
+  {
+    "iso": "AG",
+    "name": "Antigua and Barbuda",
+    "dial": "1268",
+    "min": 10,
+    "max": 10,
+    "placeholder": "(XXX) XXX-XXXX"
+  },
+  {
+    "iso": "AR",
+    "name": "Argentina",
+    "dial": "54",
+    "min": 10,
+    "max": 10,
+    "placeholder": "9XX XXX XXXX"
+  },
+  {
+    "iso": "AM",
+    "name": "Armenia",
+    "dial": "374",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "AW",
+    "name": "Aruba",
+    "dial": "297",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "AU",
+    "name": "Australia",
+    "dial": "61",
+    "min": 9,
+    "max": 9,
+    "placeholder": "4XX XXX XXX",
+    "startsWith": [
+      "4"
+    ]
+  },
+  {
+    "iso": "AT",
+    "name": "Austria",
+    "dial": "43",
+    "min": 10,
+    "max": 13,
+    "placeholder": "6XX XXXXXXX"
+  },
+  {
+    "iso": "AZ",
+    "name": "Azerbaijan",
+    "dial": "994",
+    "min": 9,
+    "max": 9,
+    "placeholder": "5X XXX XX XX",
+    "startsWith": [
+      "5"
+    ]
+  },
+  {
+    "iso": "BS",
+    "name": "Bahamas",
+    "dial": "1242",
+    "min": 10,
+    "max": 10,
+    "placeholder": "(XXX) XXX-XXXX"
+  },
+  {
+    "iso": "BH",
+    "name": "Bahrain",
+    "dial": "973",
+    "min": 8,
+    "max": 8,
+    "placeholder": "3XXX XXXX",
+    "startsWith": [
+      "3",
+      "6"
+    ]
+  },
+  {
+    "iso": "BD",
+    "name": "Bangladesh",
+    "dial": "880",
+    "min": 10,
+    "max": 10,
+    "placeholder": "1XXX XXXXXX",
+    "startsWith": [
+      "1"
+    ]
+  },
+  {
+    "iso": "BB",
+    "name": "Barbados",
+    "dial": "1246",
+    "min": 10,
+    "max": 10,
+    "placeholder": "(XXX) XXX-XXXX"
+  },
+  {
+    "iso": "BY",
+    "name": "Belarus",
+    "dial": "375",
+    "min": 9,
+    "max": 9,
+    "placeholder": "XX XXX XX XX"
+  },
+  {
+    "iso": "BE",
+    "name": "Belgium",
+    "dial": "32",
+    "min": 9,
+    "max": 9,
+    "placeholder": "4XX XX XX XX",
+    "startsWith": [
+      "4"
+    ]
+  },
+  {
+    "iso": "BZ",
+    "name": "Belize",
+    "dial": "501",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "BJ",
+    "name": "Benin",
+    "dial": "229",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "BM",
+    "name": "Bermuda",
+    "dial": "1441",
+    "min": 10,
+    "max": 10,
+    "placeholder": "(XXX) XXX-XXXX"
+  },
+  {
+    "iso": "BT",
+    "name": "Bhutan",
+    "dial": "975",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "BO",
+    "name": "Bolivia",
+    "dial": "591",
+    "min": 8,
+    "max": 8,
+    "placeholder": "7X XXX XXX",
+    "startsWith": [
+      "6",
+      "7"
+    ]
+  },
+  {
+    "iso": "BA",
+    "name": "Bosnia and Herzegovina",
+    "dial": "387",
+    "min": 8,
+    "max": 9,
+    "placeholder": "6X XXX XXX",
+    "startsWith": [
+      "6"
+    ]
+  },
+  {
+    "iso": "BW",
+    "name": "Botswana",
+    "dial": "267",
+    "min": 8,
+    "max": 8,
+    "placeholder": "7X XXX XXX",
+    "startsWith": [
+      "7"
+    ]
+  },
+  {
+    "iso": "BR",
+    "name": "Brazil",
+    "dial": "55",
+    "min": 10,
+    "max": 11,
+    "placeholder": "XX 9XXXX XXXX"
+  },
+  {
+    "iso": "IO",
+    "name": "British Indian Ocean Territory",
+    "dial": "246",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "VG",
+    "name": "British Virgin Islands",
+    "dial": "1284",
+    "min": 10,
+    "max": 10,
+    "placeholder": "(XXX) XXX-XXXX"
+  },
+  {
+    "iso": "BN",
+    "name": "Brunei",
+    "dial": "673",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "BG",
+    "name": "Bulgaria",
+    "dial": "359",
+    "min": 8,
+    "max": 9,
+    "placeholder": "8X XXX XXXX",
+    "startsWith": [
+      "8",
+      "9"
+    ]
+  },
+  {
+    "iso": "BF",
+    "name": "Burkina Faso",
+    "dial": "226",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "BI",
+    "name": "Burundi",
+    "dial": "257",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "KH",
+    "name": "Cambodia",
+    "dial": "855",
+    "min": 8,
+    "max": 9,
+    "placeholder": "1X XXX XXX",
+    "startsWith": [
+      "1",
+      "6",
+      "7",
+      "8",
+      "9"
+    ]
+  },
+  {
+    "iso": "CM",
+    "name": "Cameroon",
+    "dial": "237",
+    "min": 9,
+    "max": 9,
+    "placeholder": "6XX XX XX XX",
+    "startsWith": [
+      "6"
+    ]
+  },
+  {
+    "iso": "CA",
+    "name": "Canada",
+    "dial": "1",
+    "min": 10,
+    "max": 10,
+    "placeholder": "(XXX) XXX-XXXX"
+  },
+  {
+    "iso": "CV",
+    "name": "Cape Verde",
+    "dial": "238",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "KY",
+    "name": "Cayman Islands",
+    "dial": "1345",
+    "min": 10,
+    "max": 10,
+    "placeholder": "(XXX) XXX-XXXX"
+  },
+  {
+    "iso": "CF",
+    "name": "Central African Republic",
+    "dial": "236",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "TD",
+    "name": "Chad",
+    "dial": "235",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "CL",
+    "name": "Chile",
+    "dial": "56",
+    "min": 9,
+    "max": 9,
+    "placeholder": "9 XXXX XXXX",
+    "startsWith": [
+      "9"
+    ]
+  },
+  {
+    "iso": "CN",
+    "name": "China",
+    "dial": "86",
+    "min": 11,
+    "max": 11,
+    "placeholder": "1XX XXXX XXXX",
+    "startsWith": [
+      "1"
+    ]
+  },
+  {
+    "iso": "CX",
+    "name": "Christmas Island",
+    "dial": "61",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "CC",
+    "name": "Cocos Islands",
+    "dial": "61",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "CO",
+    "name": "Colombia",
+    "dial": "57",
+    "min": 10,
+    "max": 10,
+    "placeholder": "3XX XXX XXXX",
+    "startsWith": [
+      "3"
+    ]
+  },
+  {
+    "iso": "KM",
+    "name": "Comoros",
+    "dial": "269",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "CG",
+    "name": "Congo",
+    "dial": "242",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "CD",
+    "name": "Congo (DRC)",
+    "dial": "243",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "CK",
+    "name": "Cook Islands",
+    "dial": "682",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "CR",
+    "name": "Costa Rica",
+    "dial": "506",
+    "min": 8,
+    "max": 8,
+    "placeholder": "8XXX XXXX",
+    "startsWith": [
+      "6",
+      "7",
+      "8"
+    ]
+  },
+  {
+    "iso": "HR",
+    "name": "Croatia",
+    "dial": "385",
+    "min": 8,
+    "max": 9,
+    "placeholder": "9X XXX XXX",
+    "startsWith": [
+      "9"
+    ]
+  },
+  {
+    "iso": "CU",
+    "name": "Cuba",
+    "dial": "53",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "CW",
+    "name": "Curaçao",
+    "dial": "599",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "CY",
+    "name": "Cyprus",
+    "dial": "357",
+    "min": 8,
+    "max": 8,
+    "placeholder": "9X XXXXXX",
+    "startsWith": [
+      "9"
+    ]
+  },
+  {
+    "iso": "CZ",
+    "name": "Czechia",
+    "dial": "420",
+    "min": 9,
+    "max": 9,
+    "placeholder": "6XX XXX XXX",
+    "startsWith": [
+      "6",
+      "7"
+    ]
+  },
+  {
+    "iso": "CI",
+    "name": "Côte d'Ivoire",
+    "dial": "225",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "DK",
+    "name": "Denmark",
+    "dial": "45",
+    "min": 8,
+    "max": 8,
+    "placeholder": "XX XX XX XX"
+  },
+  {
+    "iso": "DJ",
+    "name": "Djibouti",
+    "dial": "253",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "DM",
+    "name": "Dominica",
+    "dial": "1767",
+    "min": 10,
+    "max": 10,
+    "placeholder": "(XXX) XXX-XXXX"
+  },
+  {
+    "iso": "DO",
+    "name": "Dominican Republic",
+    "dial": "1809",
+    "min": 10,
+    "max": 10,
+    "placeholder": "(XXX) XXX-XXXX"
+  },
+  {
+    "iso": "EC",
+    "name": "Ecuador",
+    "dial": "593",
+    "min": 9,
+    "max": 9,
+    "placeholder": "9XX XXX XXX",
+    "startsWith": [
+      "9"
+    ]
+  },
+  {
+    "iso": "EG",
+    "name": "Egypt",
+    "dial": "20",
+    "min": 10,
+    "max": 10,
+    "placeholder": "1X XXXX XXXX",
+    "startsWith": [
+      "1"
+    ]
+  },
+  {
+    "iso": "SV",
+    "name": "El Salvador",
+    "dial": "503",
+    "min": 8,
+    "max": 8,
+    "placeholder": "7XXX XXXX",
+    "startsWith": [
+      "6",
+      "7"
+    ]
+  },
+  {
+    "iso": "GQ",
+    "name": "Equatorial Guinea",
+    "dial": "240",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "ER",
+    "name": "Eritrea",
+    "dial": "291",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "EE",
+    "name": "Estonia",
+    "dial": "372",
+    "min": 7,
+    "max": 8,
+    "placeholder": "5XXX XXXX",
+    "startsWith": [
+      "5"
+    ]
+  },
+  {
+    "iso": "SZ",
+    "name": "Eswatini",
+    "dial": "268",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "ET",
+    "name": "Ethiopia",
+    "dial": "251",
+    "min": 9,
+    "max": 9,
+    "placeholder": "9XX XXX XXX",
+    "startsWith": [
+      "9"
+    ]
+  },
+  {
+    "iso": "FK",
+    "name": "Falkland Islands",
+    "dial": "500",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "FO",
+    "name": "Faroe Islands",
+    "dial": "298",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "FJ",
+    "name": "Fiji",
+    "dial": "679",
+    "min": 7,
+    "max": 7,
+    "placeholder": "XXXX XXX"
+  },
+  {
+    "iso": "FI",
+    "name": "Finland",
+    "dial": "358",
+    "min": 9,
+    "max": 10,
+    "placeholder": "4X XXX XXXX"
+  },
+  {
+    "iso": "FR",
+    "name": "France",
+    "dial": "33",
+    "min": 9,
+    "max": 9,
+    "placeholder": "6 XX XX XX XX",
+    "startsWith": [
+      "6",
+      "7"
+    ]
+  },
+  {
+    "iso": "GF",
+    "name": "French Guiana",
+    "dial": "594",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "PF",
+    "name": "French Polynesia",
+    "dial": "689",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "GA",
+    "name": "Gabon",
+    "dial": "241",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "GM",
+    "name": "Gambia",
+    "dial": "220",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "GE",
+    "name": "Georgia",
+    "dial": "995",
+    "min": 9,
+    "max": 9,
+    "placeholder": "5XX XXX XXX",
+    "startsWith": [
+      "5"
+    ]
+  },
+  {
+    "iso": "DE",
+    "name": "Germany",
+    "dial": "49",
+    "min": 10,
+    "max": 11,
+    "placeholder": "15X XXXXXXX"
+  },
+  {
+    "iso": "GH",
+    "name": "Ghana",
+    "dial": "233",
+    "min": 9,
+    "max": 9,
+    "placeholder": "2X XXX XXXX",
+    "startsWith": [
+      "2",
+      "5"
+    ]
+  },
+  {
+    "iso": "GI",
+    "name": "Gibraltar",
+    "dial": "350",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "GR",
+    "name": "Greece",
+    "dial": "30",
+    "min": 10,
+    "max": 10,
+    "placeholder": "69X XXX XXXX",
+    "startsWith": [
+      "6"
+    ]
+  },
+  {
+    "iso": "GL",
+    "name": "Greenland",
+    "dial": "299",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "GD",
+    "name": "Grenada",
+    "dial": "1473",
+    "min": 10,
+    "max": 10,
+    "placeholder": "(XXX) XXX-XXXX"
+  },
+  {
+    "iso": "GP",
+    "name": "Guadeloupe",
+    "dial": "590",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "GU",
+    "name": "Guam",
+    "dial": "1671",
+    "min": 10,
+    "max": 10,
+    "placeholder": "(XXX) XXX-XXXX"
+  },
+  {
+    "iso": "GT",
+    "name": "Guatemala",
+    "dial": "502",
+    "min": 8,
+    "max": 8,
+    "placeholder": "5XXX XXXX",
+    "startsWith": [
+      "3",
+      "4",
+      "5"
+    ]
+  },
+  {
+    "iso": "GG",
+    "name": "Guernsey",
+    "dial": "44",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "GN",
+    "name": "Guinea",
+    "dial": "224",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "GW",
+    "name": "Guinea-Bissau",
+    "dial": "245",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "GY",
+    "name": "Guyana",
+    "dial": "592",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "HT",
+    "name": "Haiti",
+    "dial": "509",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "HN",
+    "name": "Honduras",
+    "dial": "504",
+    "min": 8,
+    "max": 8,
+    "placeholder": "9XXX XXXX",
+    "startsWith": [
+      "3",
+      "7",
+      "8",
+      "9"
+    ]
+  },
+  {
+    "iso": "HK",
+    "name": "Hong Kong",
+    "dial": "852",
+    "min": 8,
+    "max": 8,
+    "placeholder": "XXXX XXXX"
+  },
+  {
+    "iso": "HU",
+    "name": "Hungary",
+    "dial": "36",
+    "min": 9,
+    "max": 9,
+    "placeholder": "20 XXX XXXX"
+  },
+  {
+    "iso": "IS",
+    "name": "Iceland",
+    "dial": "354",
+    "min": 7,
+    "max": 7,
+    "placeholder": "XXX XXXX"
+  },
+  {
+    "iso": "IN",
+    "name": "India",
+    "dial": "91",
+    "min": 10,
+    "max": 10,
+    "placeholder": "XXXXX XXXXX"
+  },
+  {
+    "iso": "ID",
+    "name": "Indonesia",
+    "dial": "62",
+    "min": 9,
+    "max": 12,
+    "placeholder": "8XX XXX XXXX",
+    "startsWith": [
+      "8"
+    ]
+  },
+  {
+    "iso": "IR",
+    "name": "Iran",
+    "dial": "98",
+    "min": 10,
+    "max": 10,
+    "placeholder": "9XX XXX XXXX",
+    "startsWith": [
+      "9"
+    ]
+  },
+  {
+    "iso": "IQ",
+    "name": "Iraq",
+    "dial": "964",
+    "min": 10,
+    "max": 10,
+    "placeholder": "7XX XXX XXXX",
+    "startsWith": [
+      "7"
+    ]
+  },
+  {
+    "iso": "IE",
+    "name": "Ireland",
+    "dial": "353",
+    "min": 9,
+    "max": 9,
+    "placeholder": "8X XXX XXXX",
+    "startsWith": [
+      "8"
+    ]
+  },
+  {
+    "iso": "IM",
+    "name": "Isle of Man",
+    "dial": "44",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "IL",
+    "name": "Israel",
+    "dial": "972",
+    "min": 9,
+    "max": 9,
+    "placeholder": "5X XXX XXXX",
+    "startsWith": [
+      "5"
+    ]
+  },
+  {
+    "iso": "IT",
+    "name": "Italy",
+    "dial": "39",
+    "min": 9,
+    "max": 10,
+    "placeholder": "3XX XXX XXXX",
+    "startsWith": [
+      "3"
+    ]
+  },
+  {
+    "iso": "JM",
+    "name": "Jamaica",
+    "dial": "1876",
+    "min": 10,
+    "max": 10,
+    "placeholder": "(XXX) XXX-XXXX"
+  },
+  {
+    "iso": "JP",
+    "name": "Japan",
+    "dial": "81",
+    "min": 10,
+    "max": 11,
+    "placeholder": "90 XXXX XXXX"
+  },
+  {
+    "iso": "JE",
+    "name": "Jersey",
+    "dial": "44",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "JO",
+    "name": "Jordan",
+    "dial": "962",
+    "min": 9,
+    "max": 9,
+    "placeholder": "7X XXX XXXX",
+    "startsWith": [
+      "7"
+    ]
+  },
+  {
+    "iso": "KZ",
+    "name": "Kazakhstan",
+    "dial": "7",
+    "min": 10,
+    "max": 10,
+    "placeholder": "7XX XXX XX XX",
+    "startsWith": [
+      "7"
+    ]
+  },
+  {
+    "iso": "KE",
+    "name": "Kenya",
+    "dial": "254",
+    "min": 9,
+    "max": 9,
+    "placeholder": "7XX XXX XXX",
+    "startsWith": [
+      "7",
+      "1"
+    ]
+  },
+  {
+    "iso": "KI",
+    "name": "Kiribati",
+    "dial": "686",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "XK",
+    "name": "Kosovo",
+    "dial": "383",
+    "min": 8,
+    "max": 9,
+    "placeholder": "4X XXX XXX",
+    "startsWith": [
+      "4"
+    ]
+  },
+  {
+    "iso": "KW",
+    "name": "Kuwait",
+    "dial": "965",
+    "min": 8,
+    "max": 8,
+    "placeholder": "9XXX XXXX",
+    "startsWith": [
+      "5",
+      "6",
+      "9"
+    ]
+  },
+  {
+    "iso": "KG",
+    "name": "Kyrgyzstan",
+    "dial": "996",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "LA",
+    "name": "Laos",
+    "dial": "856",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "LV",
+    "name": "Latvia",
+    "dial": "371",
+    "min": 8,
+    "max": 8,
+    "placeholder": "2X XXX XXX",
+    "startsWith": [
+      "2"
+    ]
+  },
+  {
+    "iso": "LB",
+    "name": "Lebanon",
+    "dial": "961",
+    "min": 7,
+    "max": 8,
+    "placeholder": "XX XXX XXX"
+  },
+  {
+    "iso": "LS",
+    "name": "Lesotho",
+    "dial": "266",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "LR",
+    "name": "Liberia",
+    "dial": "231",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "LY",
+    "name": "Libya",
+    "dial": "218",
+    "min": 9,
+    "max": 10,
+    "placeholder": "9X XXX XXXX",
+    "startsWith": [
+      "9"
+    ]
+  },
+  {
+    "iso": "LI",
+    "name": "Liechtenstein",
+    "dial": "423",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "LT",
+    "name": "Lithuania",
+    "dial": "370",
+    "min": 8,
+    "max": 8,
+    "placeholder": "6XX XXXXX",
+    "startsWith": [
+      "6"
+    ]
+  },
+  {
+    "iso": "LU",
+    "name": "Luxembourg",
+    "dial": "352",
+    "min": 9,
+    "max": 9,
+    "placeholder": "6XX XXX XXX",
+    "startsWith": [
+      "6"
+    ]
+  },
+  {
+    "iso": "MO",
+    "name": "Macao",
+    "dial": "853",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "MG",
+    "name": "Madagascar",
+    "dial": "261",
+    "min": 9,
+    "max": 10,
+    "placeholder": "3X XX XXX XX",
+    "startsWith": [
+      "3"
+    ]
+  },
+  {
+    "iso": "MW",
+    "name": "Malawi",
+    "dial": "265",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "MY",
+    "name": "Malaysia",
+    "dial": "60",
+    "min": 9,
+    "max": 10,
+    "placeholder": "1X XXX XXXX",
+    "startsWith": [
+      "1"
+    ]
+  },
+  {
+    "iso": "MV",
+    "name": "Maldives",
+    "dial": "960",
+    "min": 7,
+    "max": 7,
+    "placeholder": "7XX XXXX",
+    "startsWith": [
+      "7",
+      "9"
+    ]
+  },
+  {
+    "iso": "ML",
+    "name": "Mali",
+    "dial": "223",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "MT",
+    "name": "Malta",
+    "dial": "356",
+    "min": 8,
+    "max": 8,
+    "placeholder": "9XXX XXXX",
+    "startsWith": [
+      "7",
+      "9"
+    ]
+  },
+  {
+    "iso": "MH",
+    "name": "Marshall Islands",
+    "dial": "692",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "MQ",
+    "name": "Martinique",
+    "dial": "596",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "MR",
+    "name": "Mauritania",
+    "dial": "222",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "MU",
+    "name": "Mauritius",
+    "dial": "230",
+    "min": 8,
+    "max": 8,
+    "placeholder": "5XXX XXXX",
+    "startsWith": [
+      "5"
+    ]
+  },
+  {
+    "iso": "YT",
+    "name": "Mayotte",
+    "dial": "262",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "MX",
+    "name": "Mexico",
+    "dial": "52",
+    "min": 10,
+    "max": 10,
+    "placeholder": "XX XXXX XXXX"
+  },
+  {
+    "iso": "FM",
+    "name": "Micronesia",
+    "dial": "691",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "MD",
+    "name": "Moldova",
+    "dial": "373",
+    "min": 8,
+    "max": 8,
+    "placeholder": "6XX XX XXX",
+    "startsWith": [
+      "6",
+      "7"
+    ]
+  },
+  {
+    "iso": "MC",
+    "name": "Monaco",
+    "dial": "377",
+    "min": 8,
+    "max": 9,
+    "placeholder": "6XX XXX XXX",
+    "startsWith": [
+      "6"
+    ]
+  },
+  {
+    "iso": "MN",
+    "name": "Mongolia",
+    "dial": "976",
+    "min": 8,
+    "max": 8,
+    "placeholder": "8XXX XXXX",
+    "startsWith": [
+      "8",
+      "9"
+    ]
+  },
+  {
+    "iso": "ME",
+    "name": "Montenegro",
+    "dial": "382",
+    "min": 8,
+    "max": 8,
+    "placeholder": "6X XXX XXX",
+    "startsWith": [
+      "6"
+    ]
+  },
+  {
+    "iso": "MS",
+    "name": "Montserrat",
+    "dial": "1664",
+    "min": 10,
+    "max": 10,
+    "placeholder": "(XXX) XXX-XXXX"
+  },
+  {
+    "iso": "MA",
+    "name": "Morocco",
+    "dial": "212",
+    "min": 9,
+    "max": 9,
+    "placeholder": "6XX XXXXXX",
+    "startsWith": [
+      "6",
+      "7"
+    ]
+  },
+  {
+    "iso": "MZ",
+    "name": "Mozambique",
+    "dial": "258",
+    "min": 9,
+    "max": 9,
+    "placeholder": "8X XXX XXXX",
+    "startsWith": [
+      "8"
+    ]
+  },
+  {
+    "iso": "MM",
+    "name": "Myanmar",
+    "dial": "95",
+    "min": 8,
+    "max": 10,
+    "placeholder": "9 XXX XXXX",
+    "startsWith": [
+      "9"
+    ]
+  },
+  {
+    "iso": "NA",
+    "name": "Namibia",
+    "dial": "264",
+    "min": 9,
+    "max": 9,
+    "placeholder": "8X XXX XXXX",
+    "startsWith": [
+      "8"
+    ]
+  },
+  {
+    "iso": "NR",
+    "name": "Nauru",
+    "dial": "674",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "NP",
+    "name": "Nepal",
+    "dial": "977",
+    "min": 10,
+    "max": 10,
+    "placeholder": "98X XXX XXXX",
+    "startsWith": [
+      "98"
+    ]
+  },
+  {
+    "iso": "NL",
+    "name": "Netherlands",
+    "dial": "31",
+    "min": 9,
+    "max": 9,
+    "placeholder": "6 XXXXXXXX",
+    "startsWith": [
+      "6"
+    ]
+  },
+  {
+    "iso": "NC",
+    "name": "New Caledonia",
+    "dial": "687",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "NZ",
+    "name": "New Zealand",
+    "dial": "64",
+    "min": 8,
+    "max": 10,
+    "placeholder": "2X XXX XXXX",
+    "startsWith": [
+      "2"
+    ]
+  },
+  {
+    "iso": "NI",
+    "name": "Nicaragua",
+    "dial": "505",
+    "min": 8,
+    "max": 8,
+    "placeholder": "8XXX XXXX",
+    "startsWith": [
+      "8"
+    ]
+  },
+  {
+    "iso": "NE",
+    "name": "Niger",
+    "dial": "227",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "NG",
+    "name": "Nigeria",
+    "dial": "234",
+    "min": 10,
+    "max": 10,
+    "placeholder": "8XX XXX XXXX",
+    "startsWith": [
+      "7",
+      "8",
+      "9"
+    ]
+  },
+  {
+    "iso": "NU",
+    "name": "Niue",
+    "dial": "683",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "KP",
+    "name": "North Korea",
+    "dial": "850",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "MK",
+    "name": "North Macedonia",
+    "dial": "389",
+    "min": 8,
+    "max": 8,
+    "placeholder": "7X XXX XXX",
+    "startsWith": [
+      "7"
+    ]
+  },
+  {
+    "iso": "MP",
+    "name": "Northern Mariana Islands",
+    "dial": "1670",
+    "min": 10,
+    "max": 10,
+    "placeholder": "(XXX) XXX-XXXX"
+  },
+  {
+    "iso": "NO",
+    "name": "Norway",
+    "dial": "47",
+    "min": 8,
+    "max": 8,
+    "placeholder": "4XX XX XXX",
+    "startsWith": [
+      "4",
+      "9"
+    ]
+  },
+  {
+    "iso": "PK",
+    "name": "Pakistan",
+    "dial": "92",
+    "min": 10,
+    "max": 10,
+    "placeholder": "3XX XXXXXXX",
+    "startsWith": [
+      "3"
+    ]
+  },
+  {
+    "iso": "PW",
+    "name": "Palau",
+    "dial": "680",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "PS",
+    "name": "Palestine",
+    "dial": "970",
+    "min": 9,
+    "max": 9,
+    "placeholder": "5XX XXX XXX",
+    "startsWith": [
+      "5"
+    ]
+  },
+  {
+    "iso": "PA",
+    "name": "Panama",
+    "dial": "507",
+    "min": 8,
+    "max": 8,
+    "placeholder": "6XXX XXXX",
+    "startsWith": [
+      "6"
+    ]
+  },
+  {
+    "iso": "PG",
+    "name": "Papua New Guinea",
+    "dial": "675",
+    "min": 7,
+    "max": 8,
+    "placeholder": "7XXX XXXX",
+    "startsWith": [
+      "7"
+    ]
+  },
+  {
+    "iso": "PY",
+    "name": "Paraguay",
+    "dial": "595",
+    "min": 9,
+    "max": 9,
+    "placeholder": "9XX XXX XXX",
+    "startsWith": [
+      "9"
+    ]
+  },
+  {
+    "iso": "PE",
+    "name": "Peru",
+    "dial": "51",
+    "min": 9,
+    "max": 9,
+    "placeholder": "9XX XXX XXX",
+    "startsWith": [
+      "9"
+    ]
+  },
+  {
+    "iso": "PH",
+    "name": "Philippines",
+    "dial": "63",
+    "min": 10,
+    "max": 10,
+    "placeholder": "9XX XXX XXXX",
+    "startsWith": [
+      "9"
+    ]
+  },
+  {
+    "iso": "PL",
+    "name": "Poland",
+    "dial": "48",
+    "min": 9,
+    "max": 9,
+    "placeholder": "5XX XXX XXX",
+    "startsWith": [
+      "5",
+      "6",
+      "7",
+      "8"
+    ]
+  },
+  {
+    "iso": "PT",
+    "name": "Portugal",
+    "dial": "351",
+    "min": 9,
+    "max": 9,
+    "placeholder": "9XX XXX XXX",
+    "startsWith": [
+      "9"
+    ]
+  },
+  {
+    "iso": "PR",
+    "name": "Puerto Rico",
+    "dial": "1787",
+    "min": 10,
+    "max": 10,
+    "placeholder": "(XXX) XXX-XXXX"
+  },
+  {
+    "iso": "QA",
+    "name": "Qatar",
+    "dial": "974",
+    "min": 8,
+    "max": 8,
+    "placeholder": "3XXX XXXX",
+    "startsWith": [
+      "3",
+      "5",
+      "6",
+      "7"
+    ]
+  },
+  {
+    "iso": "RO",
+    "name": "Romania",
+    "dial": "40",
+    "min": 9,
+    "max": 10,
+    "placeholder": "7XX XXX XXX",
+    "startsWith": [
+      "7"
+    ]
+  },
+  {
+    "iso": "RU",
+    "name": "Russia",
+    "dial": "7",
+    "min": 10,
+    "max": 10,
+    "placeholder": "9XX XXX XX XX",
+    "startsWith": [
+      "9"
+    ]
+  },
+  {
+    "iso": "RW",
+    "name": "Rwanda",
+    "dial": "250",
+    "min": 9,
+    "max": 9,
+    "placeholder": "7XX XXX XXX",
+    "startsWith": [
+      "7"
+    ]
+  },
+  {
+    "iso": "RE",
+    "name": "Réunion",
+    "dial": "262",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "BL",
+    "name": "Saint Barthélemy",
+    "dial": "590",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "SH",
+    "name": "Saint Helena",
+    "dial": "290",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "KN",
+    "name": "Saint Kitts and Nevis",
+    "dial": "1869",
+    "min": 10,
+    "max": 10,
+    "placeholder": "(XXX) XXX-XXXX"
+  },
+  {
+    "iso": "LC",
+    "name": "Saint Lucia",
+    "dial": "1758",
+    "min": 10,
+    "max": 10,
+    "placeholder": "(XXX) XXX-XXXX"
+  },
+  {
+    "iso": "MF",
+    "name": "Saint Martin",
+    "dial": "590",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "PM",
+    "name": "Saint Pierre and Miquelon",
+    "dial": "508",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "VC",
+    "name": "Saint Vincent and the Grenadines",
+    "dial": "1784",
+    "min": 10,
+    "max": 10,
+    "placeholder": "(XXX) XXX-XXXX"
+  },
+  {
+    "iso": "WS",
+    "name": "Samoa",
+    "dial": "685",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "SM",
+    "name": "San Marino",
+    "dial": "378",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "SA",
+    "name": "Saudi Arabia",
+    "dial": "966",
+    "min": 9,
+    "max": 9,
+    "placeholder": "5X XXX XXXX",
+    "startsWith": [
+      "5"
+    ]
+  },
+  {
+    "iso": "SN",
+    "name": "Senegal",
+    "dial": "221",
+    "min": 9,
+    "max": 9,
+    "placeholder": "7X XXX XX XX",
+    "startsWith": [
+      "7"
+    ]
+  },
+  {
+    "iso": "RS",
+    "name": "Serbia",
+    "dial": "381",
+    "min": 8,
+    "max": 10,
+    "placeholder": "6X XXX XXXX",
+    "startsWith": [
+      "6"
+    ]
+  },
+  {
+    "iso": "SC",
+    "name": "Seychelles",
+    "dial": "248",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "SL",
+    "name": "Sierra Leone",
+    "dial": "232",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "SG",
+    "name": "Singapore",
+    "dial": "65",
+    "min": 8,
+    "max": 8,
+    "placeholder": "8XXX XXXX",
+    "startsWith": [
+      "8",
+      "9"
+    ]
+  },
+  {
+    "iso": "SX",
+    "name": "Sint Maarten",
+    "dial": "1721",
+    "min": 10,
+    "max": 10,
+    "placeholder": "(XXX) XXX-XXXX"
+  },
+  {
+    "iso": "SK",
+    "name": "Slovakia",
+    "dial": "421",
+    "min": 9,
+    "max": 9,
+    "placeholder": "9XX XXX XXX",
+    "startsWith": [
+      "9"
+    ]
+  },
+  {
+    "iso": "SI",
+    "name": "Slovenia",
+    "dial": "386",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "SB",
+    "name": "Solomon Islands",
+    "dial": "677",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "SO",
+    "name": "Somalia",
+    "dial": "252",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "ZA",
+    "name": "South Africa",
+    "dial": "27",
+    "min": 9,
+    "max": 9,
+    "placeholder": "XX XXX XXXX"
+  },
+  {
+    "iso": "KR",
+    "name": "South Korea",
+    "dial": "82",
+    "min": 9,
+    "max": 11,
+    "placeholder": "10 XXXX XXXX"
+  },
+  {
+    "iso": "SS",
+    "name": "South Sudan",
+    "dial": "211",
+    "min": 9,
+    "max": 9,
+    "placeholder": "9XX XXX XXX",
+    "startsWith": [
+      "9"
+    ]
+  },
+  {
+    "iso": "ES",
+    "name": "Spain",
+    "dial": "34",
+    "min": 9,
+    "max": 9,
+    "placeholder": "6XX XXX XXX",
+    "startsWith": [
+      "6",
+      "7"
+    ]
+  },
+  {
+    "iso": "LK",
+    "name": "Sri Lanka",
+    "dial": "94",
+    "min": 9,
+    "max": 9,
+    "placeholder": "7X XXX XXXX",
+    "startsWith": [
+      "7"
+    ]
+  },
+  {
+    "iso": "SD",
+    "name": "Sudan",
+    "dial": "249",
+    "min": 9,
+    "max": 9,
+    "placeholder": "9X XXX XXXX",
+    "startsWith": [
+      "9"
+    ]
+  },
+  {
+    "iso": "SR",
+    "name": "Suriname",
+    "dial": "597",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "SE",
+    "name": "Sweden",
+    "dial": "46",
+    "min": 9,
+    "max": 9,
+    "placeholder": "7X XXX XX XX",
+    "startsWith": [
+      "7"
+    ]
+  },
+  {
+    "iso": "CH",
+    "name": "Switzerland",
+    "dial": "41",
+    "min": 9,
+    "max": 9,
+    "placeholder": "7X XXX XX XX",
+    "startsWith": [
+      "7"
+    ]
+  },
+  {
+    "iso": "SY",
+    "name": "Syria",
+    "dial": "963",
+    "min": 9,
+    "max": 9,
+    "placeholder": "9XX XXX XXX",
+    "startsWith": [
+      "9"
+    ]
+  },
+  {
+    "iso": "ST",
+    "name": "São Tomé and Príncipe",
+    "dial": "239",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "TW",
+    "name": "Taiwan",
+    "dial": "886",
+    "min": 9,
+    "max": 9,
+    "placeholder": "9XX XXX XXX",
+    "startsWith": [
+      "9"
+    ]
+  },
+  {
+    "iso": "TJ",
+    "name": "Tajikistan",
+    "dial": "992",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "TZ",
+    "name": "Tanzania",
+    "dial": "255",
+    "min": 9,
+    "max": 9,
+    "placeholder": "7XX XXX XXX",
+    "startsWith": [
+      "6",
+      "7"
+    ]
+  },
+  {
+    "iso": "TH",
+    "name": "Thailand",
+    "dial": "66",
+    "min": 9,
+    "max": 9,
+    "placeholder": "8X XXX XXXX",
+    "startsWith": [
+      "6",
+      "8",
+      "9"
+    ]
+  },
+  {
+    "iso": "TL",
+    "name": "Timor-Leste",
+    "dial": "670",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "TG",
+    "name": "Togo",
+    "dial": "228",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "TK",
+    "name": "Tokelau",
+    "dial": "690",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "TO",
+    "name": "Tonga",
+    "dial": "676",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "TT",
+    "name": "Trinidad and Tobago",
+    "dial": "1868",
+    "min": 10,
+    "max": 10,
+    "placeholder": "(XXX) XXX-XXXX"
+  },
+  {
+    "iso": "TN",
+    "name": "Tunisia",
+    "dial": "216",
+    "min": 8,
+    "max": 8,
+    "placeholder": "XX XXX XXX"
+  },
+  {
+    "iso": "TR",
+    "name": "Turkey",
+    "dial": "90",
+    "min": 10,
+    "max": 10,
+    "placeholder": "5XX XXX XXXX",
+    "startsWith": [
+      "5"
+    ]
+  },
+  {
+    "iso": "TM",
+    "name": "Turkmenistan",
+    "dial": "993",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "TC",
+    "name": "Turks and Caicos Islands",
+    "dial": "1649",
+    "min": 10,
+    "max": 10,
+    "placeholder": "(XXX) XXX-XXXX"
+  },
+  {
+    "iso": "TV",
+    "name": "Tuvalu",
+    "dial": "688",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "VI",
+    "name": "U.S. Virgin Islands",
+    "dial": "1340",
+    "min": 10,
+    "max": 10,
+    "placeholder": "(XXX) XXX-XXXX"
+  },
+  {
+    "iso": "UG",
+    "name": "Uganda",
+    "dial": "256",
+    "min": 9,
+    "max": 9,
+    "placeholder": "7XX XXX XXX",
+    "startsWith": [
+      "7"
+    ]
+  },
+  {
+    "iso": "UA",
+    "name": "Ukraine",
+    "dial": "380",
+    "min": 9,
+    "max": 9,
+    "placeholder": "XX XXX XXXX"
+  },
+  {
+    "iso": "AE",
+    "name": "United Arab Emirates",
+    "dial": "971",
+    "min": 9,
+    "max": 9,
+    "placeholder": "5X XXX XXXX",
+    "startsWith": [
+      "5"
+    ]
+  },
+  {
+    "iso": "GB",
+    "name": "United Kingdom",
+    "dial": "44",
+    "min": 10,
+    "max": 10,
+    "placeholder": "7XXX XXXXXX",
+    "startsWith": [
+      "7"
+    ]
+  },
+  {
+    "iso": "US",
+    "name": "United States",
+    "dial": "1",
+    "min": 10,
+    "max": 10,
+    "placeholder": "(XXX) XXX-XXXX"
+  },
+  {
+    "iso": "UY",
+    "name": "Uruguay",
+    "dial": "598",
+    "min": 8,
+    "max": 8,
+    "placeholder": "9X XXX XXX",
+    "startsWith": [
+      "9"
+    ]
+  },
+  {
+    "iso": "UZ",
+    "name": "Uzbekistan",
+    "dial": "998",
+    "min": 9,
+    "max": 9,
+    "placeholder": "9X XXX XX XX",
+    "startsWith": [
+      "9"
+    ]
+  },
+  {
+    "iso": "VU",
+    "name": "Vanuatu",
+    "dial": "678",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "VA",
+    "name": "Vatican City",
+    "dial": "39",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "VE",
+    "name": "Venezuela",
+    "dial": "58",
+    "min": 10,
+    "max": 10,
+    "placeholder": "4XX XXX XXXX",
+    "startsWith": [
+      "4"
+    ]
+  },
+  {
+    "iso": "VN",
+    "name": "Vietnam",
+    "dial": "84",
+    "min": 9,
+    "max": 10,
+    "placeholder": "9X XXX XXXX",
+    "startsWith": [
+      "3",
+      "5",
+      "7",
+      "8",
+      "9"
+    ]
+  },
+  {
+    "iso": "WF",
+    "name": "Wallis and Futuna",
+    "dial": "681",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "EH",
+    "name": "Western Sahara",
+    "dial": "212",
+    "min": 6,
+    "max": 15,
+    "placeholder": "Phone number"
+  },
+  {
+    "iso": "YE",
+    "name": "Yemen",
+    "dial": "967",
+    "min": 9,
+    "max": 9,
+    "placeholder": "7XX XXX XXX"
+  },
+  {
+    "iso": "ZM",
+    "name": "Zambia",
+    "dial": "260",
+    "min": 9,
+    "max": 9,
+    "placeholder": "9X XXX XXXX",
+    "startsWith": [
+      "9"
+    ]
+  },
+  {
+    "iso": "ZW",
+    "name": "Zimbabwe",
+    "dial": "263",
+    "min": 9,
+    "max": 9,
+    "placeholder": "7X XXX XXXX",
+    "startsWith": [
+      "7"
+    ]
+  }
 ]

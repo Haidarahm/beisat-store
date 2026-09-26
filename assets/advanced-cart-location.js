@@ -142,6 +142,7 @@
       var label = formatLocation(props);
       if (!label || seen[label]) continue;
       seen[label] = true;
+      var country = (props.Country || "").trim();
       var searchText = [
         props.Area,
         props["Area-AR"],
@@ -154,19 +155,66 @@
         .filter(Boolean)
         .join(" ")
         .toLowerCase();
-      options.push({ label: label, searchText: searchText });
+      options.push({ label: label, searchText: searchText, country: country });
     }
     return options;
   }
 
+  var GCC_COUNTRY_ORDER = {
+    Oman: 0,
+    "United Arab Emirates": 1,
+    "Saudi Arabia": 2,
+    Kuwait: 3,
+    Qatar: 4,
+    Bahrain: 5,
+  };
+
+  function fillCountryFilter() {
+    var sel = document.getElementById("location-country-filter");
+    if (!sel || sel.options.length) return;
+    var seen = {};
+    var list = [];
+    for (var i = 0; i < locationOptions.length; i++) {
+      var c = locationOptions[i].country;
+      if (!c || seen[c]) continue;
+      seen[c] = true;
+      list.push(c);
+    }
+    list.sort(function (a, b) {
+      var ai = Object.prototype.hasOwnProperty.call(GCC_COUNTRY_ORDER, a)
+        ? GCC_COUNTRY_ORDER[a]
+        : 100;
+      var bi = Object.prototype.hasOwnProperty.call(GCC_COUNTRY_ORDER, b)
+        ? GCC_COUNTRY_ORDER[b]
+        : 100;
+      return ai - bi || a.localeCompare(b);
+    });
+    list.forEach(function (c) {
+      var opt = document.createElement("option");
+      opt.value = c;
+      opt.textContent = c;
+      sel.appendChild(opt);
+    });
+    if (seen.Oman) sel.value = "Oman";
+  }
+
+  function selectedCountryFilter() {
+    var sel = document.getElementById("location-country-filter");
+    return sel ? sel.value : "";
+  }
+
   function loadMap() {
-    if (mapFeatures) return Promise.resolve(mapFeatures);
+    if (mapFeatures) {
+      fillCountryFilter();
+      return Promise.resolve(mapFeatures);
+    }
     return fetch(mapUrl).then(function (res) {
       if (!res.ok) throw new Error("Failed to load map");
       return res.json();
     }).then(function (map) {
       mapFeatures = map.features || [];
       locationOptions = buildLocationOptions(mapFeatures);
+      fillCountryFilter();
       return mapFeatures;
     });
   }
@@ -193,9 +241,15 @@
   }
 
   function fuzzySearch(query) {
+    var country = selectedCountryFilter();
+    var pool = country
+      ? locationOptions.filter(function (opt) {
+          return opt.country === country;
+        })
+      : locationOptions;
     var q = query.trim();
-    if (!q) return locationOptions.slice(0, MAX_RESULTS);
-    return locationOptions
+    if (!q) return pool.slice(0, MAX_RESULTS);
+    return pool
       .map(function (opt) {
         return {
           label: opt.label,
@@ -308,11 +362,15 @@
     sheet.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
     input.value = "";
+    loadMap()
+      .catch(function () {})
+      .then(function () {
+        renderResults(fuzzySearch(""), { query: "" });
+      });
     // Always re-read GPS when the user opens the picker (not only first cart visit).
     detectCurrentLocation().then(function () {
       refreshSheetResults();
     });
-    renderResults(fuzzySearch(""), { query: "" });
     requestAnimationFrame(function () {
       input.focus();
     });
@@ -409,6 +467,7 @@
   function wireLocationSearch() {
     var btn = document.getElementById("address-action-btn");
     var input = document.getElementById("location-search-input");
+    var countrySel = document.getElementById("location-country-filter");
     var sheet = document.getElementById("location-sheet");
     var backdrop = document.getElementById("location-sheet-backdrop");
     if (!btn || !input) return;
@@ -416,6 +475,11 @@
     input.addEventListener("input", function () {
       renderResults(fuzzySearch(input.value), { query: input.value });
     });
+    if (countrySel) {
+      countrySel.addEventListener("change", function () {
+        renderResults(fuzzySearch(input.value), { query: input.value });
+      });
+    }
     function onOutsidePointer(e) {
       if (!sheet || !sheet.classList.contains("is-open")) return;
       if (e.target.closest && e.target.closest(".location-sheet__panel")) return;

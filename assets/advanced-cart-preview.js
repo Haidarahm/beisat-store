@@ -535,16 +535,45 @@
   function formatMoneyFromRate(price, currency) {
     var amount = Number(price);
     if (!isFinite(amount)) return String(price);
+    var cur = currency || "OMR";
+    var digits = currencyFractionDigits(cur);
     try {
       return new Intl.NumberFormat(undefined, {
         style: "currency",
-        currency: currency || "OMR",
-        minimumFractionDigits: 3,
-        maximumFractionDigits: 3,
+        currency: cur,
+        minimumFractionDigits: digits,
+        maximumFractionDigits: digits,
       }).format(amount);
     } catch (e) {
-      return amount.toFixed(3) + (currency ? " " + currency : "");
+      return amount.toFixed(digits) + (cur ? " " + cur : "");
     }
+  }
+
+  function currencyFractionDigits(currency) {
+    try {
+      return (
+        new Intl.NumberFormat(undefined, {
+          style: "currency",
+          currency: currency || "OMR",
+        }).resolvedOptions().maximumFractionDigits || 2
+      );
+    } catch (e) {
+      return (currency || "").toUpperCase() === "OMR" ? 3 : 2;
+    }
+  }
+
+  // Total = cart subtotal + selected delivery fee (rate.price is major units).
+  function updateOrderTotal(feeMajor, currency) {
+    var el = document.getElementById("order-total-value");
+    if (!el) return;
+    var cents = Number(el.getAttribute("data-subtotal-cents") || 0);
+    var cur =
+      currency || el.getAttribute("data-currency") || "OMR";
+    var digits = currencyFractionDigits(cur);
+    var subtotal = isFinite(cents) ? cents / Math.pow(10, digits) : 0;
+    var fee = Number(feeMajor);
+    if (!isFinite(fee) || fee < 0) fee = 0;
+    setRowValueText("order-total-value", formatMoneyFromRate(subtotal + fee, cur));
   }
 
   // Pick the Shopify rate whose name best matches the location label.
@@ -643,6 +672,7 @@
       setRowValueText("estimated-delivery-value", emptyEstimateLabel());
       var feeFallback = feeFallbackLabel();
       if (feeFallback) setRowValueText("delivery-fee-value", feeFallback);
+      updateOrderTotal(0);
       return Promise.resolve();
     }
 
@@ -651,6 +681,7 @@
     var requestId = ++estimateRequestId;
     showRowValueSkeleton("estimated-delivery-value");
     showRowValueSkeleton("delivery-fee-value");
+    showRowValueSkeleton("order-total-value");
 
     return fetch("/cart/prepare_shipping_rates.json?" + query, {
       method: "POST",
@@ -666,6 +697,7 @@
         if (!rate) {
           setRowValueText("estimated-delivery-value", emptyEstimateLabel());
           setRowValueText("delivery-fee-value", feeFallbackLabel() || "—");
+          updateOrderTotal(0);
           return;
         }
         // Delivery details from Shopify admin → rate.description
@@ -678,11 +710,13 @@
           "delivery-fee-value",
           formatMoneyFromRate(rate.price, rate.currency)
         );
+        updateOrderTotal(rate.price, rate.currency);
       })
       .catch(function () {
         if (requestId !== estimateRequestId) return;
         setRowValueText("estimated-delivery-value", emptyEstimateLabel());
         setRowValueText("delivery-fee-value", feeFallbackLabel() || "—");
+        updateOrderTotal(0);
       });
   }
 

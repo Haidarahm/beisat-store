@@ -49,7 +49,12 @@
 
     <div class="total-row">
       <p class="total-row__label">Total</p>
-      <p class="total-row__value">{{ cart.total_price | money }}</p>
+      <p
+        class="total-row__value"
+        id="order-total-value"
+        data-subtotal-cents="{{ cart.total_price }}"
+        data-currency="{{ cart.currency.iso_code }}"
+      >{{ cart.total_price | money }}</p>
     </div>
   </div>
 

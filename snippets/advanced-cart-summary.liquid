@@ -1,7 +1,8 @@
 <section class="card" aria-labelledby="order-summary-title">
-  <div class="card__header">
+  <details class="card__details" open>
+  <summary class="card__header">
     <h2 id="order-summary-title" class="card__title">{{ 'cart.advanced.order_summary' | t }}</h2>
-  </div>
+  </summary>
 
   <hr class="card__divider" />
 
@@ -55,6 +56,7 @@
       >{{ cart.total_price | money }}</p>
     </div>
   </div>
+  </details>
 
   <div class="summary-actions">
     {%- if customer -%}

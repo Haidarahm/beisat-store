@@ -1,9 +1,10 @@
 <section class="card" aria-labelledby="order-items-title">
-  <div class="card__header">
+  <details class="card__details" open>
+  <summary class="card__header">
     <h2 id="order-items-title" class="card__title">
       {{ 'cart.advanced.order_items' | t }}{% unless cart.empty? %} ({{ cart.item_count }}){% endunless %}
     </h2>
-  </div>
+  </summary>
   <p class="card__subtitle">
     {%- if cart.empty? -%}
       {{ 'cart.advanced.empty_cart' | t }}
@@ -50,4 +51,5 @@
       </svg>
     </button>
   </div>
+  </details>
 </section>

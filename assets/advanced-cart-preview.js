@@ -170,6 +170,8 @@
   function scrollToIssue(issue) {
     if (!issue) return;
     var target = issue.scrollEl || issue.focusEl;
+    var collapsed = target && target.closest && target.closest("details:not([open])");
+    if (collapsed) collapsed.open = true;
     if (target && typeof target.scrollIntoView === "function") {
       target.scrollIntoView({ behavior: "smooth", block: "center" });
     }

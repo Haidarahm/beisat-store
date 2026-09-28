@@ -60,22 +60,19 @@
   </details>
 </section>
 
-  <div class="summary-actions-slot">
-    <div class="summary-actions-tip" aria-hidden="true"></div>
-    <div class="summary-actions">
-      {%- if customer -%}
-        <a href="{{ routes.root_url | append: 'checkout' | replace: '//checkout', '/checkout' }}" class="btn-outline btn-outline--sm" id="checkout-continue-btn">
-      {%- else -%}
-        <a href="#account" class="btn-outline btn-outline--sm" id="checkout-continue-btn" data-require-login>
-      {%- endif -%}
-        <svg class="icon icon--primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M20 12v6a2 2 0 01-2 2H6a2 2 0 01-2-2v-6" />
-          <path d="M4 8l2.5-4h11L20 8" />
-          <path d="M4 8h16" />
-          <path d="M9 12a2 2 0 104 0" />
-        </svg>
-        {{ 'cart.advanced.proceed' | t }}
-      </a>
-    </div>
+  <div class="summary-actions">
+    {%- if customer -%}
+      <a href="{{ routes.root_url | append: 'checkout' | replace: '//checkout', '/checkout' }}" class="btn-outline btn-outline--sm" id="checkout-continue-btn">
+    {%- else -%}
+      <a href="#account" class="btn-outline btn-outline--sm" id="checkout-continue-btn" data-require-login>
+    {%- endif -%}
+      <svg class="icon icon--primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M20 12v6a2 2 0 01-2 2H6a2 2 0 01-2-2v-6" />
+        <path d="M4 8l2.5-4h11L20 8" />
+        <path d="M4 8h16" />
+        <path d="M9 12a2 2 0 104 0" />
+      </svg>
+      {{ 'cart.advanced.proceed' | t }}
+    </a>
   </div>
 </div>

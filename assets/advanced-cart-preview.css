@@ -1017,43 +1017,30 @@ html:has(.location-sheet.is-open) {
   overflow: hidden;
 }
 
-/* Mobile: proceed sits under summary; .is-fixed docks it when that spot leaves the viewport */
-.advanced-cart-preview .summary-actions-slot {
-  margin-top: 12px;
-}
-
-.advanced-cart-preview .summary-actions-tip {
-  height: 0;
-  width: 100%;
-  pointer-events: none;
-}
-
-.advanced-cart-preview .summary-actions-slot.is-pinned {
-  min-height: var(--sa-h, 56px);
-}
-
+/* Proceed bar: in-flow by default; sticky bottom on mobile */
 .advanced-cart-preview .summary-actions {
+  margin-top: 12px;
   padding: 0;
   border-top: none;
 }
 
+/* Mobile: sticky bottom — sticks while cart is on screen, releases when scrolled past */
 @media (max-width: 1023px) {
-  .advanced-cart-preview .summary-actions.is-fixed {
-    position: fixed;
-    left: 0;
-    right: 0;
+  /* Promote children so sticky is constrained by the full cart, not the short summary box */
+  .advanced-cart-preview .order-summary {
+    display: contents;
+  }
+
+  .advanced-cart-preview .summary-actions {
+    position: sticky;
     bottom: calc(12px + env(safe-area-inset-bottom, 0px));
     z-index: 9000;
     width: 100%;
     max-width: var(--phone-width);
-    margin: 0 auto;
+    margin: 12px auto 0;
     padding: 12px 14px;
-    border-top: none;
     background: transparent;
     box-shadow: none;
-    /* iOS: promote layer so fixed isn't trapped by ancestor transforms */
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
   }
 }
 
@@ -1368,20 +1355,13 @@ html:has(.location-sheet.is-open) {
     top: 24px;
   }
 
-  .advanced-cart-preview .summary-actions-slot {
-    margin-top: 12px;
-  }
-
-  .advanced-cart-preview .summary-actions,
-  .advanced-cart-preview .summary-actions.is-fixed {
+  .advanced-cart-preview .summary-actions {
     position: static;
     max-width: none;
     width: 100%;
-    margin: 0;
+    margin-top: 12px;
     padding: 0;
     border-top: none;
-    -webkit-transform: none;
-    transform: none;
   }
 
   .advanced-cart-preview .order-item,

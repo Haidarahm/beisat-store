@@ -791,6 +791,39 @@
     sync();
   }
 
+  // Mobile: keep Proceed under summary while that spot is on screen; dock fixed when it leaves.
+  function wireProceedDock() {
+    var slot = document.querySelector(".advanced-cart-preview .summary-actions-slot");
+    var tip = slot && slot.querySelector(".summary-actions-tip");
+    var bar = slot && slot.querySelector(".summary-actions");
+    if (!slot || !tip || !bar || typeof IntersectionObserver === "undefined") return;
+
+    var mq = window.matchMedia("(max-width: 1023px)");
+
+    function setPinned(pin) {
+      pin = pin && mq.matches;
+      if (pin) slot.style.setProperty("--sa-h", bar.offsetHeight + "px");
+      bar.classList.toggle("is-fixed", pin);
+      slot.classList.toggle("is-pinned", pin);
+      if (!pin) slot.style.removeProperty("--sa-h");
+    }
+
+    var io = new IntersectionObserver(
+      function (entries) {
+        setPinned(!entries[0].isIntersecting);
+      },
+      { threshold: 0, root: null }
+    );
+    io.observe(tip);
+
+    function onMq() {
+      var r = tip.getBoundingClientRect();
+      setPinned(r.bottom <= 0 || r.top >= window.innerHeight);
+    }
+    if (mq.addEventListener) mq.addEventListener("change", onMq);
+    else if (mq.addListener) mq.addListener(onMq);
+  }
+
   function boot() {
     if (!document.getElementById("advanced-cart-preview-root")) return;
     var api = window.AdvancedCartPreview || {};
@@ -806,6 +839,7 @@
     wireRequiredField("full-name", "full-name-field", "full-name-error");
     wireNameDraft();
     wireProceedGate();
+    wireProceedDock();
     wireOrderItemsScrollHint();
     setRowValueText("estimated-delivery-value", emptyEstimateLabel());
 

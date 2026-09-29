@@ -356,7 +356,6 @@
       "phone_required": "Phone number is required",
       "phone_invalid": "Enter a valid phone number",
       "select_country_code": "Select country code",
-      "phone_placeholder": "9XXX XXXX",
       "order_summary": "Order summary",
       "delivery_information": "Delivery information",
       "delivery_fee": "Delivery Fee",

@@ -4335,7 +4335,6 @@
       "phone_required": "رقم الهاتف مطلوب",
       "phone_invalid": "أدخل رقم هاتف صالحًا",
       "select_country_code": "اختر رمز الدولة",
-      "phone_placeholder": "9XXX XXXX",
       "order_summary": "ملخص الطلب",
       "delivery_information": "معلومات التوصيل",
       "delivery_fee": "رسوم التوصيل",

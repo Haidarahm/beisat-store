@@ -5,7 +5,6 @@
     "dial": "968",
     "min": 8,
     "max": 8,
-    "placeholder": "9XXX XXXX",
     "startsWith": [
       "7",
       "9"
@@ -16,8 +15,7 @@
     "name": "Afghanistan",
     "dial": "93",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "AL",
@@ -25,7 +23,6 @@
     "dial": "355",
     "min": 9,
     "max": 9,
-    "placeholder": "6X XXX XXXX",
     "startsWith": [
       "6"
     ]
@@ -36,7 +33,6 @@
     "dial": "213",
     "min": 9,
     "max": 9,
-    "placeholder": "5XX XX XX XX",
     "startsWith": [
       "5",
       "6",
@@ -48,16 +44,14 @@
     "name": "American Samoa",
     "dial": "1684",
     "min": 10,
-    "max": 10,
-    "placeholder": "(XXX) XXX-XXXX"
+    "max": 10
   },
   {
     "iso": "AD",
     "name": "Andorra",
     "dial": "376",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "AO",
@@ -65,7 +59,6 @@
     "dial": "244",
     "min": 9,
     "max": 9,
-    "placeholder": "9XX XXX XXX",
     "startsWith": [
       "9"
     ]
@@ -75,40 +68,35 @@
     "name": "Anguilla",
     "dial": "1264",
     "min": 10,
-    "max": 10,
-    "placeholder": "(XXX) XXX-XXXX"
+    "max": 10
   },
   {
     "iso": "AG",
     "name": "Antigua and Barbuda",
     "dial": "1268",
     "min": 10,
-    "max": 10,
-    "placeholder": "(XXX) XXX-XXXX"
+    "max": 10
   },
   {
     "iso": "AR",
     "name": "Argentina",
     "dial": "54",
     "min": 10,
-    "max": 10,
-    "placeholder": "9XX XXX XXXX"
+    "max": 10
   },
   {
     "iso": "AM",
     "name": "Armenia",
     "dial": "374",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "AW",
     "name": "Aruba",
     "dial": "297",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "AU",
@@ -116,7 +104,6 @@
     "dial": "61",
     "min": 9,
     "max": 9,
-    "placeholder": "4XX XXX XXX",
     "startsWith": [
       "4"
     ]
@@ -126,8 +113,7 @@
     "name": "Austria",
     "dial": "43",
     "min": 10,
-    "max": 13,
-    "placeholder": "6XX XXXXXXX"
+    "max": 13
   },
   {
     "iso": "AZ",
@@ -135,7 +121,6 @@
     "dial": "994",
     "min": 9,
     "max": 9,
-    "placeholder": "5X XXX XX XX",
     "startsWith": [
       "5"
     ]
@@ -145,8 +130,7 @@
     "name": "Bahamas",
     "dial": "1242",
     "min": 10,
-    "max": 10,
-    "placeholder": "(XXX) XXX-XXXX"
+    "max": 10
   },
   {
     "iso": "BH",
@@ -154,7 +138,6 @@
     "dial": "973",
     "min": 8,
     "max": 8,
-    "placeholder": "3XXX XXXX",
     "startsWith": [
       "3",
       "6"
@@ -166,7 +149,6 @@
     "dial": "880",
     "min": 10,
     "max": 10,
-    "placeholder": "1XXX XXXXXX",
     "startsWith": [
       "1"
     ]
@@ -176,16 +158,14 @@
     "name": "Barbados",
     "dial": "1246",
     "min": 10,
-    "max": 10,
-    "placeholder": "(XXX) XXX-XXXX"
+    "max": 10
   },
   {
     "iso": "BY",
     "name": "Belarus",
     "dial": "375",
     "min": 9,
-    "max": 9,
-    "placeholder": "XX XXX XX XX"
+    "max": 9
   },
   {
     "iso": "BE",
@@ -193,7 +173,6 @@
     "dial": "32",
     "min": 9,
     "max": 9,
-    "placeholder": "4XX XX XX XX",
     "startsWith": [
       "4"
     ]
@@ -203,32 +182,28 @@
     "name": "Belize",
     "dial": "501",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "BJ",
     "name": "Benin",
     "dial": "229",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "BM",
     "name": "Bermuda",
     "dial": "1441",
     "min": 10,
-    "max": 10,
-    "placeholder": "(XXX) XXX-XXXX"
+    "max": 10
   },
   {
     "iso": "BT",
     "name": "Bhutan",
     "dial": "975",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "BO",
@@ -236,7 +211,6 @@
     "dial": "591",
     "min": 8,
     "max": 8,
-    "placeholder": "7X XXX XXX",
     "startsWith": [
       "6",
       "7"
@@ -248,7 +222,6 @@
     "dial": "387",
     "min": 8,
     "max": 9,
-    "placeholder": "6X XXX XXX",
     "startsWith": [
       "6"
     ]
@@ -259,7 +232,6 @@
     "dial": "267",
     "min": 8,
     "max": 8,
-    "placeholder": "7X XXX XXX",
     "startsWith": [
       "7"
     ]
@@ -269,32 +241,28 @@
     "name": "Brazil",
     "dial": "55",
     "min": 10,
-    "max": 11,
-    "placeholder": "XX 9XXXX XXXX"
+    "max": 11
   },
   {
     "iso": "IO",
     "name": "British Indian Ocean Territory",
     "dial": "246",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "VG",
     "name": "British Virgin Islands",
     "dial": "1284",
     "min": 10,
-    "max": 10,
-    "placeholder": "(XXX) XXX-XXXX"
+    "max": 10
   },
   {
     "iso": "BN",
     "name": "Brunei",
     "dial": "673",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "BG",
@@ -302,7 +270,6 @@
     "dial": "359",
     "min": 8,
     "max": 9,
-    "placeholder": "8X XXX XXXX",
     "startsWith": [
       "8",
       "9"
@@ -313,16 +280,14 @@
     "name": "Burkina Faso",
     "dial": "226",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "BI",
     "name": "Burundi",
     "dial": "257",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "KH",
@@ -330,7 +295,6 @@
     "dial": "855",
     "min": 8,
     "max": 9,
-    "placeholder": "1X XXX XXX",
     "startsWith": [
       "1",
       "6",
@@ -345,7 +309,6 @@
     "dial": "237",
     "min": 9,
     "max": 9,
-    "placeholder": "6XX XX XX XX",
     "startsWith": [
       "6"
     ]
@@ -355,40 +318,35 @@
     "name": "Canada",
     "dial": "1",
     "min": 10,
-    "max": 10,
-    "placeholder": "(XXX) XXX-XXXX"
+    "max": 10
   },
   {
     "iso": "CV",
     "name": "Cape Verde",
     "dial": "238",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "KY",
     "name": "Cayman Islands",
     "dial": "1345",
     "min": 10,
-    "max": 10,
-    "placeholder": "(XXX) XXX-XXXX"
+    "max": 10
   },
   {
     "iso": "CF",
     "name": "Central African Republic",
     "dial": "236",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "TD",
     "name": "Chad",
     "dial": "235",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "CL",
@@ -396,7 +354,6 @@
     "dial": "56",
     "min": 9,
     "max": 9,
-    "placeholder": "9 XXXX XXXX",
     "startsWith": [
       "9"
     ]
@@ -407,7 +364,6 @@
     "dial": "86",
     "min": 11,
     "max": 11,
-    "placeholder": "1XX XXXX XXXX",
     "startsWith": [
       "1"
     ]
@@ -417,16 +373,14 @@
     "name": "Christmas Island",
     "dial": "61",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "CC",
     "name": "Cocos Islands",
     "dial": "61",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "CO",
@@ -434,7 +388,6 @@
     "dial": "57",
     "min": 10,
     "max": 10,
-    "placeholder": "3XX XXX XXXX",
     "startsWith": [
       "3"
     ]
@@ -444,32 +397,28 @@
     "name": "Comoros",
     "dial": "269",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "CG",
     "name": "Congo",
     "dial": "242",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "CD",
     "name": "Congo (DRC)",
     "dial": "243",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "CK",
     "name": "Cook Islands",
     "dial": "682",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "CR",
@@ -477,7 +426,6 @@
     "dial": "506",
     "min": 8,
     "max": 8,
-    "placeholder": "8XXX XXXX",
     "startsWith": [
       "6",
       "7",
@@ -490,7 +438,6 @@
     "dial": "385",
     "min": 8,
     "max": 9,
-    "placeholder": "9X XXX XXX",
     "startsWith": [
       "9"
     ]
@@ -500,16 +447,14 @@
     "name": "Cuba",
     "dial": "53",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "CW",
     "name": "Curaçao",
     "dial": "599",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "CY",
@@ -517,7 +462,6 @@
     "dial": "357",
     "min": 8,
     "max": 8,
-    "placeholder": "9X XXXXXX",
     "startsWith": [
       "9"
     ]
@@ -528,7 +472,6 @@
     "dial": "420",
     "min": 9,
     "max": 9,
-    "placeholder": "6XX XXX XXX",
     "startsWith": [
       "6",
       "7"
@@ -539,40 +482,35 @@
     "name": "Côte d'Ivoire",
     "dial": "225",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "DK",
     "name": "Denmark",
     "dial": "45",
     "min": 8,
-    "max": 8,
-    "placeholder": "XX XX XX XX"
+    "max": 8
   },
   {
     "iso": "DJ",
     "name": "Djibouti",
     "dial": "253",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "DM",
     "name": "Dominica",
     "dial": "1767",
     "min": 10,
-    "max": 10,
-    "placeholder": "(XXX) XXX-XXXX"
+    "max": 10
   },
   {
     "iso": "DO",
     "name": "Dominican Republic",
     "dial": "1809",
     "min": 10,
-    "max": 10,
-    "placeholder": "(XXX) XXX-XXXX"
+    "max": 10
   },
   {
     "iso": "EC",
@@ -580,7 +518,6 @@
     "dial": "593",
     "min": 9,
     "max": 9,
-    "placeholder": "9XX XXX XXX",
     "startsWith": [
       "9"
     ]
@@ -591,7 +528,6 @@
     "dial": "20",
     "min": 10,
     "max": 10,
-    "placeholder": "1X XXXX XXXX",
     "startsWith": [
       "1"
     ]
@@ -602,7 +538,6 @@
     "dial": "503",
     "min": 8,
     "max": 8,
-    "placeholder": "7XXX XXXX",
     "startsWith": [
       "6",
       "7"
@@ -613,16 +548,14 @@
     "name": "Equatorial Guinea",
     "dial": "240",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "ER",
     "name": "Eritrea",
     "dial": "291",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "EE",
@@ -630,7 +563,6 @@
     "dial": "372",
     "min": 7,
     "max": 8,
-    "placeholder": "5XXX XXXX",
     "startsWith": [
       "5"
     ]
@@ -640,8 +572,7 @@
     "name": "Eswatini",
     "dial": "268",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "ET",
@@ -649,7 +580,6 @@
     "dial": "251",
     "min": 9,
     "max": 9,
-    "placeholder": "9XX XXX XXX",
     "startsWith": [
       "9"
     ]
@@ -659,32 +589,28 @@
     "name": "Falkland Islands",
     "dial": "500",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "FO",
     "name": "Faroe Islands",
     "dial": "298",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "FJ",
     "name": "Fiji",
     "dial": "679",
     "min": 7,
-    "max": 7,
-    "placeholder": "XXXX XXX"
+    "max": 7
   },
   {
     "iso": "FI",
     "name": "Finland",
     "dial": "358",
     "min": 9,
-    "max": 10,
-    "placeholder": "4X XXX XXXX"
+    "max": 10
   },
   {
     "iso": "FR",
@@ -692,7 +618,6 @@
     "dial": "33",
     "min": 9,
     "max": 9,
-    "placeholder": "6 XX XX XX XX",
     "startsWith": [
       "6",
       "7"
@@ -703,32 +628,28 @@
     "name": "French Guiana",
     "dial": "594",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "PF",
     "name": "French Polynesia",
     "dial": "689",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "GA",
     "name": "Gabon",
     "dial": "241",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "GM",
     "name": "Gambia",
     "dial": "220",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "GE",
@@ -736,7 +657,6 @@
     "dial": "995",
     "min": 9,
     "max": 9,
-    "placeholder": "5XX XXX XXX",
     "startsWith": [
       "5"
     ]
@@ -746,8 +666,7 @@
     "name": "Germany",
     "dial": "49",
     "min": 10,
-    "max": 11,
-    "placeholder": "15X XXXXXXX"
+    "max": 11
   },
   {
     "iso": "GH",
@@ -755,7 +674,6 @@
     "dial": "233",
     "min": 9,
     "max": 9,
-    "placeholder": "2X XXX XXXX",
     "startsWith": [
       "2",
       "5"
@@ -766,8 +684,7 @@
     "name": "Gibraltar",
     "dial": "350",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "GR",
@@ -775,7 +692,6 @@
     "dial": "30",
     "min": 10,
     "max": 10,
-    "placeholder": "69X XXX XXXX",
     "startsWith": [
       "6"
     ]
@@ -785,32 +701,28 @@
     "name": "Greenland",
     "dial": "299",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "GD",
     "name": "Grenada",
     "dial": "1473",
     "min": 10,
-    "max": 10,
-    "placeholder": "(XXX) XXX-XXXX"
+    "max": 10
   },
   {
     "iso": "GP",
     "name": "Guadeloupe",
     "dial": "590",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "GU",
     "name": "Guam",
     "dial": "1671",
     "min": 10,
-    "max": 10,
-    "placeholder": "(XXX) XXX-XXXX"
+    "max": 10
   },
   {
     "iso": "GT",
@@ -818,7 +730,6 @@
     "dial": "502",
     "min": 8,
     "max": 8,
-    "placeholder": "5XXX XXXX",
     "startsWith": [
       "3",
       "4",
@@ -830,40 +741,35 @@
     "name": "Guernsey",
     "dial": "44",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "GN",
     "name": "Guinea",
     "dial": "224",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "GW",
     "name": "Guinea-Bissau",
     "dial": "245",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "GY",
     "name": "Guyana",
     "dial": "592",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "HT",
     "name": "Haiti",
     "dial": "509",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "HN",
@@ -871,7 +777,6 @@
     "dial": "504",
     "min": 8,
     "max": 8,
-    "placeholder": "9XXX XXXX",
     "startsWith": [
       "3",
       "7",
@@ -884,32 +789,28 @@
     "name": "Hong Kong",
     "dial": "852",
     "min": 8,
-    "max": 8,
-    "placeholder": "XXXX XXXX"
+    "max": 8
   },
   {
     "iso": "HU",
     "name": "Hungary",
     "dial": "36",
     "min": 9,
-    "max": 9,
-    "placeholder": "20 XXX XXXX"
+    "max": 9
   },
   {
     "iso": "IS",
     "name": "Iceland",
     "dial": "354",
     "min": 7,
-    "max": 7,
-    "placeholder": "XXX XXXX"
+    "max": 7
   },
   {
     "iso": "IN",
     "name": "India",
     "dial": "91",
     "min": 10,
-    "max": 10,
-    "placeholder": "XXXXX XXXXX"
+    "max": 10
   },
   {
     "iso": "ID",
@@ -917,7 +818,6 @@
     "dial": "62",
     "min": 9,
     "max": 12,
-    "placeholder": "8XX XXX XXXX",
     "startsWith": [
       "8"
     ]
@@ -928,7 +828,6 @@
     "dial": "98",
     "min": 10,
     "max": 10,
-    "placeholder": "9XX XXX XXXX",
     "startsWith": [
       "9"
     ]
@@ -939,7 +838,6 @@
     "dial": "964",
     "min": 10,
     "max": 10,
-    "placeholder": "7XX XXX XXXX",
     "startsWith": [
       "7"
     ]
@@ -950,7 +848,6 @@
     "dial": "353",
     "min": 9,
     "max": 9,
-    "placeholder": "8X XXX XXXX",
     "startsWith": [
       "8"
     ]
@@ -960,8 +857,7 @@
     "name": "Isle of Man",
     "dial": "44",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "IL",
@@ -969,7 +865,6 @@
     "dial": "972",
     "min": 9,
     "max": 9,
-    "placeholder": "5X XXX XXXX",
     "startsWith": [
       "5"
     ]
@@ -980,7 +875,6 @@
     "dial": "39",
     "min": 9,
     "max": 10,
-    "placeholder": "3XX XXX XXXX",
     "startsWith": [
       "3"
     ]
@@ -990,24 +884,21 @@
     "name": "Jamaica",
     "dial": "1876",
     "min": 10,
-    "max": 10,
-    "placeholder": "(XXX) XXX-XXXX"
+    "max": 10
   },
   {
     "iso": "JP",
     "name": "Japan",
     "dial": "81",
     "min": 10,
-    "max": 11,
-    "placeholder": "90 XXXX XXXX"
+    "max": 11
   },
   {
     "iso": "JE",
     "name": "Jersey",
     "dial": "44",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "JO",
@@ -1015,7 +906,6 @@
     "dial": "962",
     "min": 9,
     "max": 9,
-    "placeholder": "7X XXX XXXX",
     "startsWith": [
       "7"
     ]
@@ -1026,7 +916,6 @@
     "dial": "7",
     "min": 10,
     "max": 10,
-    "placeholder": "7XX XXX XX XX",
     "startsWith": [
       "7"
     ]
@@ -1037,7 +926,6 @@
     "dial": "254",
     "min": 9,
     "max": 9,
-    "placeholder": "7XX XXX XXX",
     "startsWith": [
       "7",
       "1"
@@ -1048,8 +936,7 @@
     "name": "Kiribati",
     "dial": "686",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "XK",
@@ -1057,7 +944,6 @@
     "dial": "383",
     "min": 8,
     "max": 9,
-    "placeholder": "4X XXX XXX",
     "startsWith": [
       "4"
     ]
@@ -1068,7 +954,6 @@
     "dial": "965",
     "min": 8,
     "max": 8,
-    "placeholder": "9XXX XXXX",
     "startsWith": [
       "5",
       "6",
@@ -1080,16 +965,14 @@
     "name": "Kyrgyzstan",
     "dial": "996",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "LA",
     "name": "Laos",
     "dial": "856",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "LV",
@@ -1097,7 +980,6 @@
     "dial": "371",
     "min": 8,
     "max": 8,
-    "placeholder": "2X XXX XXX",
     "startsWith": [
       "2"
     ]
@@ -1107,24 +989,21 @@
     "name": "Lebanon",
     "dial": "961",
     "min": 7,
-    "max": 8,
-    "placeholder": "XX XXX XXX"
+    "max": 8
   },
   {
     "iso": "LS",
     "name": "Lesotho",
     "dial": "266",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "LR",
     "name": "Liberia",
     "dial": "231",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "LY",
@@ -1132,7 +1011,6 @@
     "dial": "218",
     "min": 9,
     "max": 10,
-    "placeholder": "9X XXX XXXX",
     "startsWith": [
       "9"
     ]
@@ -1142,8 +1020,7 @@
     "name": "Liechtenstein",
     "dial": "423",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "LT",
@@ -1151,7 +1028,6 @@
     "dial": "370",
     "min": 8,
     "max": 8,
-    "placeholder": "6XX XXXXX",
     "startsWith": [
       "6"
     ]
@@ -1162,7 +1038,6 @@
     "dial": "352",
     "min": 9,
     "max": 9,
-    "placeholder": "6XX XXX XXX",
     "startsWith": [
       "6"
     ]
@@ -1172,8 +1047,7 @@
     "name": "Macao",
     "dial": "853",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "MG",
@@ -1181,7 +1055,6 @@
     "dial": "261",
     "min": 9,
     "max": 10,
-    "placeholder": "3X XX XXX XX",
     "startsWith": [
       "3"
     ]
@@ -1191,8 +1064,7 @@
     "name": "Malawi",
     "dial": "265",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "MY",
@@ -1200,7 +1072,6 @@
     "dial": "60",
     "min": 9,
     "max": 10,
-    "placeholder": "1X XXX XXXX",
     "startsWith": [
       "1"
     ]
@@ -1211,7 +1082,6 @@
     "dial": "960",
     "min": 7,
     "max": 7,
-    "placeholder": "7XX XXXX",
     "startsWith": [
       "7",
       "9"
@@ -1222,8 +1092,7 @@
     "name": "Mali",
     "dial": "223",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "MT",
@@ -1231,7 +1100,6 @@
     "dial": "356",
     "min": 8,
     "max": 8,
-    "placeholder": "9XXX XXXX",
     "startsWith": [
       "7",
       "9"
@@ -1242,24 +1110,21 @@
     "name": "Marshall Islands",
     "dial": "692",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "MQ",
     "name": "Martinique",
     "dial": "596",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "MR",
     "name": "Mauritania",
     "dial": "222",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "MU",
@@ -1267,7 +1132,6 @@
     "dial": "230",
     "min": 8,
     "max": 8,
-    "placeholder": "5XXX XXXX",
     "startsWith": [
       "5"
     ]
@@ -1277,24 +1141,21 @@
     "name": "Mayotte",
     "dial": "262",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "MX",
     "name": "Mexico",
     "dial": "52",
     "min": 10,
-    "max": 10,
-    "placeholder": "XX XXXX XXXX"
+    "max": 10
   },
   {
     "iso": "FM",
     "name": "Micronesia",
     "dial": "691",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "MD",
@@ -1302,7 +1163,6 @@
     "dial": "373",
     "min": 8,
     "max": 8,
-    "placeholder": "6XX XX XXX",
     "startsWith": [
       "6",
       "7"
@@ -1314,7 +1174,6 @@
     "dial": "377",
     "min": 8,
     "max": 9,
-    "placeholder": "6XX XXX XXX",
     "startsWith": [
       "6"
     ]
@@ -1325,7 +1184,6 @@
     "dial": "976",
     "min": 8,
     "max": 8,
-    "placeholder": "8XXX XXXX",
     "startsWith": [
       "8",
       "9"
@@ -1337,7 +1195,6 @@
     "dial": "382",
     "min": 8,
     "max": 8,
-    "placeholder": "6X XXX XXX",
     "startsWith": [
       "6"
     ]
@@ -1347,8 +1204,7 @@
     "name": "Montserrat",
     "dial": "1664",
     "min": 10,
-    "max": 10,
-    "placeholder": "(XXX) XXX-XXXX"
+    "max": 10
   },
   {
     "iso": "MA",
@@ -1356,7 +1212,6 @@
     "dial": "212",
     "min": 9,
     "max": 9,
-    "placeholder": "6XX XXXXXX",
     "startsWith": [
       "6",
       "7"
@@ -1368,7 +1223,6 @@
     "dial": "258",
     "min": 9,
     "max": 9,
-    "placeholder": "8X XXX XXXX",
     "startsWith": [
       "8"
     ]
@@ -1379,7 +1233,6 @@
     "dial": "95",
     "min": 8,
     "max": 10,
-    "placeholder": "9 XXX XXXX",
     "startsWith": [
       "9"
     ]
@@ -1390,7 +1243,6 @@
     "dial": "264",
     "min": 9,
     "max": 9,
-    "placeholder": "8X XXX XXXX",
     "startsWith": [
       "8"
     ]
@@ -1400,8 +1252,7 @@
     "name": "Nauru",
     "dial": "674",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "NP",
@@ -1409,7 +1260,6 @@
     "dial": "977",
     "min": 10,
     "max": 10,
-    "placeholder": "98X XXX XXXX",
     "startsWith": [
       "98"
     ]
@@ -1420,7 +1270,6 @@
     "dial": "31",
     "min": 9,
     "max": 9,
-    "placeholder": "6 XXXXXXXX",
     "startsWith": [
       "6"
     ]
@@ -1430,8 +1279,7 @@
     "name": "New Caledonia",
     "dial": "687",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "NZ",
@@ -1439,7 +1287,6 @@
     "dial": "64",
     "min": 8,
     "max": 10,
-    "placeholder": "2X XXX XXXX",
     "startsWith": [
       "2"
     ]
@@ -1450,7 +1297,6 @@
     "dial": "505",
     "min": 8,
     "max": 8,
-    "placeholder": "8XXX XXXX",
     "startsWith": [
       "8"
     ]
@@ -1460,8 +1306,7 @@
     "name": "Niger",
     "dial": "227",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "NG",
@@ -1469,7 +1314,6 @@
     "dial": "234",
     "min": 10,
     "max": 10,
-    "placeholder": "8XX XXX XXXX",
     "startsWith": [
       "7",
       "8",
@@ -1481,16 +1325,14 @@
     "name": "Niue",
     "dial": "683",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "KP",
     "name": "North Korea",
     "dial": "850",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "MK",
@@ -1498,7 +1340,6 @@
     "dial": "389",
     "min": 8,
     "max": 8,
-    "placeholder": "7X XXX XXX",
     "startsWith": [
       "7"
     ]
@@ -1508,8 +1349,7 @@
     "name": "Northern Mariana Islands",
     "dial": "1670",
     "min": 10,
-    "max": 10,
-    "placeholder": "(XXX) XXX-XXXX"
+    "max": 10
   },
   {
     "iso": "NO",
@@ -1517,7 +1357,6 @@
     "dial": "47",
     "min": 8,
     "max": 8,
-    "placeholder": "4XX XX XXX",
     "startsWith": [
       "4",
       "9"
@@ -1529,7 +1368,6 @@
     "dial": "92",
     "min": 10,
     "max": 10,
-    "placeholder": "3XX XXXXXXX",
     "startsWith": [
       "3"
     ]
@@ -1539,8 +1377,7 @@
     "name": "Palau",
     "dial": "680",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "PS",
@@ -1548,7 +1385,6 @@
     "dial": "970",
     "min": 9,
     "max": 9,
-    "placeholder": "5XX XXX XXX",
     "startsWith": [
       "5"
     ]
@@ -1559,7 +1395,6 @@
     "dial": "507",
     "min": 8,
     "max": 8,
-    "placeholder": "6XXX XXXX",
     "startsWith": [
       "6"
     ]
@@ -1570,7 +1405,6 @@
     "dial": "675",
     "min": 7,
     "max": 8,
-    "placeholder": "7XXX XXXX",
     "startsWith": [
       "7"
     ]
@@ -1581,7 +1415,6 @@
     "dial": "595",
     "min": 9,
     "max": 9,
-    "placeholder": "9XX XXX XXX",
     "startsWith": [
       "9"
     ]
@@ -1592,7 +1425,6 @@
     "dial": "51",
     "min": 9,
     "max": 9,
-    "placeholder": "9XX XXX XXX",
     "startsWith": [
       "9"
     ]
@@ -1603,7 +1435,6 @@
     "dial": "63",
     "min": 10,
     "max": 10,
-    "placeholder": "9XX XXX XXXX",
     "startsWith": [
       "9"
     ]
@@ -1614,7 +1445,6 @@
     "dial": "48",
     "min": 9,
     "max": 9,
-    "placeholder": "5XX XXX XXX",
     "startsWith": [
       "5",
       "6",
@@ -1628,7 +1458,6 @@
     "dial": "351",
     "min": 9,
     "max": 9,
-    "placeholder": "9XX XXX XXX",
     "startsWith": [
       "9"
     ]
@@ -1638,8 +1467,7 @@
     "name": "Puerto Rico",
     "dial": "1787",
     "min": 10,
-    "max": 10,
-    "placeholder": "(XXX) XXX-XXXX"
+    "max": 10
   },
   {
     "iso": "QA",
@@ -1647,7 +1475,6 @@
     "dial": "974",
     "min": 8,
     "max": 8,
-    "placeholder": "3XXX XXXX",
     "startsWith": [
       "3",
       "5",
@@ -1661,7 +1488,6 @@
     "dial": "40",
     "min": 9,
     "max": 10,
-    "placeholder": "7XX XXX XXX",
     "startsWith": [
       "7"
     ]
@@ -1672,7 +1498,6 @@
     "dial": "7",
     "min": 10,
     "max": 10,
-    "placeholder": "9XX XXX XX XX",
     "startsWith": [
       "9"
     ]
@@ -1683,7 +1508,6 @@
     "dial": "250",
     "min": 9,
     "max": 9,
-    "placeholder": "7XX XXX XXX",
     "startsWith": [
       "7"
     ]
@@ -1693,80 +1517,70 @@
     "name": "Réunion",
     "dial": "262",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "BL",
     "name": "Saint Barthélemy",
     "dial": "590",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "SH",
     "name": "Saint Helena",
     "dial": "290",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "KN",
     "name": "Saint Kitts and Nevis",
     "dial": "1869",
     "min": 10,
-    "max": 10,
-    "placeholder": "(XXX) XXX-XXXX"
+    "max": 10
   },
   {
     "iso": "LC",
     "name": "Saint Lucia",
     "dial": "1758",
     "min": 10,
-    "max": 10,
-    "placeholder": "(XXX) XXX-XXXX"
+    "max": 10
   },
   {
     "iso": "MF",
     "name": "Saint Martin",
     "dial": "590",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "PM",
     "name": "Saint Pierre and Miquelon",
     "dial": "508",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "VC",
     "name": "Saint Vincent and the Grenadines",
     "dial": "1784",
     "min": 10,
-    "max": 10,
-    "placeholder": "(XXX) XXX-XXXX"
+    "max": 10
   },
   {
     "iso": "WS",
     "name": "Samoa",
     "dial": "685",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "SM",
     "name": "San Marino",
     "dial": "378",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "SA",
@@ -1774,7 +1588,6 @@
     "dial": "966",
     "min": 9,
     "max": 9,
-    "placeholder": "5X XXX XXXX",
     "startsWith": [
       "5"
     ]
@@ -1785,7 +1598,6 @@
     "dial": "221",
     "min": 9,
     "max": 9,
-    "placeholder": "7X XXX XX XX",
     "startsWith": [
       "7"
     ]
@@ -1796,7 +1608,6 @@
     "dial": "381",
     "min": 8,
     "max": 10,
-    "placeholder": "6X XXX XXXX",
     "startsWith": [
       "6"
     ]
@@ -1806,16 +1617,14 @@
     "name": "Seychelles",
     "dial": "248",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "SL",
     "name": "Sierra Leone",
     "dial": "232",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "SG",
@@ -1823,7 +1632,6 @@
     "dial": "65",
     "min": 8,
     "max": 8,
-    "placeholder": "8XXX XXXX",
     "startsWith": [
       "8",
       "9"
@@ -1834,8 +1642,7 @@
     "name": "Sint Maarten",
     "dial": "1721",
     "min": 10,
-    "max": 10,
-    "placeholder": "(XXX) XXX-XXXX"
+    "max": 10
   },
   {
     "iso": "SK",
@@ -1843,7 +1650,6 @@
     "dial": "421",
     "min": 9,
     "max": 9,
-    "placeholder": "9XX XXX XXX",
     "startsWith": [
       "9"
     ]
@@ -1853,40 +1659,35 @@
     "name": "Slovenia",
     "dial": "386",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "SB",
     "name": "Solomon Islands",
     "dial": "677",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "SO",
     "name": "Somalia",
     "dial": "252",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "ZA",
     "name": "South Africa",
     "dial": "27",
     "min": 9,
-    "max": 9,
-    "placeholder": "XX XXX XXXX"
+    "max": 9
   },
   {
     "iso": "KR",
     "name": "South Korea",
     "dial": "82",
     "min": 9,
-    "max": 11,
-    "placeholder": "10 XXXX XXXX"
+    "max": 11
   },
   {
     "iso": "SS",
@@ -1894,7 +1695,6 @@
     "dial": "211",
     "min": 9,
     "max": 9,
-    "placeholder": "9XX XXX XXX",
     "startsWith": [
       "9"
     ]
@@ -1905,7 +1705,6 @@
     "dial": "34",
     "min": 9,
     "max": 9,
-    "placeholder": "6XX XXX XXX",
     "startsWith": [
       "6",
       "7"
@@ -1917,7 +1716,6 @@
     "dial": "94",
     "min": 9,
     "max": 9,
-    "placeholder": "7X XXX XXXX",
     "startsWith": [
       "7"
     ]
@@ -1928,7 +1726,6 @@
     "dial": "249",
     "min": 9,
     "max": 9,
-    "placeholder": "9X XXX XXXX",
     "startsWith": [
       "9"
     ]
@@ -1938,8 +1735,7 @@
     "name": "Suriname",
     "dial": "597",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "SE",
@@ -1947,7 +1743,6 @@
     "dial": "46",
     "min": 9,
     "max": 9,
-    "placeholder": "7X XXX XX XX",
     "startsWith": [
       "7"
     ]
@@ -1958,7 +1753,6 @@
     "dial": "41",
     "min": 9,
     "max": 9,
-    "placeholder": "7X XXX XX XX",
     "startsWith": [
       "7"
     ]
@@ -1969,7 +1763,6 @@
     "dial": "963",
     "min": 9,
     "max": 9,
-    "placeholder": "9XX XXX XXX",
     "startsWith": [
       "9"
     ]
@@ -1979,8 +1772,7 @@
     "name": "São Tomé and Príncipe",
     "dial": "239",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "TW",
@@ -1988,7 +1780,6 @@
     "dial": "886",
     "min": 9,
     "max": 9,
-    "placeholder": "9XX XXX XXX",
     "startsWith": [
       "9"
     ]
@@ -1998,8 +1789,7 @@
     "name": "Tajikistan",
     "dial": "992",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "TZ",
@@ -2007,7 +1797,6 @@
     "dial": "255",
     "min": 9,
     "max": 9,
-    "placeholder": "7XX XXX XXX",
     "startsWith": [
       "6",
       "7"
@@ -2019,7 +1808,6 @@
     "dial": "66",
     "min": 9,
     "max": 9,
-    "placeholder": "8X XXX XXXX",
     "startsWith": [
       "6",
       "8",
@@ -2031,48 +1819,42 @@
     "name": "Timor-Leste",
     "dial": "670",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "TG",
     "name": "Togo",
     "dial": "228",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "TK",
     "name": "Tokelau",
     "dial": "690",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "TO",
     "name": "Tonga",
     "dial": "676",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "TT",
     "name": "Trinidad and Tobago",
     "dial": "1868",
     "min": 10,
-    "max": 10,
-    "placeholder": "(XXX) XXX-XXXX"
+    "max": 10
   },
   {
     "iso": "TN",
     "name": "Tunisia",
     "dial": "216",
     "min": 8,
-    "max": 8,
-    "placeholder": "XX XXX XXX"
+    "max": 8
   },
   {
     "iso": "TR",
@@ -2080,7 +1862,6 @@
     "dial": "90",
     "min": 10,
     "max": 10,
-    "placeholder": "5XX XXX XXXX",
     "startsWith": [
       "5"
     ]
@@ -2090,32 +1871,28 @@
     "name": "Turkmenistan",
     "dial": "993",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "TC",
     "name": "Turks and Caicos Islands",
     "dial": "1649",
     "min": 10,
-    "max": 10,
-    "placeholder": "(XXX) XXX-XXXX"
+    "max": 10
   },
   {
     "iso": "TV",
     "name": "Tuvalu",
     "dial": "688",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "VI",
     "name": "U.S. Virgin Islands",
     "dial": "1340",
     "min": 10,
-    "max": 10,
-    "placeholder": "(XXX) XXX-XXXX"
+    "max": 10
   },
   {
     "iso": "UG",
@@ -2123,7 +1900,6 @@
     "dial": "256",
     "min": 9,
     "max": 9,
-    "placeholder": "7XX XXX XXX",
     "startsWith": [
       "7"
     ]
@@ -2133,8 +1909,7 @@
     "name": "Ukraine",
     "dial": "380",
     "min": 9,
-    "max": 9,
-    "placeholder": "XX XXX XXXX"
+    "max": 9
   },
   {
     "iso": "AE",
@@ -2142,7 +1917,6 @@
     "dial": "971",
     "min": 9,
     "max": 9,
-    "placeholder": "5X XXX XXXX",
     "startsWith": [
       "5"
     ]
@@ -2153,7 +1927,6 @@
     "dial": "44",
     "min": 10,
     "max": 10,
-    "placeholder": "7XXX XXXXXX",
     "startsWith": [
       "7"
     ]
@@ -2163,8 +1936,7 @@
     "name": "United States",
     "dial": "1",
     "min": 10,
-    "max": 10,
-    "placeholder": "(XXX) XXX-XXXX"
+    "max": 10
   },
   {
     "iso": "UY",
@@ -2172,7 +1944,6 @@
     "dial": "598",
     "min": 8,
     "max": 8,
-    "placeholder": "9X XXX XXX",
     "startsWith": [
       "9"
     ]
@@ -2183,7 +1954,6 @@
     "dial": "998",
     "min": 9,
     "max": 9,
-    "placeholder": "9X XXX XX XX",
     "startsWith": [
       "9"
     ]
@@ -2193,16 +1963,14 @@
     "name": "Vanuatu",
     "dial": "678",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "VA",
     "name": "Vatican City",
     "dial": "39",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "VE",
@@ -2210,7 +1978,6 @@
     "dial": "58",
     "min": 10,
     "max": 10,
-    "placeholder": "4XX XXX XXXX",
     "startsWith": [
       "4"
     ]
@@ -2221,7 +1988,6 @@
     "dial": "84",
     "min": 9,
     "max": 10,
-    "placeholder": "9X XXX XXXX",
     "startsWith": [
       "3",
       "5",
@@ -2235,24 +2001,21 @@
     "name": "Wallis and Futuna",
     "dial": "681",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "EH",
     "name": "Western Sahara",
     "dial": "212",
     "min": 6,
-    "max": 15,
-    "placeholder": "Phone number"
+    "max": 15
   },
   {
     "iso": "YE",
     "name": "Yemen",
     "dial": "967",
     "min": 9,
-    "max": 9,
-    "placeholder": "7XX XXX XXX"
+    "max": 9
   },
   {
     "iso": "ZM",
@@ -2260,7 +2023,6 @@
     "dial": "260",
     "min": 9,
     "max": 9,
-    "placeholder": "9X XXX XXXX",
     "startsWith": [
       "9"
     ]
@@ -2271,7 +2033,6 @@
     "dial": "263",
     "min": 9,
     "max": 9,
-    "placeholder": "7X XXX XXXX",
     "startsWith": [
       "7"
     ]

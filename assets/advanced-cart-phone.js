@@ -175,7 +175,6 @@
       );
     }
     if (phoneInput) {
-      phoneInput.placeholder = country.placeholder;
       phoneInput.setAttribute("inputmode", "numeric");
       phoneInput.setAttribute("autocomplete", "tel-national");
       phoneInput.maxLength = country.max + 4;

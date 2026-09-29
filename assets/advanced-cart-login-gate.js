@@ -237,11 +237,28 @@
         tries += 1;
         if (openEmptyCartDrawer() || tries > 40) window.clearInterval(timer);
       }, 100);
+      return;
     }
 
-    // Do not auto-open the Shopify account sheet on cart load — on many devices
-    // it sits in the browser top layer and hides the sticky Proceed button.
-    // Login opens from the Proceed tap (real user gesture; required on iOS).
+    // Guest + items: auto-open login (same as cart.json custom liquid at ab583127).
+    var ready =
+      window.customElements && customElements.whenDefined
+        ? customElements.whenDefined('shopify-account')
+        : Promise.resolve();
+
+    ready
+      .catch(function () {})
+      .then(function () {
+        var tries = 0;
+        var timer = window.setInterval(function () {
+          tries += 1;
+          var opened = openShopifyAccount();
+          if (opened || tries > 50) {
+            window.clearInterval(timer);
+            if (!opened && !isOpen(accountEl())) showFallback();
+          }
+        }, 100);
+      });
   }
 
   function stopProceedSpinner() {

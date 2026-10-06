@@ -803,6 +803,9 @@
     api.refreshDeliveryEstimate = refreshDeliveryEstimate;
     window.AdvancedCartPreview = api;
 
+    // Disabled until name + phone + location are valid (markup starts disabled).
+    syncProceedButton();
+
     wireRequiredField("full-name", "full-name-field", "full-name-error");
     wireNameDraft();
     wireProceedGate();

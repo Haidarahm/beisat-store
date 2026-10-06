@@ -64,9 +64,9 @@
 
   <div class="summary-actions">
     {%- if customer -%}
-      <a href="{{ routes.root_url | append: 'checkout' | replace: '//checkout', '/checkout' }}" class="btn-outline btn-outline--sm" id="checkout-continue-btn">
+      <a href="{{ routes.root_url | append: 'checkout' | replace: '//checkout', '/checkout' }}" class="btn-outline btn-outline--sm is-disabled" id="checkout-continue-btn" aria-disabled="true" tabindex="-1">
     {%- else -%}
-      <a href="#account" class="btn-outline btn-outline--sm" id="checkout-continue-btn" data-require-login>
+      <a href="#account" class="btn-outline btn-outline--sm is-disabled" id="checkout-continue-btn" data-require-login aria-disabled="true" tabindex="-1">
     {%- endif -%}
       <svg class="icon icon--primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <path d="M20 12v6a2 2 0 01-2 2H6a2 2 0 01-2-2v-6" />

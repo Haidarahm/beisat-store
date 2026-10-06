@@ -338,5 +338,15 @@ document.addEventListener("DOMContentLoaded", function() {
 
 {%- render 'advanced-cart-login-gate' -%}
 
+<script>
+  // ?open_cart=1 (from cart "Edit") -> open the mini cart once the page is ready.
+  if (location.search.indexOf('open_cart=1') !== -1) {
+    window.addEventListener('load', function () {
+      document.dispatchEvent(new CustomEvent('dispatch:cart-drawer:open'));
+      history.replaceState(null, '', location.pathname);
+    });
+  }
+</script>
+
 </body>
 </html>

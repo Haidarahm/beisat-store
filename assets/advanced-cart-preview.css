@@ -236,6 +236,17 @@
   transform: rotate(45deg);
 }
 
+/* Edit link: same look as the "Change" text button; margin-inline-start:auto pushes it next to the arrow */
+.advanced-cart-preview .card__edit {
+  margin-inline-start: auto;
+  color: var(--color-primary);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  line-height: 1.35;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 .advanced-cart-preview .card__title {
   margin: 0;
   font-size: var(--fs-md);

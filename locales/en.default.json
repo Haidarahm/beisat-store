@@ -338,6 +338,7 @@
     "advanced": {
       "checkout_title": "Checkout",
       "order_items": "Order items",
+      "edit": "Edit",
       "empty_cart": "Your cart is empty",
       "items_in_cart": "Items in your cart",
       "empty_hint": "Add products to your cart to see them here.",

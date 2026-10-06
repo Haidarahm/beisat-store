@@ -4,6 +4,7 @@
     <h2 id="order-items-title" class="card__title">
       {{ 'cart.advanced.order_items' | t }}{% unless cart.empty? %} ({{ cart.item_count }}){% endunless %}
     </h2>
+    <a class="card__edit" href="{{ routes.root_url }}?open_cart=1">{{ 'cart.advanced.edit' | t }}</a>
   </summary>
   <p class="card__subtitle">
     {%- if cart.empty? -%}

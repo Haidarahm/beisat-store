@@ -4317,6 +4317,7 @@
     "advanced": {
       "checkout_title": "إتمام الطلب",
       "order_items": "عناصر الطلب",
+      "edit": "تعديل",
       "empty_cart": "سلتك فارغة",
       "items_in_cart": "العناصر في سلتك",
       "empty_hint": "أضف منتجات إلى سلتك لتظهر هنا.",

@@ -366,6 +366,7 @@
       },
       "included_vat": "Included VAT",
       "total": "Total",
+      "discount_note": "Note: Please add any discount codes on the payment page.",
       "proceed": "Proceed to payment",
       "select_location_map": "Select Location on Map",
       "search_locations": "Search for locations",

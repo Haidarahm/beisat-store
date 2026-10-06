@@ -1073,6 +1073,13 @@ html:has(.location-sheet.is-open) {
   color: var(--color-text);
 }
 
+.advanced-cart-preview .summary-note {
+  margin: 12px 0 0;
+  font-size: var(--fs-xs);
+  line-height: 1.4;
+  color: var(--color-text-muted);
+}
+
 /* Dawn / theme bleed resets — only fights base rules cannot win alone */
 .advanced-cart-preview .field:before,
 .advanced-cart-preview .field:after,

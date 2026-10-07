@@ -42,7 +42,8 @@
           <path d="M12 2a10 10 0 100 20 10 10 0 000-20zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" />
         </svg>
       </span>
-      <span class="row__value">{{ 0 | money }}</span>
+      {%- comment -%} ponytail: flat 5% Oman VAT on items only (prices are VAT-inclusive); add per-country rates if needed {%- endcomment -%}
+      <span class="row__value">{{ cart.total_price | times: 5 | divided_by: 105.0 | round | money }}</span>
     </div>
 
     <hr class="divider" />

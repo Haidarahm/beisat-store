@@ -555,7 +555,7 @@
 
   // Shopify Cart Ajax shipping rates:
   // https://shopify.dev/docs/api/ajax/reference/cart#generate-shipping-rates
-  // Fee = rate.price, Estimated delivery = rate.description (Delivery details).
+  // Fee = rate.price, locationText = rate.description (Delivery details).
   var estimateRequestId = 0;
 
   function setRowValueText(id, text) {

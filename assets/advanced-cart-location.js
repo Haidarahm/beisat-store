@@ -2,7 +2,6 @@
   "use strict";
 
   var MAX_POINT_KM = 25;
-  var MAX_RESULTS = 8;
   var mapFeatures = null;
   var locationOptions = [];
   var mapUrl = "";
@@ -326,7 +325,7 @@
         })
       : locationOptions;
     var q = query.trim();
-    if (!q) return pool.slice(0, MAX_RESULTS);
+    if (!q) return pool;
     return pool
       .map(function (opt) {
         return {
@@ -340,8 +339,7 @@
       })
       .sort(function (a, b) {
         return b.score - a.score || a.label.localeCompare(b.label);
-      })
-      .slice(0, MAX_RESULTS);
+      });
   }
 
   function clearAddressSkeleton(addressEl) {

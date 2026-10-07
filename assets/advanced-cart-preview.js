@@ -585,7 +585,7 @@
 
   function feeFallbackLabel() {
     var el = document.getElementById("delivery-fee-value");
-    return (el && el.getAttribute("data-fallback")) || "";
+    return (el && el.getAttribute("data-fallback")) || "—";
   }
 
   function formatMoneyFromRate(price, currency) {

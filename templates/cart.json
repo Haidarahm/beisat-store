@@ -3,8 +3,7 @@
     "advanced-cart-preview": {
       "type": "advanced-cart-preview",
       "settings": {
-        "delivery_fee_label": "__",
-        "estimated_delivery": "Tomorrow"
+        "delivery_fee_label": "—"
       }
     }
   },

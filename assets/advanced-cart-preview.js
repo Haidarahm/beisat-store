@@ -39,6 +39,23 @@
     };
   }
 
+  // Shopify address/country selects are English — map common AR country labels.
+  var COUNTRY_EN = {
+    عمان: "Oman",
+    "سلطنة عمان": "Oman",
+    "سلطنة عُمان": "Oman",
+    عُمان: "Oman",
+    الإمارات: "United Arab Emirates",
+    الامارات: "United Arab Emirates",
+    "الإمارات العربية المتحدة": "United Arab Emirates",
+    "الامارات العربية المتحدة": "United Arab Emirates",
+    السعودية: "Saudi Arabia",
+    "المملكة العربية السعودية": "Saudi Arabia",
+    الكويت: "Kuwait",
+    قطر: "Qatar",
+    البحرين: "Bahrain",
+  };
+
   function parseLocation(label) {
     var parts = String(label || "")
       .split(",")
@@ -50,6 +67,7 @@
       return { address1: "", city: "", province: "", country: "Oman", zip: "" };
     }
     var country = parts.length > 1 ? parts[parts.length - 1] : "Oman";
+    if (COUNTRY_EN[country]) country = COUNTRY_EN[country];
     var address1 = parts[0];
     var province = parts.length > 2 ? parts[1] : "";
     var city = parts.length > 2 ? parts[parts.length - 2] : address1;
@@ -67,13 +85,15 @@
 
   function getLocationText() {
     var draft = draftGet();
+    var draftLoc = (draft.location || "").trim();
     var locEl = document.getElementById("shipping-address-text");
-    var locationText = "";
+    var domLoc = "";
     if (locEl && locEl.getAttribute("aria-busy") !== "true") {
-      locationText = (locEl.textContent || "").trim();
+      domLoc = (locEl.textContent || "").trim();
     }
-    if (!locationText) locationText = (draft.location || "").trim();
-    return locationText;
+    // Draft is English (setAddress persists labelEn). DOM may show Arabic — prefer draft for checkout/rates.
+    if (draftLoc) return draftLoc;
+    return domLoc;
   }
 
   function getFormIssues() {
@@ -344,6 +364,11 @@
     var phoneNat = ((phoneEl && phoneEl.value) || draft.phone || "").replace(/\D/g, "");
     var dial = codeEl ? String(codeEl.textContent || "").replace(/\D/g, "") : "";
     var locationText = getLocationText();
+    // Checkout/address sync need English place names even on Arabic storefront.
+    var apiLoc = window.AdvancedCartPreview;
+    if (apiLoc && typeof apiLoc.toEnglishLocation === "function") {
+      locationText = apiLoc.toEnglishLocation(locationText) || locationText;
+    }
 
     var names = splitName(fullName);
     var loc = parseLocation(locationText);
@@ -386,19 +411,17 @@
   function buildCheckoutUrl(fields, cart) {
     var params = buildPrefillParams(fields);
     var qs = params.toString();
-    if ((document.documentElement.lang || "").toLowerCase().indexOf("ar") === 0) {
-      return "/ar/checkout" + (qs ? "?" + qs : "");
-    }
-    // Cart permalink + checkout params is Shopify's documented prefill path.
+    var ar = (document.documentElement.lang || "").toLowerCase().indexOf("ar") === 0;
+    // Cart permalink + checkout params is Shopify's documented prefill path (works for /ar too).
     if (cart && cart.items && cart.items.length) {
       var path = cart.items
         .map(function (item) {
           return item.variant_id + ":" + item.quantity;
         })
         .join(",");
-      return "/cart/" + path + (qs ? "?" + qs : "");
+      return (ar ? "/ar" : "") + "/cart/" + path + (qs ? "?" + qs : "");
     }
-    var base = "/checkout";
+    var base = ar ? "/ar/checkout" : "/checkout";
     var btn = document.getElementById("checkout-continue-btn");
     if (btn && btn.getAttribute("href") && btn.getAttribute("href").indexOf("checkout") !== -1) {
       base = btn.getAttribute("href").split("?")[0];

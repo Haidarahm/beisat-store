@@ -371,9 +371,20 @@
     if (api && api.refreshDeliveryEstimate) api.refreshDeliveryEstimate();
   }
 
+  // Map AR/EN picker labels → English "Area, State, Country" for Shopify checkout.
+  function toEnglishLocation(label) {
+    var raw = String(label || "").trim();
+    if (!raw) return "";
+    for (var i = 0; i < locationOptions.length; i++) {
+      var opt = locationOptions[i];
+      if (opt.label === raw || opt.labelEn === raw) return opt.labelEn;
+    }
+    return raw;
+  }
+
   function setAddress(label, opts) {
     var display = label;
-    var persistLabel = label;
+    var persistLabel = toEnglishLocation(label) || label;
     for (var i = 0; i < locationOptions.length; i++) {
       var opt = locationOptions[i];
       if (opt.label === label || opt.labelEn === label) {
@@ -636,4 +647,5 @@
 
   global.AdvancedCartPreview = global.AdvancedCartPreview || {};
   global.AdvancedCartPreview.resolveShippingAddress = resolveShippingAddress;
+  global.AdvancedCartPreview.toEnglishLocation = toEnglishLocation;
 })(typeof window !== "undefined" ? window : this);

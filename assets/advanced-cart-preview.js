@@ -109,10 +109,7 @@
       issues.push({
         id: "location",
         focusEl: document.getElementById("address-action-btn"),
-        scrollEl:
-          document.getElementById("shipping-address-row") ||
-          document.getElementById("address-action-btn") ||
-          document.getElementById("shipping-title"),
+        scrollEl: document.getElementById("address-action-btn"),
       });
     }
     if (!name) {

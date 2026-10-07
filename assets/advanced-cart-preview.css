@@ -480,9 +480,13 @@
 }
 
 .advanced-cart-preview .address-row.is-invalid,
-.advanced-cart-preview .btn-outline.is-invalid {
-  outline: 2px solid var(--color-error);
+.advanced-cart-preview .btn-outline.is-invalid,
+.advanced-cart-preview button.btn-outline.is-invalid:focus,
+.advanced-cart-preview button.btn-outline.is-invalid:focus-visible {
+  border-color: var(--color-error) !important;
+  outline: 2px solid var(--color-error) !important;
   outline-offset: 2px;
+  box-shadow: 0 0 0 4px var(--color-error-soft) !important;
 }
 
 .advanced-cart-preview .address-row[hidden] {

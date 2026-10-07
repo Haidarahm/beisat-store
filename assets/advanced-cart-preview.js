@@ -687,11 +687,10 @@
 
   function shippingAddressParams(loc) {
     var params = new URLSearchParams();
+    var place = loc.province || loc.city || loc.address1 || "";
     params.set("shipping_address[country]", loc.country || "Oman");
-    params.set(
-      "shipping_address[province]",
-      loc.province || loc.city || loc.address1 || ""
-    );
+    params.set("shipping_address[city]", loc.city === "N/A" ? "N/A" : place);
+    params.set("shipping_address[province]", place);
     params.set("shipping_address[zip]", loc.zip || "00000");
     return params.toString();
   }

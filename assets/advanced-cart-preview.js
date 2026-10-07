@@ -277,14 +277,7 @@
   }
 
   function syncProceedButton() {
-    var btn = document.getElementById("checkout-continue-btn");
-    var result = applyRevealedErrors();
-    if (!btn) return result.ok;
-    btn.classList.toggle("is-disabled", !result.ok);
-    btn.setAttribute("aria-disabled", result.ok ? "false" : "true");
-    if (result.ok) btn.removeAttribute("tabindex");
-    else btn.setAttribute("tabindex", "-1");
-    return result.ok;
+    return applyRevealedErrors().ok;
   }
 
   function ensureProceedReady() {

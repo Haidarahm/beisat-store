@@ -1193,35 +1193,6 @@ html:has(.location-sheet.is-open) {
   background-color: var(--color-primary-soft-hover);
 }
 
-/* Must beat .summary-actions .btn-outline--sm specificity or disabled looks enabled */
-.advanced-cart-preview .summary-actions a.btn-outline--sm.is-disabled,
-.advanced-cart-preview .summary-actions a.btn-outline--sm[aria-disabled="true"] {
-  opacity: 1;
-  cursor: not-allowed;
-  pointer-events: auto;
-  box-shadow: none;
-  transform: none;
-  background: #ffffff;
-  background-color: #ffffff;
-  color: #9a9a9a;
-  border-color: #c8c8c8;
-}
-
-.advanced-cart-preview .summary-actions a.btn-outline--sm.is-disabled:hover,
-.advanced-cart-preview .summary-actions a.btn-outline--sm[aria-disabled="true"]:hover {
-  background: #ffffff;
-  background-color: #ffffff;
-  color: #9a9a9a;
-  border-color: #c8c8c8;
-  transform: none;
-  box-shadow: none;
-}
-
-.advanced-cart-preview .summary-actions a.btn-outline--sm.is-disabled .icon,
-.advanced-cart-preview .summary-actions a.btn-outline--sm[aria-disabled="true"] .icon {
-  color: #9a9a9a;
-}
-
 .advanced-cart-preview .summary-actions a.btn-outline--sm {
   position: relative;
 }

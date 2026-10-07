@@ -3,7 +3,7 @@
     "advanced-cart-preview": {
       "type": "advanced-cart-preview",
       "settings": {
-        "delivery_fee_label": "0.900 OMR",
+        "delivery_fee_label": "__",
         "estimated_delivery": "Tomorrow"
       }
     }
